@@ -2382,6 +2382,9 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency")]
         public global::HeroSignal.Models.CreateInAppDtoFrequency? Frequency { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_only")]
+        public bool? JourneyOnly { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
         public long? Priority { get; set; }
 
@@ -3094,7 +3097,7 @@ namespace HeroSignal.Models
         public string? Description { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed".
+        /// Zorunlu. Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("events")]
         public global::System.Collections.Generic.List<string>? Events { get; set; }
@@ -4419,6 +4422,12 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_only")]
+        public bool? JourneyOnly { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_at")]
         public string? StartAt { get; set; }
 
@@ -4727,6 +4736,1086 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unread_count")]
         public long? UnreadCount { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Journey şeması.
+    /// </summary>
+    public sealed class Journey
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("current_version")]
+        public long? CurrentVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("draft_version")]
+        public long? DraftVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger_kind")]
+        public string? TriggerKind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_at")]
+        public string? PublishedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_by")]
+        public string? CreatedBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public global::HeroSignal.Models.JourneySummary? Summary { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyDetail şeması.
+    /// </summary>
+    public sealed class JourneyDetail
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("current_version")]
+        public long? CurrentVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("draft_version")]
+        public long? DraftVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger_kind")]
+        public string? TriggerKind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_at")]
+        public string? PublishedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_by")]
+        public string? CreatedBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public global::HeroSignal.Models.JourneyDetailSummary? Summary { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("editing")]
+        public global::HeroSignal.Models.JourneyDetailEditing? Editing { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("issues")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyDetailIssuesItem>? Issues { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyDetailEditing şeması.
+    /// </summary>
+    public sealed class JourneyDetailEditing
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("graph")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Graph { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Settings { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_at")]
+        public string? PublishedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_by")]
+        public string? PublishedBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyDetailIssuesItem şeması.
+    /// </summary>
+    public sealed class JourneyDetailIssuesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_id")]
+        public string? NodeId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("edge_id")]
+        public string? EdgeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyDetailSummary şeması.
+    /// </summary>
+    public sealed class JourneyDetailSummary
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("runs_total")]
+        public long? RunsTotal { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active")]
+        public long? Active { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
+        public long? Completed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exited")]
+        public long? Exited { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed")]
+        public long? Failed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_reached")]
+        public long? GoalReached { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyPage şeması.
+    /// </summary>
+    public sealed class JourneyPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.Journey>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyPublishResult şeması.
+    /// </summary>
+    public sealed class JourneyPublishResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey")]
+        public global::HeroSignal.Models.Journey? Journey { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("issues")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyPublishResultIssuesItem>? Issues { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyPublishResultIssuesItem şeması.
+    /// </summary>
+    public sealed class JourneyPublishResultIssuesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_id")]
+        public string? NodeId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("edge_id")]
+        public string? EdgeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyRun şeması.
+    /// </summary>
+    public sealed class JourneyRun
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_id")]
+        public string? JourneyId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "waiting", "completed", "exited", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("current_node_id")]
+        public string? CurrentNodeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_action_at")]
+        public string? NextActionAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("entered_at")]
+        public string? EnteredAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
+        public string? CompletedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exit_reason")]
+        public string? ExitReason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_id")]
+        public string? GoalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_reached_at")]
+        public string? GoalReachedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Context { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyRunDetail şeması.
+    /// </summary>
+    public sealed class JourneyRunDetail
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_id")]
+        public string? JourneyId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "waiting", "completed", "exited", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("current_node_id")]
+        public string? CurrentNodeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_action_at")]
+        public string? NextActionAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("entered_at")]
+        public string? EnteredAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
+        public string? CompletedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exit_reason")]
+        public string? ExitReason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_id")]
+        public string? GoalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_reached_at")]
+        public string? GoalReachedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Context { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_name")]
+        public string? JourneyName { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("steps")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyRunDetailStepsItem>? Steps { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyRunDetailStepsItem şeması.
+    /// </summary>
+    public sealed class JourneyRunDetailStepsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_id")]
+        public string? NodeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_type")]
+        public string? NodeType { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "completed", "waiting", "failed", "skipped".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("branch")]
+        public string? Branch { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("result")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Result { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("started_at")]
+        public string? StartedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("finished_at")]
+        public string? FinishedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyRunPage şeması.
+    /// </summary>
+    public sealed class JourneyRunPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyRun>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneysCreateBody şeması.
+    /// </summary>
+    public sealed class JourneysCreateBody
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// React Flow uyumlu journey grafı: { nodes: [{ id, type, position, data }], edges: [{ id, source, target, sourceHandle }] } (docs/journeys.md)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("graph")]
+        public global::HeroSignal.Models.JourneysCreateBodyGraph? Graph { get; set; }
+
+        /// <summary>
+        /// Yeniden giriş, yalnızca yeni girenler, çıkış kuralları, çıkış tag'leri, hedefler, takvim (docs/journeys.md)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Settings { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// React Flow uyumlu journey grafı: { nodes: [{ id, type, position, data }], edges: [{ id, source, target, sourceHandle }] } (docs/journeys.md)
+    /// </summary>
+    public sealed class JourneysCreateBodyGraph
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nodes")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Nodes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("edges")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Edges { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneysSaveDraftBody şeması.
+    /// </summary>
+    public sealed class JourneysSaveDraftBody
+    {
+        /// <summary>
+        /// Zorunlu. React Flow uyumlu journey grafı: { nodes: [{ id, type, position, data }], edges: [{ id, source, target, sourceHandle }] } (docs/journeys.md)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("graph")]
+        public global::HeroSignal.Models.JourneysSaveDraftBodyGraph? Graph { get; set; }
+
+        /// <summary>
+        /// Yeniden giriş, yalnızca yeni girenler, çıkış kuralları, çıkış tag'leri, hedefler, takvim (docs/journeys.md)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Settings { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// React Flow uyumlu journey grafı: { nodes: [{ id, type, position, data }], edges: [{ id, source, target, sourceHandle }] } (docs/journeys.md)
+    /// </summary>
+    public sealed class JourneysSaveDraftBodyGraph
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nodes")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Nodes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("edges")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Edges { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyStats şeması.
+    /// </summary>
+    public sealed class JourneyStats
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public global::HeroSignal.Models.JourneyStatsSummary? Summary { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nodes")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyStatsNodesItem>? Nodes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyStatsGoalsItem>? Goals { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exit_reasons")]
+        public global::System.Collections.Generic.Dictionary<string, long>? ExitReasons { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyStatsGoalsItem şeması.
+    /// </summary>
+    public sealed class JourneyStatsGoalsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_id")]
+        public string? GoalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reached")]
+        public long? Reached { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyStatsNodesItem şeması.
+    /// </summary>
+    public sealed class JourneyStatsNodesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_id")]
+        public string? NodeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_type")]
+        public string? NodeType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("entered")]
+        public long? Entered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
+        public long? Completed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("waiting_now")]
+        public long? WaitingNow { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("skipped")]
+        public long? Skipped { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed")]
+        public long? Failed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("branches")]
+        public global::System.Collections.Generic.Dictionary<string, long>? Branches { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
+        public global::System.Collections.Generic.Dictionary<string, long>? Messages { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyStatsSummary şeması.
+    /// </summary>
+    public sealed class JourneyStatsSummary
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("runs_total")]
+        public long? RunsTotal { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active")]
+        public long? Active { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
+        public long? Completed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exited")]
+        public long? Exited { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed")]
+        public long? Failed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_reached")]
+        public long? GoalReached { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("waiting")]
+        public long? Waiting { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_conversion_rate")]
+        public double? GoalConversionRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneySummary şeması.
+    /// </summary>
+    public sealed class JourneySummary
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("runs_total")]
+        public long? RunsTotal { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active")]
+        public long? Active { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
+        public long? Completed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exited")]
+        public long? Exited { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed")]
+        public long? Failed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_reached")]
+        public long? GoalReached { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyTriggerResult şeması.
+    /// </summary>
+    public sealed class JourneyTriggerResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("entered")]
+        public bool? Entered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("run")]
+        public global::HeroSignal.Models.JourneyRun? Run { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "inactive", "outside_schedule", "re_entry", "already_active", "unknown_user".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason")]
+        public string? Reason { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyVersionList şeması.
+    /// </summary>
+    public sealed class JourneyVersionList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyVersionListDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyVersionListDataItem şeması.
+    /// </summary>
+    public sealed class JourneyVersionListDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("graph")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Graph { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Settings { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_at")]
+        public string? PublishedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_by")]
+        public string? PublishedBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -7436,6 +8525,48 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// TriggerRunDto şeması.
+    /// </summary>
+    public sealed class TriggerRunDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("alias")]
+        public global::HeroSignal.Models.TriggerRunDtoAlias? Alias { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Context { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// TriggerRunDtoAlias şeması.
+    /// </summary>
+    public sealed class TriggerRunDtoAlias
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("label")]
+        public string? Label { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateApiKeyDto şeması.
     /// </summary>
     public sealed class UpdateApiKeyDto
@@ -7917,6 +9048,9 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency")]
         public global::HeroSignal.Models.UpdateInAppDtoFrequency? Frequency { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_only")]
+        public bool? JourneyOnly { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
         public long? Priority { get; set; }
 
@@ -7991,6 +9125,57 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("stop_after_interaction")]
         public bool? StopAfterInteraction { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateJourneyDto şeması.
+    /// </summary>
+    public sealed class UpdateJourneyDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateNodeDto şeması.
+    /// </summary>
+    public sealed class UpdateNodeDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Data { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
+        public global::HeroSignal.Models.UpdateNodeDtoPosition? Position { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateNodeDtoPosition şeması.
+    /// </summary>
+    public sealed class UpdateNodeDtoPosition
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("x")]
+        public double? X { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("y")]
+        public double? Y { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -8242,7 +9427,7 @@ namespace HeroSignal.Models
         public string? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed".
+        /// Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("events")]
         public global::System.Collections.Generic.List<string>? Events { get; set; }
@@ -8603,6 +9788,120 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("identity")]
         public global::System.Collections.Generic.Dictionary<string, string>? Identity { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UserJourneyRuns şeması.
+    /// </summary>
+    public sealed class UserJourneyRuns
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UserJourneyRunsDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UserJourneyRunsDataItem şeması.
+    /// </summary>
+    public sealed class UserJourneyRunsDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_id")]
+        public string? JourneyId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "waiting", "completed", "exited", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("current_node_id")]
+        public string? CurrentNodeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_action_at")]
+        public string? NextActionAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("entered_at")]
+        public string? EnteredAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
+        public string? CompletedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exit_reason")]
+        public string? ExitReason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_id")]
+        public string? GoalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal_reached_at")]
+        public string? GoalReachedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Context { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("journey_name")]
+        public string? JourneyName { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);

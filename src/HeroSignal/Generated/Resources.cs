@@ -1983,4 +1983,304 @@ namespace HeroSignal.Resources
             }
         }
     }
+
+    /// <summary>
+    /// journeys kaynağı.
+    /// </summary>
+    public sealed class JourneysResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal JourneysResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Journey listesi
+        ///
+        /// <c>GET /v1/apps/{appId}/journeys</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyPage> ListAsync(global::HeroSignal.Params.JourneysListParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/journeys");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::HeroSignal.Models.Journey> ListAllAsync(global::HeroSignal.Params.JourneysListParams? @params = null, global::HeroSignal.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::HeroSignal.Params.JourneysListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Journey oluştur (taslak)
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> CreateAsync(global::HeroSignal.Models.JourneysCreateBody body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Journey detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/journeys/{journeyId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> GetAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ad / açıklama
+        ///
+        /// <c>PATCH /v1/apps/{appId}/journeys/{journeyId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> UpdateAsync(string journeyId, global::HeroSignal.Models.UpdateJourneyDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/journeys/{journeyId}");
+            op.PathParam("journeyId", journeyId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Hiç yayınlanmamış journey'i sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/journeys/{journeyId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/journeys/{journeyId}");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Taslağı kaydet
+        ///
+        /// <c>PUT /v1/apps/{appId}/journeys/{journeyId}/draft</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> SaveDraftAsync(string journeyId, global::HeroSignal.Models.JourneysSaveDraftBody body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PUT", "/v1/apps/{appId}/journeys/{journeyId}/draft");
+            op.PathParam("journeyId", journeyId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Taslaktaki düğümü güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/journeys/{journeyId}/nodes/{nodeId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> UpdateNodeAsync(string journeyId, string nodeId, global::HeroSignal.Models.UpdateNodeDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/journeys/{journeyId}/nodes/{nodeId}");
+            op.PathParam("journeyId", journeyId);
+            op.PathParam("nodeId", nodeId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Sürümler
+        ///
+        /// <c>GET /v1/apps/{appId}/journeys/{journeyId}/versions</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyVersionList> VersionsAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}/versions");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyVersionList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Yayınla
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/publish</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyPublishResult> PublishAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/publish");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyPublishResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Duraklat
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/pause</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> PauseAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/pause");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Devam ettir
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/resume</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> ResumeAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/resume");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Arşivle
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/archive</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> ArchiveAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/archive");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kopyala
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/duplicate</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyDetail> DuplicateAsync(string journeyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/duplicate");
+            op.PathParam("journeyId", journeyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Düğüm bazlı istatistik
+        ///
+        /// <c>GET /v1/apps/{appId}/journeys/{journeyId}/stats</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyStats> StatsAsync(string journeyId, global::HeroSignal.Params.JourneysStatsParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}/stats");
+            op.PathParam("journeyId", journeyId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyStats>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Run listesi
+        ///
+        /// <c>GET /v1/apps/{appId}/journeys/{journeyId}/runs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyRunPage> RunsAsync(string journeyId, global::HeroSignal.Params.JourneysRunsParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}/runs");
+            op.PathParam("journeyId", journeyId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyRunPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// RunsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::HeroSignal.Models.JourneyRun> RunsAllAsync(string journeyId, global::HeroSignal.Params.JourneysRunsParams? @params = null, global::HeroSignal.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::HeroSignal.Params.JourneysRunsParams();
+            while (true)
+            {
+                var page = await RunsAsync(journeyId, p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Kullanıcıyı journey'e sok (external_id, user_id veya alias; context Liquid custom_data)
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/runs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyTriggerResult> TriggerAsync(string journeyId, global::HeroSignal.Models.TriggerRunDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/runs");
+            op.PathParam("journeyId", journeyId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyTriggerResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Run detayı ve adımlar
+        ///
+        /// <c>GET /v1/apps/{appId}/journeys/{journeyId}/runs/{runId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyRunDetail> RunAsync(string journeyId, string runId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}/runs/{runId}");
+            op.PathParam("journeyId", journeyId);
+            op.PathParam("runId", runId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyRunDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Run'ı sonlandır
+        ///
+        /// <c>DELETE /v1/apps/{appId}/journeys/{journeyId}/runs/{runId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.JourneyRunDetail> ExitRunAsync(string journeyId, string runId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/journeys/{journeyId}/runs/{runId}");
+            op.PathParam("journeyId", journeyId);
+            op.PathParam("runId", runId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.JourneyRunDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kullanıcının journey run'ları
+        ///
+        /// <c>GET /v1/apps/{appId}/users/by/{label}/{value}/journeys</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.UserJourneyRuns> ListForUserAsync(string label, string value, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/journeys");
+            op.PathParam("label", label);
+            op.PathParam("value", value);
+            return _client.ExecuteAsync<global::HeroSignal.Models.UserJourneyRuns>(op, options, cancellationToken);
+        }
+    }
 }

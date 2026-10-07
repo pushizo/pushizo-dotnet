@@ -104,6 +104,11 @@ namespace HeroSignal
         /// </summary>
         public global::HeroSignal.Resources.OrganizationResource Organization { get; private set; } = null!;
 
+        /// <summary>
+        /// Journeys
+        /// </summary>
+        public global::HeroSignal.Resources.JourneysResource Journeys { get; private set; } = null!;
+
         private void InitResources()
         {
             Notifications = new global::HeroSignal.Resources.NotificationsResource(this);
@@ -125,6 +130,7 @@ namespace HeroSignal
             Apps = new global::HeroSignal.Resources.AppsResource(this);
             ApiKeys = new global::HeroSignal.Resources.ApiKeysResource(this);
             Organization = new global::HeroSignal.Resources.OrganizationResource(this);
+            Journeys = new global::HeroSignal.Resources.JourneysResource(this);
         }
     }
 }

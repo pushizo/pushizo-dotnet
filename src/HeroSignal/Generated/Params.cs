@@ -657,4 +657,76 @@ namespace HeroSignal.Params
             op.Query("to", To);
         }
     }
+
+    /// <summary>
+    /// JourneysResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class JourneysListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public string? Q { get; set; }
+
+        internal JourneysListParams Copy() => (JourneysListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+            op.Query("q", Q);
+        }
+    }
+
+    /// <summary>
+    /// JourneysResource.StatsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class JourneysStatsParams
+    {
+        public long? Version { get; set; }
+
+        internal JourneysStatsParams Copy() => (JourneysStatsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("version", Version);
+        }
+    }
+
+    /// <summary>
+    /// JourneysResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class JourneysRunsParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "active", "waiting", "completed", "exited", "failed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public string? UserId { get; set; }
+
+        public long? Version { get; set; }
+
+        internal JourneysRunsParams Copy() => (JourneysRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+            op.Query("user_id", UserId);
+            op.Query("version", Version);
+        }
+    }
 }
