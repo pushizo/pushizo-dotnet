@@ -1,0 +1,122 @@
+# HeroSignal .NET SDK
+
+HeroSignal public API'si için C#/.NET sunucu SDK'sı (.NET 8, `HttpClient`, `System.Text.Json`; ek bağımlılık yok).
+Modeller (`HeroSignal.Models`), parametre sınıfları (`HeroSignal.Params`) ve kaynaklar (`HeroSignal.Resources`)
+`api/openapi.yaml`'dan üretilir (`src/HeroSignal/Generated/`); kimlik doğrulama, yeniden deneme, idempotency,
+sayfalama ve webhook imza doğrulaması el yazımıdır.
+
+## Kurulum
+
+```bash
+dotnet add package HeroSignal
+```
+
+## Kullanım
+
+```csharp
+using HeroSignal;
+using HeroSignal.Models;
+using HeroSignal.Params;
+
+using var hs = new HeroSignalClient(new HeroSignalOptions
+{
+    ApiKey = Environment.GetEnvironmentVariable("HS_API_KEY")!,
+    AppId = "app_…",
+    // BaseUrl = "http://localhost:4000",
+});
+
+// Bildirim gönder: Idempotency-Key verilmezse otomatik UUID (yeniden denemelerde aynı anahtar)
+var res = await hs.Notifications.CreateAsync(new CreateNotificationDto
+{
+    Target = new CreateNotificationDtoTarget { IncludeAliases = new() { ["external_id"] = new() { "user-42" } } },
+    Contents = new() { ["en"] = "Your order shipped", ["tr"] = "Siparişiniz kargoya verildi" },
+}, new RequestOptions { IdempotencyKey = "order-1001" });
+Console.WriteLine($"{res.Id} {res.Status}");
+
+// Kullanıcı oluştur/güncelle
+await hs.Users.UpsertAsync(new UpsertUserDto { ExternalId = "user-42", Tags = new() { ["plan"] = "pro" } });
+
+// Cursor sayfalama: IAsyncEnumerable, sayfalar tembel yüklenir
+await foreach (var segment in hs.Segments.ListAllAsync(new SegmentsListParams { Limit = 100 }))
+{
+    Console.WriteLine(segment.Name);
+}
+
+// Başka bir app için tek çağrı
+await hs.Apps.GetAsync(RequestOptions.ForApp("app_diger"));
+
+// SDK identity verification
+var identityHash = HeroSignalClient.IdentityHash(Environment.GetEnvironmentVariable("HS_SDK_SECRET")!, "user-42");
+```
+
+ASP.NET Core'da `IHttpClientFactory` ile: `new HeroSignalOptions { ApiKey = …, HttpClient = factory.CreateClient("herosignal") }`
+(verilen `HttpClient`'ın ömrü çağırana aittir). Tüm model özellikleri nullable'dır; `null` alanlar gönderilmez.
+SDK'da metodu olmayan uçlar veya JSON dışı yanıtlar için `hs.RequestAsync("GET", "/v1/apps/{appId}/analytics/messages",
+new Dictionary<string, object?> { ["format"] = "csv" })` gövdeyi metin olarak döner.
+
+### Ayarlar
+
+| `HeroSignalOptions` | Varsayılan | Açıklama |
+|---------------------|------------|----------|
+| `ApiKey` | — | `hs_live_…` API anahtarı (Bearer) |
+| `AppId` | — | Çağrıda `RequestOptions.AppId` verilmezse kullanılan app |
+| `BaseUrl` | `https://api.herosignal.dev` | API adresi |
+| `Timeout` | 30 sn | Deneme başına zaman aşımı |
+| `MaxRetries` | 3 | 429/5xx ve ağ hatalarında yeniden deneme |
+| `AutoIdempotencyKey` | `true` | `Idempotency-Key` destekleyen çağrılarda otomatik UUID |
+| `HttpClient` | yeni örnek | Özel `HttpClient` |
+
+Her metot `RequestOptions` (AppId, IdempotencyKey, Timeout, MaxRetries, Headers) ve `CancellationToken` alır.
+
+### Hatalar
+
+429, 5xx ve ağ hatalarında üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
+Kalıcı hatalar `HeroSignalException` alt sınıflarıdır ve `Status`, `Code` (`HS_…`), `RequestId`, `Details` taşır:
+
+```csharp
+try
+{
+    await hs.Notifications.GetAsync("msg_yok");
+}
+catch (NotFoundException) { /* 404 */ }
+catch (InvalidRequestException e) when (e.Code == ErrorCodes.NoRecipients) { /* 422 */ }
+catch (HeroSignalException e) { Console.WriteLine($"{e.Status} {e.Code} {e.Message}"); }
+```
+
+Diğer alt sınıflar: `AuthenticationException`, `PermissionDeniedException`, `ConflictException`, `RateLimitException`,
+`ServerException`, `NetworkException`.
+
+## Webhook imza doğrulaması
+
+```csharp
+app.MapPost("/hooks/herosignal", async (HttpRequest request) =>
+{
+    using var ms = new MemoryStream();
+    await request.Body.CopyToAsync(ms);                               // ham gövde
+    try
+    {
+        var events = Webhooks.ConstructEvents(ms.ToArray(),
+            request.Headers[Webhooks.SignatureHeader],
+            new[] { Environment.GetEnvironmentVariable("HS_WEBHOOK_SECRET")! }); // rotasyonda eski + yeni secret
+        foreach (var ev in events) { /* ev.Id ile tekrarları ayıklayın; ev.Type, ev.Data */ }
+        return Results.NoContent();
+    }
+    catch (WebhookSignatureException e)
+    {
+        return Results.BadRequest(e.Reason);
+    }
+});
+```
+
+Zaman damgası 5 dakikadan eskiyse istek tekrar (replay) sayılır. Yalnızca doğrulama için
+`Webhooks.VerifySignature(...)` `WebhookVerifyResult(Ok, Timestamp, Reason)` döner.
+
+## Geliştirme
+
+```bash
+dotnet test                                                # sdk/dotnet içinde (xUnit)
+node sdk/scripts/generate-server-sdks.mjs --lang dotnet    # depo kökünde; Generated/ yenilenir
+```
+
+`src/HeroSignal/Generated/` elle düzenlenmez. Webhook testleri `sdk/testdata/webhook-signature-vectors.json`
+ortak vektörlerini kullanır.
