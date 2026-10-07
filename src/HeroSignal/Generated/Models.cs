@@ -525,6 +525,108 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public global::HeroSignal.Models.AppSettingsWebPushPrompt? Prompt { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("welcomeNotification")]
+        public global::HeroSignal.Models.AppSettingsWebPushWelcomeNotification? WelcomeNotification { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("clickBehavior")]
+        public global::HeroSignal.Models.AppSettingsWebPushClickBehavior? ClickBehavior { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("customLink")]
+        public global::HeroSignal.Models.AppSettingsWebPushCustomLink? CustomLink { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptBackoffDays")]
+        public global::System.Collections.Generic.List<long>? PromptBackoffDays { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsWebPushClickBehavior şeması.
+    /// </summary>
+    public sealed class AppSettingsWebPushClickBehavior
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "exact", "origin".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "navigate", "focus".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("action")]
+        public string? Action { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsWebPushCustomLink şeması.
+    /// </summary>
+    public sealed class AppSettingsWebPushCustomLink
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "link".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("style")]
+        public string? Style { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "small", "medium", "large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("size")]
+        public string? Size { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("color")]
+        public global::HeroSignal.Models.AppSettingsWebPushCustomLinkColor? Color { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("texts")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.AppSettingsWebPushCustomLinkTextsValue>? Texts { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("unsubscribeEnabled")]
+        public bool? UnsubscribeEnabled { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsWebPushCustomLinkColor şeması.
+    /// </summary>
+    public sealed class AppSettingsWebPushCustomLinkColor
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsWebPushCustomLinkTextsValue şeması.
+    /// </summary>
+    public sealed class AppSettingsWebPushCustomLinkTextsValue
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscribe")]
+        public string? Subscribe { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("unsubscribe")]
+        public string? Unsubscribe { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("explanation")]
+        public string? Explanation { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -605,6 +707,42 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("cancel")]
         public string? Cancel { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsWebPushWelcomeNotification şeması.
+    /// </summary>
+    public sealed class AppSettingsWebPushWelcomeNotification
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("texts")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.AppSettingsWebPushWelcomeNotificationTextsValue>? Texts { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsWebPushWelcomeNotificationTextsValue şeması.
+    /// </summary>
+    public sealed class AppSettingsWebPushWelcomeNotificationTextsValue
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -7536,6 +7674,108 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public global::HeroSignal.Models.UpdateAppDtoSettingsWebPushPrompt? Prompt { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("welcomeNotification")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsWebPushWelcomeNotification? WelcomeNotification { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("clickBehavior")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsWebPushClickBehavior? ClickBehavior { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("customLink")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsWebPushCustomLink? CustomLink { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptBackoffDays")]
+        public global::System.Collections.Generic.List<long>? PromptBackoffDays { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsWebPushClickBehavior şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsWebPushClickBehavior
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "exact", "origin".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "navigate", "focus".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("action")]
+        public string? Action { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsWebPushCustomLink şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsWebPushCustomLink
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "link".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("style")]
+        public string? Style { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "small", "medium", "large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("size")]
+        public string? Size { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("color")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsWebPushCustomLinkColor? Color { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("texts")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.UpdateAppDtoSettingsWebPushCustomLinkTextsValue>? Texts { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("unsubscribeEnabled")]
+        public bool? UnsubscribeEnabled { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsWebPushCustomLinkColor şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsWebPushCustomLinkColor
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsWebPushCustomLinkTextsValue şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsWebPushCustomLinkTextsValue
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscribe")]
+        public string? Subscribe { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("unsubscribe")]
+        public string? Unsubscribe { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("explanation")]
+        public string? Explanation { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -7616,6 +7856,42 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("cancel")]
         public string? Cancel { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsWebPushWelcomeNotification şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsWebPushWelcomeNotification
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("texts")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.UpdateAppDtoSettingsWebPushWelcomeNotificationTextsValue>? Texts { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsWebPushWelcomeNotificationTextsValue şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsWebPushWelcomeNotificationTextsValue
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
