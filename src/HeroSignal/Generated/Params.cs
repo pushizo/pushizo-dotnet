@@ -128,6 +128,24 @@ namespace HeroSignal.Params
     }
 
     /// <summary>
+    /// SegmentsResource.EstimateAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SegmentsEstimateParams
+    {
+        /// <summary>
+        /// true: önbelleği atla, tam sayım Değerler: "true", "false".
+        /// </summary>
+        public string? Force { get; set; }
+
+        internal SegmentsEstimateParams Copy() => (SegmentsEstimateParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("force", Force);
+        }
+    }
+
+    /// <summary>
     /// TemplatesResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class TemplatesListParams

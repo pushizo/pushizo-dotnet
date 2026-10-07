@@ -153,6 +153,7 @@ namespace HeroSignal.Resources
         {
             var op = new global::HeroSignal.Core.Operation("GET", "/v1/notifications/{messageId}/history");
             op.PathParam("messageId", messageId);
+            op.QueryAppId = true;
             return _client.ExecuteAsync<global::HeroSignal.Models.Export>(op, options, cancellationToken);
         }
 
@@ -165,6 +166,7 @@ namespace HeroSignal.Resources
         {
             var op = new global::HeroSignal.Core.Operation("POST", "/v1/notifications/{messageId}/export_events");
             op.PathParam("messageId", messageId);
+            op.QueryAppId = true;
             return _client.ExecuteAsync<global::HeroSignal.Models.Export>(op, options, cancellationToken);
         }
     }
@@ -651,11 +653,11 @@ namespace HeroSignal.Resources
         ///
         /// <c>POST /v1/apps/{appId}/segments/{segmentId}/estimate</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.SegmentEstimate> EstimateAsync(string segmentId, string force, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.SegmentEstimate> EstimateAsync(string segmentId, global::HeroSignal.Params.SegmentsEstimateParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/segments/{segmentId}/estimate");
             op.PathParam("segmentId", segmentId);
-            op.Query("force", force);
+            @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::HeroSignal.Models.SegmentEstimate>(op, options, cancellationToken);
         }
     }
