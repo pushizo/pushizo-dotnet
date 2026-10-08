@@ -760,6 +760,18 @@ namespace HeroSignal.Resources
         }
 
         /// <summary>
+        /// Şablon analitiği
+        ///
+        /// <c>GET /v1/apps/{appId}/templates/{templateId}/stats</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.TemplateStats> StatsAsync(string templateId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/templates/{templateId}/stats");
+            op.PathParam("templateId", templateId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.TemplateStats>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Şablonu aynı organizasyondaki başka bir app'e kopyala
         ///
         /// <c>POST /v1/apps/{appId}/templates/{templateId}/copy_to_app</c>
@@ -993,6 +1005,32 @@ namespace HeroSignal.Resources
             var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/stats");
             op.PathParam("campaignId", campaignId);
             return _client.ExecuteAsync<global::HeroSignal.Models.CampaignStats>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// A/B varyant karşılaştırması
+        ///
+        /// <c>GET /v1/apps/{appId}/campaigns/{campaignId}/variants/stats</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.CampaignVariantStats> VariantStatsAsync(string campaignId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/variants/stats");
+            op.PathParam("campaignId", campaignId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.CampaignVariantStats>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// A/B kazananını seç
+        ///
+        /// <c>POST /v1/apps/{appId}/campaigns/{campaignId}/winner</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Campaign> SelectWinnerAsync(string campaignId, global::HeroSignal.Models.SelectWinnerDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/winner");
+            op.PathParam("campaignId", campaignId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.Campaign>(op, options, cancellationToken);
         }
 
         /// <summary>
@@ -1767,6 +1805,18 @@ namespace HeroSignal.Resources
         }
 
         /// <summary>
+        /// Retention kohortu
+        ///
+        /// <c>GET /v1/apps/{appId}/analytics/retention</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.RetentionReport> RetentionAsync(global::HeroSignal.Params.AnalyticsRetentionParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/analytics/retention");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.RetentionReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Etkileşim ısı haritası
         ///
         /// <c>GET /v1/apps/{appId}/analytics/engagement</c>
@@ -1981,6 +2031,69 @@ namespace HeroSignal.Resources
                 p = p.Copy();
                 p.Cursor = page.NextCursor;
             }
+        }
+    }
+
+    /// <summary>
+    /// categories kaynağı.
+    /// </summary>
+    public sealed class CategoriesResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal CategoriesResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Mesaj kategorileri
+        ///
+        /// <c>GET /v1/apps/{appId}/categories</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.MessageCategoryList> ListAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/categories");
+            return _client.ExecuteAsync<global::HeroSignal.Models.MessageCategoryList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kategori oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/categories</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.MessageCategory> CreateAsync(global::HeroSignal.Models.CreateCategoryDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/categories");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.MessageCategory>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kategori güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/categories/{categoryId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.MessageCategory> UpdateAsync(string categoryId, global::HeroSignal.Models.UpdateCategoryDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/categories/{categoryId}");
+            op.PathParam("categoryId", categoryId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.MessageCategory>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kategori sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/categories/{categoryId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteAsync(string categoryId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/categories/{categoryId}");
+            op.PathParam("categoryId", categoryId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
         }
     }
 
@@ -2281,6 +2394,47 @@ namespace HeroSignal.Resources
             op.PathParam("label", label);
             op.PathParam("value", value);
             return _client.ExecuteAsync<global::HeroSignal.Models.UserJourneyRuns>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// preferences kaynağı.
+    /// </summary>
+    public sealed class PreferencesResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal PreferencesResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Kullanıcının tercihleri (alias ile)
+        ///
+        /// <c>GET /v1/apps/{appId}/users/by/{label}/{value}/preferences</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.UserPreferences> GetAsync(string label, string value, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/preferences");
+            op.PathParam("label", label);
+            op.PathParam("value", value);
+            return _client.ExecuteAsync<global::HeroSignal.Models.UserPreferences>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kullanıcı tercihlerini yaz (alias ile)
+        ///
+        /// <c>PUT /v1/apps/{appId}/users/by/{label}/{value}/preferences</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.UserPreferences> SetAsync(string label, string value, global::HeroSignal.Models.SetPreferencesDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PUT", "/v1/apps/{appId}/users/by/{label}/{value}/preferences");
+            op.PathParam("label", label);
+            op.PathParam("value", value);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.UserPreferences>(op, options, cancellationToken);
         }
     }
 }

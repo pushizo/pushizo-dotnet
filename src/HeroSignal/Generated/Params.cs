@@ -33,6 +33,8 @@ namespace HeroSignal.Params
         /// </summary>
         public string? Sort { get; set; }
 
+        public string? Label { get; set; }
+
         internal NotificationsListParams Copy() => (NotificationsListParams)MemberwiseClone();
 
         internal void ApplyTo(global::HeroSignal.Core.Operation op)
@@ -43,6 +45,7 @@ namespace HeroSignal.Params
             op.Query("kind", Kind);
             op.Query("status", Status);
             op.Query("sort", Sort);
+            op.Query("label", Label);
         }
     }
 
@@ -198,6 +201,8 @@ namespace HeroSignal.Params
         /// </summary>
         public string? Channel { get; set; }
 
+        public string? Label { get; set; }
+
         internal CampaignsListParams Copy() => (CampaignsListParams)MemberwiseClone();
 
         internal void ApplyTo(global::HeroSignal.Core.Operation op)
@@ -208,6 +213,7 @@ namespace HeroSignal.Params
             op.Query("status", Status);
             op.Query("type", Type);
             op.Query("channel", Channel);
+            op.Query("label", Label);
         }
     }
 
@@ -591,6 +597,27 @@ namespace HeroSignal.Params
             op.Query("from", From);
             op.Query("to", To);
             op.Query("compare", Compare);
+            op.Query("format", Format);
+        }
+    }
+
+    /// <summary>
+    /// AnalyticsResource.RetentionAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AnalyticsRetentionParams
+    {
+        public long? Weeks { get; set; }
+
+        /// <summary>
+        /// Değerler: "json", "csv".
+        /// </summary>
+        public string? Format { get; set; }
+
+        internal AnalyticsRetentionParams Copy() => (AnalyticsRetentionParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("weeks", Weeks);
             op.Query("format", Format);
         }
     }

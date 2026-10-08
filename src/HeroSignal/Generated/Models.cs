@@ -372,6 +372,21 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequencyCap")]
         public global::HeroSignal.Models.AppSettingsFrequencyCap? FrequencyCap { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequencyCaps")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.AppSettingsFrequencyCapsItem>? FrequencyCaps { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("inApp")]
+        public global::HeroSignal.Models.AppSettingsInApp? InApp { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("androidChannels")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.AppSettingsAndroidChannelsItem>? AndroidChannels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms")]
+        public global::HeroSignal.Models.AppSettingsSms? Sms { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("preferenceCenter")]
+        public global::HeroSignal.Models.AppSettingsPreferenceCenter? PreferenceCenter { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("defaultTtlSeconds")]
         public long? DefaultTtlSeconds { get; set; }
 
@@ -392,6 +407,45 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("sdkSetup")]
         public global::HeroSignal.Models.AppSettingsSdkSetup? SdkSetup { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsAndroidChannelsItem şeması.
+    /// </summary>
+    public sealed class AppSettingsAndroidChannelsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "low", "default", "high", "urgent".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("importance")]
+        public string? Importance { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sound")]
+        public string? Sound { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("vibration")]
+        public bool? Vibration { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("group")]
+        public string? Group { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -419,6 +473,66 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// AppSettingsFrequencyCapsItem şeması.
+    /// </summary>
+    public sealed class AppSettingsFrequencyCapsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max")]
+        public long? Max { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("window")]
+        public global::HeroSignal.Models.AppSettingsFrequencyCapsItemWindow? Window { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsFrequencyCapsItemWindow şeması.
+    /// </summary>
+    public sealed class AppSettingsFrequencyCapsItemWindow
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public long? Value { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "minutes", "hours", "days", "weeks".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unit")]
+        public string? Unit { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsInApp şeması.
+    /// </summary>
+    public sealed class AppSettingsInApp
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("minIntervalSeconds")]
+        public long? MinIntervalSeconds { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// AppSettingsOnboarding şeması.
     /// </summary>
     public sealed class AppSettingsOnboarding
@@ -434,6 +548,54 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
         public string? CompletedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsPreferenceCenter şeması.
+    /// </summary>
+    public sealed class AppSettingsPreferenceCenter
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("brandName")]
+        public string? BrandName { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("logoUrl")]
+        public string? LogoUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("accentColor")]
+        public string? AccentColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("customUnsubscribeUrl")]
+        public string? CustomUnsubscribeUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("texts")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.AppSettingsPreferenceCenterTextsValue>? Texts { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsPreferenceCenterTextsValue şeması.
+    /// </summary>
+    public sealed class AppSettingsPreferenceCenterTextsValue
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("unsubscribeAll")]
+        public string? UnsubscribeAll { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("saved")]
+        public string? Saved { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -506,6 +668,24 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("completedAt")]
         public string? CompletedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsSms şeması.
+    /// </summary>
+    public sealed class AppSettingsSms
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("helpReply")]
+        public string? HelpReply { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("stopReply")]
+        public string? StopReply { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoReply")]
+        public bool? AutoReply { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -647,6 +827,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string? Type { get; set; }
+
+        /// <summary>
+        /// Değerler: "push", "email", "sms", "email_sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("collect")]
+        public string? Collect { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("delaySeconds")]
         public long? DelaySeconds { get; set; }
@@ -880,6 +1066,30 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.List<string>? Labels { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.CampaignAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CampaignVariantsItem>? Variants { get; set; }
+
+        /// <summary>
         /// Zorunlu. Değerler: "one_time", "scheduled", "recurring", "automated", "transactional".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -1004,6 +1214,93 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("estimated_recipients")]
         public long? EstimatedRecipients { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignAbTest şeması.
+    /// </summary>
+    public sealed class CampaignAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("test_percentage")]
+        public long? TestPercentage { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.CampaignAbTestWinner? Winner { get; set; }
+
+        /// <summary>
+        /// Değerler: "testing", "winner_sent".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("phase")]
+        public string? Phase { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner_variant_id")]
+        public string? WinnerVariantId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_at")]
+        public string? DecidedAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_by")]
+        public string? DecidedBy { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("significance")]
+        public global::HeroSignal.Models.CampaignAbTestSignificance? Significance { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignAbTestSignificance şeması.
+    /// </summary>
+    public sealed class CampaignAbTestSignificance
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignAbTestWinner şeması.
+    /// </summary>
+    public sealed class CampaignAbTestWinner
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "open_rate", "click_rate", "conversion_rate".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("evaluate_after_minutes")]
+        public long? EvaluateAfterMinutes { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -1155,6 +1452,24 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.List<string>? Labels { get; set; }
+
+        /// <summary>
+        /// Tercih kategorisi anahtarı; kapalı kullanıcılar bastırılır
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.CampaignsCreateBodyAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// A/B varyantları (ağırlıklar toplamı 100; en fazla bir is_control)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CampaignsCreateBodyVariantsItem>? Variants { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
         public string? TemplateId { get; set; }
 
@@ -1169,6 +1484,48 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("send_at")]
         public string? SendAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignsCreateBodyAbTest şeması.
+    /// </summary>
+    public sealed class CampaignsCreateBodyAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("test_percentage")]
+        public long? TestPercentage { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.CampaignsCreateBodyAbTestWinner? Winner { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignsCreateBodyAbTestWinner şeması.
+    /// </summary>
+    public sealed class CampaignsCreateBodyAbTestWinner
+    {
+        /// <summary>
+        /// Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Değerler: "open_rate", "click_rate", "conversion_rate".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("evaluate_after_minutes")]
+        public long? EvaluateAfterMinutes { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -1280,6 +1637,36 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignsCreateBodyVariantsItem şeması.
+    /// </summary>
+    public sealed class CampaignsCreateBodyVariantsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
+        public bool? IsControl { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -1545,6 +1932,24 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.List<string>? Labels { get; set; }
+
+        /// <summary>
+        /// Tercih kategorisi anahtarı; kapalı kullanıcılar bastırılır
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.CampaignsUpdateBodyAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// A/B varyantları (ağırlıklar toplamı 100; en fazla bir is_control)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CampaignsUpdateBodyVariantsItem>? Variants { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
         public string? TemplateId { get; set; }
 
@@ -1559,6 +1964,48 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("send_at")]
         public string? SendAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignsUpdateBodyAbTest şeması.
+    /// </summary>
+    public sealed class CampaignsUpdateBodyAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("test_percentage")]
+        public long? TestPercentage { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.CampaignsUpdateBodyAbTestWinner? Winner { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignsUpdateBodyAbTestWinner şeması.
+    /// </summary>
+    public sealed class CampaignsUpdateBodyAbTestWinner
+    {
+        /// <summary>
+        /// Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Değerler: "open_rate", "click_rate", "conversion_rate".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("evaluate_after_minutes")]
+        public long? EvaluateAfterMinutes { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -1670,6 +2117,321 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignsUpdateBodyVariantsItem şeması.
+    /// </summary>
+    public sealed class CampaignsUpdateBodyVariantsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
+        public bool? IsControl { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantsItem şeması.
+    /// </summary>
+    public sealed class CampaignVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
+        public bool? IsControl { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
+        public long? Position { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStats şeması.
+    /// </summary>
+    public sealed class CampaignVariantStats
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.CampaignVariantStatsAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CampaignVariantStatsVariantsItem>? Variants { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("leader")]
+        public string? Leader { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significance")]
+        public global::HeroSignal.Models.CampaignVariantStatsSignificance? Significance { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStatsAbTest şeması.
+    /// </summary>
+    public sealed class CampaignVariantStatsAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("test_percentage")]
+        public long? TestPercentage { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.CampaignVariantStatsAbTestWinner? Winner { get; set; }
+
+        /// <summary>
+        /// Değerler: "testing", "winner_sent".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("phase")]
+        public string? Phase { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner_variant_id")]
+        public string? WinnerVariantId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_at")]
+        public string? DecidedAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_by")]
+        public string? DecidedBy { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("significance")]
+        public global::HeroSignal.Models.CampaignVariantStatsAbTestSignificance? Significance { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStatsAbTestSignificance şeması.
+    /// </summary>
+    public sealed class CampaignVariantStatsAbTestSignificance
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStatsAbTestWinner şeması.
+    /// </summary>
+    public sealed class CampaignVariantStatsAbTestWinner
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "open_rate", "click_rate", "conversion_rate".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("evaluate_after_minutes")]
+        public long? EvaluateAfterMinutes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStatsSignificance şeması.
+    /// </summary>
+    public sealed class CampaignVariantStatsSignificance
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStatsVariantsItem şeması.
+    /// </summary>
+    public sealed class CampaignVariantStatsVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_id")]
+        public string? VariantId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
+        public bool? IsControl { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("targeted")]
+        public long? Targeted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opened")]
+        public long? Opened { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("clicked")]
+        public long? Clicked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("holdout")]
+        public long? Holdout { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("open_rate")]
+        public double? OpenRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("click_rate")]
+        public double? ClickRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -2207,6 +2969,42 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateCategoryDto şeması.
+    /// </summary>
+    public sealed class CreateCategoryDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("default_opted_in")]
+        public bool? DefaultOptedIn { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
+        public long? Position { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreatedApiKey şeması.
     /// </summary>
     public sealed class CreatedApiKey
@@ -2370,6 +3168,12 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("triggers")]
         public global::System.Collections.Generic.List<object?>? Triggers { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger_groups")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.List<object?>>? TriggerGroups { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateInAppDtoVariantsItem>? Variants { get; set; }
+
         /// <summary>
         /// Zorunlu.
         /// </summary>
@@ -2459,6 +3263,72 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("stop_after_interaction")]
         public bool? StopAfterInteraction { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateInAppDtoVariantsItem şeması.
+    /// </summary>
+    public sealed class CreateInAppDtoVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("display")]
+        public global::HeroSignal.Models.CreateInAppDtoVariantsItemDisplay? Display { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateInAppDtoVariantsItemDisplay şeması.
+    /// </summary>
+    public sealed class CreateInAppDtoVariantsItemDisplay
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "modal", "banner_top", "banner_bottom", "fullscreen".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("layout")]
+        public string? Layout { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_color")]
+        public string? BackgroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("text_color")]
+        public string? TextColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissible")]
+        public bool? Dismissible { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("auto_dismiss_seconds")]
+        public long? AutoDismissSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
+        public global::System.Collections.Generic.List<object?>? Blocks { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -2672,6 +3542,12 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.List<string>? Labels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -4404,6 +5280,18 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger_groups")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.List<object?>>? TriggerGroups { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.InAppMessageVariantsItem>? Variants { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("display")]
         public global::HeroSignal.Models.InAppMessageDisplay? Display { get; set; }
 
@@ -4442,6 +5330,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
         public global::HeroSignal.Models.InAppMessageStats? Stats { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_stats")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.InAppMessageVariantStatsItem>? VariantStats { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -4580,6 +5474,105 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unique_users")]
         public long? UniqueUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ctr")]
+        public double? Ctr { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// InAppMessageVariantsItem şeması.
+    /// </summary>
+    public sealed class InAppMessageVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("display")]
+        public global::HeroSignal.Models.InAppMessageVariantsItemDisplay? Display { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// InAppMessageVariantsItemDisplay şeması.
+    /// </summary>
+    public sealed class InAppMessageVariantsItemDisplay
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "modal", "banner_top", "banner_bottom", "fullscreen".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("layout")]
+        public string? Layout { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_color")]
+        public string? BackgroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("text_color")]
+        public string? TextColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissible")]
+        public bool? Dismissible { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("auto_dismiss_seconds")]
+        public long? AutoDismissSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
+        public global::System.Collections.Generic.List<object?>? Blocks { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// InAppMessageVariantStatsItem şeması.
+    /// </summary>
+    public sealed class InAppMessageVariantStatsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_id")]
+        public string? VariantId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("impressions")]
+        public long? Impressions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("clicks")]
+        public long? Clicks { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -5622,6 +6615,54 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
         public global::System.Collections.Generic.Dictionary<string, long>? Messages { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.JourneyStatsNodesItemVariantsItem>? Variants { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// JourneyStatsNodesItemVariantsItem şeması.
+    /// </summary>
+    public sealed class JourneyStatsNodesItemVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_id")]
+        public string? VariantId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opened")]
+        public long? Opened { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("clicked")]
+        public long? Clicked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public bool? Winner { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -5961,6 +7002,36 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.List<string>? Labels { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
+        public string? TemplateId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("campaign_id")]
+        public string? CampaignId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.MessageVariantsItem>? Variants { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("counts")]
         public global::HeroSignal.Models.MessageCounts? Counts { get; set; }
 
@@ -6005,6 +7076,96 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
         public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// MessageCategory şeması.
+    /// </summary>
+    public sealed class MessageCategory
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("default_opted_in")]
+        public bool? DefaultOptedIn { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
+        public long? Position { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opted_out_users")]
+        public long? OptedOutUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// MessageCategoryList şeması.
+    /// </summary>
+    public sealed class MessageCategoryList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.MessageCategory>? Data { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -6329,6 +7490,39 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("click_rate")]
         public double? ClickRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// MessageVariantsItem şeması.
+    /// </summary>
+    public sealed class MessageVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
+        public bool? IsControl { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -7487,6 +8681,60 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// RetentionReport şeması.
+    /// </summary>
+    public sealed class RetentionReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weeks")]
+        public long? Weeks { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cohorts")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.RetentionReportCohortsItem>? Cohorts { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("average")]
+        public global::System.Collections.Generic.List<double?>? Average { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RetentionReportCohortsItem şeması.
+    /// </summary>
+    public sealed class RetentionReportCohortsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("week")]
+        public string? Week { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retention")]
+        public global::System.Collections.Generic.List<double?>? Retention { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// ScheduleCampaignDto şeması.
     /// </summary>
     public sealed class ScheduleCampaignDto
@@ -7919,6 +9167,21 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// SelectWinnerDto şeması.
+    /// </summary>
+    public sealed class SelectWinnerDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_id")]
+        public string? VariantId { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// SetOwnerDto şeması.
     /// </summary>
     public sealed class SetOwnerDto
@@ -7928,6 +9191,48 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
         public string? ExternalId { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SetPreferencesDto şeması.
+    /// </summary>
+    public sealed class SetPreferencesDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("preferences")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.SetPreferencesDtoPreferencesItem>? Preferences { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SetPreferencesDtoPreferencesItem şeması.
+    /// </summary>
+    public sealed class SetPreferencesDtoPreferencesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opted_in")]
+        public bool? OptedIn { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -8471,6 +9776,93 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// TemplateStats şeması.
+    /// </summary>
+    public sealed class TemplateStats
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
+        public string? TemplateId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
+        public long? Messages { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("campaigns")]
+        public long? Campaigns { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("targeted")]
+        public long? Targeted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opened")]
+        public long? Opened { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("clicked")]
+        public long? Clicked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("open_rate")]
+        public double? OpenRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("click_rate")]
+        public double? ClickRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_used_at")]
+        public string? LastUsedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// TemplateVersionList şeması.
     /// </summary>
     public sealed class TemplateVersionList
@@ -8652,6 +10044,21 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequencyCap")]
         public global::HeroSignal.Models.UpdateAppDtoSettingsFrequencyCap? FrequencyCap { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequencyCaps")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateAppDtoSettingsFrequencyCapsItem>? FrequencyCaps { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("inApp")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsInApp? InApp { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("androidChannels")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateAppDtoSettingsAndroidChannelsItem>? AndroidChannels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsSms? Sms { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("preferenceCenter")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsPreferenceCenter? PreferenceCenter { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("defaultTtlSeconds")]
         public long? DefaultTtlSeconds { get; set; }
 
@@ -8672,6 +10079,45 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("sdkSetup")]
         public global::HeroSignal.Models.UpdateAppDtoSettingsSdkSetup? SdkSetup { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsAndroidChannelsItem şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsAndroidChannelsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "low", "default", "high", "urgent".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("importance")]
+        public string? Importance { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sound")]
+        public string? Sound { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("vibration")]
+        public bool? Vibration { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("group")]
+        public string? Group { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -8699,6 +10145,66 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// UpdateAppDtoSettingsFrequencyCapsItem şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsFrequencyCapsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max")]
+        public long? Max { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("window")]
+        public global::HeroSignal.Models.UpdateAppDtoSettingsFrequencyCapsItemWindow? Window { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsFrequencyCapsItemWindow şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsFrequencyCapsItemWindow
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public long? Value { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "minutes", "hours", "days", "weeks".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unit")]
+        public string? Unit { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsInApp şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsInApp
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("minIntervalSeconds")]
+        public long? MinIntervalSeconds { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateAppDtoSettingsOnboarding şeması.
     /// </summary>
     public sealed class UpdateAppDtoSettingsOnboarding
@@ -8714,6 +10220,54 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
         public string? CompletedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsPreferenceCenter şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsPreferenceCenter
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("brandName")]
+        public string? BrandName { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("logoUrl")]
+        public string? LogoUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("accentColor")]
+        public string? AccentColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("customUnsubscribeUrl")]
+        public string? CustomUnsubscribeUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("texts")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.UpdateAppDtoSettingsPreferenceCenterTextsValue>? Texts { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsPreferenceCenterTextsValue şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsPreferenceCenterTextsValue
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("unsubscribeAll")]
+        public string? UnsubscribeAll { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("saved")]
+        public string? Saved { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -8786,6 +10340,24 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("completedAt")]
         public string? CompletedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsSms şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsSms
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("helpReply")]
+        public string? HelpReply { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("stopReply")]
+        public string? StopReply { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoReply")]
+        public bool? AutoReply { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -8928,6 +10500,12 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// Değerler: "push", "email", "sms", "email_sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("collect")]
+        public string? Collect { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("delaySeconds")]
         public long? DelaySeconds { get; set; }
 
@@ -9029,6 +10607,33 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// UpdateCategoryDto şeması.
+    /// </summary>
+    public sealed class UpdateCategoryDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("default_opted_in")]
+        public bool? DefaultOptedIn { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
+        public long? Position { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateInAppDto şeması.
     /// </summary>
     public sealed class UpdateInAppDto
@@ -9038,6 +10643,12 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("triggers")]
         public global::System.Collections.Generic.List<object?>? Triggers { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger_groups")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.List<object?>>? TriggerGroups { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateInAppDtoVariantsItem>? Variants { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("display")]
         public global::HeroSignal.Models.UpdateInAppDtoDisplay? Display { get; set; }
@@ -9125,6 +10736,72 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("stop_after_interaction")]
         public bool? StopAfterInteraction { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateInAppDtoVariantsItem şeması.
+    /// </summary>
+    public sealed class UpdateInAppDtoVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("display")]
+        public global::HeroSignal.Models.UpdateInAppDtoVariantsItemDisplay? Display { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateInAppDtoVariantsItemDisplay şeması.
+    /// </summary>
+    public sealed class UpdateInAppDtoVariantsItemDisplay
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "modal", "banner_top", "banner_bottom", "fullscreen".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("layout")]
+        public string? Layout { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_color")]
+        public string? BackgroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("text_color")]
+        public string? TextColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissible")]
+        public bool? Dismissible { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("auto_dismiss_seconds")]
+        public long? AutoDismissSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
+        public global::System.Collections.Generic.List<object?>? Blocks { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -9929,6 +11606,78 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UserPreferences şeması.
+    /// </summary>
+    public sealed class UserPreferences
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UserPreferencesDataItem>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("categories")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.MessageCategory>? Categories { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UserPreferencesDataItem şeması.
+    /// </summary>
+    public sealed class UserPreferencesDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opted_in")]
+        public bool? OptedIn { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("explicit")]
+        public bool? Explicit { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
