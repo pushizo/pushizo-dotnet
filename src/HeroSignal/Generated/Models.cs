@@ -3339,6 +3339,9 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
         public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateInAppDtoVariantsItem>? Variants { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.CreateInAppDtoAbTest? AbTest { get; set; }
+
         /// <summary>
         /// Zorunlu.
         /// </summary>
@@ -3362,6 +3365,39 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
         public string? EndAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateInAppDtoAbTest şeması.
+    /// </summary>
+    public sealed class CreateInAppDtoAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.CreateInAppDtoAbTestWinner? Winner { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateInAppDtoAbTestWinner şeması.
+    /// </summary>
+    public sealed class CreateInAppDtoAbTestWinner
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_impressions")]
+        public long? MinImpressions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
+        public double? Confidence { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -5529,6 +5565,18 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.InAppMessageAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_significance")]
+        public global::HeroSignal.Models.InAppMessageVariantSignificance? VariantSignificance { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         public string? CreatedAt { get; set; }
 
@@ -5537,6 +5585,57 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
         public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// InAppMessageAbTest şeması.
+    /// </summary>
+    public sealed class InAppMessageAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.InAppMessageAbTestWinner? Winner { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner_variant_id")]
+        public string? WinnerVariantId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_at")]
+        public string? DecidedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_by")]
+        public string? DecidedBy { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// InAppMessageAbTestWinner şeması.
+    /// </summary>
+    public sealed class InAppMessageAbTestWinner
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_impressions")]
+        public long? MinImpressions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
+        public double? Confidence { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -5741,6 +5840,33 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// InAppMessageVariantSignificance şeması.
+    /// </summary>
+    public sealed class InAppMessageVariantSignificance
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("leader")]
+        public string? Leader { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// InAppMessageVariantStatsItem şeması.
     /// </summary>
     public sealed class InAppMessageVariantStatsItem
@@ -5783,6 +5909,21 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// InAppWinnerDto şeması.
+    /// </summary>
+    public sealed class InAppWinnerDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_id")]
+        public string? VariantId { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -10845,6 +10986,9 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
         public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateInAppDtoVariantsItem>? Variants { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.UpdateInAppDtoAbTest? AbTest { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("display")]
         public global::HeroSignal.Models.UpdateInAppDtoDisplay? Display { get; set; }
 
@@ -10865,6 +11009,39 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
         public string? EndAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateInAppDtoAbTest şeması.
+    /// </summary>
+    public sealed class UpdateInAppDtoAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.UpdateInAppDtoAbTestWinner? Winner { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateInAppDtoAbTestWinner şeması.
+    /// </summary>
+    public sealed class UpdateInAppDtoAbTestWinner
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_impressions")]
+        public long? MinImpressions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
+        public double? Confidence { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
