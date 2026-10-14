@@ -5786,6 +5786,33 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// InAppMessageVariantSignificance şeması.
+    /// </summary>
+    public sealed class InAppMessageVariantSignificance
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("leader")]
+        public string? Leader { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// InAppMessageVariantsItem şeması.
     /// </summary>
     public sealed class InAppMessageVariantsItem
@@ -5846,33 +5873,6 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
         public global::System.Collections.Generic.List<object?>? Blocks { get; set; }
-
-        /// <inheritdoc />
-        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
-    }
-
-    /// <summary>
-    /// InAppMessageVariantSignificance şeması.
-    /// </summary>
-    public sealed class InAppMessageVariantSignificance
-    {
-        /// <summary>
-        /// Zorunlu.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("leader")]
-        public string? Leader { get; set; }
-
-        /// <summary>
-        /// Zorunlu.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
-        public double? PValue { get; set; }
-
-        /// <summary>
-        /// Zorunlu.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
-        public bool? Significant { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
