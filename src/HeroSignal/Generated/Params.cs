@@ -686,6 +686,21 @@ namespace HeroSignal.Params
     }
 
     /// <summary>
+    /// OrganizationResource.UsageAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class OrganizationUsageParams
+    {
+        public long? Days { get; set; }
+
+        internal OrganizationUsageParams Copy() => (OrganizationUsageParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
     /// JourneysResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class JourneysListParams

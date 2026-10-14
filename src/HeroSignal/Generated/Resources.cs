@@ -2032,6 +2032,18 @@ namespace HeroSignal.Resources
                 p.Cursor = page.NextCursor;
             }
         }
+
+        /// <summary>
+        /// Organizasyon kullanımı ve plan kotaları (org geneli anahtar)
+        ///
+        /// <c>GET /v1/organization/usage</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.UsageReport> UsageAsync(global::HeroSignal.Params.OrganizationUsageParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/organization/usage");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.UsageReport>(op, options, cancellationToken);
+        }
     }
 
     /// <summary>

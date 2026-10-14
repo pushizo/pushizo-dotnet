@@ -2455,7 +2455,7 @@ namespace HeroSignal.Models
         public string? Provider { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "unconfigured", "active", "invalid".
+        /// Zorunlu. Değerler: "unconfigured", "active", "invalid", "suspended".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
@@ -2495,6 +2495,18 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
         public string? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("suspended_reason")]
+        public string? SuspendedReason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dns_check")]
+        public global::HeroSignal.Models.ChannelConfigDnsCheck? DnsCheck { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -2562,6 +2574,9 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("reply_to")]
         public string? ReplyTo { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("dkim_selector")]
+        public string? DkimSelector { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("postal_address")]
         public string? PostalAddress { get; set; }
 
@@ -2606,6 +2621,138 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iys_filter")]
         public string? IysFilter { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelConfigDnsCheck şeması.
+    /// </summary>
+    public sealed class ChannelConfigDnsCheck
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checked_at")]
+        public string? CheckedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spf")]
+        public global::HeroSignal.Models.ChannelConfigDnsCheckSpf? Spf { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dkim")]
+        public global::HeroSignal.Models.ChannelConfigDnsCheckDkim? Dkim { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dmarc")]
+        public global::HeroSignal.Models.ChannelConfigDnsCheckDmarc? Dmarc { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("issues")]
+        public global::System.Collections.Generic.List<string>? Issues { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelConfigDnsCheckDkim şeması.
+    /// </summary>
+    public sealed class ChannelConfigDnsCheckDkim
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("selector")]
+        public string? Selector { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("record")]
+        public string? Record { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expected")]
+        public string? Expected { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelConfigDnsCheckDmarc şeması.
+    /// </summary>
+    public sealed class ChannelConfigDnsCheckDmarc
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("record")]
+        public string? Record { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expected")]
+        public string? Expected { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelConfigDnsCheckSpf şeması.
+    /// </summary>
+    public sealed class ChannelConfigDnsCheckSpf
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("record")]
+        public string? Record { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expected")]
+        public string? Expected { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -6892,7 +7039,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "owner", "admin", "developer", "marketer", "analyst", "billing", "viewer".
+        /// Zorunlu. Değerler: "owner", "admin", "developer", "marketer", "analyst", "billing", "viewer", "composer".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         public string? Role { get; set; }
@@ -7696,7 +7843,7 @@ namespace HeroSignal.Models
         public string? Provider { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "unconfigured", "active", "invalid".
+        /// Zorunlu. Değerler: "unconfigured", "active", "invalid", "suspended".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
@@ -11159,6 +11306,195 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("subscriptions")]
         public global::System.Collections.Generic.List<global::HeroSignal.Models.AddSubscriptionDto>? Subscriptions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReport şeması.
+    /// </summary>
+    public sealed class UsageReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("org_id")]
+        public string? OrgId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("plan_code")]
+        public string? PlanCode { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("period")]
+        public global::HeroSignal.Models.UsageReportPeriod? Period { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UsageReportMetricsItem>? Metrics { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("apps")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UsageReportAppsItem>? Apps { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("daily")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UsageReportDailyItem>? Daily { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trialing")]
+        public bool? Trialing { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trial_ends_at")]
+        public string? TrialEndsAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportAppsItem şeması.
+    /// </summary>
+    public sealed class UsageReportAppsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("messages_sent")]
+        public double? MessagesSent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active_subscriptions")]
+        public double? ActiveSubscriptions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mau")]
+        public double? Mau { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportDailyItem şeması.
+    /// </summary>
+    public sealed class UsageReportDailyItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("date")]
+        public string? Date { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("messages_sent")]
+        public double? MessagesSent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_requests")]
+        public double? ApiRequests { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("events_ingested")]
+        public double? EventsIngested { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportMetricsItem şeması.
+    /// </summary>
+    public sealed class UsageReportMetricsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("used")]
+        public double? Used { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public double? Limit { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public double? Percent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hard")]
+        public bool? Hard { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportPeriod şeması.
+    /// </summary>
+    public sealed class UsageReportPeriod
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start")]
+        public string? Start { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
+        public string? End { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
