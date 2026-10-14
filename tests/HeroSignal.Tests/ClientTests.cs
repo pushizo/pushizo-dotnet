@@ -193,6 +193,108 @@ namespace HeroSignal.Tests
             Assert.Contains("external_id\nu1\n", body);
         }
 
+        private const string Unavailable = "{\"error\":{\"code\":\"HS_SERVICE_UNAVAILABLE\",\"message\":\"x\"}}";
+
+        [Fact]
+        public async Task PostWithoutIdempotencyKeyIsNotRetriedOn5xx()
+        {
+            var h = new FakeHandler().Add(503, Unavailable).Add(200, "{\"accepted\":1}");
+            await Assert.ThrowsAsync<ServerException>(() => Client(h).Events.SendAsync(new ApiEventsDto { Events = new List<ApiEventsDtoEventsItem>() }));
+            Assert.Single(h.Requests);
+            Assert.Empty(_delays);
+
+            // Otomatik anahtar kapalıyken notifications.create de anahtarsız POST'tur.
+            var h2 = new FakeHandler().Add(503, Unavailable).Add(202, "{\"id\":\"m\"}");
+            await Assert.ThrowsAsync<ServerException>(() => Client(h2, autoIdempotency: false).Notifications.CreateAsync(new CreateNotificationDto()));
+            Assert.Single(h2.Requests);
+
+            // Gönderildikten sonra kopan bağlantı: sunucu isteği işlemiş olabilir, tekrarlanmaz.
+            var h3 = new FakeHandler().NetworkError().Add(200, "{}");
+            await Assert.ThrowsAsync<NetworkException>(() => Client(h3).Events.SendAsync(new ApiEventsDto()));
+            Assert.Single(h3.Requests);
+        }
+
+        [Fact]
+        public async Task PostWithIdempotencyKeyIsRetriedOn5xx()
+        {
+            var h = new FakeHandler().Add(503, Unavailable).Add(200, "{\"accepted\":1}");
+            await Client(h).Events.SendAsync(new ApiEventsDto(), new RequestOptions { IdempotencyKey = "evt-1" });
+            Assert.Equal(2, h.Requests.Count);
+            Assert.All(h.Requests, r => Assert.Equal("evt-1", r.Headers["Idempotency-Key"]));
+
+            // Başlıkla verilen anahtar da sayılır; PATCH aynı kurala uyar.
+            var h2 = new FakeHandler().Add(503, Unavailable).Add(200, "{}");
+            var options = new RequestOptions();
+            options.Headers["Idempotency-Key"] = "upd-1";
+            await Client(h2).RequestAsync("PATCH", "/v1/apps/{appId}", body: new { name = "x" }, options: options);
+            Assert.Equal(new[] { HttpMethod.Patch, HttpMethod.Patch }, h2.Requests.Select(r => r.Method));
+        }
+
+        [Fact]
+        public async Task IdempotentMethodsAreRetriedOn5xx()
+        {
+            var h = new FakeHandler().Add(503, Unavailable).Add(200, "{\"id\":\"msg_1\"}").Add(503, Unavailable).Add(200, "{\"ok\":true}");
+            var hs = Client(h);
+            await hs.Notifications.GetAsync("msg_1");
+            await hs.Webhooks.DeleteAsync("whk_1");
+            Assert.Equal(new[] { HttpMethod.Get, HttpMethod.Get, HttpMethod.Delete, HttpMethod.Delete }, h.Requests.Select(r => r.Method));
+        }
+
+        [Fact]
+        public async Task RateLimitedPostIsRetriedWithoutKey()
+        {
+            var h = new FakeHandler()
+                .Add(429, "{\"error\":{\"code\":\"HS_RATE_LIMITED\",\"message\":\"x\"}}", ("Retry-After", "1"))
+                .Add(200, "{\"accepted\":1}");
+            await Client(h).Events.SendAsync(new ApiEventsDto());
+            Assert.Equal(2, h.Requests.Count);
+            Assert.Equal(new[] { TimeSpan.FromSeconds(1) }, _delays);
+            Assert.False(h.Requests[0].Headers.ContainsKey("Idempotency-Key"));
+        }
+
+        [Fact]
+        public async Task PostIsRetriedWhenRequestWasNeverSent()
+        {
+            var h = new FakeHandler().ConnectionRefused().Add(200, "{\"accepted\":1}");
+            await Client(h).Events.SendAsync(new ApiEventsDto());
+            Assert.Equal(2, h.Requests.Count);
+        }
+
+        [Fact]
+        public async Task PostIsRetriedOnRealConnectionRefused()
+        {
+            var listener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
+            listener.Start();
+            var port = ((System.Net.IPEndPoint)listener.LocalEndpoint).Port;
+            listener.Stop();
+            using var hs = new HeroSignalClient(new HeroSignalOptions { ApiKey = "k", AppId = "app_1", BaseUrl = $"http://127.0.0.1:{port}", MaxRetries = 1 });
+            hs.Delay = (d, ct) =>
+            {
+                _delays.Add(d);
+                return Task.CompletedTask;
+            };
+            await Assert.ThrowsAsync<NetworkException>(() => hs.Events.SendAsync(new ApiEventsDto()));
+            Assert.Equal(new[] { TimeSpan.FromMilliseconds(300) }, _delays);
+        }
+
+        [Fact]
+        public async Task InAppSelectWinnerAndDeprecatedAlias()
+        {
+            var h = new FakeHandler().Add(200, "{\"id\":\"iam_1\"}").Add(200, "{\"id\":\"iam_1\"}");
+            var hs = Client(h);
+            await hs.InAppMessages.SelectWinnerAsync("iam_1", new InAppWinnerDto { VariantId = "b" });
+#pragma warning disable CS0618 // Eski ad geriye dönük uyumluluk için test edilir.
+            await hs.InAppMessages.WinnerAsync("iam_1", new InAppWinnerDto { VariantId = "b" });
+#pragma warning restore CS0618
+            Assert.All(h.Requests, r =>
+            {
+                Assert.Equal(HttpMethod.Post, r.Method);
+                Assert.Equal("https://api.test/v1/apps/app_1/in-app-messages/iam_1/winner", r.Uri.ToString());
+                Assert.Equal("b", JsonDocument.Parse(r.Body).RootElement.GetProperty("variant_id").GetString());
+            });
+            Assert.Equal(2, h.Requests.Count);
+        }
+
         [Fact]
         public async Task CancellationIsNotRetried()
         {
