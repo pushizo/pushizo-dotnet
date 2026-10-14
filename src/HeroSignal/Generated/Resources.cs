@@ -1203,6 +1203,20 @@ namespace HeroSignal.Resources
             op.Body = body;
             return _client.ExecuteAsync<global::HeroSignal.Models.InAppMessage>(op, options, cancellationToken);
         }
+
+        /// <summary>
+        /// A/B kazananını elle seç
+        ///
+        /// <c>POST /v1/apps/{appId}/in-app-messages/{messageId}/winner</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.InAppMessage> WinnerAsync(string messageId, global::HeroSignal.Models.InAppWinnerDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/in-app-messages/{messageId}/winner");
+            op.PathParam("messageId", messageId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.InAppMessage>(op, options, cancellationToken);
+        }
     }
 
     /// <summary>
