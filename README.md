@@ -62,7 +62,7 @@ new Dictionary<string, object?> { ["format"] = "csv" })` gövdeyi metin olarak d
 | `AppId` | — | Çağrıda `RequestOptions.AppId` verilmezse kullanılan app |
 | `BaseUrl` | `https://api.herosignal.dev` | API adresi |
 | `Timeout` | 30 sn | Deneme başına zaman aşımı |
-| `MaxRetries` | 3 | 429/5xx ve ağ hatalarında yeniden deneme |
+| `MaxRetries` | 3 | En fazla yeniden deneme (politika: aşağıda) |
 | `AutoIdempotencyKey` | `true` | `Idempotency-Key` destekleyen çağrılarda otomatik UUID |
 | `HttpClient` | yeni örnek | Özel `HttpClient` |
 
@@ -70,7 +70,7 @@ Her metot `RequestOptions` (AppId, IdempotencyKey, Timeout, MaxRetries, Headers)
 
 ### Hatalar
 
-429, 5xx ve ağ hatalarında üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
+429 her metotta; 5xx ve ağ hataları GET/HEAD/OPTIONS/PUT/DELETE'te, POST/PATCH'te yalnızca `Idempotency-Key` varsa (otomatik anahtar dahil) veya istek sunucuya hiç gönderilemediyse (bağlantı reddi, DNS hatası, bağlantı zaman aşımı) üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
 Kalıcı hatalar `HeroSignalException` alt sınıflarıdır ve `Status`, `Code` (`HS_…`), `RequestId`, `Details` taşır:
 
 ```csharp

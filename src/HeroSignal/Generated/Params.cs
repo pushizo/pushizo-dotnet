@@ -110,6 +110,24 @@ namespace HeroSignal.Params
     }
 
     /// <summary>
+    /// EventsResource.ListDefinitionsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class EventsListDefinitionsParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal EventsListDefinitionsParams Copy() => (EventsListDefinitionsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// SegmentsResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class SegmentsListParams

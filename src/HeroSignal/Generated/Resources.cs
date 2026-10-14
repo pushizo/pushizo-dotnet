@@ -493,10 +493,33 @@ namespace HeroSignal.Resources
         ///
         /// <c>GET /v1/apps/{appId}/events/definitions</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EventDefinitionList> ListDefinitionsAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EventDefinitionList> ListDefinitionsAsync(global::HeroSignal.Params.EventsListDefinitionsParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/events/definitions");
+            @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::HeroSignal.Models.EventDefinitionList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListDefinitionsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::HeroSignal.Models.EventDefinition> ListDefinitionsAllAsync(global::HeroSignal.Params.EventsListDefinitionsParams? @params = null, global::HeroSignal.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::HeroSignal.Params.EventsListDefinitionsParams();
+            while (true)
+            {
+                var page = await ListDefinitionsAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
         }
 
         /// <summary>
@@ -1209,6 +1232,21 @@ namespace HeroSignal.Resources
         ///
         /// <c>POST /v1/apps/{appId}/in-app-messages/{messageId}/winner</c>
         /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.InAppMessage> SelectWinnerAsync(string messageId, global::HeroSignal.Models.InAppWinnerDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/in-app-messages/{messageId}/winner");
+            op.PathParam("messageId", messageId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.InAppMessage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// A/B kazananını elle seç
+        ///
+        /// <c>POST /v1/apps/{appId}/in-app-messages/{messageId}/winner</c>
+        /// </summary>
+        [global::System.Obsolete("SelectWinnerAsync kullanın; bu ad geriye dönük uyumluluk için korunur.")]
         public global::System.Threading.Tasks.Task<global::HeroSignal.Models.InAppMessage> WinnerAsync(string messageId, global::HeroSignal.Models.InAppWinnerDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/in-app-messages/{messageId}/winner");

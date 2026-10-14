@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -35,6 +36,9 @@ namespace HeroSignal
         public const string DefaultBaseUrl = "https://api.herosignal.dev";
 
         private static readonly TimeSpan[] Backoff = { TimeSpan.FromMilliseconds(300), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(3) };
+
+        /// <summary>Sunucuda tekrarlanması ek yan etki doğurmayan HTTP metotları; 5xx ve ağ hatalarında serbestçe yeniden denenir.</summary>
+        private static readonly HashSet<string> IdempotentMethods = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "GET", "HEAD", "OPTIONS", "PUT", "DELETE" };
 
         private readonly HeroSignalOptions _options;
         private readonly HttpClient _http;
@@ -190,9 +194,12 @@ namespace HeroSignal
             var timeout = options?.Timeout ?? _options.Timeout;
             var maxRetries = options?.MaxRetries ?? _options.MaxRetries;
             var target = url.ToString();
+            var hasKey = !string.IsNullOrEmpty(key)
+                || (options is not null && options.Headers.Any(h => string.Equals(h.Key, "Idempotency-Key", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(h.Value)));
             for (var attempt = 0; ; attempt++)
             {
                 HeroSignalException error;
+                var notSent = false;
                 using (var request = new HttpRequestMessage(new HttpMethod(op.Method), target))
                 {
                     request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _options.ApiKey);
@@ -244,6 +251,7 @@ namespace HeroSignal
                     catch (HttpRequestException e)
                     {
                         error = new NetworkException(e.Message, e);
+                        notSent = RequestNotSent(e);
                     }
                     catch (IOException e)
                     {
@@ -254,13 +262,52 @@ namespace HeroSignal
                         response?.Dispose();
                     }
                 }
-                if (!error.IsRetryable || attempt >= maxRetries)
+                if (attempt >= maxRetries || !ShouldRetry(op.Method, error, hasKey, notSent))
                 {
                     throw error;
                 }
                 var delay = error.RetryAfter is { } ra && ra > TimeSpan.Zero ? ra : Backoff[Math.Min(attempt, Backoff.Length - 1)];
                 await Delay(delay, cancellationToken).ConfigureAwait(false);
             }
+        }
+
+        /// <summary>
+        /// Yeniden deneme politikası: 429 her metotta (istek işlenmeden reddedilmiştir); 5xx ve ağ hataları idempotent
+        /// metotlarda, POST/PATCH'te yalnızca Idempotency-Key varsa ya da istek sunucuya hiç gönderilmediyse. Aksi hâlde
+        /// sunucu isteği işlemiş olabilir ve tekrar çift kayıt üretebilir.
+        /// </summary>
+        internal static bool ShouldRetry(string method, HeroSignalException error, bool hasIdempotencyKey, bool notSent)
+        {
+            if (error.Status == 429)
+            {
+                return true;
+            }
+            if (!error.IsRetryable)
+            {
+                return false;
+            }
+            return IdempotentMethods.Contains(method) || hasIdempotencyKey || notSent;
+        }
+
+        /// <summary>
+        /// Hatanın bağlantı kurulmadan (DNS çözümlenemedi, bağlantı reddi, ağ/sunucu erişilemez) oluştuğunu, yani isteğin
+        /// sunucuya hiç gönderilmediğini bildirir.
+        /// </summary>
+        internal static bool RequestNotSent(HttpRequestException e)
+        {
+            if (e.HttpRequestError is HttpRequestError.NameResolutionError or HttpRequestError.ConnectionError)
+            {
+                return true;
+            }
+            for (Exception? inner = e.InnerException; inner is not null; inner = inner.InnerException)
+            {
+                if (inner is SocketException se && se.SocketErrorCode is SocketError.ConnectionRefused or SocketError.HostNotFound
+                    or SocketError.TryAgain or SocketError.NoData or SocketError.HostUnreachable or SocketError.NetworkUnreachable)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static string? ReadString(JsonObject obj, string name)

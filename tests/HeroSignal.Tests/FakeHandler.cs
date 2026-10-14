@@ -36,6 +36,14 @@ namespace HeroSignal.Tests
             return this;
         }
 
+        /// <summary>Bağlantı reddi: istek sunucuya hiç gitmedi.</summary>
+        public FakeHandler ConnectionRefused()
+        {
+            _responses.Enqueue(() => throw new HttpRequestException(HttpRequestError.ConnectionError, "bağlantı reddedildi",
+                new System.Net.Sockets.SocketException((int)System.Net.Sockets.SocketError.ConnectionRefused)));
+            return this;
+        }
+
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var headers = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
