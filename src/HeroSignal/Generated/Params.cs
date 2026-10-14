@@ -734,11 +734,17 @@ namespace HeroSignal.Params
     {
         public long? Version { get; set; }
 
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? AllVersions { get; set; }
+
         internal JourneysStatsParams Copy() => (JourneysStatsParams)MemberwiseClone();
 
         internal void ApplyTo(global::HeroSignal.Core.Operation op)
         {
             op.Query("version", Version);
+            op.Query("all_versions", AllVersions);
         }
     }
 
