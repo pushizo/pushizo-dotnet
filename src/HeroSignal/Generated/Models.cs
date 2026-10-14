@@ -2901,6 +2901,12 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unattributed")]
+        public long? Unattributed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("revenue")]
         public double? Revenue { get; set; }
 
@@ -2942,6 +2948,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("influenced")]
         public long? Influenced { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unattributed")]
+        public long? Unattributed { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -3002,6 +3014,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("influenced")]
         public long? Influenced { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unattributed")]
+        public long? Unattributed { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -4596,6 +4614,18 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unique")]
+        public bool? OutcomeUnique { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unattributed")]
+        public bool? OutcomeUnattributed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("first_seen_at")]
         public string? FirstSeenAt { get; set; }
 
@@ -4667,6 +4697,18 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_conversion")]
         public bool? IsConversion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unique")]
+        public bool? OutcomeUnique { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unattributed")]
+        public bool? OutcomeUnattributed { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -8066,6 +8108,12 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("is_conversion")]
         public bool? IsConversion { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unique")]
+        public bool? OutcomeUnique { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unattributed")]
+        public bool? OutcomeUnattributed { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
