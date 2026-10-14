@@ -11604,6 +11604,12 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage_seconds")]
+        public long? UsageSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("merged_into")]
         public string? MergedInto { get; set; }
 
@@ -11687,6 +11693,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("session_count")]
         public long? SessionCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage_seconds")]
+        public long? UsageSeconds { get; set; }
 
         /// <summary>
         /// Zorunlu.
