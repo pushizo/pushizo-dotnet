@@ -1600,6 +1600,19 @@ namespace HeroSignal.Resources
         }
 
         /// <summary>
+        /// Event Streams önizlemesi: örnek olay + şablon + filtre → gövde/hata (gönderim yapmaz)
+        ///
+        /// <c>POST /v1/apps/{appId}/webhooks/preview</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WebhookPreviewResult> PreviewAsync(global::HeroSignal.Models.WebhookPreviewDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/webhooks/preview");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.WebhookPreviewResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Endpoint detayı
         ///
         /// <c>GET /v1/apps/{appId}/webhooks/{webhookId}</c>
@@ -2162,6 +2175,446 @@ namespace HeroSignal.Resources
     }
 
     /// <summary>
+    /// contentTables kaynağı.
+    /// </summary>
+    public sealed class ContentTablesResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal ContentTablesResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// İçerik tabloları
+        ///
+        /// <c>GET /v1/apps/{appId}/content-tables</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ContentTableList> ListTablesAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/content-tables");
+            return _client.ExecuteAsync<global::HeroSignal.Models.ContentTableList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// CSV ile içerik tablosu oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/content-tables</c>
+        ///
+        /// Şablonda `{% lookup '&lt;ad&gt;' key: user.tags.&lt;etiket&gt; as satir %}{{ satir.&lt;sütun&gt; }}`.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ContentTable> CreateTableUploadAsync(global::HeroSignal.Params.ContentTablesCreateTableUploadForm form, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/content-tables");
+            if (form is null) throw new global::System.ArgumentNullException(nameof(form));
+            form.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.ContentTable>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçerik tablosu ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/content-tables/{tableId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ContentTable> GetTableAsync(string tableId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/content-tables/{tableId}");
+            op.PathParam("tableId", tableId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.ContentTable>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçerik tablosu açıklamasını güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/content-tables/{tableId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ContentTable> UpdateTableAsync(string tableId, global::HeroSignal.Models.UpdateContentTableDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/content-tables/{tableId}");
+            op.PathParam("tableId", tableId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.ContentTable>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçerik tablosunu sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/content-tables/{tableId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteTableAsync(string tableId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/content-tables/{tableId}");
+            op.PathParam("tableId", tableId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçerik tablosunu yeniden yükle (sürüm artar)
+        ///
+        /// <c>PUT /v1/apps/{appId}/content-tables/{tableId}/rows</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ContentTable> ReplaceTableUploadAsync(string tableId, global::HeroSignal.Params.ContentTablesReplaceTableUploadForm form, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PUT", "/v1/apps/{appId}/content-tables/{tableId}/rows");
+            op.PathParam("tableId", tableId);
+            if (form is null) throw new global::System.ArgumentNullException(nameof(form));
+            form.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.ContentTable>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçerik tablosu satırları
+        ///
+        /// <c>GET /v1/apps/{appId}/content-tables/{tableId}/rows</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ContentTableRows> TableRowsAsync(string tableId, global::HeroSignal.Params.ContentTablesTableRowsParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/content-tables/{tableId}/rows");
+            op.PathParam("tableId", tableId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.ContentTableRows>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// conversations kaynağı.
+    /// </summary>
+    public sealed class ConversationsResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal ConversationsResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Konuşmalar (SMS, WhatsApp, RCS; son mesaja göre; kanal/durum/okunmamış/kişi filtresi)
+        ///
+        /// <c>GET /v1/apps/{appId}/conversations</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ConversationPage> ListAsync(global::HeroSignal.Params.ConversationsListParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/conversations");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.ConversationPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::HeroSignal.Models.Conversation> ListAllAsync(global::HeroSignal.Params.ConversationsListParams? @params = null, global::HeroSignal.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::HeroSignal.Params.ConversationsListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Konuşma (WhatsApp oturum penceresi ve açık rıza durumu dahil)
+        ///
+        /// <c>GET /v1/apps/{appId}/conversations/{conversationId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Conversation> GetAsync(string conversationId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/conversations/{conversationId}");
+            op.PathParam("conversationId", conversationId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Conversation>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Konuşma mesajları (yeniden eskiye; giden mesaj durumu teslimattan)
+        ///
+        /// <c>GET /v1/apps/{appId}/conversations/{conversationId}/messages</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ConversationMessagePage> MessagesAsync(string conversationId, global::HeroSignal.Params.ConversationsMessagesParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/conversations/{conversationId}/messages");
+            op.PathParam("conversationId", conversationId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.ConversationMessagePage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// MessagesAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::HeroSignal.Models.ConversationMessagePageDataItem> MessagesAllAsync(string conversationId, global::HeroSignal.Params.ConversationsMessagesParams? @params = null, global::HeroSignal.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::HeroSignal.Params.ConversationsMessagesParams();
+            while (true)
+            {
+                var page = await MessagesAsync(conversationId, p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Yanıt gönder. WhatsApp: açık rıza zorunlu; son gelen mesajdan 24 saat içinde metin/medya, pencere dışında yalnızca onaylı şablon (aksi 422 WHATSAPP_WINDOW_CLOSED).
+        ///
+        /// <c>POST /v1/apps/{appId}/conversations/{conversationId}/messages</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ConversationReplyResult> ReplyAsync(string conversationId, global::HeroSignal.Models.ConversationReplyDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/conversations/{conversationId}/messages");
+            op.PathParam("conversationId", conversationId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.ConversationReplyResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gelen mesajları okundu işaretle
+        ///
+        /// <c>POST /v1/apps/{appId}/conversations/{conversationId}/read</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Conversation> ReadAsync(string conversationId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/conversations/{conversationId}/read");
+            op.PathParam("conversationId", conversationId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Conversation>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// dataFeeds kaynağı.
+    /// </summary>
+    public sealed class DataFeedsResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal DataFeedsResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Data feed listesi
+        ///
+        /// <c>GET /v1/apps/{appId}/data-feeds</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.DataFeedList> ListFeedsAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/data-feeds");
+            return _client.ExecuteAsync<global::HeroSignal.Models.DataFeedList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Data feed oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/data-feeds</c>
+        ///
+        /// URL şablonu Liquid ile kişiselleştirilir (ör. `https://api.ornek.com/u/{{ user.external_id }}`); şablonda `{{ feed.&lt;ad&gt;.alan }}`.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.DataFeed> CreateFeedAsync(global::HeroSignal.Models.CreateDataFeedDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/data-feeds");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.DataFeed>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Data feed ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/data-feeds/{feedId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.DataFeed> GetFeedAsync(string feedId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/data-feeds/{feedId}");
+            op.PathParam("feedId", feedId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.DataFeed>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Data feed güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/data-feeds/{feedId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.DataFeed> UpdateFeedAsync(string feedId, global::HeroSignal.Models.UpdateDataFeedDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/data-feeds/{feedId}");
+            op.PathParam("feedId", feedId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.DataFeed>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Data feed sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/data-feeds/{feedId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteFeedAsync(string feedId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/data-feeds/{feedId}");
+            op.PathParam("feedId", feedId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Data feed'i örnek kullanıcıyla dene
+        ///
+        /// <c>POST /v1/apps/{appId}/data-feeds/{feedId}/test</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.DataFeedTestResult> TestFeedAsync(string feedId, global::HeroSignal.Models.TestDataFeedDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/data-feeds/{feedId}/test");
+            op.PathParam("feedId", feedId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.DataFeedTestResult>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// emailDeliverability kaynağı.
+    /// </summary>
+    public sealed class EmailDeliverabilityResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal EmailDeliverabilityResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// E-posta teslim ayarları (BCC/arşiv, gönderim öncesi adres doğrulama, üçüncü taraf doğrulayıcı)
+        ///
+        /// <c>GET /v1/apps/{appId}/email-deliverability</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailDeliverabilitySettings> SettingsAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/email-deliverability");
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailDeliverabilitySettings>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// E-posta teslim ayarlarını güncelle (doğrulayıcı anahtarı zarf şifreli saklanır, geri okunmaz)
+        ///
+        /// <c>PUT /v1/apps/{appId}/email-deliverability</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailDeliverabilitySettings> UpdateAsync(global::HeroSignal.Models.DeliverabilitySettingsDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PUT", "/v1/apps/{appId}/email-deliverability");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailDeliverabilitySettings>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Adres doğrulama testi (sözdizimi, MX, tek kullanımlık alan adı, rol hesabı, üçüncü taraf)
+        ///
+        /// <c>POST /v1/apps/{appId}/email-deliverability/verify-address</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailAddressCheck> VerifyAsync(global::HeroSignal.Models.VerifyAddressDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/email-deliverability/verify-address");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailAddressCheck>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Isındırma planları (bugünkü limit/kullanım ve ileri günlere ayrılmış gönderimler)
+        ///
+        /// <c>GET /v1/apps/{appId}/email-deliverability/warmup-plans</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailWarmupPlanList> PlansAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/email-deliverability/warmup-plans");
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailWarmupPlanList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Isındırma planı oluştur (günlük limit eğrisi veya başlangıç/çarpan/hedef; sağlayıcı payları)
+        ///
+        /// <c>POST /v1/apps/{appId}/email-deliverability/warmup-plans</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailWarmupPlan> CreateAsync(global::HeroSignal.Models.CreateWarmupPlanDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/email-deliverability/warmup-plans");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailWarmupPlan>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Isındırma planı
+        ///
+        /// <c>GET /v1/apps/{appId}/email-deliverability/warmup-plans/{planId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailWarmupPlan> GetAsync(string planId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/email-deliverability/warmup-plans/{planId}");
+            op.PathParam("planId", planId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailWarmupPlan>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Isındırma planını güncelle (duraklat/sürdür, eğri, paylar)
+        ///
+        /// <c>PATCH /v1/apps/{appId}/email-deliverability/warmup-plans/{planId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailWarmupPlan> UpdatePlanAsync(string planId, global::HeroSignal.Models.UpdateWarmupPlanDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/email-deliverability/warmup-plans/{planId}");
+            op.PathParam("planId", planId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailWarmupPlan>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Isındırma planını sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/email-deliverability/warmup-plans/{planId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteAsync(string planId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/email-deliverability/warmup-plans/{planId}");
+            op.PathParam("planId", planId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Isındırma planı gün × sağlayıcı kullanımı
+        ///
+        /// <c>GET /v1/apps/{appId}/email-deliverability/warmup-plans/{planId}/usage</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.EmailWarmupUsage> UsageAsync(string planId, global::HeroSignal.Params.EmailDeliverabilityUsageParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/email-deliverability/warmup-plans/{planId}/usage");
+            op.PathParam("planId", planId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.EmailWarmupUsage>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// identityKeys kaynağı.
     /// </summary>
     public sealed class IdentityKeysResource
@@ -2209,6 +2662,68 @@ namespace HeroSignal.Resources
             var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/identity-keys/{keyId}");
             op.PathParam("keyId", keyId);
             return _client.ExecuteAsync<global::HeroSignal.Models.IdentityKey>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// integrations kaynağı.
+    /// </summary>
+    public sealed class IntegrationsResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal IntegrationsResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Zapier bağlantı testi: anahtarın app’i ve kapsamları
+        ///
+        /// <c>GET /v1/apps/{appId}/integrations/zapier/me</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ZapierMe> MeAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/integrations/zapier/me");
+            return _client.ExecuteAsync<global::HeroSignal.Models.ZapierMe>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// REST Hook aboneliği (Zap açıldı)
+        ///
+        /// <c>POST /v1/apps/{appId}/integrations/zapier/hooks</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.ZapierHook> SubscribeAsync(global::HeroSignal.Models.ZapierSubscribeDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/integrations/zapier/hooks");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.ZapierHook>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// REST Hook aboneliğini sil (Zap kapatıldı)
+        ///
+        /// <c>DELETE /v1/apps/{appId}/integrations/zapier/hooks/{hookId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.IntegrationOk> UnsubscribeAsync(string hookId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/integrations/zapier/hooks/{hookId}");
+            op.PathParam("hookId", hookId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.IntegrationOk>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Tetik örnekleri (performList): son kayıtlar, abonelik gövdesiyle aynı biçim
+        ///
+        /// <c>GET /v1/apps/{appId}/integrations/zapier/samples</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::System.Collections.Generic.List<global::HeroSignal.Models.ZapierSamplesItem>> SamplesAsync(string @event, global::HeroSignal.Params.IntegrationsSamplesParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/integrations/zapier/samples");
+            op.Query("event", @event);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::System.Collections.Generic.List<global::HeroSignal.Models.ZapierSamplesItem>>(op, options, cancellationToken);
         }
     }
 
@@ -2622,6 +3137,45 @@ namespace HeroSignal.Resources
     }
 
     /// <summary>
+    /// mcp kaynağı.
+    /// </summary>
+    public sealed class McpResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal McpResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Kampanya taslağı oluştur (MCP onaylı mod; gönderim yapmaz)
+        ///
+        /// <c>POST /v1/apps/{appId}/mcp/campaign-drafts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Campaign> CreateCampaignDraftAsync(global::HeroSignal.Models.McpCreateCampaignDraftBody body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/mcp/campaign-drafts");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.Campaign>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Segment taslağı oluştur (MCP onaylı mod; dinamik segment)
+        ///
+        /// <c>POST /v1/apps/{appId}/mcp/segment-drafts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Segment> CreateSegmentDraftAsync(global::HeroSignal.Models.McpCreateSegmentDraftBody body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/mcp/segment-drafts");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.Segment>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// preferences kaynağı.
     /// </summary>
     public sealed class PreferencesResource
@@ -2659,6 +3213,263 @@ namespace HeroSignal.Resources
             if (body is null) throw new global::System.ArgumentNullException(nameof(body));
             op.Body = body;
             return _client.ExecuteAsync<global::HeroSignal.Models.UserPreferences>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// smsKeywords kaynağı.
+    /// </summary>
+    public sealed class SmsKeywordsResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal SmsKeywordsResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// İki yönlü mesaj anahtar sözcükleri (org geneli + bu app) ve yasal (ayrılmış) sözcükler
+        ///
+        /// <c>GET /v1/apps/{appId}/sms-keywords</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.SmsKeywordList> KeywordsAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/sms-keywords");
+            return _client.ExecuteAsync<global::HeroSignal.Models.SmsKeywordList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Anahtar sözcük oluştur (tag ekle/kaldır, olay → journey tetiği, otomatik yanıt, abonelik)
+        ///
+        /// <c>POST /v1/apps/{appId}/sms-keywords</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.SmsKeyword> CreateKeywordAsync(global::HeroSignal.Models.CreateKeywordDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/sms-keywords");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.SmsKeyword>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Anahtar sözcüğü güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/sms-keywords/{keywordId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.SmsKeyword> UpdateKeywordAsync(string keywordId, global::HeroSignal.Models.UpdateKeywordDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/sms-keywords/{keywordId}");
+            op.PathParam("keywordId", keywordId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.SmsKeyword>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Anahtar sözcüğü sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/sms-keywords/{keywordId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteKeywordAsync(string keywordId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/sms-keywords/{keywordId}");
+            op.PathParam("keywordId", keywordId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// warehouseExports kaynağı.
+    /// </summary>
+    public sealed class WarehouseExportsResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal WarehouseExportsResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Dışa aktarılabilir tablolar, kolonlar ve şema sürümleri
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-exports/tables</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseTables> TablesAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/warehouse-exports/tables");
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseTables>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kaydetmeden bağlantı testi
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-exports/test-connection</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseConnectionResult> TestAsync(object body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/warehouse-exports/test-connection");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseConnectionResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Veri ambarı dışa aktarımları
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-exports</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseExportList> ListAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/warehouse-exports");
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseExportList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dışa aktarım oluştur (kimlik bilgisi şifreli saklanır, yanıtta dönmez)
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-exports</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseExport> CreateAsync(object body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/warehouse-exports");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseExport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dışa aktarım detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-exports/{exportId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseExport> GetAsync(string exportId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/warehouse-exports/{exportId}");
+            op.PathParam("exportId", exportId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseExport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dışa aktarımı güncelle (ad, tablolar, zamanlama, etkin/duraklat, hedef ayarı, kimlik bilgisi)
+        ///
+        /// <c>PATCH /v1/apps/{appId}/warehouse-exports/{exportId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseExport> UpdateAsync(string exportId, global::HeroSignal.Models.UpdateWarehouseExportDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/warehouse-exports/{exportId}");
+            op.PathParam("exportId", exportId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseExport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dışa aktarımı sil (hedefteki veriler silinmez)
+        ///
+        /// <c>DELETE /v1/apps/{appId}/warehouse-exports/{exportId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.Ok> DeleteAsync(string exportId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/warehouse-exports/{exportId}");
+            op.PathParam("exportId", exportId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kayıtlı dışa aktarımın bağlantı testi
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-exports/{exportId}/test</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseConnectionResult> TestSavedAsync(string exportId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/warehouse-exports/{exportId}/test");
+            op.PathParam("exportId", exportId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseConnectionResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Şimdi çalıştır (son başarılı imleçten itibaren)
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-exports/{exportId}/run</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseExportRun> RunAsync(string exportId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/warehouse-exports/{exportId}/run");
+            op.PathParam("exportId", exportId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseExportRun>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Çalıştırma geçmişi (cursor)
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-exports/{exportId}/runs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WarehouseExportRunPage> RunsAsync(string exportId, global::HeroSignal.Params.WarehouseExportsRunsParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/warehouse-exports/{exportId}/runs");
+            op.PathParam("exportId", exportId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.WarehouseExportRunPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// RunsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::HeroSignal.Models.WarehouseExportRun> RunsAllAsync(string exportId, global::HeroSignal.Params.WarehouseExportsRunsParams? @params = null, global::HeroSignal.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::HeroSignal.Params.WarehouseExportsRunsParams();
+            while (true)
+            {
+                var page = await RunsAsync(exportId, p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+    }
+
+    /// <summary>
+    /// whatsapp kaynağı.
+    /// </summary>
+    public sealed class WhatsappResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal WhatsappResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// WhatsApp şablonları (Meta onay durumu ile)
+        ///
+        /// <c>GET /v1/apps/{appId}/whatsapp/templates</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WhatsAppTemplateList> TemplatesAsync(global::HeroSignal.Params.WhatsappTemplatesParams? @params = null, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/whatsapp/templates");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::HeroSignal.Models.WhatsAppTemplateList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// WhatsApp şablonlarını Meta Graph API’den senkronla
+        ///
+        /// <c>POST /v1/apps/{appId}/whatsapp/templates/sync</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.WhatsAppTemplateSync> SyncAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/whatsapp/templates/sync");
+            return _client.ExecuteAsync<global::HeroSignal.Models.WhatsAppTemplateSync>(op, options, cancellationToken);
         }
     }
 }

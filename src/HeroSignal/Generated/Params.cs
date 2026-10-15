@@ -178,7 +178,7 @@ namespace HeroSignal.Params
         public string? Q { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -215,7 +215,7 @@ namespace HeroSignal.Params
         public string? Type { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -317,7 +317,7 @@ namespace HeroSignal.Params
         public string? Cursor { get; set; }
 
         /// <summary>
-        /// Değerler: "email", "sms".
+        /// Değerler: "email", "sms", "whatsapp", "rcs".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -719,6 +719,171 @@ namespace HeroSignal.Params
     }
 
     /// <summary>
+    /// ContentTablesResource.CreateTableUploadAsync için multipart/form-data alanları.
+    /// </summary>
+    public sealed class ContentTablesCreateTableUploadForm
+    {
+        /// <summary>
+        /// Zorunlu. UTF-8 CSV; ilk satır başlık. En fazla 100.000 satır, 20 MB.
+        /// </summary>
+        public global::HeroSignal.FileUpload? File { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Liquid tablo adı (küçük harf, rakam, alt çizgi).
+        /// </summary>
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Satır seçiminde kullanılan anahtar sütunu (değerleri benzersiz).
+        /// </summary>
+        public string? KeyColumn { get; set; }
+
+        public string? Description { get; set; }
+
+        internal ContentTablesCreateTableUploadForm Copy() => (ContentTablesCreateTableUploadForm)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.FormFile("file", File);
+            op.FormField("name", Name);
+            op.FormField("key_column", KeyColumn);
+            op.FormField("description", Description);
+        }
+    }
+
+    /// <summary>
+    /// ContentTablesResource.ReplaceTableUploadAsync için multipart/form-data alanları.
+    /// </summary>
+    public sealed class ContentTablesReplaceTableUploadForm
+    {
+        /// <summary>
+        /// Zorunlu. Yeni CSV (tablonun tüm satırları değiştirilir, sürüm artar).
+        /// </summary>
+        public global::HeroSignal.FileUpload? File { get; set; }
+
+        /// <summary>
+        /// İsteğe bağlı yeni anahtar sütunu.
+        /// </summary>
+        public string? KeyColumn { get; set; }
+
+        internal ContentTablesReplaceTableUploadForm Copy() => (ContentTablesReplaceTableUploadForm)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.FormFile("file", File);
+            op.FormField("key_column", KeyColumn);
+        }
+    }
+
+    /// <summary>
+    /// ContentTablesResource.TableRowsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class ContentTablesTableRowsParams
+    {
+        public long? Limit { get; set; }
+
+        public long? Offset { get; set; }
+
+        public string? Q { get; set; }
+
+        internal ContentTablesTableRowsParams Copy() => (ContentTablesTableRowsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("offset", Offset);
+            op.Query("q", Q);
+        }
+    }
+
+    /// <summary>
+    /// ConversationsResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class ConversationsListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "sms", "whatsapp", "rcs".
+        /// </summary>
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Değerler: "open", "closed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? Unread { get; set; }
+
+        public string? Q { get; set; }
+
+        internal ConversationsListParams Copy() => (ConversationsListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("channel", Channel);
+            op.Query("status", Status);
+            op.Query("unread", Unread);
+            op.Query("q", Q);
+        }
+    }
+
+    /// <summary>
+    /// ConversationsResource.MessagesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class ConversationsMessagesParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal ConversationsMessagesParams Copy() => (ConversationsMessagesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// EmailDeliverabilityResource.UsageAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class EmailDeliverabilityUsageParams
+    {
+        public long? Days { get; set; }
+
+        internal EmailDeliverabilityUsageParams Copy() => (EmailDeliverabilityUsageParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
+    /// IntegrationsResource.SamplesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class IntegrationsSamplesParams
+    {
+        public string? EventName { get; set; }
+
+        internal IntegrationsSamplesParams Copy() => (IntegrationsSamplesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("event_name", EventName);
+        }
+    }
+
+    /// <summary>
     /// JourneysResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class JourneysListParams
@@ -793,6 +958,39 @@ namespace HeroSignal.Params
             op.Query("status", Status);
             op.Query("user_id", UserId);
             op.Query("version", Version);
+        }
+    }
+
+    /// <summary>
+    /// WarehouseExportsResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WarehouseExportsRunsParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal WarehouseExportsRunsParams Copy() => (WarehouseExportsRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// WhatsappResource.TemplatesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WhatsappTemplatesParams
+    {
+        public string? Status { get; set; }
+
+        internal WhatsappTemplatesParams Copy() => (WhatsappTemplatesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::HeroSignal.Core.Operation op)
+        {
+            op.Query("status", Status);
         }
     }
 }

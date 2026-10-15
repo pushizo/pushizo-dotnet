@@ -110,9 +110,34 @@ namespace HeroSignal
         public global::HeroSignal.Resources.CategoriesResource Categories { get; private set; } = null!;
 
         /// <summary>
+        /// ContentTables
+        /// </summary>
+        public global::HeroSignal.Resources.ContentTablesResource ContentTables { get; private set; } = null!;
+
+        /// <summary>
+        /// Conversations
+        /// </summary>
+        public global::HeroSignal.Resources.ConversationsResource Conversations { get; private set; } = null!;
+
+        /// <summary>
+        /// DataFeeds
+        /// </summary>
+        public global::HeroSignal.Resources.DataFeedsResource DataFeeds { get; private set; } = null!;
+
+        /// <summary>
+        /// EmailDeliverability
+        /// </summary>
+        public global::HeroSignal.Resources.EmailDeliverabilityResource EmailDeliverability { get; private set; } = null!;
+
+        /// <summary>
         /// IdentityKeys
         /// </summary>
         public global::HeroSignal.Resources.IdentityKeysResource IdentityKeys { get; private set; } = null!;
+
+        /// <summary>
+        /// Integrations
+        /// </summary>
+        public global::HeroSignal.Resources.IntegrationsResource Integrations { get; private set; } = null!;
 
         /// <summary>
         /// Journeys
@@ -125,9 +150,29 @@ namespace HeroSignal
         public global::HeroSignal.Resources.LiveActivitiesResource LiveActivities { get; private set; } = null!;
 
         /// <summary>
+        /// Mcp
+        /// </summary>
+        public global::HeroSignal.Resources.McpResource Mcp { get; private set; } = null!;
+
+        /// <summary>
         /// Preferences
         /// </summary>
         public global::HeroSignal.Resources.PreferencesResource Preferences { get; private set; } = null!;
+
+        /// <summary>
+        /// SmsKeywords
+        /// </summary>
+        public global::HeroSignal.Resources.SmsKeywordsResource SmsKeywords { get; private set; } = null!;
+
+        /// <summary>
+        /// WarehouseExports
+        /// </summary>
+        public global::HeroSignal.Resources.WarehouseExportsResource WarehouseExports { get; private set; } = null!;
+
+        /// <summary>
+        /// Whatsapp
+        /// </summary>
+        public global::HeroSignal.Resources.WhatsappResource Whatsapp { get; private set; } = null!;
 
         private void InitResources()
         {
@@ -151,10 +196,19 @@ namespace HeroSignal
             ApiKeys = new global::HeroSignal.Resources.ApiKeysResource(this);
             Organization = new global::HeroSignal.Resources.OrganizationResource(this);
             Categories = new global::HeroSignal.Resources.CategoriesResource(this);
+            ContentTables = new global::HeroSignal.Resources.ContentTablesResource(this);
+            Conversations = new global::HeroSignal.Resources.ConversationsResource(this);
+            DataFeeds = new global::HeroSignal.Resources.DataFeedsResource(this);
+            EmailDeliverability = new global::HeroSignal.Resources.EmailDeliverabilityResource(this);
             IdentityKeys = new global::HeroSignal.Resources.IdentityKeysResource(this);
+            Integrations = new global::HeroSignal.Resources.IntegrationsResource(this);
             Journeys = new global::HeroSignal.Resources.JourneysResource(this);
             LiveActivities = new global::HeroSignal.Resources.LiveActivitiesResource(this);
+            Mcp = new global::HeroSignal.Resources.McpResource(this);
             Preferences = new global::HeroSignal.Resources.PreferencesResource(this);
+            SmsKeywords = new global::HeroSignal.Resources.SmsKeywordsResource(this);
+            WarehouseExports = new global::HeroSignal.Resources.WarehouseExportsResource(this);
+            Whatsapp = new global::HeroSignal.Resources.WhatsappResource(this);
         }
     }
 }
