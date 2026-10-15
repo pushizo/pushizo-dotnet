@@ -2162,6 +2162,57 @@ namespace HeroSignal.Resources
     }
 
     /// <summary>
+    /// identityKeys kaynağı.
+    /// </summary>
+    public sealed class IdentityKeysResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal IdentityKeysResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// SDK kimlik doğrulama (JWT) genel anahtarları
+        ///
+        /// <c>GET /v1/apps/{appId}/identity-keys</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.IdentityKeyList> ListAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/identity-keys");
+            return _client.ExecuteAsync<global::HeroSignal.Models.IdentityKeyList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Genel anahtar ekle (ES256)
+        ///
+        /// <c>POST /v1/apps/{appId}/identity-keys</c>
+        ///
+        /// SDK JWT identity verification için ES256 (EC P-256) genel anahtarı ekler; özel anahtar gönderilmez. Belirteç sunucunuzda imzalanır (`sub` = external_id, `aud` = app_id, `exp` ≤ 24 saat) ve SDK isteklerinde `Authorization: Bearer &lt;jwt&gt;` başlığıyla taşınır. Kip app ayarında `identity_verification_mode` ile seçilir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.IdentityKey> CreateAsync(global::HeroSignal.Models.CreateIdentityKeyDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/identity-keys");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.IdentityKey>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Genel anahtarı iptal et
+        ///
+        /// <c>DELETE /v1/apps/{appId}/identity-keys/{keyId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.IdentityKey> RevokeAsync(string keyId, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/identity-keys/{keyId}");
+            op.PathParam("keyId", keyId);
+            return _client.ExecuteAsync<global::HeroSignal.Models.IdentityKey>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// journeys kaynağı.
     /// </summary>
     public sealed class JourneysResource
