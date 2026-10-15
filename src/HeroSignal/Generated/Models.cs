@@ -3563,6 +3563,141 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateLiveActivityTypeDto şeması.
+    /// </summary>
+    public sealed class CreateLiveActivityTypeDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_state_schema")]
+        public global::HeroSignal.Models.CreateLiveActivityTypeDtoContentStateSchema? ContentStateSchema { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("attributes_schema")]
+        public global::HeroSignal.Models.CreateLiveActivityTypeDtoAttributesSchema? AttributesSchema { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateLiveActivityTypeDtoAttributesSchema şeması.
+    /// </summary>
+    public sealed class CreateLiveActivityTypeDtoAttributesSchema
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "object".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.CreateLiveActivityTypeDtoAttributesSchemaPropertiesValue>? Properties { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.List<string>? Required { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateLiveActivityTypeDtoAttributesSchemaPropertiesValue şeması.
+    /// </summary>
+    public sealed class CreateLiveActivityTypeDtoAttributesSchemaPropertiesValue
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "string", "number", "integer", "boolean".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
+        public global::System.Collections.Generic.List<object?>? Enum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public long? MaxLength { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maximum")]
+        public double? Maximum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateLiveActivityTypeDtoContentStateSchema şeması.
+    /// </summary>
+    public sealed class CreateLiveActivityTypeDtoContentStateSchema
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "object".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.CreateLiveActivityTypeDtoContentStateSchemaPropertiesValue>? Properties { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.List<string>? Required { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateLiveActivityTypeDtoContentStateSchemaPropertiesValue şeması.
+    /// </summary>
+    public sealed class CreateLiveActivityTypeDtoContentStateSchemaPropertiesValue
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "string", "number", "integer", "boolean".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
+        public global::System.Collections.Generic.List<object?>? Enum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public long? MaxLength { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maximum")]
+        public double? Maximum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateNotificationDto şeması.
     /// </summary>
     public sealed class CreateNotificationDto
@@ -4376,6 +4511,63 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EndLiveActivityDto şeması.
+    /// </summary>
+    public sealed class EndLiveActivityDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("activity_id")]
+        public string? ActivityId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_state")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? ContentState { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("alert")]
+        public global::HeroSignal.Models.EndLiveActivityDtoAlert? Alert { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("stale_date")]
+        public long? StaleDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissal_date")]
+        public long? DismissalDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("relevance_score")]
+        public double? RelevanceScore { get; set; }
+
+        /// <summary>
+        /// Değerler: 5, 10.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EndLiveActivityDtoAlert şeması.
+    /// </summary>
+    public sealed class EndLiveActivityDtoAlert
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Body { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sound")]
+        public string? Sound { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -7310,6 +7502,234 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// LiveActivitySendResult şeması.
+    /// </summary>
+    public sealed class LiveActivitySendResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
+        public string? MessageId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("activity_id")]
+        public string? ActivityId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "start", "update", "end".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("recipients_estimate")]
+        public long? RecipientsEstimate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityTokenResult şeması.
+    /// </summary>
+    public sealed class LiveActivityTokenResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityType şeması.
+    /// </summary>
+    public sealed class LiveActivityType
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_state_schema")]
+        public global::HeroSignal.Models.LiveActivityTypeContentStateSchema? ContentStateSchema { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attributes_schema")]
+        public global::HeroSignal.Models.LiveActivityTypeAttributesSchema? AttributesSchema { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("push_to_start_tokens")]
+        public long? PushToStartTokens { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityTypeAttributesSchema şeması.
+    /// </summary>
+    public sealed class LiveActivityTypeAttributesSchema
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "object".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.LiveActivityTypeAttributesSchemaPropertiesValue>? Properties { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.List<string>? Required { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityTypeAttributesSchemaPropertiesValue şeması.
+    /// </summary>
+    public sealed class LiveActivityTypeAttributesSchemaPropertiesValue
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "string", "number", "integer", "boolean".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
+        public global::System.Collections.Generic.List<object?>? Enum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public long? MaxLength { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maximum")]
+        public double? Maximum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityTypeContentStateSchema şeması.
+    /// </summary>
+    public sealed class LiveActivityTypeContentStateSchema
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "object".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.LiveActivityTypeContentStateSchemaPropertiesValue>? Properties { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.List<string>? Required { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityTypeContentStateSchemaPropertiesValue şeması.
+    /// </summary>
+    public sealed class LiveActivityTypeContentStateSchemaPropertiesValue
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "string", "number", "integer", "boolean".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
+        public global::System.Collections.Generic.List<object?>? Enum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public long? MaxLength { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maximum")]
+        public double? Maximum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// LiveActivityTypeList şeması.
+    /// </summary>
+    public sealed class LiveActivityTypeList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.LiveActivityType>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// Member şeması.
     /// </summary>
     public sealed class Member
@@ -9713,6 +10133,93 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// StartLiveActivityDto şeması.
+    /// </summary>
+    public sealed class StartLiveActivityDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("activity_id")]
+        public string? ActivityId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("attributes")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Attributes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public global::HeroSignal.Models.StartLiveActivityDtoTarget? Target { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_state")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? ContentState { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("alert")]
+        public global::HeroSignal.Models.StartLiveActivityDtoAlert? Alert { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("stale_date")]
+        public long? StaleDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissal_date")]
+        public long? DismissalDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("relevance_score")]
+        public double? RelevanceScore { get; set; }
+
+        /// <summary>
+        /// Değerler: 5, 10.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// StartLiveActivityDtoAlert şeması.
+    /// </summary>
+    public sealed class StartLiveActivityDtoAlert
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Body { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sound")]
+        public string? Sound { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// StartLiveActivityDtoTarget şeması.
+    /// </summary>
+    public sealed class StartLiveActivityDtoTarget
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_external_ids")]
+        public global::System.Collections.Generic.List<string>? IncludeExternalIds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_subscription_ids")]
+        public global::System.Collections.Generic.List<string>? IncludeSubscriptionIds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("included_segments")]
+        public global::System.Collections.Generic.List<string>? IncludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("all")]
+        public bool? All { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// Subscription şeması.
     /// </summary>
     public sealed class Subscription
@@ -11330,6 +11837,192 @@ namespace HeroSignal.Models
     {
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityDto şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("activity_id")]
+        public string? ActivityId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_state")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? ContentState { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("alert")]
+        public global::HeroSignal.Models.UpdateLiveActivityDtoAlert? Alert { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("stale_date")]
+        public long? StaleDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissal_date")]
+        public long? DismissalDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("relevance_score")]
+        public double? RelevanceScore { get; set; }
+
+        /// <summary>
+        /// Değerler: 5, 10.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityDtoAlert şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityDtoAlert
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Body { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sound")]
+        public string? Sound { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityTypeDto şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityTypeDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_state_schema")]
+        public global::HeroSignal.Models.UpdateLiveActivityTypeDtoContentStateSchema? ContentStateSchema { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("attributes_schema")]
+        public global::HeroSignal.Models.UpdateLiveActivityTypeDtoAttributesSchema? AttributesSchema { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityTypeDtoAttributesSchema şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityTypeDtoAttributesSchema
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "object".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.UpdateLiveActivityTypeDtoAttributesSchemaPropertiesValue>? Properties { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.List<string>? Required { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityTypeDtoAttributesSchemaPropertiesValue şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityTypeDtoAttributesSchemaPropertiesValue
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "string", "number", "integer", "boolean".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
+        public global::System.Collections.Generic.List<object?>? Enum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public long? MaxLength { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maximum")]
+        public double? Maximum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityTypeDtoContentStateSchema şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityTypeDtoContentStateSchema
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "object".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.UpdateLiveActivityTypeDtoContentStateSchemaPropertiesValue>? Properties { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.List<string>? Required { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateLiveActivityTypeDtoContentStateSchemaPropertiesValue şeması.
+    /// </summary>
+    public sealed class UpdateLiveActivityTypeDtoContentStateSchemaPropertiesValue
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "string", "number", "integer", "boolean".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
+        public global::System.Collections.Generic.List<object?>? Enum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public long? MaxLength { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("maximum")]
+        public double? Maximum { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }

@@ -120,6 +120,11 @@ namespace HeroSignal
         public global::HeroSignal.Resources.JourneysResource Journeys { get; private set; } = null!;
 
         /// <summary>
+        /// LiveActivities
+        /// </summary>
+        public global::HeroSignal.Resources.LiveActivitiesResource LiveActivities { get; private set; } = null!;
+
+        /// <summary>
         /// Preferences
         /// </summary>
         public global::HeroSignal.Resources.PreferencesResource Preferences { get; private set; } = null!;
@@ -148,6 +153,7 @@ namespace HeroSignal
             Categories = new global::HeroSignal.Resources.CategoriesResource(this);
             IdentityKeys = new global::HeroSignal.Resources.IdentityKeysResource(this);
             Journeys = new global::HeroSignal.Resources.JourneysResource(this);
+            LiveActivities = new global::HeroSignal.Resources.LiveActivitiesResource(this);
             Preferences = new global::HeroSignal.Resources.PreferencesResource(this);
         }
     }

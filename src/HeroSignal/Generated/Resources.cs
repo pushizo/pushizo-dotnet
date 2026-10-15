@@ -2513,6 +2513,115 @@ namespace HeroSignal.Resources
     }
 
     /// <summary>
+    /// liveActivities kaynağı.
+    /// </summary>
+    public sealed class LiveActivitiesResource
+    {
+        private readonly global::HeroSignal.HeroSignalClient _client;
+
+        internal LiveActivitiesResource(global::HeroSignal.HeroSignalClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Live Activity türleri
+        ///
+        /// <c>GET /v1/apps/{appId}/live-activities/types</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivityTypeList> ListTypesAsync(global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("GET", "/v1/apps/{appId}/live-activities/types");
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivityTypeList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Live Activity türü oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/live-activities/types</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivityType> CreateTypeAsync(global::HeroSignal.Models.CreateLiveActivityTypeDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/live-activities/types");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivityType>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Live Activity türünü güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/live-activities/types/{activityType}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivityType> UpdateTypeAsync(string activityType, global::HeroSignal.Models.UpdateLiveActivityTypeDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("PATCH", "/v1/apps/{appId}/live-activities/types/{activityType}");
+            op.PathParam("activityType", activityType);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivityType>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Live Activity türünü sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/live-activities/types/{activityType}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivityTokenResult> DeleteTypeAsync(string activityType, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("DELETE", "/v1/apps/{appId}/live-activities/types/{activityType}");
+            op.PathParam("activityType", activityType);
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivityTokenResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Live Activity başlat (push-to-start)
+        ///
+        /// <c>POST /v1/apps/{appId}/live-activities/{activityType}/start</c>
+        ///
+        /// Hedefteki iOS aboneliklerinin push-to-start belirteçleriyle etkinliği uzaktan başlatır (iOS 17.2+). `attributes` ve `content_state` türün şemasına uymalıdır. Dönen `activity_id` ile sonraki update/end yapılır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivitySendResult> StartAsync(string activityType, global::HeroSignal.Models.StartLiveActivityDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/live-activities/{activityType}/start");
+            op.PathParam("activityType", activityType);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivitySendResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Live Activity güncelle
+        ///
+        /// <c>POST /v1/apps/{appId}/live-activities/{activityType}/update</c>
+        ///
+        /// Etkinliğin cihazlardan bildirilen güncelleme belirteçlerine yeni içerik durumu gönderir. Sessiz saat ve frekans sınırı uygulanmaz; priority 5 Apple bütçesini korur.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivitySendResult> UpdateAsync(string activityType, global::HeroSignal.Models.UpdateLiveActivityDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/live-activities/{activityType}/update");
+            op.PathParam("activityType", activityType);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivitySendResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Live Activity bitir
+        ///
+        /// <c>POST /v1/apps/{appId}/live-activities/{activityType}/end</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::HeroSignal.Models.LiveActivitySendResult> EndAsync(string activityType, global::HeroSignal.Models.EndLiveActivityDto body, global::HeroSignal.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::HeroSignal.Core.Operation("POST", "/v1/apps/{appId}/live-activities/{activityType}/end");
+            op.PathParam("activityType", activityType);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::HeroSignal.Models.LiveActivitySendResult>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// preferences kaynağı.
     /// </summary>
     public sealed class PreferencesResource
