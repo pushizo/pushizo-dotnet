@@ -434,7 +434,7 @@ namespace HeroSignal.Resources
         }
 
         /// <summary>
-        /// Token ile abonelik güncelle (token_type: ios_push, android_push, web_push, email, sms veya eski sağlayıcı adları iOSPush, AndroidPush, ChromePush, FirefoxPush, SafariPush, Email, SMS)
+        /// Token ile abonelik güncelle (token_type: ios_push, android_push, hms_push, web_push, email, sms veya eski sağlayıcı adları iOSPush, AndroidPush, HuaweiPush, ChromePush, FirefoxPush, SafariPush, Email, SMS)
         ///
         /// <c>PATCH /v1/apps/{appId}/subscriptions_by_token/{tokenType}/{token}</c>
         /// </summary>

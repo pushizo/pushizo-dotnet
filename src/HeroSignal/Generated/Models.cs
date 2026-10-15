@@ -25,7 +25,7 @@ namespace HeroSignal.Models
     public sealed class AddSubscriptionDto
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -496,7 +496,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.AppSettingsFrequencyCapsItemWindow? Window { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -1558,7 +1558,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.CampaignsCreateBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -1777,7 +1777,7 @@ namespace HeroSignal.Models
     public sealed class CampaignStatsChannelsItem
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -2038,7 +2038,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.CampaignsUpdateBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -2449,13 +2449,13 @@ namespace HeroSignal.Models
     public sealed class ChannelConfig
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "apns", "fcm", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
+        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
         public string? Provider { get; set; }
@@ -2561,6 +2561,12 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("client_email")]
         public string? ClientEmail { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("hms_app_id")]
+        public string? HmsAppId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("high_priority")]
+        public bool? HighPriority { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("subject")]
         public string? Subject { get; set; }
@@ -3160,7 +3166,7 @@ namespace HeroSignal.Models
         public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -3310,7 +3316,7 @@ namespace HeroSignal.Models
         public string? Status { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -3970,7 +3976,7 @@ namespace HeroSignal.Models
         public object? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -4093,7 +4099,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -4396,7 +4402,7 @@ namespace HeroSignal.Models
         public string? UserId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -4774,7 +4780,7 @@ namespace HeroSignal.Models
         public object? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -5365,7 +5371,7 @@ namespace HeroSignal.Models
         public string? Status { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -8569,13 +8575,13 @@ namespace HeroSignal.Models
     public sealed class OverviewStatsChannelsItem
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "apns", "fcm", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
+        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
         public string? Provider { get; set; }
@@ -9130,7 +9136,7 @@ namespace HeroSignal.Models
     public sealed class RenderPreview
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -9322,7 +9328,7 @@ namespace HeroSignal.Models
     public sealed class RenderTemplateDto
     {
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10117,7 +10123,7 @@ namespace HeroSignal.Models
         public string? Category { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10243,7 +10249,7 @@ namespace HeroSignal.Models
         public string? UserId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10317,6 +10323,12 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("location")]
+        public global::HeroSignal.Models.SubscriptionLocation? Location { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         public string? CreatedAt { get; set; }
 
@@ -10364,6 +10376,51 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("push_environment")]
         public string? PushEnvironment { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SubscriptionLocation şeması.
+    /// </summary>
+    public sealed class SubscriptionLocation
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lat")]
+        public double? Lat { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lng")]
+        public double? Lng { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("accuracy_m")]
+        public double? AccuracyM { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("geohash")]
+        public string? Geohash { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("consent_at")]
+        public string? ConsentAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -10684,7 +10741,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -11149,7 +11206,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.UpdateAppDtoSettingsFrequencyCapsItemWindow? Window { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -11605,7 +11662,7 @@ namespace HeroSignal.Models
         public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -12076,7 +12133,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -12646,7 +12703,7 @@ namespace HeroSignal.Models
         public long? SubscriptionCount { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -12739,7 +12796,7 @@ namespace HeroSignal.Models
         public long? SubscriptionCount { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }

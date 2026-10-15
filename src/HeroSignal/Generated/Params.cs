@@ -178,7 +178,7 @@ namespace HeroSignal.Params
         public string? Q { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -215,7 +215,7 @@ namespace HeroSignal.Params
         public string? Type { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
         /// </summary>
         public string? Channel { get; set; }
 
