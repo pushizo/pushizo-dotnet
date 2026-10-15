@@ -25,7 +25,7 @@ namespace HeroSignal.Models
     public sealed class AddSubscriptionDto
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -44,6 +44,9 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("opt_in")]
+        public global::HeroSignal.Models.AddSubscriptionDtoOptIn? OptIn { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -95,6 +98,24 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// AddSubscriptionDtoOptIn şeması.
+    /// </summary>
+    public sealed class AddSubscriptionDtoOptIn
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("at")]
+        public string? At { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// ApiEventsDto şeması.
     /// </summary>
     public sealed class ApiEventsDto
@@ -128,6 +149,9 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("occurred_at")]
         public string? OccurredAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
+        public string? EventId { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("subscription_id")]
         public string? SubscriptionId { get; set; }
@@ -496,7 +520,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.AppSettingsFrequencyCapsItemWindow? Window { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -1341,6 +1365,12 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("approved_at")]
         public string? ApprovedAt { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("rejected_by")]
+        public string? RejectedBy { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rejected_at")]
+        public string? RejectedAt { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -1558,7 +1588,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.CampaignsCreateBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -1777,7 +1807,7 @@ namespace HeroSignal.Models
     public sealed class CampaignStatsChannelsItem
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -2038,7 +2068,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.CampaignsUpdateBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -2449,13 +2479,13 @@ namespace HeroSignal.Models
     public sealed class ChannelConfig
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
+        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "meta_whatsapp", "google_rbm", "mock".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
         public string? Provider { get; set; }
@@ -2633,6 +2663,30 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iys_filter")]
         public string? IysFilter { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("waba_id")]
+        public string? WabaId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("phone_number_id")]
+        public string? PhoneNumberId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("graph_api_version")]
+        public string? GraphApiVersion { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("display_phone_number")]
+        public string? DisplayPhoneNumber { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("verified_name")]
+        public string? VerifiedName { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rbm_agent_id")]
+        public string? RbmAgentId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_sid")]
+        public string? ContentSid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms_fallback")]
+        public bool? SmsFallback { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -2825,6 +2879,699 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public global::HeroSignal.Models.ChannelConfig? Channel { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ContentTable şeması.
+    /// </summary>
+    public sealed class ContentTable
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key_column")]
+        public string? KeyColumn { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("columns")]
+        public global::System.Collections.Generic.List<string>? Columns { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("row_count")]
+        public long? RowCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source_file_name")]
+        public string? SourceFileName { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("liquid")]
+        public string? Liquid { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ContentTableList şeması.
+    /// </summary>
+    public sealed class ContentTableList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.ContentTable>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ContentTableRows şeması.
+    /// </summary>
+    public sealed class ContentTableRows
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("columns")]
+        public global::System.Collections.Generic.List<string>? Columns { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key_column")]
+        public string? KeyColumn { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public long? Total { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, string>>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Conversation şeması.
+    /// </summary>
+    public sealed class Conversation
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "sms", "whatsapp", "rcs".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "open", "closed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscription_id")]
+        public string? SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscription_status")]
+        public string? SubscriptionStatus { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact")]
+        public string? Contact { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opted_in")]
+        public bool? OptedIn { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_message_at")]
+        public string? LastMessageAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_inbound_at")]
+        public string? LastInboundAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "inbound", "outbound".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_direction")]
+        public string? LastDirection { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_message_preview")]
+        public string? LastMessagePreview { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unread_count")]
+        public long? UnreadCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("window")]
+        public global::HeroSignal.Models.ConversationWindow? Window { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationMessagePage şeması.
+    /// </summary>
+    public sealed class ConversationMessagePage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.ConversationMessagePageDataItem>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationMessagePageDataItem şeması.
+    /// </summary>
+    public sealed class ConversationMessagePageDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "inbound", "outbound".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
+        public string? Body { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
+        public string? MessageId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_id")]
+        public string? DeliveryId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent_by")]
+        public string? SentBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error_code")]
+        public string? ErrorCode { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("read_at")]
+        public string? ReadAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationPage şeması.
+    /// </summary>
+    public sealed class ConversationPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.Conversation>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDto şeması.
+    /// </summary>
+    public sealed class ConversationReplyDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("template")]
+        public global::HeroSignal.Models.ConversationReplyDtoTemplate? Template { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("media")]
+        public global::HeroSignal.Models.ConversationReplyDtoMedia? Media { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("interactive")]
+        public global::HeroSignal.Models.ConversationReplyDtoInteractive? Interactive { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoInteractive şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoInteractive
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "list".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public string? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("footer")]
+        public string? Footer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("buttons")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.ConversationReplyDtoInteractiveButtonsItem>? Buttons { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("list")]
+        public global::HeroSignal.Models.ConversationReplyDtoInteractiveList? List { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoInteractiveButtonsItem şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoInteractiveButtonsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoInteractiveList şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoInteractiveList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sections")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.ConversationReplyDtoInteractiveListSectionsItem>? Sections { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoInteractiveListSectionsItem şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoInteractiveListSectionsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.ConversationReplyDtoInteractiveListSectionsItemRowsItem>? Rows { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoInteractiveListSectionsItemRowsItem şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoInteractiveListSectionsItemRowsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoMedia şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoMedia
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "image", "video", "document", "audio".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
+        public string? Filename { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoTemplate şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoTemplate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public object? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public global::System.Collections.Generic.List<string>? BodyParams { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_params")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.ConversationReplyDtoTemplateButtonParamsItem>? ButtonParams { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyDtoTemplateButtonParamsItem şeması.
+    /// </summary>
+    public sealed class ConversationReplyDtoTemplateButtonParamsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "url", "quick_reply", "copy_code".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sub_type")]
+        public string? SubType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyResult şeması.
+    /// </summary>
+    public sealed class ConversationReplyResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
+        public string? MessageId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversation_message")]
+        public global::HeroSignal.Models.ConversationReplyResultConversationMessage? ConversationMessage { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationReplyResultConversationMessage şeması.
+    /// </summary>
+    public sealed class ConversationReplyResultConversationMessage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "inbound", "outbound".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
+        public string? Body { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
+        public string? MessageId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_id")]
+        public string? DeliveryId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent_by")]
+        public string? SentBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error_code")]
+        public string? ErrorCode { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("read_at")]
+        public string? ReadAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ConversationWindow şeması.
+    /// </summary>
+    public sealed class ConversationWindow
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("open")]
+        public bool? Open { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -3073,7 +3820,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read".
+        /// Zorunlu. Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read", "mcp:write".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scopes")]
         public global::System.Collections.Generic.List<string>? Scopes { get; set; }
@@ -3166,7 +3913,7 @@ namespace HeroSignal.Models
         public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -3275,6 +4022,54 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateDataFeedDto şeması.
+    /// </summary>
+    public sealed class CreateDataFeedDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url_template")]
+        public string? UrlTemplate { get; set; }
+
+        /// <summary>
+        /// Değerler: "GET", "POST".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("method")]
+        public string? Method { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("secret_headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? SecretHeaders { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("cache_ttl_seconds")]
+        public long? CacheTtlSeconds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_ms")]
+        public long? TimeoutMs { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateExportDto şeması.
     /// </summary>
     public sealed class CreateExportDto
@@ -3316,7 +4111,7 @@ namespace HeroSignal.Models
         public string? Status { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -3475,6 +4270,18 @@ namespace HeroSignal.Models
         public long? AutoDismissSeconds { get; set; }
 
         /// <summary>
+        /// Değerler: "blocks", "html".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Html { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html_height")]
+        public long? HtmlHeight { get; set; }
+
+        /// <summary>
         /// Zorunlu.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
@@ -3559,10 +4366,118 @@ namespace HeroSignal.Models
         public long? AutoDismissSeconds { get; set; }
 
         /// <summary>
+        /// Değerler: "blocks", "html".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Html { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html_height")]
+        public long? HtmlHeight { get; set; }
+
+        /// <summary>
         /// Zorunlu.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
         public global::System.Collections.Generic.List<object?>? Blocks { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateKeywordDto şeması.
+    /// </summary>
+    public sealed class CreateKeywordDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyword")]
+        public string? Keyword { get; set; }
+
+        /// <summary>
+        /// Değerler: "org", "app".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scope")]
+        public string? Scope { get; set; }
+
+        /// <summary>
+        /// Değerler: "sms", "whatsapp", "rcs".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
+        public global::HeroSignal.Models.CreateKeywordDtoActions? Actions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateKeywordDtoActions şeması.
+    /// </summary>
+    public sealed class CreateKeywordDtoActions
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("add_tags")]
+        public global::System.Collections.Generic.Dictionary<string, string>? AddTags { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("remove_tags")]
+        public global::System.Collections.Generic.List<string>? RemoveTags { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public global::HeroSignal.Models.CreateKeywordDtoActionsEvent? Event { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("reply")]
+        public global::HeroSignal.Models.CreateKeywordDtoActionsReply? Reply { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("opt_in")]
+        public bool? OptIn { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateKeywordDtoActionsEvent şeması.
+    /// </summary>
+    public sealed class CreateKeywordDtoActionsEvent
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Properties { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateKeywordDtoActionsReply şeması.
+    /// </summary>
+    public sealed class CreateKeywordDtoActionsReply
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -3888,6 +4803,30 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("disable_sms_link_shortening")]
         public bool? DisableSmsLinkShortening { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_template")]
+        public global::HeroSignal.Models.CreateNotificationDtoWhatsappTemplate? WhatsappTemplate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_media")]
+        public global::HeroSignal.Models.CreateNotificationDtoWhatsappMedia? WhatsappMedia { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_interactive")]
+        public global::HeroSignal.Models.CreateNotificationDtoWhatsappInteractive? WhatsappInteractive { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_card")]
+        public global::HeroSignal.Models.CreateNotificationDtoRcsCard? RcsCard { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_suggestions")]
+        public global::System.Collections.Generic.List<object?>? RcsSuggestions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_sid")]
+        public string? RcsContentSid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_variables")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsContentVariables { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("add_to_inbox")]
         public bool? AddToInbox { get; set; }
 
@@ -3950,6 +4889,36 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateNotificationDtoRcsCard şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoRcsCard
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_url")]
+        public string? MediaUrl { get; set; }
+
+        /// <summary>
+        /// Değerler: "SHORT", "MEDIUM", "TALL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_height")]
+        public string? MediaHeight { get; set; }
+
+        /// <summary>
+        /// Değerler: "VERTICAL", "HORIZONTAL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("orientation")]
+        public string? Orientation { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateNotificationDtoTarget şeması.
     /// </summary>
     public sealed class CreateNotificationDtoTarget
@@ -3976,7 +4945,7 @@ namespace HeroSignal.Models
         public object? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -4022,6 +4991,198 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateNotificationDtoWhatsappInteractive şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappInteractive
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "list".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public string? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("footer")]
+        public string? Footer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("buttons")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateNotificationDtoWhatsappInteractiveButtonsItem>? Buttons { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("list")]
+        public global::HeroSignal.Models.CreateNotificationDtoWhatsappInteractiveList? List { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappInteractiveButtonsItem şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappInteractiveButtonsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappInteractiveList şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappInteractiveList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sections")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateNotificationDtoWhatsappInteractiveListSectionsItem>? Sections { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappInteractiveListSectionsItem şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappInteractiveListSectionsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateNotificationDtoWhatsappInteractiveListSectionsItemRowsItem>? Rows { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappInteractiveListSectionsItemRowsItem şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappInteractiveListSectionsItemRowsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappMedia şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappMedia
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "image", "video", "document", "audio".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
+        public string? Filename { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappTemplate şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappTemplate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public object? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public global::System.Collections.Generic.List<string>? BodyParams { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_params")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateNotificationDtoWhatsappTemplateButtonParamsItem>? ButtonParams { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoWhatsappTemplateButtonParamsItem şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoWhatsappTemplateButtonParamsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "url", "quick_reply", "copy_code".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sub_type")]
+        public string? SubType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateNotificationResult şeması.
     /// </summary>
     public sealed class CreateNotificationResult
@@ -4060,7 +5221,7 @@ namespace HeroSignal.Models
     public sealed class CreateSuppressionDto
     {
         /// <summary>
-        /// Zorunlu. Değerler: "email", "sms".
+        /// Zorunlu. Değerler: "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -4099,7 +5260,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -4269,6 +5430,30 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_media_urls")]
         public global::System.Collections.Generic.List<string>? SmsMediaUrls { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_template")]
+        public global::HeroSignal.Models.CreateTemplateDtoContentWhatsappTemplate? WhatsappTemplate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_media")]
+        public global::HeroSignal.Models.CreateTemplateDtoContentWhatsappMedia? WhatsappMedia { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_interactive")]
+        public global::HeroSignal.Models.CreateTemplateDtoContentWhatsappInteractive? WhatsappInteractive { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_card")]
+        public global::HeroSignal.Models.CreateTemplateDtoContentRcsCard? RcsCard { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_suggestions")]
+        public global::System.Collections.Generic.List<object?>? RcsSuggestions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_sid")]
+        public string? RcsContentSid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_variables")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsContentVariables { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -4301,6 +5486,36 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateTemplateDtoContentRcsCard şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentRcsCard
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_url")]
+        public string? MediaUrl { get; set; }
+
+        /// <summary>
+        /// Değerler: "SHORT", "MEDIUM", "TALL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_height")]
+        public string? MediaHeight { get; set; }
+
+        /// <summary>
+        /// Değerler: "VERTICAL", "HORIZONTAL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("orientation")]
+        public string? Orientation { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateTemplateDtoContentWebButtonsItem şeması.
     /// </summary>
     public sealed class CreateTemplateDtoContentWebButtonsItem
@@ -4322,6 +5537,300 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappInteractive şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappInteractive
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "list".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public string? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("footer")]
+        public string? Footer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("buttons")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateTemplateDtoContentWhatsappInteractiveButtonsItem>? Buttons { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("list")]
+        public global::HeroSignal.Models.CreateTemplateDtoContentWhatsappInteractiveList? List { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappInteractiveButtonsItem şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappInteractiveButtonsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappInteractiveList şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappInteractiveList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sections")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateTemplateDtoContentWhatsappInteractiveListSectionsItem>? Sections { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappInteractiveListSectionsItem şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappInteractiveListSectionsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem>? Rows { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappMedia şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappMedia
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "image", "video", "document", "audio".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
+        public string? Filename { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappTemplate şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappTemplate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public object? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public global::System.Collections.Generic.List<string>? BodyParams { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_params")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateTemplateDtoContentWhatsappTemplateButtonParamsItem>? ButtonParams { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentWhatsappTemplateButtonParamsItem şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentWhatsappTemplateButtonParamsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "url", "quick_reply", "copy_code".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sub_type")]
+        public string? SubType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWarmupPlanDto şeması.
+    /// </summary>
+    public sealed class CreateWarmupPlanDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "domain", "ip".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_date")]
+        public string? StartDate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("daily_limits")]
+        public global::System.Collections.Generic.List<long>? DailyLimits { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("curve")]
+        public global::HeroSignal.Models.CreateWarmupPlanDtoCurve? Curve { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider_shares")]
+        public global::HeroSignal.Models.CreateWarmupPlanDtoProviderShares? ProviderShares { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
+        public string? Timezone { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWarmupPlanDtoCurve şeması.
+    /// </summary>
+    public sealed class CreateWarmupPlanDtoCurve
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start")]
+        public long? Start { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("growth")]
+        public double? Growth { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public long? Target { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWarmupPlanDtoProviderShares şeması.
+    /// </summary>
+    public sealed class CreateWarmupPlanDtoProviderShares
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gmail")]
+        public double? Gmail { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outlook")]
+        public double? Outlook { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("yahoo")]
+        public double? Yahoo { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("other")]
+        public double? Other { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -4356,6 +5865,18 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
         public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        /// <summary>
+        /// Şablon çıktısının içerik türü (varsayılan application/json). Değerler: "application/json", "text/plain".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_content_type")]
+        public string? BodyContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::HeroSignal.Models.CreateWebhookDtoFilters? Filters { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -4367,6 +5888,303 @@ namespace HeroSignal.Models
     {
         [global::System.Text.Json.Serialization.JsonPropertyName("event_names")]
         public global::System.Collections.Generic.List<string>? EventNames { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Olay filtresi: { match: all|any, conditions: [{ field, op, value? }] }.
+    /// </summary>
+    public sealed class CreateWebhookDtoFilters
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "all", "any".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.CreateWebhookDtoFiltersConditionsItem>? Conditions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebhookDtoFiltersConditionsItem şeması.
+    /// </summary>
+    public sealed class CreateWebhookDtoFiltersConditionsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "eq", "neq", "in", "not_in", "starts_with", "contains", "exists", "not_exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DataFeed şeması.
+    /// </summary>
+    public sealed class DataFeed
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url_template")]
+        public string? UrlTemplate { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "GET", "POST".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("method")]
+        public string? Method { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("secret_header_names")]
+        public global::System.Collections.Generic.List<string>? SecretHeaderNames { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cache_ttl_seconds")]
+        public long? CacheTtlSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_ms")]
+        public long? TimeoutMs { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("liquid")]
+        public string? Liquid { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DataFeedList şeması.
+    /// </summary>
+    public sealed class DataFeedList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.DataFeed>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DataFeedTestResult şeması.
+    /// </summary>
+    public sealed class DataFeedTestResult
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "ok", "cached", "timeout", "error", "circuit_open", "blocked", "invalid_json", "too_large", "http_error".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("http_status")]
+        public long? HttpStatus { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
+        public long? DurationMs { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("preview")]
+        public object? Preview { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncated")]
+        public bool? Truncated { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        public global::HeroSignal.Models.DataFeedTestResultUser? User { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DataFeedTestResultUser şeması.
+    /// </summary>
+    public sealed class DataFeedTestResultUser
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DeliverabilitySettingsDto şeması.
+    /// </summary>
+    public sealed class DeliverabilitySettingsDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("bcc_address")]
+        public string? BccAddress { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("validation")]
+        public global::HeroSignal.Models.DeliverabilitySettingsDtoValidation? Validation { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("verifier")]
+        public global::HeroSignal.Models.DeliverabilitySettingsDtoVerifier? Verifier { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DeliverabilitySettingsDtoValidation şeması.
+    /// </summary>
+    public sealed class DeliverabilitySettingsDtoValidation
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("check_mx")]
+        public bool? CheckMx { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("block_disposable")]
+        public bool? BlockDisposable { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("block_role")]
+        public bool? BlockRole { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DeliverabilitySettingsDtoVerifier şeması.
+    /// </summary>
+    public sealed class DeliverabilitySettingsDtoVerifier
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "zerobounce", "neverbounce", "mock".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
+        public string? Provider { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
+        public string? ApiKey { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -4402,7 +6220,7 @@ namespace HeroSignal.Models
         public string? UserId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -4517,6 +6335,336 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailAddressCheck şeması.
+    /// </summary>
+    public sealed class EmailAddressCheck
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "syntax", "no_mx", "disposable", "role", "verifier_invalid".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason")]
+        public string? Reason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
+        public string? Detail { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checks")]
+        public global::System.Collections.Generic.List<string>? Checks { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unknown")]
+        public global::System.Collections.Generic.List<string>? Unknown { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailDeliverabilitySettings şeması.
+    /// </summary>
+    public sealed class EmailDeliverabilitySettings
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bcc_address")]
+        public string? BccAddress { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("validation")]
+        public global::HeroSignal.Models.EmailDeliverabilitySettingsValidation? Validation { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("verifier")]
+        public global::HeroSignal.Models.EmailDeliverabilitySettingsVerifier? Verifier { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailDeliverabilitySettingsValidation şeması.
+    /// </summary>
+    public sealed class EmailDeliverabilitySettingsValidation
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("check_mx")]
+        public bool? CheckMx { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("block_disposable")]
+        public bool? BlockDisposable { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("block_role")]
+        public bool? BlockRole { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailDeliverabilitySettingsVerifier şeması.
+    /// </summary>
+    public sealed class EmailDeliverabilitySettingsVerifier
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "zerobounce", "neverbounce", "mock".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
+        public string? Provider { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_key")]
+        public bool? HasKey { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailWarmupPlan şeması.
+    /// </summary>
+    public sealed class EmailWarmupPlan
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "domain", "ip".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_date")]
+        public string? StartDate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("daily_limits")]
+        public global::System.Collections.Generic.List<long>? DailyLimits { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider_shares")]
+        public global::System.Collections.Generic.Dictionary<string, double>? ProviderShares { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
+        public string? Timezone { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "paused", "completed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("today")]
+        public global::HeroSignal.Models.EmailWarmupPlanToday? Today { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduled_ahead")]
+        public long? ScheduledAhead { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailWarmupPlanList şeması.
+    /// </summary>
+    public sealed class EmailWarmupPlanList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.EmailWarmupPlan>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailWarmupPlanToday şeması.
+    /// </summary>
+    public sealed class EmailWarmupPlanToday
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("day")]
+        public string? Day { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("used")]
+        public long? Used { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("buckets")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.EmailWarmupPlanTodayBucketsValue>? Buckets { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailWarmupPlanTodayBucketsValue şeması.
+    /// </summary>
+    public sealed class EmailWarmupPlanTodayBucketsValue
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("used")]
+        public long? Used { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailWarmupUsage şeması.
+    /// </summary>
+    public sealed class EmailWarmupUsage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.EmailWarmupUsageDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailWarmupUsageDataItem şeması.
+    /// </summary>
+    public sealed class EmailWarmupUsageDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("day")]
+        public string? Day { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bucket")]
+        public string? Bucket { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("used")]
+        public long? Used { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -4780,7 +6928,7 @@ namespace HeroSignal.Models
         public object? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -5371,7 +7519,7 @@ namespace HeroSignal.Models
         public string? Status { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -5995,6 +8143,18 @@ namespace HeroSignal.Models
         public long? AutoDismissSeconds { get; set; }
 
         /// <summary>
+        /// Değerler: "blocks", "html".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Html { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html_height")]
+        public long? HtmlHeight { get; set; }
+
+        /// <summary>
         /// Zorunlu.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
@@ -6170,6 +8330,18 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_dismiss_seconds")]
         public long? AutoDismissSeconds { get; set; }
+
+        /// <summary>
+        /// Değerler: "blocks", "html".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Html { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html_height")]
+        public long? HtmlHeight { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -6374,6 +8546,21 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unread_count")]
         public long? UnreadCount { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// IntegrationOk şeması.
+    /// </summary>
+    public sealed class IntegrationOk
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -7736,6 +9923,294 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// McpCreateCampaignDraftBody şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBody
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Değerler: "one_time", "scheduled", "recurring".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("audience")]
+        public global::HeroSignal.Models.McpCreateCampaignDraftBodyAudience? Audience { get; set; }
+
+        /// <summary>
+        /// messages.content ile aynı şema (headings, contents, url, buttons…)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.List<string>? Labels { get; set; }
+
+        /// <summary>
+        /// Tercih kategorisi anahtarı; kapalı kullanıcılar bastırılır
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::HeroSignal.Models.McpCreateCampaignDraftBodyAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// A/B varyantları (ağırlıklar toplamı 100; en fazla bir is_control)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.McpCreateCampaignDraftBodyVariantsItem>? Variants { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
+        public string? TemplateId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_version")]
+        public long? TemplateVersion { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
+        public global::HeroSignal.Models.McpCreateCampaignDraftBodyDelivery? Delivery { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("recurrence")]
+        public global::HeroSignal.Models.McpCreateCampaignDraftBodyRecurrence? Recurrence { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("send_at")]
+        public string? SendAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateCampaignDraftBodyAbTest şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyAbTest
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("test_percentage")]
+        public long? TestPercentage { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner")]
+        public global::HeroSignal.Models.McpCreateCampaignDraftBodyAbTestWinner? Winner { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateCampaignDraftBodyAbTestWinner şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyAbTestWinner
+    {
+        /// <summary>
+        /// Değerler: "manual", "auto".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Değerler: "open_rate", "click_rate", "conversion_rate".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("evaluate_after_minutes")]
+        public long? EvaluateAfterMinutes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateCampaignDraftBodyAudience şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyAudience
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("all")]
+        public bool? All { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("segments")]
+        public global::System.Collections.Generic.List<string>? Segments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("exclude_segments")]
+        public global::System.Collections.Generic.List<string>? ExcludeSegments { get; set; }
+
+        /// <summary>
+        /// Filtre AST: all/any/none grupları ve { field, op, value } koşulları (docs/plan/05 §5.7).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::HeroSignal.Models.McpCreateCampaignDraftBodyAudienceFilters? Filters { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("test_devices_only")]
+        public bool? TestDevicesOnly { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Filtre AST: all/any/none grupları ve { field, op, value } koşulları (docs/plan/05 §5.7).
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyAudienceFilters
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("all")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? All { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("any")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Any { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("none")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? None { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateCampaignDraftBodyDelivery şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyDelivery
+    {
+        /// <summary>
+        /// Değerler: "immediate", "per_user_timezone", "optimized".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timezone_mode")]
+        public string? TimezoneMode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_time_of_day")]
+        public string? DeliveryTimeOfDay { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("throttle_per_minute")]
+        public long? ThrottlePerMinute { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ttl")]
+        public long? Ttl { get; set; }
+
+        /// <summary>
+        /// Değerler: 5, 10.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("collapse_id")]
+        public string? CollapseId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
+        public bool? FrequencyCapExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("quiet_hours_exempt")]
+        public bool? QuietHoursExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("one_per_user")]
+        public bool? OnePerUser { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateCampaignDraftBodyRecurrence şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyRecurrence
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("cron")]
+        public string? Cron { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("until")]
+        public string? Until { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
+        public string? Timezone { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateCampaignDraftBodyVariantsItem şeması.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyVariantsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Content { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
+        public bool? IsControl { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateSegmentDraftBody şeması.
+    /// </summary>
+    public sealed class McpCreateSegmentDraftBody
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Filtre AST: all/any/none grupları ve { field, op, value } koşulları (docs/plan/05 §5.7).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
+        public global::HeroSignal.Models.McpCreateSegmentDraftBodyDefinition? Definition { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_dynamic")]
+        public bool? IsDynamic { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Filtre AST: all/any/none grupları ve { field, op, value } koşulları (docs/plan/05 §5.7).
+    /// </summary>
+    public sealed class McpCreateSegmentDraftBodyDefinition
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("all")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? All { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("any")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Any { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("none")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? None { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// Member şeması.
     /// </summary>
     public sealed class Member
@@ -8463,6 +10938,18 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         public string? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("managed_by_reseller")]
+        public bool? ManagedByReseller { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -8575,13 +11062,13 @@ namespace HeroSignal.Models
     public sealed class OverviewStatsChannelsItem
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
+        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "meta_whatsapp", "google_rbm", "mock".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
         public string? Provider { get; set; }
@@ -9136,7 +11623,7 @@ namespace HeroSignal.Models
     public sealed class RenderPreview
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -9328,7 +11815,7 @@ namespace HeroSignal.Models
     public sealed class RenderTemplateDto
     {
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -9504,6 +11991,30 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_media_urls")]
         public global::System.Collections.Generic.List<string>? SmsMediaUrls { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_template")]
+        public global::HeroSignal.Models.RenderTemplateDtoContentWhatsappTemplate? WhatsappTemplate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_media")]
+        public global::HeroSignal.Models.RenderTemplateDtoContentWhatsappMedia? WhatsappMedia { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_interactive")]
+        public global::HeroSignal.Models.RenderTemplateDtoContentWhatsappInteractive? WhatsappInteractive { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_card")]
+        public global::HeroSignal.Models.RenderTemplateDtoContentRcsCard? RcsCard { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_suggestions")]
+        public global::System.Collections.Generic.List<object?>? RcsSuggestions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_sid")]
+        public string? RcsContentSid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_variables")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsContentVariables { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -9536,6 +12047,36 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// RenderTemplateDtoContentRcsCard şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentRcsCard
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_url")]
+        public string? MediaUrl { get; set; }
+
+        /// <summary>
+        /// Değerler: "SHORT", "MEDIUM", "TALL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_height")]
+        public string? MediaHeight { get; set; }
+
+        /// <summary>
+        /// Değerler: "VERTICAL", "HORIZONTAL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("orientation")]
+        public string? Orientation { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// RenderTemplateDtoContentWebButtonsItem şeması.
     /// </summary>
     public sealed class RenderTemplateDtoContentWebButtonsItem
@@ -9557,6 +12098,198 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappInteractive şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappInteractive
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "list".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public string? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("footer")]
+        public string? Footer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("buttons")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.RenderTemplateDtoContentWhatsappInteractiveButtonsItem>? Buttons { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("list")]
+        public global::HeroSignal.Models.RenderTemplateDtoContentWhatsappInteractiveList? List { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappInteractiveButtonsItem şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappInteractiveButtonsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappInteractiveList şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappInteractiveList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sections")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.RenderTemplateDtoContentWhatsappInteractiveListSectionsItem>? Sections { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappInteractiveListSectionsItem şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappInteractiveListSectionsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.RenderTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem>? Rows { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappMedia şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappMedia
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "image", "video", "document", "audio".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
+        public string? Filename { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappTemplate şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappTemplate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public object? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public global::System.Collections.Generic.List<string>? BodyParams { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_params")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.RenderTemplateDtoContentWhatsappTemplateButtonParamsItem>? ButtonParams { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentWhatsappTemplateButtonParamsItem şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentWhatsappTemplateButtonParamsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "url", "quick_reply", "copy_code".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sub_type")]
+        public string? SubType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -10123,7 +12856,7 @@ namespace HeroSignal.Models
         public string? Category { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10133,6 +12866,96 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("opted_in")]
         public bool? OptedIn { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SmsKeyword şeması.
+    /// </summary>
+    public sealed class SmsKeyword
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyword")]
+        public string? Keyword { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "org", "app".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scope")]
+        public string? Scope { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "sms", "whatsapp", "rcs".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Actions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SmsKeywordList şeması.
+    /// </summary>
+    public sealed class SmsKeywordList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.SmsKeyword>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved")]
+        public global::System.Collections.Generic.List<string>? Reserved { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -10249,7 +13072,7 @@ namespace HeroSignal.Models
         public string? UserId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10313,6 +13136,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("opted_in_at")]
         public string? OptedInAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opt_in_source")]
+        public string? OptInSource { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -10639,7 +13468,7 @@ namespace HeroSignal.Models
         public string? AppId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "email", "sms".
+        /// Zorunlu. Değerler: "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10741,7 +13570,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -10955,6 +13784,21 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// TestDataFeedDto şeması.
+    /// </summary>
+    public sealed class TestDataFeedDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// TriggerRunDto şeması.
     /// </summary>
     public sealed class TriggerRunDto
@@ -11005,7 +13849,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read".
+        /// Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read", "mcp:write".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scopes")]
         public global::System.Collections.Generic.List<string>? Scopes { get; set; }
@@ -11206,7 +14050,7 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.UpdateAppDtoSettingsFrequencyCapsItemWindow? Window { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -11662,7 +14506,7 @@ namespace HeroSignal.Models
         public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -11672,6 +14516,57 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("position")]
         public long? Position { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateContentTableDto şeması.
+    /// </summary>
+    public sealed class UpdateContentTableDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateDataFeedDto şeması.
+    /// </summary>
+    public sealed class UpdateDataFeedDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("url_template")]
+        public string? UrlTemplate { get; set; }
+
+        /// <summary>
+        /// Değerler: "GET", "POST".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("method")]
+        public string? Method { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("secret_headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? SecretHeaders { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("cache_ttl_seconds")]
+        public long? CacheTtlSeconds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_ms")]
+        public long? TimeoutMs { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -11794,6 +14689,18 @@ namespace HeroSignal.Models
         public long? AutoDismissSeconds { get; set; }
 
         /// <summary>
+        /// Değerler: "blocks", "html".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Html { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html_height")]
+        public long? HtmlHeight { get; set; }
+
+        /// <summary>
         /// Zorunlu.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
@@ -11878,6 +14785,18 @@ namespace HeroSignal.Models
         public long? AutoDismissSeconds { get; set; }
 
         /// <summary>
+        /// Değerler: "blocks", "html".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Html { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("html_height")]
+        public long? HtmlHeight { get; set; }
+
+        /// <summary>
         /// Zorunlu.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blocks")]
@@ -11897,6 +14816,90 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateKeywordDto şeması.
+    /// </summary>
+    public sealed class UpdateKeywordDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyword")]
+        public string? Keyword { get; set; }
+
+        /// <summary>
+        /// Değerler: "sms", "whatsapp", "rcs".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<string>? Channels { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
+        public global::HeroSignal.Models.UpdateKeywordDtoActions? Actions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateKeywordDtoActions şeması.
+    /// </summary>
+    public sealed class UpdateKeywordDtoActions
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("add_tags")]
+        public global::System.Collections.Generic.Dictionary<string, string>? AddTags { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("remove_tags")]
+        public global::System.Collections.Generic.List<string>? RemoveTags { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public global::HeroSignal.Models.UpdateKeywordDtoActionsEvent? Event { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("reply")]
+        public global::HeroSignal.Models.UpdateKeywordDtoActionsReply? Reply { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("opt_in")]
+        public bool? OptIn { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateKeywordDtoActionsEvent şeması.
+    /// </summary>
+    public sealed class UpdateKeywordDtoActionsEvent
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Properties { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateKeywordDtoActionsReply şeması.
+    /// </summary>
+    public sealed class UpdateKeywordDtoActionsReply
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -12133,7 +15136,7 @@ namespace HeroSignal.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -12300,6 +15303,30 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_media_urls")]
         public global::System.Collections.Generic.List<string>? SmsMediaUrls { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_template")]
+        public global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappTemplate? WhatsappTemplate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_media")]
+        public global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappMedia? WhatsappMedia { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("whatsapp_interactive")]
+        public global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappInteractive? WhatsappInteractive { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_card")]
+        public global::HeroSignal.Models.UpdateTemplateDtoContentRcsCard? RcsCard { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_suggestions")]
+        public global::System.Collections.Generic.List<object?>? RcsSuggestions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_sid")]
+        public string? RcsContentSid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_content_variables")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsContentVariables { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -12332,6 +15359,36 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// UpdateTemplateDtoContentRcsCard şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentRcsCard
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_url")]
+        public string? MediaUrl { get; set; }
+
+        /// <summary>
+        /// Değerler: "SHORT", "MEDIUM", "TALL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_height")]
+        public string? MediaHeight { get; set; }
+
+        /// <summary>
+        /// Değerler: "VERTICAL", "HORIZONTAL".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("orientation")]
+        public string? Orientation { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateTemplateDtoContentWebButtonsItem şeması.
     /// </summary>
     public sealed class UpdateTemplateDtoContentWebButtonsItem
@@ -12353,6 +15410,288 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappInteractive şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappInteractive
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "button", "list".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public string? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("footer")]
+        public string? Footer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("buttons")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappInteractiveButtonsItem>? Buttons { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("list")]
+        public global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappInteractiveList? List { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappInteractiveButtonsItem şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappInteractiveButtonsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappInteractiveList şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappInteractiveList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("button")]
+        public string? Button { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sections")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappInteractiveListSectionsItem>? Sections { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappInteractiveListSectionsItem şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappInteractiveListSectionsItem
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem>? Rows { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappInteractiveListSectionsItemRowsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappMedia şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappMedia
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "image", "video", "document", "audio".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
+        public string? Filename { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappTemplate şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappTemplate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("header")]
+        public object? Header { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public global::System.Collections.Generic.List<string>? BodyParams { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_params")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateTemplateDtoContentWhatsappTemplateButtonParamsItem>? ButtonParams { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentWhatsappTemplateButtonParamsItem şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentWhatsappTemplateButtonParamsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "url", "quick_reply", "copy_code".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sub_type")]
+        public string? SubType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWarehouseExportDto şeması.
+    /// </summary>
+    public sealed class UpdateWarehouseExportDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Değerler: "deliveries", "delivery_events", "events", "conversions", "users", "subscriptions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tables")]
+        public global::System.Collections.Generic.List<string>? Tables { get; set; }
+
+        /// <summary>
+        /// Değerler: "hourly", "daily".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
+        public string? Schedule { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Credentials { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWarmupPlanDto şeması.
+    /// </summary>
+    public sealed class UpdateWarmupPlanDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Değerler: "active", "paused".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("daily_limits")]
+        public global::System.Collections.Generic.List<long>? DailyLimits { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider_shares")]
+        public global::HeroSignal.Models.UpdateWarmupPlanDtoProviderShares? ProviderShares { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWarmupPlanDtoProviderShares şeması.
+    /// </summary>
+    public sealed class UpdateWarmupPlanDtoProviderShares
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gmail")]
+        public double? Gmail { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outlook")]
+        public double? Outlook { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("yahoo")]
+        public double? Yahoo { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("other")]
+        public double? Other { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -12390,6 +15729,18 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        /// <summary>
+        /// Şablon çıktısının içerik türü (varsayılan application/json). Değerler: "application/json", "text/plain".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_content_type")]
+        public string? BodyContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::HeroSignal.Models.UpdateWebhookDtoFilters? Filters { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -12401,6 +15752,51 @@ namespace HeroSignal.Models
     {
         [global::System.Text.Json.Serialization.JsonPropertyName("event_names")]
         public global::System.Collections.Generic.List<string>? EventNames { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Olay filtresi: { match: all|any, conditions: [{ field, op, value? }] }.
+    /// </summary>
+    public sealed class UpdateWebhookDtoFilters
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "all", "any".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.UpdateWebhookDtoFiltersConditionsItem>? Conditions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebhookDtoFiltersConditionsItem şeması.
+    /// </summary>
+    public sealed class UpdateWebhookDtoFiltersConditionsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "eq", "neq", "in", "not_in", "starts_with", "contains", "exists", "not_exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -12703,7 +16099,7 @@ namespace HeroSignal.Models
         public long? SubscriptionCount { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -12796,7 +16192,7 @@ namespace HeroSignal.Models
         public long? SubscriptionCount { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -13190,6 +16586,498 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// VerifyAddressDto şeması.
+    /// </summary>
+    public sealed class VerifyAddressDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("address")]
+        public string? Address { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseConnectionResult şeması.
+    /// </summary>
+    public sealed class WarehouseConnectionResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
+        public string? Detail { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::HeroSignal.Models.WarehouseConnectionResultError? Error { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseConnectionResultError şeması.
+    /// </summary>
+    public sealed class WarehouseConnectionResultError
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExport şeması.
+    /// </summary>
+    public sealed class WarehouseExport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "bigquery", "snowflake", "s3_parquet".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("destination")]
+        public string? Destination { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials_hint")]
+        public string? CredentialsHint { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "deliveries", "delivery_events", "events", "conversions", "users", "subscriptions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tables")]
+        public global::System.Collections.Generic.List<string>? Tables { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "hourly", "daily".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
+        public string? Schedule { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "paused", "failing".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("consecutive_failures")]
+        public long? ConsecutiveFailures { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_error")]
+        public string? LastError { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cursors")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.WarehouseExportCursorsValue>? Cursors { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_versions")]
+        public global::System.Collections.Generic.Dictionary<string, long>? SchemaVersions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_run_at")]
+        public string? LastRunAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_success_at")]
+        public string? LastSuccessAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_run_at")]
+        public string? NextRunAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportCursorsValue şeması.
+    /// </summary>
+    public sealed class WarehouseExportCursorsValue
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ts")]
+        public string? Ts { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportList şeması.
+    /// </summary>
+    public sealed class WarehouseExportList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WarehouseExport>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportRun şeması.
+    /// </summary>
+    public sealed class WarehouseExportRun
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("export_id")]
+        public string? ExportId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "schedule", "manual".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger")]
+        public string? Trigger { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "queued", "running", "succeeded", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tables")]
+        public global::System.Collections.Generic.Dictionary<string, global::HeroSignal.Models.WarehouseExportRunTablesValue>? Tables { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("row_count")]
+        public long? RowCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attempt")]
+        public long? Attempt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("started_at")]
+        public string? StartedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("finished_at")]
+        public string? FinishedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
+        public long? DurationMs { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportRunPage şeması.
+    /// </summary>
+    public sealed class WarehouseExportRunPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WarehouseExportRun>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportRunTablesValue şeması.
+    /// </summary>
+    public sealed class WarehouseExportRunTablesValue
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public long? Rows { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_version")]
+        public long? SchemaVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public global::HeroSignal.Models.WarehouseExportRunTablesValueFrom? From { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public global::HeroSignal.Models.WarehouseExportRunTablesValueTo? To { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("objects")]
+        public long? Objects { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportRunTablesValueFrom şeması.
+    /// </summary>
+    public sealed class WarehouseExportRunTablesValueFrom
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ts")]
+        public string? Ts { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseExportRunTablesValueTo şeması.
+    /// </summary>
+    public sealed class WarehouseExportRunTablesValueTo
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ts")]
+        public string? Ts { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseTables şeması.
+    /// </summary>
+    public sealed class WarehouseTables
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WarehouseTablesDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseTablesDataItem şeması.
+    /// </summary>
+    public sealed class WarehouseTablesDataItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "deliveries", "delivery_events", "events", "conversions", "users", "subscriptions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "incremental", "snapshot".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_version")]
+        public long? SchemaVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cursor_column")]
+        public string? CursorColumn { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("columns")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WarehouseTablesDataItemColumnsItem>? Columns { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseTablesDataItemColumnsItem şeması.
+    /// </summary>
+    public sealed class WarehouseTablesDataItemColumnsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nullable")]
+        public bool? Nullable { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// Webhook şeması.
     /// </summary>
     public sealed class Webhook
@@ -13283,6 +17171,24 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous_secret_expires_at")]
         public string? PreviousSecretExpiresAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "application/json", "text/plain".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_content_type")]
+        public string? BodyContentType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::HeroSignal.Models.WebhookFilters? Filters { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -13544,6 +17450,51 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// WebhookFilters şeması.
+    /// </summary>
+    public sealed class WebhookFilters
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "all", "any".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WebhookFiltersConditionsItem>? Conditions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookFiltersConditionsItem şeması.
+    /// </summary>
+    public sealed class WebhookFiltersConditionsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "eq", "neq", "in", "not_in", "starts_with", "contains", "exists", "not_exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// WebhookList şeması.
     /// </summary>
     public sealed class WebhookList
@@ -13553,6 +17504,174 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public global::System.Collections.Generic.List<global::HeroSignal.Models.Webhook>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookPreviewDto şeması.
+    /// </summary>
+    public sealed class WebhookPreviewDto
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited", "audit.created", "webhook.test".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
+        public string? EventType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Data { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        /// <summary>
+        /// Şablon çıktısının içerik türü (varsayılan application/json). Değerler: "application/json", "text/plain".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_content_type")]
+        public string? BodyContentType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::HeroSignal.Models.WebhookPreviewDtoFilters? Filters { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("batch")]
+        public bool? Batch { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Olay filtresi: { match: all|any, conditions: [{ field, op, value? }] }.
+    /// </summary>
+    public sealed class WebhookPreviewDtoFilters
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "all", "any".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WebhookPreviewDtoFiltersConditionsItem>? Conditions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookPreviewDtoFiltersConditionsItem şeması.
+    /// </summary>
+    public sealed class WebhookPreviewDtoFiltersConditionsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "eq", "neq", "in", "not_in", "starts_with", "contains", "exists", "not_exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookPreviewResult şeması.
+    /// </summary>
+    public sealed class WebhookPreviewResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("payload")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Payload { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Olay filtreden geçer mi (geçmezse gönderilmez).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("matched")]
+        public bool? Matched { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed_conditions")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WebhookPreviewResultFailedConditionsItem>? FailedConditions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
+        public string? Body { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_type")]
+        public string? ContentType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::HeroSignal.Models.WebhookPreviewResultError? Error { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookPreviewResultError şeması.
+    /// </summary>
+    public sealed class WebhookPreviewResultError
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookPreviewResultFailedConditionsItem şeması.
+    /// </summary>
+    public sealed class WebhookPreviewResultFailedConditionsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -13656,6 +17775,24 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_template")]
+        public string? BodyTemplate { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "application/json", "text/plain".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_content_type")]
+        public string? BodyContentType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::HeroSignal.Models.WebhookWithSecretFilters? Filters { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         public string? CreatedAt { get; set; }
 
@@ -13682,6 +17819,390 @@ namespace HeroSignal.Models
     {
         [global::System.Text.Json.Serialization.JsonPropertyName("event_names")]
         public global::System.Collections.Generic.List<string>? EventNames { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookWithSecretFilters şeması.
+    /// </summary>
+    public sealed class WebhookWithSecretFilters
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "all", "any".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WebhookWithSecretFiltersConditionsItem>? Conditions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebhookWithSecretFiltersConditionsItem şeması.
+    /// </summary>
+    public sealed class WebhookWithSecretFiltersConditionsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "eq", "neq", "in", "not_in", "starts_with", "contains", "exists", "not_exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WhatsAppTemplateList şeması.
+    /// </summary>
+    public sealed class WhatsAppTemplateList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WhatsAppTemplateListDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WhatsAppTemplateListDataItem şeması.
+    /// </summary>
+    public sealed class WhatsAppTemplateListDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("components")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Components { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public long? BodyParams { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rejected_reason")]
+        public string? RejectedReason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("quality_score")]
+        public string? QualityScore { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("synced_at")]
+        public string? SyncedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WhatsAppTemplateSync şeması.
+    /// </summary>
+    public sealed class WhatsAppTemplateSync
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public long? Total { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("removed")]
+        public long? Removed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.WhatsAppTemplateSyncDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WhatsAppTemplateSyncDataItem şeması.
+    /// </summary>
+    public sealed class WhatsAppTemplateSyncDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("components")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Components { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("body_params")]
+        public long? BodyParams { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rejected_reason")]
+        public string? RejectedReason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("quality_score")]
+        public string? QualityScore { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("synced_at")]
+        public string? SyncedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ZapierHook şeması.
+    /// </summary>
+    public sealed class ZapierHook
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_name")]
+        public string? EventName { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target_url")]
+        public string? TargetUrl { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_delivered_at")]
+        public string? LastDeliveredAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failure_count")]
+        public long? FailureCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ZapierMe şeması.
+    /// </summary>
+    public sealed class ZapierMe
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_name")]
+        public string? AppName { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("org_id")]
+        public string? OrgId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scopes")]
+        public global::System.Collections.Generic.List<string>? Scopes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ZapierSamplesItem şeması.
+    /// </summary>
+    public sealed class ZapierSamplesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ZapierSubscribeDto şeması.
+    /// </summary>
+    public sealed class ZapierSubscribeDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target_url")]
+        public string? TargetUrl { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "subscription.created", "subscription.unsubscribed", "event.received", "delivery.delivered", "delivery.opened", "delivery.clicked", "user.created", "user.updated", "conversion.created", "campaign.completed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_name")]
+        public string? EventName { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
