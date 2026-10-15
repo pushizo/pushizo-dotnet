@@ -301,6 +301,12 @@ namespace HeroSignal.Models
         public global::HeroSignal.Models.AppSettings? Settings { get; set; }
 
         /// <summary>
+        /// Zorunlu. Değerler: "hmac", "jwt", "both".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("identity_verification_mode")]
+        public string? IdentityVerificationMode { get; set; }
+
+        /// <summary>
         /// Zorunlu. Değerler: "active", "suspended", "deleted".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
@@ -3317,6 +3323,27 @@ namespace HeroSignal.Models
     }
 
     /// <summary>
+    /// CreateIdentityKeyDto şeması.
+    /// </summary>
+    public sealed class CreateIdentityKeyDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("kid")]
+        public string? Kid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("label")]
+        public string? Label { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("public_jwk")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? PublicJwk { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("public_key_pem")]
+        public string? PublicKeyPem { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateInAppDto şeması.
     /// </summary>
     public sealed class CreateInAppDto
@@ -4174,7 +4201,7 @@ namespace HeroSignal.Models
         public string? Description { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited".
+        /// Zorunlu. Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited", "audit.created".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("events")]
         public global::System.Collections.Generic.List<string>? Events { get; set; }
@@ -4662,6 +4689,12 @@ namespace HeroSignal.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retention_days")]
+        public long? RetentionDays { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("first_seen_at")]
         public string? FirstSeenAt { get; set; }
 
@@ -4745,6 +4778,12 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unattributed")]
         public bool? OutcomeUnattributed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retention_days")]
+        public long? RetentionDays { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -5339,6 +5378,72 @@ namespace HeroSignal.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("drop_off")]
         public long? DropOff { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// IdentityKey şeması.
+    /// </summary>
+    public sealed class IdentityKey
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kid")]
+        public string? Kid { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "ES256".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("alg")]
+        public string? Alg { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("public_jwk")]
+        public global::System.Collections.Generic.Dictionary<string, string>? PublicJwk { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("label")]
+        public string? Label { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("revoked_at")]
+        public string? RevokedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// IdentityKeyList şeması.
+    /// </summary>
+    public sealed class IdentityKeyList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::HeroSignal.Models.IdentityKey>? Data { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -7953,6 +8058,24 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("sessionMaxHours")]
         public long? SessionMaxHours { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("auditStream")]
+        public global::HeroSignal.Models.OrgSettingsAuditStream? AuditStream { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// OrgSettingsAuditStream şeması.
+    /// </summary>
+    public sealed class OrgSettingsAuditStream
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("s3")]
+        public bool? S3 { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("webhookAppId")]
+        public string? WebhookAppId { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -8267,6 +8390,9 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("outcome_unattributed")]
         public bool? OutcomeUnattributed { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("retention_days")]
+        public long? RetentionDays { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
@@ -10353,6 +10479,12 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
         public global::HeroSignal.Models.UpdateAppDtoSettings? Settings { get; set; }
 
+        /// <summary>
+        /// Değerler: "hmac", "jwt", "both".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("identity_verification_mode")]
+        public string? IdentityVerificationMode { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -11488,7 +11620,7 @@ namespace HeroSignal.Models
         public string? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited".
+        /// Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed", "journey.entered", "journey.step_completed", "journey.completed", "journey.exited", "audit.created".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("events")]
         public global::System.Collections.Generic.List<string>? Events { get; set; }
