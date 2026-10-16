@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace HeroSignal
+namespace Pushizo
 {
     /// <summary>Multipart dosya alanı. İçerik bellekte tutulur ki yeniden denemeler aynı gövdeyi göndersin.</summary>
     public sealed class FileUpload

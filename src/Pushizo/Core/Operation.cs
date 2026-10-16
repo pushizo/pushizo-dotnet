@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json;
 
-namespace HeroSignal.Core
+namespace Pushizo.Core
 {
-    /// <summary>İç API: üretilmiş kaynak sınıflarının <see cref="HeroSignalClient"/>'a verdiği istek tanımı.</summary>
+    /// <summary>İç API: üretilmiş kaynak sınıflarının <see cref="PushizoClient"/>'a verdiği istek tanımı.</summary>
     internal sealed class Operation
     {
         internal Operation(string method, string path)
@@ -30,7 +30,7 @@ namespace HeroSignal.Core
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException($"HeroSignal: '{name}' yol parametresi boş olamaz.", name);
+                throw new ArgumentException($"Pushizo: '{name}' yol parametresi boş olamaz.", name);
             }
             PathParams[name] = value;
         }

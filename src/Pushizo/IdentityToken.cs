@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace HeroSignal
+namespace Pushizo
 {
     /// <summary>
     /// SDK JWT identity verification belirteci (ES256; ADR-0023 §9): <c>sub</c> = external_id, <c>aud</c> = app_id,

@@ -1,24 +1,24 @@
-# HeroSignal .NET SDK
+# Pushizo .NET SDK
 
-HeroSignal public API'si için C#/.NET sunucu SDK'sı (.NET 8, `HttpClient`, `System.Text.Json`; ek bağımlılık yok).
-Modeller (`HeroSignal.Models`), parametre sınıfları (`HeroSignal.Params`) ve kaynaklar (`HeroSignal.Resources`)
-`api/openapi.yaml`'dan üretilir (`src/HeroSignal/Generated/`); kimlik doğrulama, yeniden deneme, idempotency,
+Pushizo public API'si için C#/.NET sunucu SDK'sı (.NET 8, `HttpClient`, `System.Text.Json`; ek bağımlılık yok).
+Modeller (`Pushizo.Models`), parametre sınıfları (`Pushizo.Params`) ve kaynaklar (`Pushizo.Resources`)
+`api/openapi.yaml`'dan üretilir (`src/Pushizo/Generated/`); kimlik doğrulama, yeniden deneme, idempotency,
 sayfalama ve webhook imza doğrulaması el yazımıdır.
 
 ## Kurulum
 
 ```bash
-dotnet add package HeroSignal
+dotnet add package Pushizo
 ```
 
 ## Kullanım
 
 ```csharp
-using HeroSignal;
-using HeroSignal.Models;
-using HeroSignal.Params;
+using Pushizo;
+using Pushizo.Models;
+using Pushizo.Params;
 
-using var hs = new HeroSignalClient(new HeroSignalOptions
+using var hs = new PushizoClient(new PushizoOptions
 {
     ApiKey = Environment.GetEnvironmentVariable("HS_API_KEY")!,
     AppId = "app_…",
@@ -46,21 +46,21 @@ await foreach (var segment in hs.Segments.ListAllAsync(new SegmentsListParams { 
 await hs.Apps.GetAsync(RequestOptions.ForApp("app_diger"));
 
 // SDK identity verification
-var identityHash = HeroSignalClient.IdentityHash(Environment.GetEnvironmentVariable("HS_SDK_SECRET")!, "user-42");
+var identityHash = PushizoClient.IdentityHash(Environment.GetEnvironmentVariable("HS_SDK_SECRET")!, "user-42");
 ```
 
-ASP.NET Core'da `IHttpClientFactory` ile: `new HeroSignalOptions { ApiKey = …, HttpClient = factory.CreateClient("herosignal") }`
+ASP.NET Core'da `IHttpClientFactory` ile: `new PushizoOptions { ApiKey = …, HttpClient = factory.CreateClient("pushizo") }`
 (verilen `HttpClient`'ın ömrü çağırana aittir). Tüm model özellikleri nullable'dır; `null` alanlar gönderilmez.
 SDK'da metodu olmayan uçlar veya JSON dışı yanıtlar için `hs.RequestAsync("GET", "/v1/apps/{appId}/analytics/messages",
 new Dictionary<string, object?> { ["format"] = "csv" })` gövdeyi metin olarak döner.
 
 ### Ayarlar
 
-| `HeroSignalOptions` | Varsayılan | Açıklama |
+| `PushizoOptions` | Varsayılan | Açıklama |
 |---------------------|------------|----------|
 | `ApiKey` | — | `hs_live_…` API anahtarı (Bearer) |
 | `AppId` | — | Çağrıda `RequestOptions.AppId` verilmezse kullanılan app |
-| `BaseUrl` | `https://api.herosignal.dev` | API adresi |
+| `BaseUrl` | `https://api.pushizo.com` | API adresi |
 | `Timeout` | 30 sn | Deneme başına zaman aşımı |
 | `MaxRetries` | 3 | En fazla yeniden deneme (politika: aşağıda) |
 | `AutoIdempotencyKey` | `true` | `Idempotency-Key` destekleyen çağrılarda otomatik UUID |
@@ -71,7 +71,7 @@ Her metot `RequestOptions` (AppId, IdempotencyKey, Timeout, MaxRetries, Headers)
 ### Hatalar
 
 429 her metotta; 5xx ve ağ hataları GET/HEAD/OPTIONS/PUT/DELETE'te, POST/PATCH'te yalnızca `Idempotency-Key` varsa (otomatik anahtar dahil) veya istek sunucuya hiç gönderilemediyse (bağlantı reddi, DNS hatası, bağlantı zaman aşımı) üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
-Kalıcı hatalar `HeroSignalException` alt sınıflarıdır ve `Status`, `Code` (`HS_…`), `RequestId`, `Details` taşır:
+Kalıcı hatalar `PushizoException` alt sınıflarıdır ve `Status`, `Code` (`HS_…`), `RequestId`, `Details` taşır:
 
 ```csharp
 try
@@ -80,7 +80,7 @@ try
 }
 catch (NotFoundException) { /* 404 */ }
 catch (InvalidRequestException e) when (e.Code == ErrorCodes.NoRecipients) { /* 422 */ }
-catch (HeroSignalException e) { Console.WriteLine($"{e.Status} {e.Code} {e.Message}"); }
+catch (PushizoException e) { Console.WriteLine($"{e.Status} {e.Code} {e.Message}"); }
 ```
 
 Diğer alt sınıflar: `AuthenticationException`, `PermissionDeniedException`, `ConflictException`, `RateLimitException`,
@@ -89,7 +89,7 @@ Diğer alt sınıflar: `AuthenticationException`, `PermissionDeniedException`, `
 ## Webhook imza doğrulaması
 
 ```csharp
-app.MapPost("/hooks/herosignal", async (HttpRequest request) =>
+app.MapPost("/hooks/pushizo", async (HttpRequest request) =>
 {
     using var ms = new MemoryStream();
     await request.Body.CopyToAsync(ms);                               // ham gövde
@@ -118,5 +118,5 @@ dotnet test                                                # sdk/dotnet içinde 
 node sdk/scripts/generate-server-sdks.mjs --lang dotnet    # depo kökünde; Generated/ yenilenir
 ```
 
-`src/HeroSignal/Generated/` elle düzenlenmez. Webhook testleri `sdk/testdata/webhook-signature-vectors.json`
+`src/Pushizo/Generated/` elle düzenlenmez. Webhook testleri `sdk/testdata/webhook-signature-vectors.json`
 ortak vektörlerini kullanır.

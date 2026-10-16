@@ -7,19 +7,19 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using HeroSignal.Models;
-using HeroSignal.Params;
+using Pushizo.Models;
+using Pushizo.Params;
 using Xunit;
 
-namespace HeroSignal.Tests
+namespace Pushizo.Tests
 {
     public class ClientTests
     {
         private readonly List<TimeSpan> _delays = new List<TimeSpan>();
 
-        private HeroSignalClient Client(FakeHandler handler, bool autoIdempotency = true, int maxRetries = 3)
+        private PushizoClient Client(FakeHandler handler, bool autoIdempotency = true, int maxRetries = 3)
         {
-            var client = new HeroSignalClient(new HeroSignalOptions
+            var client = new PushizoClient(new PushizoOptions
             {
                 ApiKey = "hs_live_test",
                 AppId = "app_1",
@@ -52,7 +52,7 @@ namespace HeroSignal.Tests
             Assert.Equal(HttpMethod.Post, r.Method);
             Assert.Equal("https://api.test/v1/notifications", r.Uri.ToString());
             Assert.Equal("Bearer hs_live_test", r.Headers["Authorization"]);
-            Assert.StartsWith("herosignal-dotnet/", r.Headers["User-Agent"]);
+            Assert.StartsWith("pushizo-dotnet/", r.Headers["User-Agent"]);
             Assert.Matches(new Regex("^[0-9a-f-]{36}$"), r.Headers["Idempotency-Key"]);
             var body = Body(h, 0);
             Assert.Equal("app_1", body.GetProperty("app_id").GetString());
@@ -100,9 +100,9 @@ namespace HeroSignal.Tests
         [Fact]
         public async Task MissingAppIdThrows()
         {
-            var hs = new HeroSignalClient(new HeroSignalOptions { ApiKey = "k", HttpClient = new HttpClient(new FakeHandler()) });
+            var hs = new PushizoClient(new PushizoOptions { ApiKey = "k", HttpClient = new HttpClient(new FakeHandler()) });
             await Assert.ThrowsAsync<InvalidOperationException>(() => hs.Apps.GetAsync());
-            Assert.Throws<ArgumentException>(() => new HeroSignalClient(new HeroSignalOptions()));
+            Assert.Throws<ArgumentException>(() => new PushizoClient(new PushizoOptions()));
         }
 
         [Fact]
@@ -267,7 +267,7 @@ namespace HeroSignal.Tests
             listener.Start();
             var port = ((System.Net.IPEndPoint)listener.LocalEndpoint).Port;
             listener.Stop();
-            using var hs = new HeroSignalClient(new HeroSignalOptions { ApiKey = "k", AppId = "app_1", BaseUrl = $"http://127.0.0.1:{port}", MaxRetries = 1 });
+            using var hs = new PushizoClient(new PushizoOptions { ApiKey = "k", AppId = "app_1", BaseUrl = $"http://127.0.0.1:{port}", MaxRetries = 1 });
             hs.Delay = (d, ct) =>
             {
                 _delays.Add(d);

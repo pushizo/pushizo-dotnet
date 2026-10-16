@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using Xunit;
 
-namespace HeroSignal.Tests
+namespace Pushizo.Tests
 {
     /// <summary>SDK JWT identity verification belirteci (ES256).</summary>
     public class IdentityTokenTests

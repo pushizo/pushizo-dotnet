@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using Xunit;
 
-namespace HeroSignal.Tests
+namespace Pushizo.Tests
 {
     /// <summary>Ortak vektörler: sdk/testdata/webhook-signature-vectors.json (Node, PHP, Python, Go, Java, Ruby ile aynı).</summary>
     public class WebhookTests
@@ -71,7 +71,7 @@ namespace HeroSignal.Tests
         public void IdentityHashMatchesNode()
         {
             // Node: createHmac('sha256', 'secret').update('user-1').digest('hex')
-            Assert.Equal("1d16fd7e96e8a9681f283b8a251822ffdc71e2a5bda0c5267a044874fa21b82b", HeroSignalClient.IdentityHash("secret", "user-1"));
+            Assert.Equal("1d16fd7e96e8a9681f283b8a251822ffdc71e2a5bda0c5267a044874fa21b82b", PushizoClient.IdentityHash("secret", "user-1"));
         }
     }
 }
