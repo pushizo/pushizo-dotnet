@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HeroSignal.Tests
+namespace Pushizo.Tests
 {
     /// <summary>Sıralı yanıtlar döndüren ve istekleri (gövdeleriyle) kaydeden sahte HTTP işleyicisi.</summary>
     internal sealed class FakeHandler : HttpMessageHandler

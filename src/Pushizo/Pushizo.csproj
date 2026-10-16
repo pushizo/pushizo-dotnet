@@ -5,13 +5,13 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
-    <RootNamespace>HeroSignal</RootNamespace>
-    <AssemblyName>HeroSignal</AssemblyName>
-    <PackageId>HeroSignal</PackageId>
+    <RootNamespace>Pushizo</RootNamespace>
+    <AssemblyName>Pushizo</AssemblyName>
+    <PackageId>Pushizo</PackageId>
     <Version>0.1.0</Version>
-    <Authors>HeroSignal</Authors>
-    <Description>HeroSignal sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması.</Description>
-    <PackageTags>herosignal;push;notifications;email;sms;webhooks</PackageTags>
+    <Authors>Pushizo</Authors>
+    <Description>Pushizo sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması.</Description>
+    <PackageTags>pushizo;push;notifications;email;sms;webhooks</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="HeroSignal.Tests" />
+    <InternalsVisibleTo Include="Pushizo.Tests" />
     <None Include="../../README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 

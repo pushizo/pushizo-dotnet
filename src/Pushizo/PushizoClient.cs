@@ -11,14 +11,14 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
-using HeroSignal.Core;
+using Pushizo.Core;
 
-namespace HeroSignal
+namespace Pushizo
 {
     /// <summary>
-    /// HeroSignal .NET sunucu SDK istemcisi (HttpClient tabanlı, eşzamanlı kullanım için güvenli).
+    /// Pushizo .NET sunucu SDK istemcisi (HttpClient tabanlı, eşzamanlı kullanım için güvenli).
     /// <code>
-    /// using var hs = new HeroSignalClient(new HeroSignalOptions { ApiKey = Environment.GetEnvironmentVariable("HS_API_KEY")!, AppId = "app_…" });
+    /// using var hs = new PushizoClient(new PushizoOptions { ApiKey = Environment.GetEnvironmentVariable("HS_API_KEY")!, AppId = "app_…" });
     /// var res = await hs.Notifications.CreateAsync(new CreateNotificationDto
     /// {
     ///     Target = new CreateNotificationDtoTarget { IncludeAliases = new() { ["external_id"] = new() { userId } } },
@@ -27,20 +27,20 @@ namespace HeroSignal
     /// </code>
     /// Kaynak özellikleri (<c>Notifications</c>, <c>Users</c>, <c>Segments</c> …) <c>api/openapi.yaml</c>'dan üretilir.
     /// </summary>
-    public sealed partial class HeroSignalClient : IDisposable
+    public sealed partial class PushizoClient : IDisposable
     {
         /// <summary>SDK sürümü (User-Agent başlığında gönderilir).</summary>
         public const string Version = "0.1.0";
 
         /// <summary>Varsayılan API adresi.</summary>
-        public const string DefaultBaseUrl = "https://api.herosignal.dev";
+        public const string DefaultBaseUrl = "https://api.pushizo.com";
 
         private static readonly TimeSpan[] Backoff = { TimeSpan.FromMilliseconds(300), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(3) };
 
         /// <summary>Sunucuda tekrarlanması ek yan etki doğurmayan HTTP metotları; 5xx ve ağ hatalarında serbestçe yeniden denenir.</summary>
         private static readonly HashSet<string> IdempotentMethods = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "GET", "HEAD", "OPTIONS", "PUT", "DELETE" };
 
-        private readonly HeroSignalOptions _options;
+        private readonly PushizoOptions _options;
         private readonly HttpClient _http;
         private readonly bool _ownsHttp;
         private readonly string _baseUrl;
@@ -49,23 +49,23 @@ namespace HeroSignal
         /// <summary>Yeniden deneme beklemesi (testlerde değiştirilir).</summary>
         internal Func<TimeSpan, CancellationToken, Task> Delay { get; set; } = (d, ct) => Task.Delay(d, ct);
 
-        public HeroSignalClient(HeroSignalOptions options)
+        public PushizoClient(PushizoOptions options)
         {
             _options = options ?? throw new ArgumentNullException(nameof(options));
             if (string.IsNullOrEmpty(options.ApiKey))
             {
-                throw new ArgumentException("HeroSignal: ApiKey gerekli.", nameof(options));
+                throw new ArgumentException("Pushizo: ApiKey gerekli.", nameof(options));
             }
             _baseUrl = (options.BaseUrl ?? DefaultBaseUrl).TrimEnd('/');
-            _userAgent = options.UserAgent ?? $"herosignal-dotnet/{Version}";
+            _userAgent = options.UserAgent ?? $"pushizo-dotnet/{Version}";
             _ownsHttp = options.HttpClient is null;
             _http = options.HttpClient ?? new HttpClient { Timeout = System.Threading.Timeout.InfiniteTimeSpan };
             InitResources();
         }
 
         /// <summary>Yalnızca API anahtarıyla istemci oluşturur.</summary>
-        public HeroSignalClient(string apiKey, string? appId = null)
-            : this(new HeroSignalOptions { ApiKey = apiKey, AppId = appId })
+        public PushizoClient(string apiKey, string? appId = null)
+            : this(new PushizoOptions { ApiKey = apiKey, AppId = appId })
         {
         }
 
@@ -117,7 +117,7 @@ namespace HeroSignal
             }
             catch (JsonException e)
             {
-                throw new HeroSignalException(200, "DECODE", "Yanıt ayrıştırılamadı: " + e.Message, inner: e);
+                throw new PushizoException(200, "DECODE", "Yanıt ayrıştırılamadı: " + e.Message, inner: e);
             }
         }
 
@@ -131,7 +131,7 @@ namespace HeroSignal
             var id = options?.AppId ?? _options.AppId;
             if (string.IsNullOrEmpty(id))
             {
-                throw new InvalidOperationException("HeroSignal: AppId verilmedi (HeroSignalOptions.AppId veya RequestOptions.AppId).");
+                throw new InvalidOperationException("Pushizo: AppId verilmedi (PushizoOptions.AppId veya RequestOptions.AppId).");
             }
             return id!;
         }
@@ -165,7 +165,7 @@ namespace HeroSignal
             string? contentType = null;
             if (op.IsMultipart)
             {
-                var boundary = "----herosignal" + Guid.NewGuid().ToString("N");
+                var boundary = "----pushizo" + Guid.NewGuid().ToString("N");
                 body = Multipart(op.Form, boundary);
                 contentType = "multipart/form-data; boundary=" + boundary;
             }
@@ -198,7 +198,7 @@ namespace HeroSignal
                 || (options is not null && options.Headers.Any(h => string.Equals(h.Key, "Idempotency-Key", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(h.Value)));
             for (var attempt = 0; ; attempt++)
             {
-                HeroSignalException error;
+                PushizoException error;
                 var notSent = false;
                 using (var request = new HttpRequestMessage(new HttpMethod(op.Method), target))
                 {
@@ -276,7 +276,7 @@ namespace HeroSignal
         /// metotlarda, POST/PATCH'te yalnızca Idempotency-Key varsa ya da istek sunucuya hiç gönderilmediyse. Aksi hâlde
         /// sunucu isteği işlemiş olabilir ve tekrar çift kayıt üretebilir.
         /// </summary>
-        internal static bool ShouldRetry(string method, HeroSignalException error, bool hasIdempotencyKey, bool notSent)
+        internal static bool ShouldRetry(string method, PushizoException error, bool hasIdempotencyKey, bool notSent)
         {
             if (error.Status == 429)
             {
@@ -319,7 +319,7 @@ namespace HeroSignal
             return null;
         }
 
-        private static HeroSignalException ErrorFrom(HttpResponseMessage response, byte[] data)
+        private static PushizoException ErrorFrom(HttpResponseMessage response, byte[] data)
         {
             string? code = null, message = null, requestId = null;
             Dictionary<string, object?>? details = null;
@@ -356,7 +356,7 @@ namespace HeroSignal
             {
                 retryAfter = date - DateTimeOffset.UtcNow;
             }
-            return HeroSignalException.Create(status, code ?? $"HTTP_{status}", message ?? $"HTTP {status}", requestId, details, retryAfter);
+            return PushizoException.Create(status, code ?? $"HTTP_{status}", message ?? $"HTTP {status}", requestId, details, retryAfter);
         }
 
         /// <summary>JsonElement'i sade .NET değerine çevirir (hata ayrıntıları için).</summary>

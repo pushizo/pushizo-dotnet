@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
-namespace HeroSignal
+namespace Pushizo
 {
     /// <summary>Webhook imza doğrulama sonucu. <see cref="Ok"/> ise <see cref="Timestamp"/>, değilse <see cref="Reason"/> doludur.</summary>
     public sealed record WebhookVerifyResult(bool Ok, long Timestamp, string? Reason);
@@ -15,7 +15,7 @@ namespace HeroSignal
     /// <summary>Webhook olayı (tekil gövde). Batch gövdesi <c>{"events": [...]}</c> biçimindedir.</summary>
     public sealed class WebhookEvent
     {
-        /// <summary>Olay kimliği (<c>HeroSignal-Event-Id</c> ile aynı); tekrarları ayıklamak için kullanın.</summary>
+        /// <summary>Olay kimliği (<c>Pushizo-Event-Id</c> ile aynı); tekrarları ayıklamak için kullanın.</summary>
         [JsonPropertyName("id")]
         public string Id { get; set; } = string.Empty;
 
@@ -35,7 +35,7 @@ namespace HeroSignal
     }
 
     /// <summary>
-    /// Giden webhook imza doğrulaması (alıcı tarafı). Başlık: <c>HeroSignal-Signature: t=&lt;unix&gt;,v1=&lt;hex&gt;</c> —
+    /// Giden webhook imza doğrulaması (alıcı tarafı). Başlık: <c>Pushizo-Signature: t=&lt;unix&gt;,v1=&lt;hex&gt;</c> —
     /// <c>v1 = HMAC-SHA256(secret, t + "." + ham_gövde)</c>. Secret rotasyonunda iki <c>v1</c> bulunabilir; herhangi biri eşleşirse geçerlidir.
     /// <code>
     /// using var ms = new MemoryStream(); await Request.Body.CopyToAsync(ms);           // ham gövde
@@ -44,8 +44,8 @@ namespace HeroSignal
     /// </summary>
     public static class Webhooks
     {
-        public const string SignatureHeader = "HeroSignal-Signature";
-        public const string EventIdHeader = "HeroSignal-Event-Id";
+        public const string SignatureHeader = "Pushizo-Signature";
+        public const string EventIdHeader = "Pushizo-Event-Id";
 
         /// <summary>Varsayılan zaman damgası toleransı; daha eski <c>t</c> tekrar (replay) sayılır.</summary>
         public static readonly TimeSpan DefaultTolerance = TimeSpan.FromSeconds(300);

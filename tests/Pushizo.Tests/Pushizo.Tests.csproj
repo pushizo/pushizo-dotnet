@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/HeroSignal/HeroSignal.csproj" />
+    <ProjectReference Include="../../src/Pushizo/Pushizo.csproj" />
   </ItemGroup>
 
 </Project>

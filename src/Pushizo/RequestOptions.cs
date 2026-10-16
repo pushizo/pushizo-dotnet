@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HeroSignal
+namespace Pushizo
 {
     /// <summary>
     /// Tek bir çağrı için istemci ayarlarını değiştirir.
@@ -30,14 +30,14 @@ namespace HeroSignal
         public static RequestOptions ForApp(string appId) => new RequestOptions { AppId = appId };
     }
 
-    /// <summary><see cref="HeroSignalClient"/> ayarları.</summary>
-    public sealed class HeroSignalOptions
+    /// <summary><see cref="PushizoClient"/> ayarları.</summary>
+    public sealed class PushizoOptions
     {
         /// <summary><c>hs_live_…</c> API anahtarı (Bearer). Zorunlu.</summary>
         public string ApiKey { get; set; } = string.Empty;
 
         /// <summary>API adresi; yerel geliştirmede <c>http://localhost:4000</c>.</summary>
-        public string BaseUrl { get; set; } = HeroSignalClient.DefaultBaseUrl;
+        public string BaseUrl { get; set; } = PushizoClient.DefaultBaseUrl;
 
         /// <summary>Çağrılarda <see cref="RequestOptions.AppId"/> verilmezse kullanılacak varsayılan app.</summary>
         public string? AppId { get; set; }
@@ -51,12 +51,12 @@ namespace HeroSignal
         /// <summary>Idempotency-Key destekleyen çağrılarda anahtar verilmezse UUID üret (varsayılan true).</summary>
         public bool AutoIdempotencyKey { get; set; } = true;
 
-        /// <summary>User-Agent başlığı (varsayılan <c>herosignal-dotnet/&lt;sürüm&gt;</c>).</summary>
+        /// <summary>User-Agent başlığı (varsayılan <c>pushizo-dotnet/&lt;sürüm&gt;</c>).</summary>
         public string? UserAgent { get; set; }
 
         /// <summary>
         /// Özel <see cref="System.Net.Http.HttpClient"/> (IHttpClientFactory, proxy, test işleyicisi). Verilirse ömrü
-        /// çağırana aittir; verilmezse istemci kendi örneğini oluşturur ve <see cref="HeroSignalClient.Dispose"/> ile kapatır.
+        /// çağırana aittir; verilmezse istemci kendi örneğini oluşturur ve <see cref="PushizoClient.Dispose"/> ile kapatır.
         /// </summary>
         public System.Net.Http.HttpClient? HttpClient { get; set; }
     }

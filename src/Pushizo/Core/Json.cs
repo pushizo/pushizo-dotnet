@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace HeroSignal.Core
+namespace Pushizo.Core
 {
     /// <summary>SDK genelinde paylaşılan System.Text.Json ayarları: null alanlar gönderilmez, bilinmeyen alanlar yok sayılır.</summary>
     public static class Json

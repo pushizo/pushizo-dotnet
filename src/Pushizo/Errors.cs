@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HeroSignal
+namespace Pushizo
 {
     /// <summary>API hata zarfındaki <c>error.code</c> değerleri (HS_ önekli katalog).</summary>
     public static class ErrorCodes
@@ -35,9 +35,9 @@ namespace HeroSignal
     /// API hata zarfından (<c>{"error": {"code", "message", "request_id", "details"}}</c>) türetilen istisna.
     /// HTTP durumuna göre alt sınıflar fırlatılır (<see cref="NotFoundException"/>, <see cref="RateLimitException"/> …).
     /// </summary>
-    public class HeroSignalException : Exception
+    public class PushizoException : Exception
     {
-        public HeroSignalException(int status, string code, string message, string? requestId = null,
+        public PushizoException(int status, string code, string message, string? requestId = null,
             IReadOnlyDictionary<string, object?>? details = null, TimeSpan? retryAfter = null, Exception? inner = null)
             : base(message, inner)
         {
@@ -69,7 +69,7 @@ namespace HeroSignal
             $"{GetType().Name}[{Status} {Code}] {Message}" + (RequestId is null ? string.Empty : $" (request_id={RequestId})");
 
         /// <summary>HTTP durumuna karşılık gelen alt sınıfı oluşturur.</summary>
-        public static HeroSignalException Create(int status, string code, string message, string? requestId,
+        public static PushizoException Create(int status, string code, string message, string? requestId,
             IReadOnlyDictionary<string, object?>? details, TimeSpan? retryAfter)
         {
             switch (status)
@@ -92,60 +92,60 @@ namespace HeroSignal
             {
                 return new ServerException(status, code, message, requestId, details, retryAfter);
             }
-            return new HeroSignalException(status, code, message, requestId, details, retryAfter);
+            return new PushizoException(status, code, message, requestId, details, retryAfter);
         }
     }
 
     /// <summary>Bağlantı kurulamadı veya zaman aşımı (Status 0).</summary>
-    public sealed class NetworkException : HeroSignalException
+    public sealed class NetworkException : PushizoException
     {
         public NetworkException(string message, Exception? inner = null) : base(0, ErrorCodes.Network, message, inner: inner) { }
     }
 
     /// <summary>400 / 422: istek doğrulanamadı veya işlenemedi (Details alan hatalarını içerir).</summary>
-    public sealed class InvalidRequestException : HeroSignalException
+    public sealed class InvalidRequestException : PushizoException
     {
         public InvalidRequestException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details)
             : base(status, code, message, requestId, details) { }
     }
 
     /// <summary>401: API anahtarı eksik veya geçersiz.</summary>
-    public sealed class AuthenticationException : HeroSignalException
+    public sealed class AuthenticationException : PushizoException
     {
         public AuthenticationException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details)
             : base(status, code, message, requestId, details) { }
     }
 
     /// <summary>403: anahtarın kapsamı yetersiz, IP izin listesi dışı veya kaynak başka kiracıya ait.</summary>
-    public sealed class PermissionDeniedException : HeroSignalException
+    public sealed class PermissionDeniedException : PushizoException
     {
         public PermissionDeniedException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details)
             : base(status, code, message, requestId, details) { }
     }
 
     /// <summary>404: kaynak bulunamadı.</summary>
-    public sealed class NotFoundException : HeroSignalException
+    public sealed class NotFoundException : PushizoException
     {
         public NotFoundException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details)
             : base(status, code, message, requestId, details) { }
     }
 
     /// <summary>409: kaynak çakışması veya idempotency anahtarı çakışması.</summary>
-    public sealed class ConflictException : HeroSignalException
+    public sealed class ConflictException : PushizoException
     {
         public ConflictException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details)
             : base(status, code, message, requestId, details) { }
     }
 
     /// <summary>429: hız sınırı veya plan kotası aşıldı.</summary>
-    public sealed class RateLimitException : HeroSignalException
+    public sealed class RateLimitException : PushizoException
     {
         public RateLimitException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details, TimeSpan? retryAfter)
             : base(status, code, message, requestId, details, retryAfter) { }
     }
 
     /// <summary>5xx: sunucu veya sağlayıcı geçici olarak kullanılamıyor.</summary>
-    public sealed class ServerException : HeroSignalException
+    public sealed class ServerException : PushizoException
     {
         public ServerException(int status, string code, string message, string? requestId, IReadOnlyDictionary<string, object?>? details, TimeSpan? retryAfter)
             : base(status, code, message, requestId, details, retryAfter) { }
@@ -154,7 +154,7 @@ namespace HeroSignal
     /// <summary>Webhook imzası geçersiz veya gövde ayrıştırılamadı (<c>malformed_body</c>).</summary>
     public sealed class WebhookSignatureException : Exception
     {
-        public WebhookSignatureException(string reason) : base($"HeroSignal webhook imzası geçersiz: {reason}")
+        public WebhookSignatureException(string reason) : base($"Pushizo webhook imzası geçersiz: {reason}")
         {
             Reason = reason;
         }
