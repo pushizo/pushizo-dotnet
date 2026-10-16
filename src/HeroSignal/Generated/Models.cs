@@ -579,6 +579,27 @@ namespace HeroSignal.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
         public string? CompletedAt { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios", "android", "huawei", "web".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("platforms")]
+        public global::System.Collections.Generic.List<string>? Platforms { get; set; }
+
+        /// <summary>
+        /// Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("framework")]
+        public string? Framework { get; set; }
+
+        /// <summary>
+        /// Değerler: "code", "wordpress".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("web_integration")]
+        public string? WebIntegration { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
     }
@@ -14108,6 +14129,27 @@ namespace HeroSignal.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
         public string? CompletedAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Değerler: "ios", "android", "huawei", "web".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("platforms")]
+        public global::System.Collections.Generic.List<string>? Platforms { get; set; }
+
+        /// <summary>
+        /// Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("framework")]
+        public string? Framework { get; set; }
+
+        /// <summary>
+        /// Değerler: "code", "wordpress".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("web_integration")]
+        public string? WebIntegration { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::HeroSignal.Core.Json.Stringify(this);
