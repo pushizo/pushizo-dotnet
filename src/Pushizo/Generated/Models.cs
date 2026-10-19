@@ -15921,6 +15921,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("trial_ends_at")]
         public string? TrialEndsAt { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("overage")]
+        public global::Pushizo.Models.UsageReportOverage? Overage { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -16031,6 +16034,108 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hard")]
         public bool? Hard { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportOverage şeması.
+    /// </summary>
+    public sealed class UsageReportOverage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lines")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UsageReportOverageLinesItem>? Lines { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totals")]
+        public global::Pushizo.Models.UsageReportOverageTotals? Totals { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportOverageLinesItem şeması.
+    /// </summary>
+    public sealed class UsageReportOverageLinesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        public string? Metric { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("included")]
+        public double? Included { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("used")]
+        public double? Used { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("billable")]
+        public double? Billable { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("amounts")]
+        public global::Pushizo.Models.UsageReportOverageLinesItemAmounts? Amounts { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportOverageLinesItemAmounts şeması.
+    /// </summary>
+    public sealed class UsageReportOverageLinesItemAmounts
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("USD")]
+        public double? Usd { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("TRY")]
+        public double? Try { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UsageReportOverageTotals şeması.
+    /// </summary>
+    public sealed class UsageReportOverageTotals
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("USD")]
+        public double? Usd { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("TRY")]
+        public double? Try { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
