@@ -1270,6 +1270,64 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Takımlar
+        ///
+        /// <c>GET /v1/apps/{appId}/inbox/teams</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.InboxTeamList> TeamsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/inbox/teams");
+            return _client.ExecuteAsync<global::Pushizo.Models.InboxTeamList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Temsilciler ve varlık durumu
+        ///
+        /// <c>GET /v1/apps/{appId}/inbox/agents</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.InboxAgentList> AgentsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/inbox/agents");
+            return _client.ExecuteAsync<global::Pushizo.Models.InboxAgentList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gelen kutusu ayarları
+        ///
+        /// <c>GET /v1/apps/{appId}/inbox/settings</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.InboxSettings> SettingsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/inbox/settings");
+            return _client.ExecuteAsync<global::Pushizo.Models.InboxSettings>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gelen kutusu ayarlarını güncelle
+        ///
+        /// <c>PUT /v1/apps/{appId}/inbox/settings</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.InboxSettings> UpdateSettingsAsync(global::Pushizo.Models.InboxSettingsUpdateDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/inbox/settings");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.InboxSettings>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gelen kutusu metrikleri (ilk yanıt/çözüm ort. ve p90, SLA, temsilci tablosu)
+        ///
+        /// <c>GET /v1/apps/{appId}/inbox/metrics</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.InboxMetrics> MetricsAsync(global::Pushizo.Params.InboxMetricsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/inbox/metrics");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.InboxMetrics>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Kullanıcının bildirim kutusu (okunmamış sayısı dahil)
         ///
         /// <c>GET /v1/apps/{appId}/users/by/{label}/{value}/inbox</c>
@@ -2112,6 +2170,199 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// ads kaynağı.
+    /// </summary>
+    public sealed class AdsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal AdsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Bağlı reklam hesapları
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/accounts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAccountList> ListAccountsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/accounts");
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAccountList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reklam kitleleri
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/audiences</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudienceList> ListAudiencesAsync(global::Pushizo.Params.AdsListAudiencesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/audiences");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudienceList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reklam kitlesi oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/ads/audiences</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudience> CreateAudienceAsync(global::Pushizo.Models.CreateAdAudienceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/ads/audiences");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudience>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reklam kitlesi ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/audiences/{audienceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudience> GetAudienceAsync(string audienceId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/audiences/{audienceId}");
+            op.PathParam("audienceId", audienceId);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudience>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reklam kitlesini güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/ads/audiences/{audienceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudience> UpdateAudienceAsync(string audienceId, global::Pushizo.Models.UpdateAdAudienceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/ads/audiences/{audienceId}");
+            op.PathParam("audienceId", audienceId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudience>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reklam kitlesini sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/ads/audiences/{audienceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdOk> RemoveAudienceAsync(string audienceId, global::Pushizo.Params.AdsRemoveAudienceParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/ads/audiences/{audienceId}");
+            op.PathParam("audienceId", audienceId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdOk>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Senkronu şimdi çalıştır
+        ///
+        /// <c>POST /v1/apps/{appId}/ads/audiences/{audienceId}/sync</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudienceSyncQueued> SyncAsync(string audienceId, global::Pushizo.Models.SyncAdAudienceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/ads/audiences/{audienceId}/sync");
+            op.PathParam("audienceId", audienceId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudienceSyncQueued>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Senkron geçmişi
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/audiences/{audienceId}/syncs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudienceSyncList> SyncsAsync(string audienceId, global::Pushizo.Params.AdsSyncsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/audiences/{audienceId}/syncs");
+            op.PathParam("audienceId", audienceId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudienceSyncList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Benzer kitle (lookalike) oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/ads/audiences/{audienceId}/lookalikes</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAudience> LookalikeAsync(string audienceId, global::Pushizo.Models.CreateLookalikeDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/ads/audiences/{audienceId}/lookalikes");
+            op.PathParam("audienceId", audienceId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAudience>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// cannedResponses kaynağı.
+    /// </summary>
+    public sealed class CannedResponsesResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal CannedResponsesResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Hazır yanıtlar
+        ///
+        /// <c>GET /v1/apps/{appId}/canned-responses</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CannedResponseList> CannedAsync(global::Pushizo.Params.CannedResponsesCannedParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/canned-responses");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.CannedResponseList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Hazır yanıt oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/canned-responses</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CannedResponse> CreateCannedAsync(global::Pushizo.Models.CannedInputDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/canned-responses");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.CannedResponse>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Hazır yanıtı güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/canned-responses/{cannedId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CannedResponse> UpdateCannedAsync(string cannedId, global::Pushizo.Models.CannedUpdateDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/canned-responses/{cannedId}");
+            op.PathParam("cannedId", cannedId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.CannedResponse>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Hazır yanıtı sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/canned-responses/{cannedId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> DeleteCannedAsync(string cannedId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/canned-responses/{cannedId}");
+            op.PathParam("cannedId", cannedId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// categories kaynağı.
     /// </summary>
     public sealed class CategoriesResource
@@ -2291,7 +2542,7 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
-        /// Konuşmalar (SMS, WhatsApp, RCS; son mesaja göre; kanal/durum/okunmamış/kişi filtresi)
+        /// Konuşmalar (SMS, WhatsApp, RCS, e-posta, canlı sohbet; son mesaja göre; kanal/durum/okunmamış/atanan/takım/kişi filtresi)
         ///
         /// <c>GET /v1/apps/{appId}/conversations</c>
         /// </summary>
@@ -2325,7 +2576,7 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
-        /// Konuşma (WhatsApp oturum penceresi ve açık rıza durumu dahil)
+        /// Konuşma (atama, SLA, bot durumu, WhatsApp oturum penceresi ve açık rıza dahil)
         ///
         /// <c>GET /v1/apps/{appId}/conversations/{conversationId}</c>
         /// </summary>
@@ -2337,7 +2588,21 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
-        /// Konuşma mesajları (yeniden eskiye; giden mesaj durumu teslimattan)
+        /// Konuşma durumu: open / pending / resolved (closed = resolved)
+        ///
+        /// <c>PATCH /v1/apps/{appId}/conversations/{conversationId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Conversation> SetStatusAsync(string conversationId, global::Pushizo.Models.ConversationUpdateDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/conversations/{conversationId}");
+            op.PathParam("conversationId", conversationId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Conversation>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Konuşma mesajları (yeniden eskiye; `after_seq` ile eskiden yeniye; giden mesaj durumu teslimattan veya okundu işaretçisinden)
         ///
         /// <c>GET /v1/apps/{appId}/conversations/{conversationId}/messages</c>
         /// </summary>
@@ -2372,7 +2637,7 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
-        /// Yanıt gönder. WhatsApp: açık rıza zorunlu; son gelen mesajdan 24 saat içinde metin/medya, pencere dışında yalnızca onaylı şablon (aksi 422 WHATSAPP_WINDOW_CLOSED).
+        /// Yanıt gönder (client_message_id ile tekilleşir). Sohbet: doğrudan; e-posta: yanıt adresli işlemsel e-posta; WhatsApp: açık rıza zorunlu, son gelen mesajdan 24 saat içinde metin/medya, pencere dışında yalnızca onaylı şablon (aksi 422 WHATSAPP_WINDOW_CLOSED).
         ///
         /// <c>POST /v1/apps/{appId}/conversations/{conversationId}/messages</c>
         /// </summary>
@@ -2386,7 +2651,7 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
-        /// Gelen mesajları okundu işaretle
+        /// Gelen mesajları okundu işaretle (sohbette ziyaretçiye okundu bilgisi gider)
         ///
         /// <c>POST /v1/apps/{appId}/conversations/{conversationId}/read</c>
         /// </summary>
@@ -2395,6 +2660,46 @@ namespace Pushizo.Resources
             var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/conversations/{conversationId}/read");
             op.PathParam("conversationId", conversationId);
             return _client.ExecuteAsync<global::Pushizo.Models.Conversation>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Konuşmayı temsilciye ve/veya takıma ata (inbox.manage olmadan yalnızca kendine)
+        ///
+        /// <c>POST /v1/apps/{appId}/conversations/{conversationId}/assign</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Conversation> AssignAsync(string conversationId, global::Pushizo.Models.ConversationAssignDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/conversations/{conversationId}/assign");
+            op.PathParam("conversationId", conversationId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Conversation>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Sohbetten kişiye etiket ekle/kaldır
+        ///
+        /// <c>POST /v1/apps/{appId}/conversations/{conversationId}/tags</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ConversationTagsResult> TagsAsync(string conversationId, global::Pushizo.Models.ConversationTagsDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/conversations/{conversationId}/tags");
+            op.PathParam("conversationId", conversationId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.ConversationTagsResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Konuşma zaman çizelgesi (atama, durum, ilk yanıt, bot devri)
+        ///
+        /// <c>GET /v1/apps/{appId}/conversations/{conversationId}/activity</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ConversationActivity> ActivityAsync(string conversationId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/conversations/{conversationId}/activity");
+            op.PathParam("conversationId", conversationId);
+            return _client.ExecuteAsync<global::Pushizo.Models.ConversationActivity>(op, options, cancellationToken);
         }
     }
 
@@ -2611,6 +2916,127 @@ namespace Pushizo.Resources
             op.PathParam("planId", planId);
             @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::Pushizo.Models.EmailWarmupUsage>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// forms kaynağı.
+    /// </summary>
+    public sealed class FormsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal FormsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Formlar
+        ///
+        /// <c>GET /v1/apps/{appId}/forms</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.FormPage> ListAsync(global::Pushizo.Params.FormsListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/forms");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.FormPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.Form> ListAllAsync(global::Pushizo.Params.FormsListParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.FormsListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Form oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/forms</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Form> CreateAsync(global::Pushizo.Models.CreateFormDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/forms");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Form>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Form detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/forms/{formId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Form> GetAsync(string formId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/forms/{formId}");
+            op.PathParam("formId", formId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Form>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Form gönderimleri
+        ///
+        /// <c>GET /v1/apps/{appId}/forms/{formId}/submissions</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.FormSubmissionPage> SubmissionsAsync(string formId, global::Pushizo.Params.FormsSubmissionsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/forms/{formId}/submissions");
+            op.PathParam("formId", formId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.FormSubmissionPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// SubmissionsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.FormSubmission> SubmissionsAllAsync(string formId, global::Pushizo.Params.FormsSubmissionsParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.FormsSubmissionsParams();
+            while (true)
+            {
+                var page = await SubmissionsAsync(formId, p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Sunucu tarafı form gönderimi (`external_id` verilirse o kullanıcının profili güncellenir)
+        ///
+        /// <c>POST /v1/apps/{appId}/forms/{formId}/submissions</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.FormSubmitResult> SubmitAsync(string formId, global::Pushizo.Models.PublicFormSubmitDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/forms/{formId}/submissions");
+            op.PathParam("formId", formId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.FormSubmitResult>(op, options, cancellationToken);
         }
     }
 
@@ -3028,6 +3454,89 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// landingPages kaynağı.
+    /// </summary>
+    public sealed class LandingPagesResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal LandingPagesResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Landing sayfaları
+        ///
+        /// <c>GET /v1/apps/{appId}/landing-pages</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.LandingPageList> ListAsync(global::Pushizo.Params.LandingPagesListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/landing-pages");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.LandingPageList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.LandingPageListDataItem> ListAllAsync(global::Pushizo.Params.LandingPagesListParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.LandingPagesListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Landing sayfası detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/landing-pages/{pageId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.LandingPage> GetAsync(string pageId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/landing-pages/{pageId}");
+            op.PathParam("pageId", pageId);
+            return _client.ExecuteAsync<global::Pushizo.Models.LandingPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Taslağı yayınla
+        ///
+        /// <c>POST /v1/apps/{appId}/landing-pages/{pageId}/publish</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.LandingPage> PublishAsync(string pageId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/landing-pages/{pageId}/publish");
+            op.PathParam("pageId", pageId);
+            return _client.ExecuteAsync<global::Pushizo.Models.LandingPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Yayından kaldır
+        ///
+        /// <c>POST /v1/apps/{appId}/landing-pages/{pageId}/unpublish</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.LandingPage> UnpublishAsync(string pageId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/landing-pages/{pageId}/unpublish");
+            op.PathParam("pageId", pageId);
+            return _client.ExecuteAsync<global::Pushizo.Models.LandingPage>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// liveActivities kaynağı.
     /// </summary>
     public sealed class LiveActivitiesResource
@@ -3280,6 +3789,154 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// surveys kaynağı.
+    /// </summary>
+    public sealed class SurveysResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal SurveysResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Anketler
+        ///
+        /// <c>GET /v1/apps/{appId}/surveys</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SurveyPage> ListAsync(global::Pushizo.Params.SurveysListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/surveys");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.SurveyPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.Survey> ListAllAsync(global::Pushizo.Params.SurveysListParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.SurveysListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Anket oluştur (taslak)
+        ///
+        /// <c>POST /v1/apps/{appId}/surveys</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Survey> CreateAsync(global::Pushizo.Models.CreateSurveyDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/surveys");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Survey>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Anket detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/surveys/{surveyId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Survey> GetAsync(string surveyId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/surveys/{surveyId}");
+            op.PathParam("surveyId", surveyId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Survey>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Etkinleştir / kapat
+        ///
+        /// <c>POST /v1/apps/{appId}/surveys/{surveyId}/status</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Survey> StatusAsync(string surveyId, global::Pushizo.Models.SurveyStatusDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/surveys/{surveyId}/status");
+            op.PathParam("surveyId", surveyId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Survey>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// NPS / CSAT raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/surveys/{surveyId}/report</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SurveyReport> ReportAsync(string surveyId, global::Pushizo.Params.SurveysReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/surveys/{surveyId}/report");
+            op.PathParam("surveyId", surveyId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.SurveyReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Anket yanıtları
+        ///
+        /// <c>GET /v1/apps/{appId}/surveys/{surveyId}/responses</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SurveyResponsePage> ResponsesAsync(string surveyId, global::Pushizo.Params.SurveysResponsesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/surveys/{surveyId}/responses");
+            op.PathParam("surveyId", surveyId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.SurveyResponsePage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ResponsesAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.SurveyResponse> ResponsesAllAsync(string surveyId, global::Pushizo.Params.SurveysResponsesParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.SurveysResponsesParams();
+            while (true)
+            {
+                var page = await ResponsesAsync(surveyId, p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Sunucu tarafı anket yanıtı (`external_id` ile kullanıcıya bağlanır)
+        ///
+        /// <c>POST /v1/apps/{appId}/surveys/{surveyId}/responses</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SurveyResponseResult> RespondAsync(string surveyId, global::Pushizo.Models.PublicSurveyResponseDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/surveys/{surveyId}/responses");
+            op.PathParam("surveyId", surveyId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SurveyResponseResult>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// warehouseExports kaynağı.
     /// </summary>
     public sealed class WarehouseExportsResource
@@ -3434,6 +4091,119 @@ namespace Pushizo.Resources
                 p = p.Copy();
                 p.Cursor = page.NextCursor;
             }
+        }
+    }
+
+    /// <summary>
+    /// webCampaigns kaynağı.
+    /// </summary>
+    public sealed class WebCampaignsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal WebCampaignsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Web kampanyaları
+        ///
+        /// <c>GET /v1/apps/{appId}/web-campaigns</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebCampaignPage> ListAsync(global::Pushizo.Params.WebCampaignsListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/web-campaigns");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.WebCampaignPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.WebCampaign> ListAllAsync(global::Pushizo.Params.WebCampaignsListParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.WebCampaignsListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Web kampanyası oluştur (taslak)
+        ///
+        /// <c>POST /v1/apps/{appId}/web-campaigns</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebCampaign> CreateAsync(global::Pushizo.Models.CreateWebCampaignDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/web-campaigns");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WebCampaign>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Web kampanyası detayı ve istatistikleri
+        ///
+        /// <c>GET /v1/apps/{appId}/web-campaigns/{campaignId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebCampaign> GetAsync(string campaignId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/web-campaigns/{campaignId}");
+            op.PathParam("campaignId", campaignId);
+            return _client.ExecuteAsync<global::Pushizo.Models.WebCampaign>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Web kampanyasını düzenle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/web-campaigns/{campaignId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebCampaign> UpdateAsync(string campaignId, global::Pushizo.Models.UpdateWebCampaignDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/web-campaigns/{campaignId}");
+            op.PathParam("campaignId", campaignId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WebCampaign>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Günlük seri
+        ///
+        /// <c>GET /v1/apps/{appId}/web-campaigns/{campaignId}/report</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebCampaignReport> ReportAsync(string campaignId, global::Pushizo.Params.WebCampaignsReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/web-campaigns/{campaignId}/report");
+            op.PathParam("campaignId", campaignId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.WebCampaignReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Yayınla / duraklat / arşivle
+        ///
+        /// <c>POST /v1/apps/{appId}/web-campaigns/{campaignId}/status</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebCampaign> StatusAsync(string campaignId, global::Pushizo.Models.WebCampaignStatusDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/web-campaigns/{campaignId}/status");
+            op.PathParam("campaignId", campaignId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WebCampaign>(op, options, cancellationToken);
         }
     }
 
