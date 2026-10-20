@@ -96,6 +96,18 @@ namespace Pushizo.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("terms_accepted_at")]
+        public string? TermsAcceptedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("terms_version")]
+        public string? TermsVersion { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audiences")]
         public long? Audiences { get; set; }
 
