@@ -791,6 +791,174 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// AdsResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsListParams
+    {
+        public string? AdAccountId { get; set; }
+
+        /// <summary>
+        /// Değerler: "campaign", "ad_set", "ad".
+        /// </summary>
+        public string? Level { get; set; }
+
+        public string? ParentId { get; set; }
+
+        /// <summary>
+        /// Değerler: "active", "paused", "pending", "rejected", "archived", "deleted", "unknown".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public string? Q { get; set; }
+
+        public string? From { get; set; }
+
+        public string? To { get; set; }
+
+        public long? Limit { get; set; }
+
+        internal AdsListParams Copy() => (AdsListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("ad_account_id", AdAccountId);
+            op.Query("level", Level);
+            op.Query("parent_id", ParentId);
+            op.Query("status", Status);
+            op.Query("q", Q);
+            op.Query("from", From);
+            op.Query("to", To);
+            op.Query("limit", Limit);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.SpendAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsSpendParams
+    {
+        public string? Currency { get; set; }
+
+        /// <summary>
+        /// Değerler: "day", "platform", "account", "campaign", "ad_set".
+        /// </summary>
+        public string? GroupBy { get; set; }
+
+        public string? AdAccountId { get; set; }
+
+        public string? CampaignId { get; set; }
+
+        internal AdsSpendParams Copy() => (AdsSpendParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("currency", Currency);
+            op.Query("group_by", GroupBy);
+            op.Query("ad_account_id", AdAccountId);
+            op.Query("campaign_id", CampaignId);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.AttributionAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsAttributionParams
+    {
+        /// <summary>
+        /// Değerler: "last_click", "first_click", "linear", "time_decay".
+        /// </summary>
+        public string? Model { get; set; }
+
+        public long? WindowDays { get; set; }
+
+        public long? HalfLifeDays { get; set; }
+
+        public string? Currency { get; set; }
+
+        /// <summary>
+        /// Değerler: "channel", "campaign", "ad_set".
+        /// </summary>
+        public string? GroupBy { get; set; }
+
+        public string? ConversionEvents { get; set; }
+
+        internal AdsAttributionParams Copy() => (AdsAttributionParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("model", Model);
+            op.Query("window_days", WindowDays);
+            op.Query("half_life_days", HalfLifeDays);
+            op.Query("currency", Currency);
+            op.Query("group_by", GroupBy);
+            op.Query("conversion_events", ConversionEvents);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.LtvAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsLtvParams
+    {
+        public long? Months { get; set; }
+
+        public long? Cohorts { get; set; }
+
+        public string? Currency { get; set; }
+
+        internal AdsLtvParams Copy() => (AdsLtvParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("months", Months);
+            op.Query("cohorts", Cohorts);
+            op.Query("currency", Currency);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.CapiDeliveriesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsCapiDeliveriesParams
+    {
+        public string? ConfigId { get; set; }
+
+        /// <summary>
+        /// Değerler: "pending", "sent", "failed", "skipped".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public long? Limit { get; set; }
+
+        internal AdsCapiDeliveriesParams Copy() => (AdsCapiDeliveriesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("config_id", ConfigId);
+            op.Query("status", Status);
+            op.Query("limit", Limit);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.AlertHistoryAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsAlertHistoryParams
+    {
+        public string? RuleId { get; set; }
+
+        public long? Limit { get; set; }
+
+        internal AdsAlertHistoryParams Copy() => (AdsAlertHistoryParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("rule_id", RuleId);
+            op.Query("limit", Limit);
+        }
+    }
+
+    /// <summary>
     /// CannedResponsesResource.CannedAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class CannedResponsesCannedParams

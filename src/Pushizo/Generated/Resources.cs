@@ -2296,6 +2296,181 @@ namespace Pushizo.Resources
             op.Body = body;
             return _client.ExecuteAsync<global::Pushizo.Models.AdAudience>(op, options, cancellationToken);
         }
+
+        /// <summary>
+        /// Kampanya / reklam seti / reklam listesi ve metrikler
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/campaigns</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdEntityList> ListAsync(global::Pushizo.Params.AdsListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/campaigns");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdEntityList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kampanya / reklam seti / reklam ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/campaigns/{entityId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdEntity> GetAsync(string entityId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/campaigns/{entityId}");
+            op.PathParam("entityId", entityId);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdEntity>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Durum ve günlük bütçe değişikliği
+        ///
+        /// <c>PATCH /v1/apps/{appId}/ads/campaigns/{entityId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdEntity> UpdateAsync(string entityId, global::Pushizo.Models.UpdateAdCampaignDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/ads/campaigns/{entityId}");
+            op.PathParam("entityId", entityId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdEntity>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kampanyaları ve metrikleri şimdi yenile
+        ///
+        /// <c>POST /v1/apps/{appId}/ads/accounts/{accountId}/refresh</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdRefreshQueued> RefreshAsync(string accountId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/ads/accounts/{accountId}/refresh");
+            op.PathParam("accountId", accountId);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdRefreshQueued>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Harcama ve performans raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/reports/spend</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdSpendReport> SpendAsync(string from, string to, global::Pushizo.Params.AdsSpendParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/reports/spend");
+            op.Query("from", from);
+            op.Query("to", to);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdSpendReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Birleşik atribüsyon raporu (ROAS, CAC)
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/reports/attribution</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdAttributionReport> AttributionAsync(string from, string to, global::Pushizo.Params.AdsAttributionParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/reports/attribution");
+            op.Query("from", from);
+            op.Query("to", to);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdAttributionReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kohort LTV raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/reports/ltv</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdLtvReport> LtvAsync(global::Pushizo.Params.AdsLtvParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/reports/ltv");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdLtvReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Conversions API yapılandırmaları
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/conversions-api/configs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdCapiConfigList> CapiConfigsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/conversions-api/configs");
+            return _client.ExecuteAsync<global::Pushizo.Models.AdCapiConfigList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Conversions API teslim geçmişi
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/conversions-api/deliveries</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdCapiDeliveryList> CapiDeliveriesAsync(global::Pushizo.Params.AdsCapiDeliveriesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/conversions-api/deliveries");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdCapiDeliveryList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bütçe uyarı kuralları
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/alert-rules</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdBudgetAlertRuleList> RulesAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/alert-rules");
+            return _client.ExecuteAsync<global::Pushizo.Models.AdBudgetAlertRuleList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bütçe uyarı kuralı oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/ads/alert-rules</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdBudgetAlertRule> CreateRuleAsync(global::Pushizo.Models.CreateBudgetAlertRuleDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/ads/alert-rules");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdBudgetAlertRule>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bütçe uyarı kuralını güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/ads/alert-rules/{ruleId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdBudgetAlertRule> UpdateRuleAsync(string ruleId, global::Pushizo.Models.UpdateBudgetAlertRuleDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/ads/alert-rules/{ruleId}");
+            op.PathParam("ruleId", ruleId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AdBudgetAlertRule>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bütçe uyarı kuralını sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/ads/alert-rules/{ruleId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdOk> RemoveRuleAsync(string ruleId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/ads/alert-rules/{ruleId}");
+            op.PathParam("ruleId", ruleId);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdOk>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Tetiklenen bütçe uyarıları
+        ///
+        /// <c>GET /v1/apps/{appId}/ads/alerts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AdBudgetAlertList> AlertHistoryAsync(global::Pushizo.Params.AdsAlertHistoryParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/ads/alerts");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AdBudgetAlertList>(op, options, cancellationToken);
+        }
     }
 
     /// <summary>
