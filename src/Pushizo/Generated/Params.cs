@@ -284,6 +284,30 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// InboxResource.MetricsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class InboxMetricsParams
+    {
+        public string? From { get; set; }
+
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+        /// </summary>
+        public string? Channel { get; set; }
+
+        internal InboxMetricsParams Copy() => (InboxMetricsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("from", From);
+            op.Query("to", To);
+            op.Query("channel", Channel);
+        }
+    }
+
+    /// <summary>
     /// InboxResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class InboxListParams
@@ -719,6 +743,69 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// AdsResource.ListAudiencesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsListAudiencesParams
+    {
+        public string? AdAccountId { get; set; }
+
+        internal AdsListAudiencesParams Copy() => (AdsListAudiencesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("ad_account_id", AdAccountId);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.RemoveAudienceAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsRemoveAudienceParams
+    {
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? DeleteOnPlatform { get; set; }
+
+        internal AdsRemoveAudienceParams Copy() => (AdsRemoveAudienceParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("delete_on_platform", DeleteOnPlatform);
+        }
+    }
+
+    /// <summary>
+    /// AdsResource.SyncsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AdsSyncsParams
+    {
+        public long? Limit { get; set; }
+
+        internal AdsSyncsParams Copy() => (AdsSyncsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+        }
+    }
+
+    /// <summary>
+    /// CannedResponsesResource.CannedAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CannedResponsesCannedParams
+    {
+        public string? Q { get; set; }
+
+        internal CannedResponsesCannedParams Copy() => (CannedResponsesCannedParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("q", Q);
+        }
+    }
+
+    /// <summary>
     /// ContentTablesResource.CreateTableUploadAsync için multipart/form-data alanları.
     /// </summary>
     public sealed class ContentTablesCreateTableUploadForm
@@ -806,12 +893,12 @@ namespace Pushizo.Params
         public string? Cursor { get; set; }
 
         /// <summary>
-        /// Değerler: "sms", "whatsapp", "rcs".
+        /// Değerler: "sms", "whatsapp", "rcs", "email", "chat".
         /// </summary>
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Değerler: "open", "closed".
+        /// Değerler: "open", "pending", "resolved", "closed".
         /// </summary>
         public string? Status { get; set; }
 
@@ -821,6 +908,10 @@ namespace Pushizo.Params
         public string? Unread { get; set; }
 
         public string? Q { get; set; }
+
+        public string? Assignee { get; set; }
+
+        public string? TeamId { get; set; }
 
         internal ConversationsListParams Copy() => (ConversationsListParams)MemberwiseClone();
 
@@ -832,6 +923,8 @@ namespace Pushizo.Params
             op.Query("status", Status);
             op.Query("unread", Unread);
             op.Query("q", Q);
+            op.Query("assignee", Assignee);
+            op.Query("team_id", TeamId);
         }
     }
 
@@ -844,12 +937,15 @@ namespace Pushizo.Params
 
         public string? Cursor { get; set; }
 
+        public long? AfterSeq { get; set; }
+
         internal ConversationsMessagesParams Copy() => (ConversationsMessagesParams)MemberwiseClone();
 
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {
             op.Query("limit", Limit);
             op.Query("cursor", Cursor);
+            op.Query("after_seq", AfterSeq);
         }
     }
 
@@ -865,6 +961,57 @@ namespace Pushizo.Params
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {
             op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
+    /// FormsResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class FormsListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "active", "archived".
+        /// </summary>
+        public string? Status { get; set; }
+
+        internal FormsListParams Copy() => (FormsListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+        }
+    }
+
+    /// <summary>
+    /// FormsResource.SubmissionsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class FormsSubmissionsParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "accepted", "pending_confirmation", "confirmed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public string? Since { get; set; }
+
+        internal FormsSubmissionsParams Copy() => (FormsSubmissionsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+            op.Query("since", Since);
         }
     }
 
@@ -962,6 +1109,96 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// LandingPagesResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class LandingPagesListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "draft", "published", "archived".
+        /// </summary>
+        public string? Status { get; set; }
+
+        internal LandingPagesListParams Copy() => (LandingPagesListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+        }
+    }
+
+    /// <summary>
+    /// SurveysResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SurveysListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "draft", "active", "closed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        internal SurveysListParams Copy() => (SurveysListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+        }
+    }
+
+    /// <summary>
+    /// SurveysResource.ReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SurveysReportParams
+    {
+        public long? Days { get; set; }
+
+        internal SurveysReportParams Copy() => (SurveysReportParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
+    /// SurveysResource.ResponsesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SurveysResponsesParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        public string? TextQuestion { get; set; }
+
+        /// <summary>
+        /// Değerler: "promoter", "passive", "detractor".
+        /// </summary>
+        public string? NpsCategory { get; set; }
+
+        internal SurveysResponsesParams Copy() => (SurveysResponsesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("text_question", TextQuestion);
+            op.Query("nps_category", NpsCategory);
+        }
+    }
+
+    /// <summary>
     /// WarehouseExportsResource.RunsAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class WarehouseExportsRunsParams
@@ -976,6 +1213,45 @@ namespace Pushizo.Params
         {
             op.Query("limit", Limit);
             op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// WebCampaignsResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WebCampaignsListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        public string? Status { get; set; }
+
+        internal WebCampaignsListParams Copy() => (WebCampaignsListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+        }
+    }
+
+    /// <summary>
+    /// WebCampaignsResource.ReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WebCampaignsReportParams
+    {
+        public long? Days { get; set; }
+
+        internal WebCampaignsReportParams Copy() => (WebCampaignsReportParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("days", Days);
         }
     }
 

@@ -105,6 +105,16 @@ namespace Pushizo
         public global::Pushizo.Resources.OrganizationResource Organization { get; private set; } = null!;
 
         /// <summary>
+        /// Ads
+        /// </summary>
+        public global::Pushizo.Resources.AdsResource Ads { get; private set; } = null!;
+
+        /// <summary>
+        /// CannedResponses
+        /// </summary>
+        public global::Pushizo.Resources.CannedResponsesResource CannedResponses { get; private set; } = null!;
+
+        /// <summary>
         /// Categories
         /// </summary>
         public global::Pushizo.Resources.CategoriesResource Categories { get; private set; } = null!;
@@ -130,6 +140,11 @@ namespace Pushizo
         public global::Pushizo.Resources.EmailDeliverabilityResource EmailDeliverability { get; private set; } = null!;
 
         /// <summary>
+        /// Forms
+        /// </summary>
+        public global::Pushizo.Resources.FormsResource Forms { get; private set; } = null!;
+
+        /// <summary>
         /// IdentityKeys
         /// </summary>
         public global::Pushizo.Resources.IdentityKeysResource IdentityKeys { get; private set; } = null!;
@@ -143,6 +158,11 @@ namespace Pushizo
         /// Journeys
         /// </summary>
         public global::Pushizo.Resources.JourneysResource Journeys { get; private set; } = null!;
+
+        /// <summary>
+        /// LandingPages
+        /// </summary>
+        public global::Pushizo.Resources.LandingPagesResource LandingPages { get; private set; } = null!;
 
         /// <summary>
         /// LiveActivities
@@ -165,9 +185,19 @@ namespace Pushizo
         public global::Pushizo.Resources.SmsKeywordsResource SmsKeywords { get; private set; } = null!;
 
         /// <summary>
+        /// Surveys
+        /// </summary>
+        public global::Pushizo.Resources.SurveysResource Surveys { get; private set; } = null!;
+
+        /// <summary>
         /// WarehouseExports
         /// </summary>
         public global::Pushizo.Resources.WarehouseExportsResource WarehouseExports { get; private set; } = null!;
+
+        /// <summary>
+        /// WebCampaigns
+        /// </summary>
+        public global::Pushizo.Resources.WebCampaignsResource WebCampaigns { get; private set; } = null!;
 
         /// <summary>
         /// Whatsapp
@@ -195,19 +225,25 @@ namespace Pushizo
             Apps = new global::Pushizo.Resources.AppsResource(this);
             ApiKeys = new global::Pushizo.Resources.ApiKeysResource(this);
             Organization = new global::Pushizo.Resources.OrganizationResource(this);
+            Ads = new global::Pushizo.Resources.AdsResource(this);
+            CannedResponses = new global::Pushizo.Resources.CannedResponsesResource(this);
             Categories = new global::Pushizo.Resources.CategoriesResource(this);
             ContentTables = new global::Pushizo.Resources.ContentTablesResource(this);
             Conversations = new global::Pushizo.Resources.ConversationsResource(this);
             DataFeeds = new global::Pushizo.Resources.DataFeedsResource(this);
             EmailDeliverability = new global::Pushizo.Resources.EmailDeliverabilityResource(this);
+            Forms = new global::Pushizo.Resources.FormsResource(this);
             IdentityKeys = new global::Pushizo.Resources.IdentityKeysResource(this);
             Integrations = new global::Pushizo.Resources.IntegrationsResource(this);
             Journeys = new global::Pushizo.Resources.JourneysResource(this);
+            LandingPages = new global::Pushizo.Resources.LandingPagesResource(this);
             LiveActivities = new global::Pushizo.Resources.LiveActivitiesResource(this);
             Mcp = new global::Pushizo.Resources.McpResource(this);
             Preferences = new global::Pushizo.Resources.PreferencesResource(this);
             SmsKeywords = new global::Pushizo.Resources.SmsKeywordsResource(this);
+            Surveys = new global::Pushizo.Resources.SurveysResource(this);
             WarehouseExports = new global::Pushizo.Resources.WarehouseExportsResource(this);
+            WebCampaigns = new global::Pushizo.Resources.WebCampaignsResource(this);
             Whatsapp = new global::Pushizo.Resources.WhatsappResource(this);
         }
     }
