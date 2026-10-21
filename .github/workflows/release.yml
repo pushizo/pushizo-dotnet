@@ -1,0 +1,39 @@
+# NuGet yayını
+#
+# Trusted publishing (OIDC): uzun ömürlü belirteç saklanmaz. Ana depodaki yayın betiği paketi test edip derler, bu
+# deponun GitHub Release'ine ekler ve bu iş akışını sürüm etiketiyle çalıştırır:
+#   npm run sdk:publish -- <hedef> --yalnizca-github --tetikle --yayinla
+# Elle: Actions → Release → Run workflow → tag.
+# Kurulum (bir kez): nuget.org → Trusted publishing → policy: depo sahibi pushizo, depo pushizo-dotnet, iş akışı release.yml; depo değişkeni NUGET_USER = nuget.org kullanıcı adı.
+
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Sürüm etiketi (ör. v0.1.0)
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 8.0.x
+      - name: Paket dosyalarını release'ten al
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern '*.nupkg' --pattern '*.snupkg' --dir dist
+      - uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ vars.NUGET_USER }}
+      - name: Yayımla
+        run: dotnet nuget push "dist/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
