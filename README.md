@@ -13,8 +13,17 @@
 
 **Pushizo .NET SDK** — Server-side SDK for .NET 8+. Models and resources are generated from the Pushizo OpenAPI schema; retries, idempotency, pagination and webhook verification are built in.
 
-> **Status:** Publishing to NuGet is in progress; until then you can build from this repository.<br>
-> **Durum:** NuGet yayını hazırlanıyor; o zamana kadar bu depodan derleyerek kullanabilirsiniz.
+> **Status:** Publishing to NuGet is in progress.<br>
+> **Durum:** NuGet yayını hazırlanıyor.
+
+**Install from GitHub until then · O zamana kadar GitHub'dan kurulum:**
+
+```bash
+curl -LO https://github.com/pushizo/pushizo-dotnet/releases/download/v0.1.0/Pushizo.0.1.0.nupkg
+dotnet add package Pushizo --version 0.1.0 --source .
+```
+
+**After publication · Yayından sonra:**
 
 ```bash
 dotnet add package Pushizo
