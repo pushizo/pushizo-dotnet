@@ -1,8 +1,36 @@
+<!-- pushizo:header -->
+<p align="center">
+  <a href="https://pushizo.com"><img src="https://raw.githubusercontent.com/pushizo/.github/main/profile/assets/mark.svg" alt="Pushizo" width="56" height="56"></a>
+</p>
+<p align="center">
+  <a href="https://docs.pushizo.com/docs/sdk/dotnet"><img src="https://img.shields.io/badge/docs-docs.pushizo.com-5b4bdb" alt="Docs"></a>
+  <a href="https://docs.pushizo.com/docs/api"><img src="https://img.shields.io/badge/API-reference-b44fc4" alt="API reference"></a>
+  <a href="https://github.com/pushizo/pushizo-dotnet/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-16130f" alt="License: MIT"></a>
+</p>
+<p align="center"><a href="#english">English</a> · <a href="#türkçe">Türkçe</a></p>
+
+## English
+
+**Pushizo .NET SDK** — Server-side SDK for .NET 8+. Models and resources are generated from the Pushizo OpenAPI schema; retries, idempotency, pagination and webhook verification are built in.
+
+> **Status:** Publishing to NuGet is in progress; until then you can build from this repository.<br>
+> **Durum:** NuGet yayını hazırlanıyor; o zamana kadar bu depodan derleyerek kullanabilirsiniz.
+
+```bash
+dotnet add package Pushizo
+```
+
+The detailed guide below is in Turkish; code samples are language-neutral. Full documentation:
+[docs.pushizo.com/docs/sdk/dotnet](https://docs.pushizo.com/docs/sdk/dotnet) · API reference: [docs.pushizo.com/docs/api](https://docs.pushizo.com/docs/api).
+
+## Türkçe
+<!-- /pushizo:header -->
+
 # Pushizo .NET SDK
 
 Pushizo public API'si için C#/.NET sunucu SDK'sı (.NET 8, `HttpClient`, `System.Text.Json`; ek bağımlılık yok).
 Modeller (`Pushizo.Models`), parametre sınıfları (`Pushizo.Params`) ve kaynaklar (`Pushizo.Resources`)
-`api/openapi.yaml`'dan üretilir (`src/Pushizo/Generated/`); kimlik doğrulama, yeniden deneme, idempotency,
+[Pushizo OpenAPI şemasından](https://github.com/pushizo/pushizo-openapi) üretilir (`src/Pushizo/Generated/`); kimlik doğrulama, yeniden deneme, idempotency,
 sayfalama ve webhook imza doğrulaması el yazımıdır.
 
 ## Kurulum
@@ -120,3 +148,24 @@ node sdk/scripts/generate-server-sdks.mjs --lang dotnet    # depo kökünde; Gen
 
 `src/Pushizo/Generated/` elle düzenlenmez. Webhook testleri `sdk/testdata/webhook-signature-vectors.json`
 ortak vektörlerini kullanır.
+
+<!-- pushizo:footer -->
+---
+
+## Support · Destek
+
+- **Guide · Rehber:** [docs.pushizo.com/docs/sdk/dotnet](https://docs.pushizo.com/docs/sdk/dotnet)
+- **API reference & OpenAPI · API referansı ve OpenAPI:** [docs.pushizo.com/docs/api](https://docs.pushizo.com/docs/api) ·
+  [pushizo-openapi](https://github.com/pushizo/pushizo-openapi)
+- **Bugs & ideas · Hata ve öneri:** [Issues](https://github.com/pushizo/pushizo-dotnet/issues)
+- **Security · Güvenlik:** please do not open public issues; email [security@pushizo.com](mailto:security@pushizo.com) ·
+  herkese açık issue açmayın, bu adrese yazın.
+- **Help · Destek:** [support@pushizo.com](mailto:support@pushizo.com)
+
+This repository is mirrored automatically from the Pushizo main repository on every release. Please open an issue
+instead of a pull request; fixes land in the main repository and ship with the next release.
+Bu depo her sürümde Pushizo ana deposundan otomatik yansıtılır. Pull request yerine issue açın; düzeltmeler ana depoda
+yapılır ve bir sonraki sürümle buraya gelir.
+
+Released under the MIT License · MIT lisanslıdır — [LICENSE](https://github.com/pushizo/pushizo-dotnet/blob/main/LICENSE).
+<!-- /pushizo:footer -->

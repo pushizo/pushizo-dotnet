@@ -13,6 +13,9 @@
     <Description>Pushizo sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması.</Description>
     <PackageTags>pushizo;push;notifications;email;sms;webhooks</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://docs.pushizo.com/docs/sdk/dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pushizo/pushizo-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
