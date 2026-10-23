@@ -11443,7 +11443,7 @@ namespace Pushizo.Models
         public string? AppId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "eski sağlayıcı_players", "csv_users".
+        /// Zorunlu. Değerler: "legacy_players", "csv_users".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string? Type { get; set; }
@@ -15302,6 +15302,57 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("is_control")]
         public bool? IsControl { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// McpCreateJourneyDraftBody şeması.
+    /// </summary>
+    public sealed class McpCreateJourneyDraftBody
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// React Flow uyumlu journey grafı: { nodes: [{ id, type, position, data }], edges: [{ id, source, target, sourceHandle }] } (docs/journeys.md)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("graph")]
+        public global::Pushizo.Models.McpCreateJourneyDraftBodyGraph? Graph { get; set; }
+
+        /// <summary>
+        /// Yeniden giriş, yalnızca yeni girenler, çıkış kuralları, çıkış tag'leri, hedefler, takvim (docs/journeys.md)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Settings { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// React Flow uyumlu journey grafı: { nodes: [{ id, type, position, data }], edges: [{ id, source, target, sourceHandle }] } (docs/journeys.md)
+    /// </summary>
+    public sealed class McpCreateJourneyDraftBodyGraph
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nodes")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Nodes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("edges")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Edges { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -19538,6 +19589,33 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
         public string? UserId { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// TestPushDto şeması.
+    /// </summary>
+    public sealed class TestPushDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscription_ids")]
+        public global::System.Collections.Generic.List<string>? SubscriptionIds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("headings")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headings { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Contents { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Data { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

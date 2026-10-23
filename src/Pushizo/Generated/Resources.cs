@@ -3857,6 +3857,58 @@ namespace Pushizo.Resources
             op.Body = body;
             return _client.ExecuteAsync<global::Pushizo.Models.Segment>(op, options, cancellationToken);
         }
+
+        /// <summary>
+        /// Şablon oluştur (MCP onaylı mod; şablon tek başına gönderim yapmaz)
+        ///
+        /// <c>POST /v1/apps/{appId}/mcp/template-drafts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Template> CreateTemplateDraftAsync(global::Pushizo.Models.CreateTemplateDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/mcp/template-drafts");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Template>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Journey taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+        ///
+        /// <c>POST /v1/apps/{appId}/mcp/journey-drafts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.JourneyDetail> CreateJourneyDraftAsync(global::Pushizo.Models.McpCreateJourneyDraftBody body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/mcp/journey-drafts");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// In-app mesaj taslağı oluştur (MCP onaylı mod; etkinleştirilmez)
+        ///
+        /// <c>POST /v1/apps/{appId}/mcp/in-app-drafts</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.InAppMessage> CreateInAppDraftAsync(global::Pushizo.Models.CreateInAppDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/mcp/in-app-drafts");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.InAppMessage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Test gönderimi (yalnızca app’in test cihazlarına; MCP onaylı mod)
+        ///
+        /// <c>POST /v1/apps/{appId}/mcp/test-sends</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CreateNotificationResult> TestSendAsync(global::Pushizo.Models.TestPushDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/mcp/test-sends");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.CreateNotificationResult>(op, options, cancellationToken);
+        }
     }
 
     /// <summary>

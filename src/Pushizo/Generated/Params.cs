@@ -388,7 +388,7 @@ namespace Pushizo.Params
     public sealed class ImportsCreateForm
     {
         /// <summary>
-        /// Zorunlu. Değerler: "eski sağlayıcı_players", "csv_users".
+        /// Zorunlu. Değerler: "legacy_players", "csv_users".
         /// </summary>
         public string? Type { get; set; }
 
