@@ -17603,6 +17603,240 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// ReverseEtlRun şeması.
+    /// </summary>
+    public sealed class ReverseEtlRun
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sync_id")]
+        public string? SyncId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "schedule", "manual".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trigger")]
+        public string? Trigger { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "queued", "running", "succeeded", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("row_count")]
+        public long? RowCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attempt")]
+        public long? Attempt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("started_at")]
+        public string? StartedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("finished_at")]
+        public string? FinishedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
+        public long? DurationMs { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ReverseEtlRunPage şeması.
+    /// </summary>
+    public sealed class ReverseEtlRunPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.ReverseEtlRun>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ReverseEtlSync şeması.
+    /// </summary>
+    public sealed class ReverseEtlSync
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "snowflake", "bigquery", "postgres", "mysql", "s3", "google_sheets".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "event", "user".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials_hint")]
+        public string? CredentialsHint { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "hourly", "daily".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
+        public string? Schedule { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "paused", "failing".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cursor")]
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("consecutive_failures")]
+        public long? ConsecutiveFailures { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_error")]
+        public string? LastError { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_run_at")]
+        public string? LastRunAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_success_at")]
+        public string? LastSuccessAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_run_at")]
+        public string? NextRunAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ReverseEtlSyncList şeması.
+    /// </summary>
+    public sealed class ReverseEtlSyncList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.ReverseEtlSync>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// ScheduleCampaignDto şeması.
     /// </summary>
     public sealed class ScheduleCampaignDto
@@ -21053,6 +21287,33 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// UpdateReverseEtlDto şeması.
+    /// </summary>
+    public sealed class UpdateReverseEtlDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Değerler: "hourly", "daily".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
+        public string? Schedule { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Credentials { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateTemplateDto şeması.
     /// </summary>
     public sealed class UpdateTemplateDto
@@ -23044,7 +23305,7 @@ namespace Pushizo.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "bigquery", "snowflake", "s3_parquet".
+        /// Zorunlu. Değerler: "bigquery", "snowflake", "s3_parquet", "redshift", "databricks".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("destination")]
         public string? Destination { get; set; }

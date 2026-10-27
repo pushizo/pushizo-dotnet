@@ -3953,6 +3953,153 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// reverseEtl kaynağı.
+    /// </summary>
+    public sealed class ReverseEtlResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal ReverseEtlResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Depodan içeri aktarımlar
+        ///
+        /// <c>GET /v1/apps/{appId}/reverse-etl</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReverseEtlSyncList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/reverse-etl");
+            return _client.ExecuteAsync<global::Pushizo.Models.ReverseEtlSyncList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçeri aktarım oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/reverse-etl</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReverseEtlSync> CreateAsync(object body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/reverse-etl");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.ReverseEtlSync>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kaydetmeden bağlantı testi
+        ///
+        /// <c>POST /v1/apps/{appId}/reverse-etl/test-connection</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseConnectionResult> TestAsync(object body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/reverse-etl/test-connection");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseConnectionResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçeri aktarım detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/reverse-etl/{syncId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReverseEtlSync> GetAsync(string syncId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/reverse-etl/{syncId}");
+            op.PathParam("syncId", syncId);
+            return _client.ExecuteAsync<global::Pushizo.Models.ReverseEtlSync>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçeri aktarımı güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/reverse-etl/{syncId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReverseEtlSync> UpdateAsync(string syncId, global::Pushizo.Models.UpdateReverseEtlDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/reverse-etl/{syncId}");
+            op.PathParam("syncId", syncId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.ReverseEtlSync>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçeri aktarımı sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/reverse-etl/{syncId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> DeleteAsync(string syncId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/reverse-etl/{syncId}");
+            op.PathParam("syncId", syncId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kayıtlı içeri aktarımın bağlantı testi
+        ///
+        /// <c>POST /v1/apps/{appId}/reverse-etl/{syncId}/test</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseConnectionResult> TestSavedAsync(string syncId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/reverse-etl/{syncId}/test");
+            op.PathParam("syncId", syncId);
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseConnectionResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Şimdi içeri aktar
+        ///
+        /// <c>POST /v1/apps/{appId}/reverse-etl/{syncId}/run</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReverseEtlRun> RunAsync(string syncId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/reverse-etl/{syncId}/run");
+            op.PathParam("syncId", syncId);
+            return _client.ExecuteAsync<global::Pushizo.Models.ReverseEtlRun>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İçeri aktarım geçmişi
+        ///
+        /// <c>GET /v1/apps/{appId}/reverse-etl/{syncId}/runs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReverseEtlRunPage> RunsAsync(string syncId, global::Pushizo.Params.ReverseEtlRunsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/reverse-etl/{syncId}/runs");
+            op.PathParam("syncId", syncId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.ReverseEtlRunPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// RunsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.ReverseEtlRun> RunsAllAsync(string syncId, global::Pushizo.Params.ReverseEtlRunsParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.ReverseEtlRunsParams();
+            while (true)
+            {
+                var page = await RunsAsync(syncId, p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+    }
+
+    /// <summary>
     /// smsKeywords kaynağı.
     /// </summary>
     public sealed class SmsKeywordsResource

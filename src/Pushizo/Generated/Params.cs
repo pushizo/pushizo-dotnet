@@ -1301,6 +1301,24 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// ReverseEtlResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class ReverseEtlRunsParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal ReverseEtlRunsParams Copy() => (ReverseEtlRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// SurveysResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class SurveysListParams
