@@ -2349,6 +2349,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("preferenceCenter")]
         public global::Pushizo.Models.AppSettingsPreferenceCenter? PreferenceCenter { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("brandKit")]
+        public global::Pushizo.Models.AppSettingsBrandKit? BrandKit { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("defaultTtlSeconds")]
         public long? DefaultTtlSeconds { get; set; }
 
@@ -2408,6 +2411,36 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("group")]
         public string? Group { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsBrandKit şeması.
+    /// </summary>
+    public sealed class AppSettingsBrandKit
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("website_url")]
+        public string? WebsiteUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary_color")]
+        public string? PrimaryColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("accent_color")]
+        public string? AccentColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("font")]
+        public string? Font { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("logo_url")]
+        public string? LogoUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("tone")]
+        public string? Tone { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -20055,6 +20088,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("preferenceCenter")]
         public global::Pushizo.Models.UpdateAppDtoSettingsPreferenceCenter? PreferenceCenter { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("brandKit")]
+        public global::Pushizo.Models.UpdateAppDtoSettingsBrandKit? BrandKit { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("defaultTtlSeconds")]
         public long? DefaultTtlSeconds { get; set; }
 
@@ -20114,6 +20150,36 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("group")]
         public string? Group { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsBrandKit şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsBrandKit
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("website_url")]
+        public string? WebsiteUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary_color")]
+        public string? PrimaryColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("accent_color")]
+        public string? AccentColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("font")]
+        public string? Font { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("logo_url")]
+        public string? LogoUrl { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("tone")]
+        public string? Tone { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
