@@ -195,6 +195,11 @@ namespace Pushizo
         public global::Pushizo.Resources.SurveysResource Surveys { get; private set; } = null!;
 
         /// <summary>
+        /// Verify
+        /// </summary>
+        public global::Pushizo.Resources.VerifyResource Verify { get; private set; } = null!;
+
+        /// <summary>
         /// WarehouseExports
         /// </summary>
         public global::Pushizo.Resources.WarehouseExportsResource WarehouseExports { get; private set; } = null!;
@@ -248,6 +253,7 @@ namespace Pushizo
             ReverseEtl = new global::Pushizo.Resources.ReverseEtlResource(this);
             SmsKeywords = new global::Pushizo.Resources.SmsKeywordsResource(this);
             Surveys = new global::Pushizo.Resources.SurveysResource(this);
+            Verify = new global::Pushizo.Resources.VerifyResource(this);
             WarehouseExports = new global::Pushizo.Resources.WarehouseExportsResource(this);
             WebCampaigns = new global::Pushizo.Resources.WebCampaignsResource(this);
             Whatsapp = new global::Pushizo.Resources.WhatsappResource(this);

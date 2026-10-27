@@ -3092,6 +3092,28 @@ namespace Pushizo.Resources
             @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::Pushizo.Models.EmailWarmupUsage>(op, options, cancellationToken);
         }
+
+        /// <summary>
+        /// Google Postmaster itibar kayıtları
+        ///
+        /// <c>GET /v1/apps/{appId}/email-deliverability/postmaster</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PostmasterStats> PostmasterAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/email-deliverability/postmaster");
+            return _client.ExecuteAsync<global::Pushizo.Models.PostmasterStats>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Google Postmaster dünkü itibarını oku
+        ///
+        /// <c>POST /v1/apps/{appId}/email-deliverability/postmaster/sync</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PostmasterStats> SyncPostmasterAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/email-deliverability/postmaster/sync");
+            return _client.ExecuteAsync<global::Pushizo.Models.PostmasterStats>(op, options, cancellationToken);
+        }
     }
 
     /// <summary>
@@ -4307,6 +4329,45 @@ namespace Pushizo.Resources
             if (body is null) throw new global::System.ArgumentNullException(nameof(body));
             op.Body = body;
             return _client.ExecuteAsync<global::Pushizo.Models.SurveyResponseResult>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// verify kaynağı.
+    /// </summary>
+    public sealed class VerifyResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal VerifyResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// SMS doğrulama kodu gönder
+        ///
+        /// <c>POST /v1/apps/{appId}/verify/sms</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SmsVerification> StartAsync(global::Pushizo.Models.StartVerifyDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/verify/sms");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SmsVerification>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// SMS doğrulama kodunu kontrol et
+        ///
+        /// <c>POST /v1/apps/{appId}/verify/sms/check</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SmsVerificationCheck> CheckAsync(global::Pushizo.Models.CheckVerifyDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/verify/sms/check");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SmsVerificationCheck>(op, options, cancellationToken);
         }
     }
 

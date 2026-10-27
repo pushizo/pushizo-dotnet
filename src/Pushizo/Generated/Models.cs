@@ -1303,7 +1303,7 @@ namespace Pushizo.Models
     public sealed class AddSubscriptionDto
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -1370,6 +1370,18 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("push_environment")]
         public string? PushEnvironment { get; set; }
+
+        /// <summary>
+        /// Değerler: "phone", "watch".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("form_factor")]
+        public string? FormFactor { get; set; }
+
+        /// <summary>
+        /// Değerler: "alert", "voip", "app_clip".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("push_kind")]
+        public string? PushKind { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -2485,7 +2497,7 @@ namespace Pushizo.Models
         public global::Pushizo.Models.AppSettingsFrequencyCapsItemWindow? Window { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -3574,7 +3586,7 @@ namespace Pushizo.Models
         public global::Pushizo.Models.CampaignsCreateBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -3793,7 +3805,7 @@ namespace Pushizo.Models
     public sealed class CampaignStatsChannelsItem
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -4054,7 +4066,7 @@ namespace Pushizo.Models
         public global::Pushizo.Models.CampaignsUpdateBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -4582,13 +4594,13 @@ namespace Pushizo.Models
     public sealed class ChannelConfig
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "meta_whatsapp", "google_rbm", "mock".
+        /// Zorunlu. Değerler: "apns", "fcm", "hms", "adm", "wns", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "meta_whatsapp", "google_rbm", "mock".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
         public string? Provider { get; set; }
@@ -4754,6 +4766,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("messaging_service_sid")]
         public string? MessagingServiceSid { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("verify_service_sid")]
+        public string? VerifyServiceSid { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("usercode")]
         public string? Usercode { get; set; }
@@ -4982,6 +4997,27 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public global::Pushizo.Models.ChannelConfig? Channel { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CheckVerifyDto şeması.
+    /// </summary>
+    public sealed class CheckVerifyDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -6508,7 +6544,7 @@ namespace Pushizo.Models
         public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -6706,7 +6742,7 @@ namespace Pushizo.Models
         public string? Status { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -7503,6 +7539,18 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("android_visibility")]
         public long? AndroidVisibility { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("ios_carousel")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateNotificationDtoIosCarouselItem>? IosCarousel { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("android_live_update")]
+        public global::Pushizo.Models.CreateNotificationDtoAndroidLiveUpdate? AndroidLiveUpdate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("voip")]
+        public bool? Voip { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_clip")]
+        public bool? AppClip { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("chrome_web_icon")]
         public string? ChromeWebIcon { get; set; }
 
@@ -7644,6 +7692,36 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("category")]
         public string? Category { get; set; }
 
+        /// <summary>
+        /// Değerler: "sms", "email".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallback_channel")]
+        public string? FallbackChannel { get; set; }
+
+        /// <summary>
+        /// Değerler: "phone", "watch".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("form_factor")]
+        public string? FormFactor { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoAndroidLiveUpdate şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoAndroidLiveUpdate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
+        public long? Progress { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ongoing")]
+        public bool? Ongoing { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -7670,6 +7748,24 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoIosCarouselItem şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoIosCarouselItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -7732,7 +7828,7 @@ namespace Pushizo.Models
         public object? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -8158,7 +8254,7 @@ namespace Pushizo.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -8352,6 +8448,36 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
         public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("ios_carousel")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateTemplateDtoContentIosCarouselItem>? IosCarousel { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("android_live_update")]
+        public global::Pushizo.Models.CreateTemplateDtoContentAndroidLiveUpdate? AndroidLiveUpdate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("voip")]
+        public bool? Voip { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_clip")]
+        public bool? AppClip { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentAndroidLiveUpdate şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentAndroidLiveUpdate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
+        public long? Progress { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ongoing")]
+        public bool? Ongoing { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -8378,6 +8504,24 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentIosCarouselItem şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentIosCarouselItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -9354,6 +9498,30 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("verifier")]
         public global::Pushizo.Models.DeliverabilitySettingsDtoVerifier? Verifier { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("volume_spike")]
+        public global::Pushizo.Models.DeliverabilitySettingsDtoVolumeSpike? VolumeSpike { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("postmaster")]
+        public global::Pushizo.Models.DeliverabilitySettingsDtoPostmaster? Postmaster { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// DeliverabilitySettingsDtoPostmaster şeması.
+    /// </summary>
+    public sealed class DeliverabilitySettingsDtoPostmaster
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("access_token")]
+        public string? AccessToken { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -9401,6 +9569,27 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// DeliverabilitySettingsDtoVolumeSpike şeması.
+    /// </summary>
+    public sealed class DeliverabilitySettingsDtoVolumeSpike
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("multiplier")]
+        public long? Multiplier { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("floor")]
+        public long? Floor { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// Delivery şeması.
     /// </summary>
     public sealed class Delivery
@@ -9430,7 +9619,7 @@ namespace Pushizo.Models
         public string? UserId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -9612,6 +9801,39 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("verifier")]
         public global::Pushizo.Models.EmailDeliverabilitySettingsVerifier? Verifier { get; set; }
 
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("volume_spike")]
+        public global::Pushizo.Models.EmailDeliverabilitySettingsVolumeSpike? VolumeSpike { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("postmaster")]
+        public global::Pushizo.Models.EmailDeliverabilitySettingsPostmaster? Postmaster { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailDeliverabilitySettingsPostmaster şeması.
+    /// </summary>
+    public sealed class EmailDeliverabilitySettingsPostmaster
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_token")]
+        public bool? HasToken { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -9665,6 +9887,27 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_key")]
         public bool? HasKey { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EmailDeliverabilitySettingsVolumeSpike şeması.
+    /// </summary>
+    public sealed class EmailDeliverabilitySettingsVolumeSpike
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("multiplier")]
+        public long? Multiplier { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("floor")]
+        public long? Floor { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -10138,7 +10381,7 @@ namespace Pushizo.Models
         public object? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -10729,7 +10972,7 @@ namespace Pushizo.Models
         public string? Status { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -15220,7 +15463,7 @@ namespace Pushizo.Models
         public global::Pushizo.Models.McpCreateCampaignDraftBodyAudienceFilters? Filters { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -15480,6 +15723,12 @@ namespace Pushizo.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_roles")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.MemberAppRolesItem>? AppRoles { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("accepted_at")]
         public string? AcceptedAt { get; set; }
 
@@ -15494,6 +15743,27 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("last_login_at")]
         public string? LastLoginAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// MemberAppRolesItem şeması.
+    /// </summary>
+    public sealed class MemberAppRolesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "owner", "admin", "developer", "marketer", "analyst", "billing", "viewer", "composer", "agent".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        public string? Role { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -16288,13 +16558,13 @@ namespace Pushizo.Models
     public sealed class OverviewStatsChannelsItem
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "meta_whatsapp", "google_rbm", "mock".
+        /// Zorunlu. Değerler: "apns", "fcm", "hms", "adm", "wns", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "meta_whatsapp", "google_rbm", "mock".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
         public string? Provider { get; set; }
@@ -16605,6 +16875,18 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("push_environment")]
         public string? PushEnvironment { get; set; }
 
+        /// <summary>
+        /// Değerler: "phone", "watch".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("form_factor")]
+        public string? FormFactor { get; set; }
+
+        /// <summary>
+        /// Değerler: "alert", "voip", "app_clip".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("push_kind")]
+        public string? PushKind { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -16667,6 +16949,54 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("count")]
         public long? Count { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PostmasterStats şeması.
+    /// </summary>
+    public sealed class PostmasterStats
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PostmasterStatsDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PostmasterStatsDataItem şeması.
+    /// </summary>
+    public sealed class PostmasterStatsDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("day")]
+        public string? Day { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain_reputation")]
+        public string? DomainReputation { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spam_rate")]
+        public string? SpamRate { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -16891,7 +17221,7 @@ namespace Pushizo.Models
     public sealed class RenderPreview
     {
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -17083,7 +17413,7 @@ namespace Pushizo.Models
     public sealed class RenderTemplateDto
     {
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -17283,6 +17613,36 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
         public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("ios_carousel")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.RenderTemplateDtoContentIosCarouselItem>? IosCarousel { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("android_live_update")]
+        public global::Pushizo.Models.RenderTemplateDtoContentAndroidLiveUpdate? AndroidLiveUpdate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("voip")]
+        public bool? Voip { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_clip")]
+        public bool? AppClip { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentAndroidLiveUpdate şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentAndroidLiveUpdate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
+        public long? Progress { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ongoing")]
+        public bool? Ongoing { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -17309,6 +17669,24 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentIosCarouselItem şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentIosCarouselItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -18358,7 +18736,7 @@ namespace Pushizo.Models
         public string? Category { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -18464,6 +18842,42 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// SmsVerification şeması.
+    /// </summary>
+    public sealed class SmsVerification
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SmsVerificationCheck şeması.
+    /// </summary>
+    public sealed class SmsVerificationCheck
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("verified")]
+        public bool? Verified { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// StartLiveActivityDto şeması.
     /// </summary>
     public sealed class StartLiveActivityDto
@@ -18551,6 +18965,24 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// StartVerifyDto şeması.
+    /// </summary>
+    public sealed class StartVerifyDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("phone")]
+        public string? Phone { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("locale")]
+        public string? Locale { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// Subscription şeması.
     /// </summary>
     public sealed class Subscription
@@ -18574,7 +19006,7 @@ namespace Pushizo.Models
         public string? UserId { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -18707,6 +19139,18 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("push_environment")]
         public string? PushEnvironment { get; set; }
+
+        /// <summary>
+        /// Değerler: "phone", "watch".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("form_factor")]
+        public string? FormFactor { get; set; }
+
+        /// <summary>
+        /// Değerler: "alert", "voip", "app_clip".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("push_kind")]
+        public string? PushKind { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -19633,7 +20077,7 @@ namespace Pushizo.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -20224,7 +20668,7 @@ namespace Pushizo.Models
         public global::Pushizo.Models.UpdateAppDtoSettingsFrequencyCapsItemWindow? Window { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -20731,7 +21175,7 @@ namespace Pushizo.Models
         public global::System.Collections.Generic.Dictionary<string, string>? Description { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -21388,7 +21832,7 @@ namespace Pushizo.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
         public string? Channel { get; set; }
@@ -21579,6 +22023,36 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("rcs_fallback_text")]
         public global::System.Collections.Generic.Dictionary<string, string>? RcsFallbackText { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("ios_carousel")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UpdateTemplateDtoContentIosCarouselItem>? IosCarousel { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("android_live_update")]
+        public global::Pushizo.Models.UpdateTemplateDtoContentAndroidLiveUpdate? AndroidLiveUpdate { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("voip")]
+        public bool? Voip { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_clip")]
+        public bool? AppClip { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentAndroidLiveUpdate şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentAndroidLiveUpdate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
+        public long? Progress { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ongoing")]
+        public bool? Ongoing { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -21605,6 +22079,24 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentIosCarouselItem şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentIosCarouselItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -22759,7 +23251,7 @@ namespace Pushizo.Models
         public long? SubscriptionCount { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
@@ -22852,7 +23344,7 @@ namespace Pushizo.Models
         public long? SubscriptionCount { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<string>? Channels { get; set; }
