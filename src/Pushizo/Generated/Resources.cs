@@ -933,29 +933,43 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
-        /// Zamanla
+        /// Zamanla; e-posta liste koruması 409 → force=true (admin kapsamı)
         ///
         /// <c>POST /v1/apps/{appId}/campaigns/{campaignId}/schedule</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Campaign> ScheduleAsync(string campaignId, global::Pushizo.Models.ScheduleCampaignDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Campaign> ScheduleAsync(string campaignId, global::Pushizo.Models.ScheduleCampaignDto body, global::Pushizo.Params.CampaignsScheduleParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/schedule");
             op.PathParam("campaignId", campaignId);
+            @params?.ApplyTo(op);
             if (body is null) throw new global::System.ArgumentNullException(nameof(body));
             op.Body = body;
             return _client.ExecuteAsync<global::Pushizo.Models.Campaign>(op, options, cancellationToken);
         }
 
         /// <summary>
-        /// Hemen gönder
+        /// Hemen gönder; e-posta liste koruması 409 → force=true (admin kapsamı)
         ///
         /// <c>POST /v1/apps/{appId}/campaigns/{campaignId}/send</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Campaign> SendAsync(string campaignId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Campaign> SendAsync(string campaignId, global::Pushizo.Params.CampaignsSendParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/send");
             op.PathParam("campaignId", campaignId);
+            @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::Pushizo.Models.Campaign>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// E-posta liste riski (tahmini geçersiz oranı, 7/30 gün bounce oranı)
+        ///
+        /// <c>GET /v1/apps/{appId}/campaigns/{campaignId}/email-risk</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CampaignEmailRisk> EmailRiskAsync(string campaignId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/email-risk");
+            op.PathParam("campaignId", campaignId);
+            return _client.ExecuteAsync<global::Pushizo.Models.CampaignEmailRisk>(op, options, cancellationToken);
         }
 
         /// <summary>

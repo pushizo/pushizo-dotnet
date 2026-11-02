@@ -3416,6 +3416,87 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CampaignEmailRisk şeması.
+    /// </summary>
+    public sealed class CampaignEmailRisk
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("applies")]
+        public bool? Applies { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("recipients")]
+        public long? Recipients { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("flagged_invalid")]
+        public long? FlaggedInvalid { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sendable")]
+        public long? Sendable { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("valid")]
+        public long? Valid { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unknown")]
+        public long? Unknown { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unchecked")]
+        public long? Unchecked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("estimated_invalid_ratio")]
+        public double? EstimatedInvalidRatio { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_invalid_ratio")]
+        public double? MaxInvalidRatio { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
+        public bool? Blocked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bounce_rate_7d")]
+        public double? BounceRate7d { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bounce_rate_30d")]
+        public double? BounceRate30d { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CampaignPage şeması.
     /// </summary>
     public sealed class CampaignPage
@@ -9501,6 +9582,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("volume_spike")]
         public global::Pushizo.Models.DeliverabilitySettingsDtoVolumeSpike? VolumeSpike { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_invalid_ratio")]
+        public double? MaxInvalidRatio { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("postmaster")]
         public global::Pushizo.Models.DeliverabilitySettingsDtoPostmaster? Postmaster { get; set; }
 
@@ -9812,6 +9896,12 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("postmaster")]
         public global::Pushizo.Models.EmailDeliverabilitySettingsPostmaster? Postmaster { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_invalid_ratio")]
+        public double? MaxInvalidRatio { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -11825,6 +11915,12 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("errors")]
         public long? Errors { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rejected_emails")]
+        public long? RejectedEmails { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rejected_email_reasons")]
+        public global::System.Collections.Generic.Dictionary<string, long>? RejectedEmailReasons { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

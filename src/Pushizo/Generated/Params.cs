@@ -236,6 +236,42 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// CampaignsResource.ScheduleAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CampaignsScheduleParams
+    {
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? Force { get; set; }
+
+        internal CampaignsScheduleParams Copy() => (CampaignsScheduleParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("force", Force);
+        }
+    }
+
+    /// <summary>
+    /// CampaignsResource.SendAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CampaignsSendParams
+    {
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? Force { get; set; }
+
+        internal CampaignsSendParams Copy() => (CampaignsSendParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("force", Force);
+        }
+    }
+
+    /// <summary>
     /// CampaignsResource.DeliveriesAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class CampaignsDeliveriesParams
