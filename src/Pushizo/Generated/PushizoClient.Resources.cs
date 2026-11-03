@@ -145,6 +145,11 @@ namespace Pushizo
         public global::Pushizo.Resources.EmailDeliverabilityResource EmailDeliverability { get; private set; } = null!;
 
         /// <summary>
+        /// FeatureFlags
+        /// </summary>
+        public global::Pushizo.Resources.FeatureFlagsResource FeatureFlags { get; private set; } = null!;
+
+        /// <summary>
         /// Forms
         /// </summary>
         public global::Pushizo.Resources.FormsResource Forms { get; private set; } = null!;
@@ -268,6 +273,7 @@ namespace Pushizo
             Conversations = new global::Pushizo.Resources.ConversationsResource(this);
             DataFeeds = new global::Pushizo.Resources.DataFeedsResource(this);
             EmailDeliverability = new global::Pushizo.Resources.EmailDeliverabilityResource(this);
+            FeatureFlags = new global::Pushizo.Resources.FeatureFlagsResource(this);
             Forms = new global::Pushizo.Resources.FormsResource(this);
             Geofences = new global::Pushizo.Resources.GeofencesResource(this);
             GlobalControl = new global::Pushizo.Resources.GlobalControlResource(this);

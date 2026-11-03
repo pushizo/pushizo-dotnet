@@ -2297,6 +2297,177 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// AppFlag şeması.
+    /// </summary>
+    public sealed class AppFlag
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "boolean", "string", "number", "json".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value_type")]
+        public string? ValueType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("on_value")]
+        public object? OnValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("off_value")]
+        public object? OffValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rollout_percent")]
+        public long? RolloutPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("segment_id")]
+        public string? SegmentId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rollout_schedule")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.AppFlagRolloutScheduleItem>? RolloutSchedule { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppFlagEvaluation şeması.
+    /// </summary>
+    public sealed class AppFlagEvaluation
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("flags")]
+        public global::System.Collections.Generic.Dictionary<string, global::Pushizo.Models.AppFlagEvaluationFlagsValue>? Flags { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppFlagEvaluationFlagsValue şeması.
+    /// </summary>
+    public sealed class AppFlagEvaluationFlagsValue
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public object? Value { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "on", "disabled", "segment", "rollout".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason")]
+        public string? Reason { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppFlagList şeması.
+    /// </summary>
+    public sealed class AppFlagList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.AppFlag>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppFlagRolloutScheduleItem şeması.
+    /// </summary>
+    public sealed class AppFlagRolloutScheduleItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("at")]
+        public string? At { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public long? Percent { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// AppList şeması.
     /// </summary>
     public sealed class AppList
@@ -6779,6 +6950,75 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreateAppFlagDto şeması.
+    /// </summary>
+    public sealed class CreateAppFlagDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Değerler: "boolean", "string", "number", "json".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value_type")]
+        public string? ValueType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("on_value")]
+        public object? OnValue { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("off_value")]
+        public object? OffValue { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rollout_percent")]
+        public long? RolloutPercent { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("segment_id")]
+        public string? SegmentId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rollout_schedule")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateAppFlagDtoRolloutScheduleItem>? RolloutSchedule { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateAppFlagDtoRolloutScheduleItem şeması.
+    /// </summary>
+    public sealed class CreateAppFlagDtoRolloutScheduleItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("at")]
+        public string? At { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public long? Percent { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateBudgetAlertRuleDto şeması.
     /// </summary>
     public sealed class CreateBudgetAlertRuleDto
@@ -10817,6 +11057,24 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("external_id_missing")]
         public global::System.Collections.Generic.List<string>? ExternalIdMissing { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// EvaluateAppFlagsDto şeması.
+    /// </summary>
+    public sealed class EvaluateAppFlagsDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("subject")]
+        public string? Subject { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -22382,6 +22640,66 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppFlagDto şeması.
+    /// </summary>
+    public sealed class UpdateAppFlagDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Değerler: "boolean", "string", "number", "json".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value_type")]
+        public string? ValueType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("on_value")]
+        public object? OnValue { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("off_value")]
+        public object? OffValue { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rollout_percent")]
+        public long? RolloutPercent { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("segment_id")]
+        public string? SegmentId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rollout_schedule")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UpdateAppFlagDtoRolloutScheduleItem>? RolloutSchedule { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppFlagDtoRolloutScheduleItem şeması.
+    /// </summary>
+    public sealed class UpdateAppFlagDtoRolloutScheduleItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("at")]
+        public string? At { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public long? Percent { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

@@ -3335,6 +3335,96 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// featureFlags kaynağı.
+    /// </summary>
+    public sealed class FeatureFlagsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal FeatureFlagsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Özellik bayrakları
+        ///
+        /// <c>GET /v1/apps/{appId}/feature-flags</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AppFlagList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/feature-flags");
+            return _client.ExecuteAsync<global::Pushizo.Models.AppFlagList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bayrak oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/feature-flags</c>
+        ///
+        /// Değerler uygulama kimliğini bilen herkesçe okunabilir; gizli bilgi yazmayın.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AppFlag> CreateAsync(global::Pushizo.Models.CreateAppFlagDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/feature-flags");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AppFlag>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bayrakları bir kullanıcı için değerlendir
+        ///
+        /// <c>POST /v1/apps/{appId}/feature-flags/evaluate</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AppFlagEvaluation> EvaluateAsync(global::Pushizo.Models.EvaluateAppFlagsDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/feature-flags/evaluate");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AppFlagEvaluation>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bayrak ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/feature-flags/{flagId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AppFlag> GetAsync(string flagId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/feature-flags/{flagId}");
+            op.PathParam("flagId", flagId);
+            return _client.ExecuteAsync<global::Pushizo.Models.AppFlag>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bayrağı güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/feature-flags/{flagId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AppFlag> UpdateAsync(string flagId, global::Pushizo.Models.UpdateAppFlagDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/feature-flags/{flagId}");
+            op.PathParam("flagId", flagId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.AppFlag>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bayrağı sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/feature-flags/{flagId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> DeleteAsync(string flagId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/feature-flags/{flagId}");
+            op.PathParam("flagId", flagId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// forms kaynağı.
     /// </summary>
     public sealed class FormsResource
