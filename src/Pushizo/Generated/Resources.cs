@@ -4461,6 +4461,93 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// rfm kaynağı.
+    /// </summary>
+    public sealed class RfmResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal RfmResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// RFM modeli
+        ///
+        /// <c>GET /v1/apps/{appId}/rfm/config</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RfmConfig> ConfigAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/rfm/config");
+            return _client.ExecuteAsync<global::Pushizo.Models.RfmConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// RFM modelini ayarla
+        ///
+        /// <c>PUT /v1/apps/{appId}/rfm/config</c>
+        ///
+        /// Model açıksa skorlar kayıttan sonra yeniden hesaplanır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RfmConfig> UpdateAsync(global::Pushizo.Models.UpdateRfmConfigDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/rfm/config");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.RfmConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Skorları yeniden hesapla
+        ///
+        /// <c>POST /v1/apps/{appId}/rfm/compute</c>
+        ///
+        /// İş kuyruğa alınır; ilerleme `status` alanından izlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RfmConfig> ComputeAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/rfm/compute");
+            return _client.ExecuteAsync<global::Pushizo.Models.RfmConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Segment dağılımı
+        ///
+        /// <c>GET /v1/apps/{appId}/rfm/overview</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RfmOverview> OverviewAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/rfm/overview");
+            return _client.ExecuteAsync<global::Pushizo.Models.RfmOverview>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// İki tarih arası segment geçişleri
+        ///
+        /// <c>GET /v1/apps/{appId}/rfm/transitions</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RfmTransitions> TransitionsAsync(global::Pushizo.Params.RfmTransitionsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/rfm/transitions");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.RfmTransitions>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Skoru olan kullanıcılar
+        ///
+        /// <c>GET /v1/apps/{appId}/rfm/users</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RfmUsersPage> UsersAsync(global::Pushizo.Params.RfmUsersParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/rfm/users");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.RfmUsersPage>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// smsKeywords kaynağı.
     /// </summary>
     public sealed class SmsKeywordsResource

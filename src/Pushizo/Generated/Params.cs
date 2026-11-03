@@ -1460,6 +1460,48 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// RfmResource.TransitionsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class RfmTransitionsParams
+    {
+        public string? From { get; set; }
+
+        public string? To { get; set; }
+
+        internal RfmTransitionsParams Copy() => (RfmTransitionsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("from", From);
+            op.Query("to", To);
+        }
+    }
+
+    /// <summary>
+    /// RfmResource.UsersAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class RfmUsersParams
+    {
+        /// <summary>
+        /// Değerler: "champions", "loyal", "potential", "new", "promising", "need_attention", "about_to_sleep", "at_risk", "cant_lose", "hibernating", "lost".
+        /// </summary>
+        public string? Segment { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal RfmUsersParams Copy() => (RfmUsersParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("segment", Segment);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// SurveysResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class SurveysListParams

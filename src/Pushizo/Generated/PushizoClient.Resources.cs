@@ -200,6 +200,11 @@ namespace Pushizo
         public global::Pushizo.Resources.ReverseEtlResource ReverseEtl { get; private set; } = null!;
 
         /// <summary>
+        /// Rfm
+        /// </summary>
+        public global::Pushizo.Resources.RfmResource Rfm { get; private set; } = null!;
+
+        /// <summary>
         /// SmsKeywords
         /// </summary>
         public global::Pushizo.Resources.SmsKeywordsResource SmsKeywords { get; private set; } = null!;
@@ -269,6 +274,7 @@ namespace Pushizo
             Preferences = new global::Pushizo.Resources.PreferencesResource(this);
             PromoCodeLists = new global::Pushizo.Resources.PromoCodeListsResource(this);
             ReverseEtl = new global::Pushizo.Resources.ReverseEtlResource(this);
+            Rfm = new global::Pushizo.Resources.RfmResource(this);
             SmsKeywords = new global::Pushizo.Resources.SmsKeywordsResource(this);
             Surveys = new global::Pushizo.Resources.SurveysResource(this);
             Verify = new global::Pushizo.Resources.VerifyResource(this);
