@@ -7581,6 +7581,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("journey_only")]
         public bool? JourneyOnly { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("placement")]
+        public string? Placement { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
         public long? Priority { get; set; }
 
@@ -12830,6 +12833,12 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("journey_only")]
         public bool? JourneyOnly { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("placement")]
+        public string? Placement { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -22907,6 +22916,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("journey_only")]
         public bool? JourneyOnly { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("placement")]
+        public string? Placement { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
         public long? Priority { get; set; }
