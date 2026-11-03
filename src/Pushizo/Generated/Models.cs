@@ -18235,7 +18235,7 @@ namespace Pushizo.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "snowflake", "bigquery", "postgres", "mysql", "s3", "google_sheets".
+        /// Zorunlu. Değerler: "snowflake", "bigquery", "postgres", "mysql", "s3", "google_sheets", "clickhouse", "sqlserver", "trino", "athena", "elasticsearch", "kafka", "pubsub".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
         public string? Source { get; set; }
@@ -18259,7 +18259,7 @@ namespace Pushizo.Models
         public string? CredentialsHint { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "hourly", "daily".
+        /// Zorunlu. Değerler: "every_5_minutes", "hourly", "daily".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
         public string? Schedule { get; set; }
@@ -21901,7 +21901,7 @@ namespace Pushizo.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// Değerler: "hourly", "daily".
+        /// Değerler: "every_5_minutes", "hourly", "daily".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
         public string? Schedule { get; set; }
