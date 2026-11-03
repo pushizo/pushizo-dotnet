@@ -18122,6 +18122,234 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// PathBodyDto şeması.
+    /// </summary>
+    public sealed class PathBodyDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        /// <summary>
+        /// Değerler: "after", "before".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("depth")]
+        public long? Depth { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("top")]
+        public long? Top { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("window_hours")]
+        public long? WindowHours { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("exclude")]
+        public global::System.Collections.Generic.List<string>? Exclude { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Değerler: "json", "csv".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("format")]
+        public string? Format { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PathReport şeması.
+    /// </summary>
+    public sealed class PathReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "after", "before".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("window_hours")]
+        public long? WindowHours { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_users")]
+        public long? TotalUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncated")]
+        public bool? Truncated { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("levels")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PathReportLevelsItem>? Levels { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("links")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PathReportLinksItem>? Links { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_paths")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PathReportTopPathsItem>? TopPaths { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PathReportLevelsItem şeması.
+    /// </summary>
+    public sealed class PathReportLevelsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
+        public long? Step { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nodes")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PathReportLevelsItemNodesItem>? Nodes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PathReportLevelsItemNodesItem şeması.
+    /// </summary>
+    public sealed class PathReportLevelsItemNodesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "event", "other", "end".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("share")]
+        public double? Share { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PathReportLinksItem şeması.
+    /// </summary>
+    public sealed class PathReportLinksItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PathReportTopPathsItem şeması.
+    /// </summary>
+    public sealed class PathReportTopPathsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("path")]
+        public global::System.Collections.Generic.List<string>? Path { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("share")]
+        public double? Share { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// PostmasterStats şeması.
     /// </summary>
     public sealed class PostmasterStats

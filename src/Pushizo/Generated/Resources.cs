@@ -1917,6 +1917,21 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Yol analizi
+        ///
+        /// <c>POST /v1/apps/{appId}/analytics/paths</c>
+        ///
+        /// Başlangıç olayından sonra veya önce kullanıcıların izlediği yollar.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PathReport> PathsAsync(global::Pushizo.Models.PathBodyDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/analytics/paths");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.PathReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Funnel
         ///
         /// <c>POST /v1/apps/{appId}/analytics/funnels</c>
