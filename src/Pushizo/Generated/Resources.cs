@@ -3503,6 +3503,19 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Eski sürümü yeni taslak olarak geri yükle (yayındaki sürüm değişmez)
+        ///
+        /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/versions/{version}/restore</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.JourneyDetail> RestoreVersionAsync(string journeyId, string version, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/versions/{version}/restore");
+            op.PathParam("journeyId", journeyId);
+            op.PathParam("version", version);
+            return _client.ExecuteAsync<global::Pushizo.Models.JourneyDetail>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Yayınla
         ///
         /// <c>POST /v1/apps/{appId}/journeys/{journeyId}/publish</c>

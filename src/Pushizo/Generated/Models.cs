@@ -22462,7 +22462,7 @@ namespace Pushizo.Models
         public global::System.Collections.Generic.List<string>? Tables { get; set; }
 
         /// <summary>
-        /// Değerler: "hourly", "daily".
+        /// Değerler: "every_15_minutes", "hourly", "daily".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
         public string? Schedule { get; set; }
@@ -23983,7 +23983,7 @@ namespace Pushizo.Models
         public global::System.Collections.Generic.List<string>? Tables { get; set; }
 
         /// <summary>
-        /// Zorunlu. Değerler: "hourly", "daily".
+        /// Zorunlu. Değerler: "every_15_minutes", "hourly", "daily".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedule")]
         public string? Schedule { get; set; }
