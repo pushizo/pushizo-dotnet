@@ -1337,6 +1337,51 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// PromoCodeListsResource.UploadPromoListAsync için multipart/form-data alanları.
+    /// </summary>
+    public sealed class PromoCodeListsUploadPromoListForm
+    {
+        /// <summary>
+        /// Zorunlu. UTF-8 CSV; kodlar ilk sütunda, başlık isteğe bağlı. En fazla 1.000.000 kod, 20 MB.
+        /// </summary>
+        public global::Pushizo.FileUpload? File { get; set; }
+
+        internal PromoCodeListsUploadPromoListForm Copy() => (PromoCodeListsUploadPromoListForm)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.FormFile("file", File);
+        }
+    }
+
+    /// <summary>
+    /// PromoCodeListsResource.PromoCodesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class PromoCodeListsPromoCodesParams
+    {
+        public long? Limit { get; set; }
+
+        public long? Offset { get; set; }
+
+        public string? Q { get; set; }
+
+        /// <summary>
+        /// Değerler: "available", "assigned".
+        /// </summary>
+        public string? Status { get; set; }
+
+        internal PromoCodeListsPromoCodesParams Copy() => (PromoCodeListsPromoCodesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("offset", Offset);
+            op.Query("q", Q);
+            op.Query("status", Status);
+        }
+    }
+
+    /// <summary>
     /// ReverseEtlResource.RunsAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class ReverseEtlRunsParams

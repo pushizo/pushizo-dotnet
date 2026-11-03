@@ -4002,6 +4002,110 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// promoCodeLists kaynağı.
+    /// </summary>
+    public sealed class PromoCodeListsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal PromoCodeListsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Promosyon kodu listeleri
+        ///
+        /// <c>GET /v1/apps/{appId}/promo-code-lists</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PromoCodeListList> ListPromoListsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/promo-code-lists");
+            return _client.ExecuteAsync<global::Pushizo.Models.PromoCodeListList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Promosyon kodu listesi oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/promo-code-lists</c>
+        ///
+        /// Şablonda `{% promo_code '&lt;ad&gt;' %}` teslimat başına tek kullanımlık kod verir. Kod kalmazsa teslimat `PromoCodeUnavailable` hatasıyla düşer.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PromoCodeList> CreatePromoListAsync(global::Pushizo.Models.CreatePromoCodeListDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/promo-code-lists");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.PromoCodeList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Promosyon kodu listesi ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/promo-code-lists/{listId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PromoCodeList> GetPromoListAsync(string listId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/promo-code-lists/{listId}");
+            op.PathParam("listId", listId);
+            return _client.ExecuteAsync<global::Pushizo.Models.PromoCodeList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Promosyon kodu listesini güncelle (açıklama, son kullanma)
+        ///
+        /// <c>PATCH /v1/apps/{appId}/promo-code-lists/{listId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PromoCodeList> UpdatePromoListAsync(string listId, global::Pushizo.Models.UpdatePromoCodeListDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/promo-code-lists/{listId}");
+            op.PathParam("listId", listId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.PromoCodeList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Promosyon kodu listesini sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/promo-code-lists/{listId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> DeletePromoListAsync(string listId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/promo-code-lists/{listId}");
+            op.PathParam("listId", listId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// CSV ile kod ekle (zaten olanlar atlanır)
+        ///
+        /// <c>POST /v1/apps/{appId}/promo-code-lists/{listId}/codes</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PromoCodeUploadResult> UploadPromoListAsync(string listId, global::Pushizo.Params.PromoCodeListsUploadPromoListForm form, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/promo-code-lists/{listId}/codes");
+            op.PathParam("listId", listId);
+            if (form is null) throw new global::System.ArgumentNullException(nameof(form));
+            form.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.PromoCodeUploadResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Listedeki kodlar ve atamaları
+        ///
+        /// <c>GET /v1/apps/{appId}/promo-code-lists/{listId}/codes</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PromoCodesPage> PromoCodesAsync(string listId, global::Pushizo.Params.PromoCodeListsPromoCodesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/promo-code-lists/{listId}/codes");
+            op.PathParam("listId", listId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.PromoCodesPage>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// reverseEtl kaynağı.
     /// </summary>
     public sealed class ReverseEtlResource

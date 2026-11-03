@@ -8180,6 +8180,27 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreatePromoCodeListDto şeması.
+    /// </summary>
+    public sealed class CreatePromoCodeListDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateSuppressionDto şeması.
     /// </summary>
     public sealed class CreateSuppressionDto
@@ -17099,6 +17120,177 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// PromoCodeList şeması.
+    /// </summary>
+    public sealed class PromoCodeList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_count")]
+        public long? TotalCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("assigned_count")]
+        public long? AssignedCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("available_count")]
+        public long? AvailableCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("liquid")]
+        public string? Liquid { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PromoCodeListList şeması.
+    /// </summary>
+    public sealed class PromoCodeListList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PromoCodeList>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PromoCodesPage şeması.
+    /// </summary>
+    public sealed class PromoCodesPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public long? Total { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PromoCodesPageDataItem>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PromoCodesPageDataItem şeması.
+    /// </summary>
+    public sealed class PromoCodesPageDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_id")]
+        public string? DeliveryId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
+        public string? MessageId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("assigned_at")]
+        public string? AssignedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PromoCodeUploadResult şeması.
+    /// </summary>
+    public sealed class PromoCodeUploadResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("list")]
+        public global::Pushizo.Models.PromoCodeList? List { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("added")]
+        public long? Added { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("skipped")]
+        public long? Skipped { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// ProvidersReport şeması.
     /// </summary>
     public sealed class ProvidersReport
@@ -21887,6 +22079,21 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("y")]
         public double? Y { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdatePromoCodeListDto şeması.
+    /// </summary>
+    public sealed class UpdatePromoCodeListDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
