@@ -2695,6 +2695,64 @@ namespace Pushizo.Resources
             op.PathParam("itemId", itemId);
             return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
         }
+
+        /// <summary>
+        /// Ürün önerileri
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations</c>
+        ///
+        /// Stokta olmayan ve kullanıcının satın aldığı ürünler çıkmaz. Sonuç yetmezse yedek kaynakla tamamlanır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Recommendations> ListRecommendationsAsync(string catalogId, string strategy, global::Pushizo.Params.CatalogsListRecommendationsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations");
+            op.PathParam("catalogId", catalogId);
+            op.Query("strategy", strategy);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.Recommendations>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öneri modeli
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> ConfigAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
+            op.PathParam("catalogId", catalogId);
+            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öneri modelini ayarla
+        ///
+        /// <c>PUT /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config</c>
+        ///
+        /// Model açıksa öneriler kayıttan sonra yeniden hesaplanır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> UpdateConfigAsync(string catalogId, global::Pushizo.Models.UpdateRecommendationConfigDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
+            op.PathParam("catalogId", catalogId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Önerileri yeniden hesapla
+        ///
+        /// <c>POST /v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute</c>
+        ///
+        /// İş kuyruğa alınır; ilerleme `status` alanından izlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> ComputeAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute");
+            op.PathParam("catalogId", catalogId);
+            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
+        }
     }
 
     /// <summary>

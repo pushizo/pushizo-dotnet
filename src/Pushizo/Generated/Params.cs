@@ -1052,6 +1052,33 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// CatalogsResource.ListRecommendationsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CatalogsListRecommendationsParams
+    {
+        public long? Limit { get; set; }
+
+        public string? UserId { get; set; }
+
+        public string? ExternalId { get; set; }
+
+        public string? ItemId { get; set; }
+
+        public string? Category { get; set; }
+
+        internal CatalogsListRecommendationsParams Copy() => (CatalogsListRecommendationsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("user_id", UserId);
+            op.Query("external_id", ExternalId);
+            op.Query("item_id", ItemId);
+            op.Query("category", Category);
+        }
+    }
+
+    /// <summary>
     /// ContentTablesResource.CreateTableUploadAsync için multipart/form-data alanları.
     /// </summary>
     public sealed class ContentTablesCreateTableUploadForm
