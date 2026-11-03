@@ -5426,6 +5426,234 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// ChannelScoreConfig şeması.
+    /// </summary>
+    public sealed class ChannelScoreConfig
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("configured")]
+        public bool? Configured { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("window_days")]
+        public long? WindowDays { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_sends")]
+        public long? MinSends { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("count_email_opens")]
+        public bool? CountEmailOpens { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "idle", "queued", "running", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_error")]
+        public string? LastError { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_computed_at")]
+        public string? LastComputedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scored_users")]
+        public long? ScoredUsers { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelScoreOverview şeması.
+    /// </summary>
+    public sealed class ChannelScoreOverview
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public long? Total { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("low_population")]
+        public bool? LowPopulation { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_computed_at")]
+        public string? LastComputedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.ChannelScoreOverviewChannelsItem>? Channels { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelScoreOverviewChannelsItem şeması.
+    /// </summary>
+    public sealed class ChannelScoreOverviewChannelsItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "push", "email", "whatsapp", "rcs", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("best_users")]
+        public long? BestUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("share")]
+        public double? Share { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sends")]
+        public long? Sends { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("engaged")]
+        public long? Engaged { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("engagement_rate")]
+        public double? EngagementRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelScoreUser şeması.
+    /// </summary>
+    public sealed class ChannelScoreUser
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "push", "email", "whatsapp", "rcs", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("best_channel")]
+        public string? BestChannel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scores")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.ChannelScoreUserScoresItem>? Scores { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelScoreUserScoresItem şeması.
+    /// </summary>
+    public sealed class ChannelScoreUserScoresItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "push", "email", "whatsapp", "rcs", "sms".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sends")]
+        public long? Sends { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("engaged")]
+        public long? Engaged { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("score")]
+        public double? Score { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ChannelScoreUsersPage şeması.
+    /// </summary>
+    public sealed class ChannelScoreUsersPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.ChannelScoreUser>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// ChannelValidation şeması.
     /// </summary>
     public sealed class ChannelValidation
@@ -22781,6 +23009,30 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("position")]
         public long? Position { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateChannelScoreConfigDto şeması.
+    /// </summary>
+    public sealed class UpdateChannelScoreConfigDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("window_days")]
+        public long? WindowDays { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_sends")]
+        public long? MinSends { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("count_email_opens")]
+        public bool? CountEmailOpens { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

@@ -125,6 +125,11 @@ namespace Pushizo
         public global::Pushizo.Resources.CategoriesResource Categories { get; private set; } = null!;
 
         /// <summary>
+        /// ChannelScores
+        /// </summary>
+        public global::Pushizo.Resources.ChannelScoresResource ChannelScores { get; private set; } = null!;
+
+        /// <summary>
         /// ContentTables
         /// </summary>
         public global::Pushizo.Resources.ContentTablesResource ContentTables { get; private set; } = null!;
@@ -269,6 +274,7 @@ namespace Pushizo
             CannedResponses = new global::Pushizo.Resources.CannedResponsesResource(this);
             Catalogs = new global::Pushizo.Resources.CatalogsResource(this);
             Categories = new global::Pushizo.Resources.CategoriesResource(this);
+            ChannelScores = new global::Pushizo.Resources.ChannelScoresResource(this);
             ContentTables = new global::Pushizo.Resources.ContentTablesResource(this);
             Conversations = new global::Pushizo.Resources.ConversationsResource(this);
             DataFeeds = new global::Pushizo.Resources.DataFeedsResource(this);

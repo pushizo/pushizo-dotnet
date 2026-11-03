@@ -1079,6 +1079,30 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// ChannelScoresResource.UsersAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class ChannelScoresUsersParams
+    {
+        /// <summary>
+        /// Değerler: "push", "email", "whatsapp", "rcs", "sms".
+        /// </summary>
+        public string? Channel { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal ChannelScoresUsersParams Copy() => (ChannelScoresUsersParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("channel", Channel);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// ContentTablesResource.CreateTableUploadAsync için multipart/form-data alanları.
     /// </summary>
     public sealed class ContentTablesCreateTableUploadForm

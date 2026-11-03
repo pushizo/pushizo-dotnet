@@ -2819,6 +2819,93 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// channelScores kaynağı.
+    /// </summary>
+    public sealed class ChannelScoresResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal ChannelScoresResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Kanal skoru ayarı
+        ///
+        /// <c>GET /v1/apps/{appId}/channel-scores/config</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ChannelScoreConfig> ConfigAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/channel-scores/config");
+            return _client.ExecuteAsync<global::Pushizo.Models.ChannelScoreConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kanal skorunu ayarla
+        ///
+        /// <c>PUT /v1/apps/{appId}/channel-scores/config</c>
+        ///
+        /// Açıkken skorlar kayıttan sonra yeniden hesaplanır; kapatınca silinir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ChannelScoreConfig> UpdateAsync(global::Pushizo.Models.UpdateChannelScoreConfigDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/channel-scores/config");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.ChannelScoreConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kanal skorlarını yeniden hesapla
+        ///
+        /// <c>POST /v1/apps/{appId}/channel-scores/compute</c>
+        ///
+        /// İş kuyruğa alınır; ilerleme `status` alanından izlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ChannelScoreConfig> ComputeAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/channel-scores/compute");
+            return _client.ExecuteAsync<global::Pushizo.Models.ChannelScoreConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// En iyi kanal dağılımı
+        ///
+        /// <c>GET /v1/apps/{appId}/channel-scores/overview</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ChannelScoreOverview> OverviewAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/channel-scores/overview");
+            return _client.ExecuteAsync<global::Pushizo.Models.ChannelScoreOverview>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// En iyi kanalı belli kullanıcılar
+        ///
+        /// <c>GET /v1/apps/{appId}/channel-scores/users</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ChannelScoreUsersPage> UsersAsync(global::Pushizo.Params.ChannelScoresUsersParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/channel-scores/users");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.ChannelScoreUsersPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kullanıcının kanal skorları
+        ///
+        /// <c>GET /v1/apps/{appId}/channel-scores/users/{userId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ChannelScoreUser> UserAsync(string userId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/channel-scores/users/{userId}");
+            op.PathParam("userId", userId);
+            return _client.ExecuteAsync<global::Pushizo.Models.ChannelScoreUser>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// contentTables kaynağı.
     /// </summary>
     public sealed class ContentTablesResource
