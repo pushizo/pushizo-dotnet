@@ -1220,6 +1220,24 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// GlobalControlResource.ReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class GlobalControlReportParams
+    {
+        public long? Days { get; set; }
+
+        public string? Event { get; set; }
+
+        internal GlobalControlReportParams Copy() => (GlobalControlReportParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("days", Days);
+            op.Query("event", Event);
+        }
+    }
+
+    /// <summary>
     /// IntegrationsResource.SamplesAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class IntegrationsSamplesParams

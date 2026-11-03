@@ -145,6 +145,11 @@ namespace Pushizo
         public global::Pushizo.Resources.FormsResource Forms { get; private set; } = null!;
 
         /// <summary>
+        /// GlobalControl
+        /// </summary>
+        public global::Pushizo.Resources.GlobalControlResource GlobalControl { get; private set; } = null!;
+
+        /// <summary>
         /// IdentityKeys
         /// </summary>
         public global::Pushizo.Resources.IdentityKeysResource IdentityKeys { get; private set; } = null!;
@@ -248,6 +253,7 @@ namespace Pushizo
             DataFeeds = new global::Pushizo.Resources.DataFeedsResource(this);
             EmailDeliverability = new global::Pushizo.Resources.EmailDeliverabilityResource(this);
             Forms = new global::Pushizo.Resources.FormsResource(this);
+            GlobalControl = new global::Pushizo.Resources.GlobalControlResource(this);
             IdentityKeys = new global::Pushizo.Resources.IdentityKeysResource(this);
             Integrations = new global::Pushizo.Resources.IntegrationsResource(this);
             Journeys = new global::Pushizo.Resources.JourneysResource(this);

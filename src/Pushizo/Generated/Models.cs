@@ -3405,6 +3405,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("quiet_hours_exempt")]
         public bool? QuietHoursExempt { get; set; }
 
@@ -3728,6 +3731,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("quiet_hours_exempt")]
         public bool? QuietHoursExempt { get; set; }
@@ -4208,6 +4214,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("quiet_hours_exempt")]
         public bool? QuietHoursExempt { get; set; }
@@ -7121,6 +7130,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("excluded_segments")]
         public global::System.Collections.Generic.List<string>? ExcludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -11747,6 +11759,174 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// GlobalControl şeması.
+    /// </summary>
+    public sealed class GlobalControl
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public long? Percent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("started_at")]
+        public string? StartedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// GlobalControlReport şeması.
+    /// </summary>
+    public sealed class GlobalControlReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public long? Percent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("started_at")]
+        public string? StartedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("events")]
+        public global::System.Collections.Generic.List<string>? Events { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("control")]
+        public global::Pushizo.Models.GlobalControlReportControl? Control { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("treatment")]
+        public global::Pushizo.Models.GlobalControlReportTreatment? Treatment { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lift_percent")]
+        public double? LiftPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("incremental_conversions")]
+        public long? IncrementalConversions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("withheld_messages")]
+        public long? WithheldMessages { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// GlobalControlReportControl şeması.
+    /// </summary>
+    public sealed class GlobalControlReportControl
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// GlobalControlReportTreatment şeması.
+    /// </summary>
+    public sealed class GlobalControlReportTreatment
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// IdentityKey şeması.
     /// </summary>
     public sealed class IdentityKey
@@ -12137,6 +12317,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("excluded_segments")]
         public global::System.Collections.Generic.List<string>? ExcludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -15641,6 +15824,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("quiet_hours_exempt")]
         public bool? QuietHoursExempt { get; set; }
@@ -21530,6 +21716,27 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// UpdateGlobalControlDto şeması.
+    /// </summary>
+    public sealed class UpdateGlobalControlDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("percent")]
+        public long? Percent { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateInAppDto şeması.
     /// </summary>
     public sealed class UpdateInAppDto
@@ -21617,6 +21824,9 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("excluded_segments")]
         public global::System.Collections.Generic.List<string>? ExcludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
+        public bool? GlobalControlExempt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

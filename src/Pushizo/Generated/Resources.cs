@@ -3252,6 +3252,68 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// globalControl kaynağı.
+    /// </summary>
+    public sealed class GlobalControlResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal GlobalControlResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Genel kontrol grubu ayarı
+        ///
+        /// <c>GET /v1/apps/{appId}/global-control</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.GlobalControl> GetAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/global-control");
+            return _client.ExecuteAsync<global::Pushizo.Models.GlobalControl>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Genel kontrol grubunu ayarla
+        ///
+        /// <c>PUT /v1/apps/{appId}/global-control</c>
+        ///
+        /// Gruptaki kullanıcılar kampanya, otomasyon ve uygulama içi mesajları almaz. API ve işlemsel gönderimler etkilenmez.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.GlobalControl> UpdateAsync(global::Pushizo.Models.UpdateGlobalControlDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/global-control");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.GlobalControl>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Grubu yeniden kur (üyelik değişir, ölçüm baştan başlar)
+        ///
+        /// <c>POST /v1/apps/{appId}/global-control/reset</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.GlobalControl> ResetAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/global-control/reset");
+            return _client.ExecuteAsync<global::Pushizo.Models.GlobalControl>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kontrol ve mesaj alan grubun dönüşüm karşılaştırması
+        ///
+        /// <c>GET /v1/apps/{appId}/global-control/report</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.GlobalControlReport> ReportAsync(global::Pushizo.Params.GlobalControlReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/global-control/report");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.GlobalControlReport>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// identityKeys kaynağı.
     /// </summary>
     public sealed class IdentityKeysResource
