@@ -2552,6 +2552,152 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// catalogs kaynağı.
+    /// </summary>
+    public sealed class CatalogsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal CatalogsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Ürün katalogları
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CatalogList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs");
+            return _client.ExecuteAsync<global::Pushizo.Models.CatalogList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Katalog oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/catalogs</c>
+        ///
+        /// Şablonda `{% catalog_item '&lt;ad&gt;' id: custom_data.product_id as urun %}{{ urun.title }}`.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Catalog> CreateAsync(global::Pushizo.Models.CreateCatalogDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/catalogs");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Catalog>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Katalog ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Catalog> GetAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}");
+            op.PathParam("catalogId", catalogId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Catalog>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kataloğu güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/catalogs/{catalogId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Catalog> UpdateAsync(string catalogId, global::Pushizo.Models.UpdateCatalogDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/catalogs/{catalogId}");
+            op.PathParam("catalogId", catalogId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Catalog>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kataloğu sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/catalogs/{catalogId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> DeleteAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/catalogs/{catalogId}");
+            op.PathParam("catalogId", catalogId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ürünler
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/items</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CatalogItemsPage> ItemsAsync(string catalogId, global::Pushizo.Params.CatalogsItemsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/items");
+            op.PathParam("catalogId", catalogId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.CatalogItemsPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ürünleri ekle veya güncelle (en fazla 1000)
+        ///
+        /// <c>PUT /v1/apps/{appId}/catalogs/{catalogId}/items</c>
+        ///
+        /// Listede olmayan ürünlere dokunulmaz. Listedeki ürünün verilmeyen alanları temizlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CatalogUpsertResult> UpsertAsync(string catalogId, global::Pushizo.Models.UpsertCatalogItemsDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/catalogs/{catalogId}/items");
+            op.PathParam("catalogId", catalogId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.CatalogUpsertResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// CSV ile ürün ekle veya güncelle
+        ///
+        /// <c>POST /v1/apps/{appId}/catalogs/{catalogId}/items/upload</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CatalogUpsertResult> UploadAsync(string catalogId, global::Pushizo.Params.CatalogsUploadForm form, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/catalogs/{catalogId}/items/upload");
+            op.PathParam("catalogId", catalogId);
+            if (form is null) throw new global::System.ArgumentNullException(nameof(form));
+            form.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.CatalogUpsertResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ürün ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/items/{itemId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CatalogItem> ItemAsync(string catalogId, string itemId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/items/{itemId}");
+            op.PathParam("catalogId", catalogId);
+            op.PathParam("itemId", itemId);
+            return _client.ExecuteAsync<global::Pushizo.Models.CatalogItem>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ürünü sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/catalogs/{catalogId}/items/{itemId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> RemoveItemAsync(string catalogId, string itemId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/catalogs/{catalogId}/items/{itemId}");
+            op.PathParam("catalogId", catalogId);
+            op.PathParam("itemId", itemId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// categories kaynağı.
     /// </summary>
     public sealed class CategoriesResource

@@ -1010,6 +1010,48 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// CatalogsResource.ItemsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CatalogsItemsParams
+    {
+        public long? Limit { get; set; }
+
+        public long? Offset { get; set; }
+
+        public string? Q { get; set; }
+
+        public string? Category { get; set; }
+
+        internal CatalogsItemsParams Copy() => (CatalogsItemsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("offset", Offset);
+            op.Query("q", Q);
+            op.Query("category", Category);
+        }
+    }
+
+    /// <summary>
+    /// CatalogsResource.UploadAsync için multipart/form-data alanları.
+    /// </summary>
+    public sealed class CatalogsUploadForm
+    {
+        /// <summary>
+        /// Zorunlu. UTF-8 CSV. Zorunlu sütunlar: id, title. Bilinen: description, image_url, url, price, sale_price, currency, category, brand, in_stock. Diğerleri özellik olur. En fazla 100.000 satır, 20 MB.
+        /// </summary>
+        public global::Pushizo.FileUpload? File { get; set; }
+
+        internal CatalogsUploadForm Copy() => (CatalogsUploadForm)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.FormFile("file", File);
+        }
+    }
+
+    /// <summary>
     /// ContentTablesResource.CreateTableUploadAsync için multipart/form-data alanları.
     /// </summary>
     public sealed class ContentTablesCreateTableUploadForm
