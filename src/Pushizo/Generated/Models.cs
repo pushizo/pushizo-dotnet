@@ -8951,6 +8951,93 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreateSavedReportDto şeması.
+    /// </summary>
+    public sealed class CreateSavedReportDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
+        public global::Pushizo.Models.CreateSavedReportDtoDefinition? Definition { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateSavedReportDtoDefinition şeması.
+    /// </summary>
+    public sealed class CreateSavedReportDtoDefinition
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "deliveries", "events", "conversions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "sent", "delivered", "failed", "opened", "clicked", "delivery_rate", "open_rate", "click_rate", "failure_rate", "count", "unique_users", "value_sum", "value_avg", "conversions", "revenue".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
+        public global::System.Collections.Generic.List<string>? Metrics { get; set; }
+
+        /// <summary>
+        /// Değerler: "day", "week", "month", "channel", "provider", "campaign", "status", "name", "source", "event_name", "kind".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public global::System.Collections.Generic.List<string>? Dimensions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? Filters { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sort")]
+        public global::Pushizo.Models.CreateSavedReportDtoDefinitionSort? Sort { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("days")]
+        public long? Days { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateSavedReportDtoDefinitionSort şeması.
+    /// </summary>
+    public sealed class CreateSavedReportDtoDefinitionSort
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("by")]
+        public string? By { get; set; }
+
+        /// <summary>
+        /// Değerler: "asc", "desc".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateSuppressionDto şeması.
     /// </summary>
     public sealed class CreateSuppressionDto
@@ -19628,6 +19715,150 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// ReportResult şeması.
+    /// </summary>
+    public sealed class ReportResult
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("columns")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.ReportResultColumnsItem>? Columns { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? Rows { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totals")]
+        public global::System.Collections.Generic.Dictionary<string, double?>? Totals { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncated")]
+        public bool? Truncated { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ReportResultColumnsItem şeması.
+    /// </summary>
+    public sealed class ReportResultColumnsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "dimension", "metric".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "text", "date", "number", "percent".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("format")]
+        public string? Format { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ReportRunBodyDto şeması.
+    /// </summary>
+    public sealed class ReportRunBodyDto
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "deliveries", "events", "conversions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "sent", "delivered", "failed", "opened", "clicked", "delivery_rate", "open_rate", "click_rate", "failure_rate", "count", "unique_users", "value_sum", "value_avg", "conversions", "revenue".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
+        public global::System.Collections.Generic.List<string>? Metrics { get; set; }
+
+        /// <summary>
+        /// Değerler: "day", "week", "month", "channel", "provider", "campaign", "status", "name", "source", "event_name", "kind".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public global::System.Collections.Generic.List<string>? Dimensions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? Filters { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sort")]
+        public global::Pushizo.Models.ReportRunBodyDtoSort? Sort { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("days")]
+        public long? Days { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Değerler: "json", "csv".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("format")]
+        public string? Format { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// ReportRunBodyDtoSort şeması.
+    /// </summary>
+    public sealed class ReportRunBodyDtoSort
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("by")]
+        public string? By { get; set; }
+
+        /// <summary>
+        /// Değerler: "asc", "desc".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// RetentionReport şeması.
     /// </summary>
     public sealed class RetentionReport
@@ -20219,6 +20450,138 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("segment_since")]
         public string? SegmentSince { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SavedReport şeması.
+    /// </summary>
+    public sealed class SavedReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
+        public global::Pushizo.Models.SavedReportDefinition? Definition { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_by")]
+        public string? CreatedBy { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SavedReportDefinition şeması.
+    /// </summary>
+    public sealed class SavedReportDefinition
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "deliveries", "events", "conversions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "sent", "delivered", "failed", "opened", "clicked", "delivery_rate", "open_rate", "click_rate", "failure_rate", "count", "unique_users", "value_sum", "value_avg", "conversions", "revenue".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
+        public global::System.Collections.Generic.List<string>? Metrics { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "day", "week", "month", "channel", "provider", "campaign", "status", "name", "source", "event_name", "kind".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public global::System.Collections.Generic.List<string>? Dimensions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? Filters { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sort")]
+        public global::Pushizo.Models.SavedReportDefinitionSort? Sort { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("days")]
+        public long? Days { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SavedReportDefinitionSort şeması.
+    /// </summary>
+    public sealed class SavedReportDefinitionSort
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("by")]
+        public string? By { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "asc", "desc".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SavedReportList şeması.
+    /// </summary>
+    public sealed class SavedReportList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.SavedReport>? Data { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -24020,6 +24383,87 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("window_days")]
         public long? WindowDays { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateSavedReportDto şeması.
+    /// </summary>
+    public sealed class UpdateSavedReportDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
+        public global::Pushizo.Models.UpdateSavedReportDtoDefinition? Definition { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateSavedReportDtoDefinition şeması.
+    /// </summary>
+    public sealed class UpdateSavedReportDtoDefinition
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "deliveries", "events", "conversions".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "sent", "delivered", "failed", "opened", "clicked", "delivery_rate", "open_rate", "click_rate", "failure_rate", "count", "unique_users", "value_sum", "value_avg", "conversions", "revenue".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
+        public global::System.Collections.Generic.List<string>? Metrics { get; set; }
+
+        /// <summary>
+        /// Değerler: "day", "week", "month", "channel", "provider", "campaign", "status", "name", "source", "event_name", "kind".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public global::System.Collections.Generic.List<string>? Dimensions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("filters")]
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? Filters { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("sort")]
+        public global::Pushizo.Models.UpdateSavedReportDtoDefinitionSort? Sort { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public long? Limit { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("days")]
+        public long? Days { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateSavedReportDtoDefinitionSort şeması.
+    /// </summary>
+    public sealed class UpdateSavedReportDtoDefinitionSort
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("by")]
+        public string? By { get; set; }
+
+        /// <summary>
+        /// Değerler: "asc", "desc".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        public string? Direction { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

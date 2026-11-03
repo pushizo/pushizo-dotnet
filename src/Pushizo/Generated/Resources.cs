@@ -1917,6 +1917,21 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Rapor çalıştır
+        ///
+        /// <c>POST /v1/apps/{appId}/analytics/reports/run</c>
+        ///
+        /// Kaynak, metrik, boyut ve filtre seçilerek rapor üretir; alanlar izinli listeyle sınırlıdır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.ReportResult> RunReportAsync(global::Pushizo.Models.ReportRunBodyDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/analytics/reports/run");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.ReportResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Yol analizi
         ///
         /// <c>POST /v1/apps/{appId}/analytics/paths</c>
@@ -1978,6 +1993,68 @@ namespace Pushizo.Resources
             var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/analytics/engagement");
             @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::Pushizo.Models.EngagementReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kaydedilmiş raporlar
+        ///
+        /// <c>GET /v1/apps/{appId}/analytics/reports</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SavedReportList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/analytics/reports");
+            return _client.ExecuteAsync<global::Pushizo.Models.SavedReportList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Raporu kaydet
+        ///
+        /// <c>POST /v1/apps/{appId}/analytics/reports</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SavedReport> CreateAsync(global::Pushizo.Models.CreateSavedReportDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/analytics/reports");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SavedReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kaydedilmiş rapor
+        ///
+        /// <c>GET /v1/apps/{appId}/analytics/reports/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SavedReport> GetAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/analytics/reports/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.SavedReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Raporu güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/analytics/reports/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SavedReport> UpdateAsync(string id, global::Pushizo.Models.UpdateSavedReportDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/analytics/reports/{id}");
+            op.PathParam("id", id);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SavedReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Raporu sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/analytics/reports/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task DeleteAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/analytics/reports/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync(op, options, cancellationToken);
         }
     }
 
