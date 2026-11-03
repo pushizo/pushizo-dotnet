@@ -3456,6 +3456,83 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// geofences kaynağı.
+    /// </summary>
+    public sealed class GeofencesResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal GeofencesResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Bölgeler
+        ///
+        /// <c>GET /v1/apps/{appId}/geofences</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.GeofenceList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/geofences");
+            return _client.ExecuteAsync<global::Pushizo.Models.GeofenceList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bölge oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/geofences</c>
+        ///
+        /// Konum paylaşan abonelik bölgeye girip çıktığında `geofence_enter` ve `geofence_exit` olayları oluşur.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Geofence> CreateAsync(global::Pushizo.Models.CreateGeofenceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/geofences");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Geofence>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bölge ayrıntısı
+        ///
+        /// <c>GET /v1/apps/{appId}/geofences/{geofenceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Geofence> GetAsync(string geofenceId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/geofences/{geofenceId}");
+            op.PathParam("geofenceId", geofenceId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Geofence>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bölgeyi güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/geofences/{geofenceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Geofence> UpdateAsync(string geofenceId, global::Pushizo.Models.UpdateGeofenceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/geofences/{geofenceId}");
+            op.PathParam("geofenceId", geofenceId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Geofence>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Bölgeyi sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/geofences/{geofenceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> DeleteAsync(string geofenceId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/geofences/{geofenceId}");
+            op.PathParam("geofenceId", geofenceId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// globalControl kaynağı.
     /// </summary>
     public sealed class GlobalControlResource
