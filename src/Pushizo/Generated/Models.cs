@@ -8930,6 +8930,39 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreatePredictionDto şeması.
+    /// </summary>
+    public sealed class CreatePredictionDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "churn", "event".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_names")]
+        public global::System.Collections.Generic.List<string>? EventNames { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("horizon_days")]
+        public long? HorizonDays { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreatePromoCodeListDto şeması.
     /// </summary>
     public sealed class CreatePromoCodeListDto
@@ -18623,6 +18656,294 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// PredictionModel şeması.
+    /// </summary>
+    public sealed class PredictionModel
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "churn", "event".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_names")]
+        public global::System.Collections.Generic.List<string>? EventNames { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("horizon_days")]
+        public long? HorizonDays { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "idle", "queued", "running", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "ready", "insufficient_data", "low_quality".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outcome")]
+        public string? Outcome { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_computed_at")]
+        public string? LastComputedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scored_users")]
+        public long? ScoredUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
+        public global::Pushizo.Models.PredictionModelMetrics? Metrics { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("distribution")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PredictionModelDistributionItem>? Distribution { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionModelDistributionItem şeması.
+    /// </summary>
+    public sealed class PredictionModelDistributionItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "low", "medium", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bucket")]
+        public string? Bucket { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionModelList şeması.
+    /// </summary>
+    public sealed class PredictionModelList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PredictionModel>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionModelMetrics şeması.
+    /// </summary>
+    public sealed class PredictionModelMetrics
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("auc")]
+        public double? Auc { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_rate")]
+        public double? BaseRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("train_users")]
+        public long? TrainUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("holdout_users")]
+        public long? HoldoutUsers { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("positives")]
+        public long? Positives { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("negatives")]
+        public long? Negatives { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("calibration")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PredictionModelMetricsCalibrationItem>? Calibration { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("importance")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PredictionModelMetricsImportanceItem>? Importance { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionModelMetricsCalibrationItem şeması.
+    /// </summary>
+    public sealed class PredictionModelMetricsCalibrationItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "low", "medium", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bucket")]
+        public string? Bucket { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("users")]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("predicted")]
+        public double? Predicted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actual")]
+        public double? Actual { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionModelMetricsImportanceItem şeması.
+    /// </summary>
+    public sealed class PredictionModelMetricsImportanceItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "recency_days", "events_7", "events_30", "active_days_30", "target_30", "days_since_target", "tenure_days", "sent_30", "engaged_30".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("feature")]
+        public string? Feature { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight")]
+        public double? Weight { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionUsersPage şeması.
+    /// </summary>
+    public sealed class PredictionUsersPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.PredictionUsersPageDataItem>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PredictionUsersPageDataItem şeması.
+    /// </summary>
+    public sealed class PredictionUsersPageDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("score")]
+        public long? Score { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "low", "medium", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bucket")]
+        public string? Bucket { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// PromoCodeList şeması.
     /// </summary>
     public sealed class PromoCodeList
@@ -24422,6 +24743,27 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("y")]
         public double? Y { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdatePredictionDto şeması.
+    /// </summary>
+    public sealed class UpdatePredictionDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_names")]
+        public global::System.Collections.Generic.List<string>? EventNames { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("horizon_days")]
+        public long? HorizonDays { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

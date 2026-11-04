@@ -1448,6 +1448,30 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// PredictionsResource.UsersAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class PredictionsUsersParams
+    {
+        /// <summary>
+        /// Değerler: "low", "medium", "high".
+        /// </summary>
+        public string? Bucket { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal PredictionsUsersParams Copy() => (PredictionsUsersParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("bucket", Bucket);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// PromoCodeListsResource.UploadPromoListAsync için multipart/form-data alanları.
     /// </summary>
     public sealed class PromoCodeListsUploadPromoListForm

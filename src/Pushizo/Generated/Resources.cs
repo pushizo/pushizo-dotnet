@@ -4573,6 +4573,110 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// predictions kaynağı.
+    /// </summary>
+    public sealed class PredictionsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal PredictionsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Öngörü modelleri
+        ///
+        /// <c>GET /v1/apps/{appId}/predictions</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PredictionModelList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/predictions");
+            return _client.ExecuteAsync<global::Pushizo.Models.PredictionModelList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öngörü modeli oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/predictions</c>
+        ///
+        /// Eğitim kuyruğa alınır; sonuç `outcome` alanından izlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PredictionModel> CreateAsync(global::Pushizo.Models.CreatePredictionDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/predictions");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.PredictionModel>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öngörü modeli
+        ///
+        /// <c>GET /v1/apps/{appId}/predictions/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PredictionModel> GetAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/predictions/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.PredictionModel>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öngörü modelini güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/predictions/{id}</c>
+        ///
+        /// Olay veya ufuk değişirse yeniden eğitilir; kapatınca skorlar silinir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PredictionModel> UpdateAsync(string id, global::Pushizo.Models.UpdatePredictionDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/predictions/{id}");
+            op.PathParam("id", id);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.PredictionModel>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öngörü modelini sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/predictions/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task DeleteAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/predictions/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Modeli yeniden eğit
+        ///
+        /// <c>POST /v1/apps/{appId}/predictions/{id}/compute</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PredictionModel> ComputeAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/predictions/{id}/compute");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.PredictionModel>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Skoru olan kullanıcılar
+        ///
+        /// <c>GET /v1/apps/{appId}/predictions/{id}/users</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.PredictionUsersPage> UsersAsync(string id, global::Pushizo.Params.PredictionsUsersParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/predictions/{id}/users");
+            op.PathParam("id", id);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.PredictionUsersPage>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// preferences kaynağı.
     /// </summary>
     public sealed class PreferencesResource
