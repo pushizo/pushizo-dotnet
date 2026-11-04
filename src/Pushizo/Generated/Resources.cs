@@ -5202,6 +5202,180 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// wallet kaynağı.
+    /// </summary>
+    public sealed class WalletResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal WalletResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Wallet yapılandırması
+        ///
+        /// <c>GET /v1/apps/{appId}/wallet/config</c>
+        ///
+        /// Kimlik bilgisi geri okunamaz, yalnızca durum döner.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletConfig> ConfigAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/config");
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Wallet kimlik bilgilerini ayarla
+        ///
+        /// <c>PUT /v1/apps/{appId}/wallet/config</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletConfig> UpdateConfigAsync(global::Pushizo.Models.UpdateWalletConfigDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/wallet/config");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Wallet şablonları
+        ///
+        /// <c>GET /v1/apps/{appId}/wallet/templates</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplateList> TemplatesAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/templates");
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletTemplateList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Wallet şablonu oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/wallet/templates</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplate> CreateTemplateAsync(global::Pushizo.Models.CreateWalletTemplateDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/wallet/templates");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletTemplate>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Wallet şablonu
+        ///
+        /// <c>GET /v1/apps/{appId}/wallet/templates/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplate> TemplateAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/templates/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletTemplate>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Wallet şablonunu güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/wallet/templates/{id}</c>
+        ///
+        /// Tasarım değişirse verilmiş kartlar da güncellenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplate> UpdateTemplateAsync(string id, global::Pushizo.Models.UpdateWalletTemplateDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/wallet/templates/{id}");
+            op.PathParam("id", id);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletTemplate>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Wallet şablonunu sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/wallet/templates/{id}</c>
+        ///
+        /// Verilmiş kartı olan şablon silinemez, arşivlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task RemoveTemplateAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/wallet/templates/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Verilmiş kartlar
+        ///
+        /// <c>GET /v1/apps/{appId}/wallet/passes</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPassPage> PassesAsync(global::Pushizo.Params.WalletPassesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/passes");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletPassPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kart ver
+        ///
+        /// <c>POST /v1/apps/{appId}/wallet/passes</c>
+        ///
+        /// Kullanıcılı kart şablon başına tektir; tekrar istek aynı kartı döndürür.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> IssueAsync(global::Pushizo.Models.IssueWalletPassDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/wallet/passes");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletPass>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kart
+        ///
+        /// <c>GET /v1/apps/{appId}/wallet/passes/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> PassAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/passes/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletPass>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kartı güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/wallet/passes/{id}</c>
+        ///
+        /// Cihazdaki kart arka planda yenilenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> UpdatePassAsync(string id, global::Pushizo.Models.UpdateWalletPassDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/wallet/passes/{id}");
+            op.PathParam("id", id);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletPass>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kartı iptal et
+        ///
+        /// <c>POST /v1/apps/{appId}/wallet/passes/{id}/void</c>
+        ///
+        /// Geri alınmaz; cihazdaki kart geçersiz görünür.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> VoidPassAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/wallet/passes/{id}/void");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.WalletPass>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// warehouseExports kaynağı.
     /// </summary>
     public sealed class WarehouseExportsResource

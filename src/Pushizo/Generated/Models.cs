@@ -9716,6 +9716,120 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreateWalletTemplateDto şeması.
+    /// </summary>
+    public sealed class CreateWalletTemplateDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "coupon", "loyalty", "event", "generic".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("design")]
+        public global::Pushizo.Models.CreateWalletTemplateDtoDesign? Design { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("images")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Images { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWalletTemplateDtoDesign şeması.
+    /// </summary>
+    public sealed class CreateWalletTemplateDtoDesign
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("organization")]
+        public string? Organization { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_color")]
+        public string? BackgroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("foreground_color")]
+        public string? ForegroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("label_color")]
+        public string? LabelColor { get; set; }
+
+        /// <summary>
+        /// Değerler: "qr", "pdf417", "aztec", "code128".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("barcode")]
+        public string? Barcode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("fields")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateWalletTemplateDtoDesignFieldsItem>? Fields { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("relevant_at")]
+        public string? RelevantAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWalletTemplateDtoDesignFieldsItem şeması.
+    /// </summary>
+    public sealed class CreateWalletTemplateDtoDesignFieldsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("label")]
+        public string? Label { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <summary>
+        /// Değerler: "header", "primary", "secondary", "auxiliary", "back".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("section")]
+        public string? Section { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateWarmupPlanDto şeması.
     /// </summary>
     public sealed class CreateWarmupPlanDto
@@ -14567,6 +14681,30 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
         public bool? Ok { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// IssueWalletPassDto şeması.
+    /// </summary>
+    public sealed class IssueWalletPassDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
+        public string? TemplateId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("barcode_value")]
+        public string? BarcodeValue { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("values")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Values { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -24998,6 +25136,201 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// UpdateWalletConfigDto şeması.
+    /// </summary>
+    public sealed class UpdateWalletConfigDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("apple")]
+        public global::Pushizo.Models.UpdateWalletConfigDtoApple? Apple { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("google")]
+        public global::Pushizo.Models.UpdateWalletConfigDtoGoogle? Google { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWalletConfigDtoApple şeması.
+    /// </summary>
+    public sealed class UpdateWalletConfigDtoApple
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pass_type_id")]
+        public string? PassTypeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("certificate_pem")]
+        public string? CertificatePem { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("private_key_pem")]
+        public string? PrivateKeyPem { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("key_passphrase")]
+        public string? KeyPassphrase { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("wwdr_pem")]
+        public string? WwdrPem { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWalletConfigDtoGoogle şeması.
+    /// </summary>
+    public sealed class UpdateWalletConfigDtoGoogle
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("issuer_id")]
+        public string? IssuerId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("service_account_json")]
+        public string? ServiceAccountJson { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWalletPassDto şeması.
+    /// </summary>
+    public sealed class UpdateWalletPassDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("barcode_value")]
+        public string? BarcodeValue { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("values")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Values { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWalletTemplateDto şeması.
+    /// </summary>
+    public sealed class UpdateWalletTemplateDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Değerler: "active", "archived".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("design")]
+        public global::Pushizo.Models.UpdateWalletTemplateDtoDesign? Design { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("images")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Images { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWalletTemplateDtoDesign şeması.
+    /// </summary>
+    public sealed class UpdateWalletTemplateDtoDesign
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("organization")]
+        public string? Organization { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_color")]
+        public string? BackgroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("foreground_color")]
+        public string? ForegroundColor { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("label_color")]
+        public string? LabelColor { get; set; }
+
+        /// <summary>
+        /// Değerler: "qr", "pdf417", "aztec", "code128".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("barcode")]
+        public string? Barcode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("fields")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UpdateWalletTemplateDtoDesignFieldsItem>? Fields { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("relevant_at")]
+        public string? RelevantAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWalletTemplateDtoDesignFieldsItem şeması.
+    /// </summary>
+    public sealed class UpdateWalletTemplateDtoDesignFieldsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("label")]
+        public string? Label { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <summary>
+        /// Değerler: "header", "primary", "secondary", "auxiliary", "back".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("section")]
+        public string? Section { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateWarehouseExportDto şeması.
     /// </summary>
     public sealed class UpdateWarehouseExportDto
@@ -26498,6 +26831,375 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("address")]
         public string? Address { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletConfig şeması.
+    /// </summary>
+    public sealed class WalletConfig
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("apple")]
+        public global::Pushizo.Models.WalletConfigApple? Apple { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("google")]
+        public global::Pushizo.Models.WalletConfigGoogle? Google { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletConfigApple şeması.
+    /// </summary>
+    public sealed class WalletConfigApple
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("configured")]
+        public bool? Configured { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pass_type_id")]
+        public string? PassTypeId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("certificate_expires_at")]
+        public string? CertificateExpiresAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletConfigGoogle şeması.
+    /// </summary>
+    public sealed class WalletConfigGoogle
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("configured")]
+        public bool? Configured { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("issuer_id")]
+        public string? IssuerId { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletPass şeması.
+    /// </summary>
+    public sealed class WalletPass
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_id")]
+        public string? TemplateId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("barcode_value")]
+        public string? BarcodeValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("values")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Values { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "voided".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("apple_url")]
+        public string? AppleUrl { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("google_url")]
+        public string? GoogleUrl { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("apple_devices")]
+        public long? AppleDevices { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public long? Version { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletPassPage şeması.
+    /// </summary>
+    public sealed class WalletPassPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WalletPass>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletTemplate şeması.
+    /// </summary>
+    public sealed class WalletTemplate
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "coupon", "loyalty", "event", "generic".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "active", "archived".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("design")]
+        public global::Pushizo.Models.WalletTemplateDesign? Design { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("images")]
+        public global::System.Collections.Generic.List<string>? Images { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("passes")]
+        public long? Passes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletTemplateDesign şeması.
+    /// </summary>
+    public sealed class WalletTemplateDesign
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("organization")]
+        public string? Organization { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_color")]
+        public string? BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("foreground_color")]
+        public string? ForegroundColor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("label_color")]
+        public string? LabelColor { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "qr", "pdf417", "aztec", "code128".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("barcode")]
+        public string? Barcode { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fields")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WalletTemplateDesignFieldsItem>? Fields { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public string? ExpiresAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("relevant_at")]
+        public string? RelevantAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletTemplateDesignFieldsItem şeması.
+    /// </summary>
+    public sealed class WalletTemplateDesignFieldsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("label")]
+        public string? Label { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "header", "primary", "secondary", "auxiliary", "back".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("section")]
+        public string? Section { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WalletTemplateList şeması.
+    /// </summary>
+    public sealed class WalletTemplateList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WalletTemplate>? Data { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

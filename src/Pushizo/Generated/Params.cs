@@ -1619,6 +1619,27 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// WalletResource.PassesAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WalletPassesParams
+    {
+        public string? TemplateId { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal WalletPassesParams Copy() => (WalletPassesParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("template_id", TemplateId);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// WarehouseExportsResource.RunsAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class WarehouseExportsRunsParams
