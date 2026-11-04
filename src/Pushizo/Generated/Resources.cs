@@ -3367,6 +3367,113 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// decisionAgents kaynağı.
+    /// </summary>
+    public sealed class DecisionAgentsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal DecisionAgentsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Karar ajanları
+        ///
+        /// <c>GET /v1/apps/{appId}/decision-agents</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.DecisionAgentList> ListAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/decision-agents");
+            return _client.ExecuteAsync<global::Pushizo.Models.DecisionAgentList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Karar ajanı oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/decision-agents</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.DecisionAgent> CreateAsync(global::Pushizo.Models.CreateDecisionAgentDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/decision-agents");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.DecisionAgent>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Karar ajanı
+        ///
+        /// <c>GET /v1/apps/{appId}/decision-agents/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.DecisionAgent> GetAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/decision-agents/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.DecisionAgent>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Karar ajanını güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/decision-agents/{id}</c>
+        ///
+        /// Seçenekler değiştirilemez: geçmiş öğrenme onlara bağlıdır. Yeni seçenekler için yeni ajan oluşturun.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.DecisionAgent> UpdateAsync(string id, global::Pushizo.Models.UpdateDecisionAgentDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/decision-agents/{id}");
+            op.PathParam("id", id);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.DecisionAgent>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Karar ajanını sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/decision-agents/{id}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task DeleteAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/decision-agents/{id}");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kazanç raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/decision-agents/{id}/report</c>
+        ///
+        /// Öğrenen politika ve kontrol grubu karşılaştırması.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.DecisionReport> ReportAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/decision-agents/{id}/report");
+            op.PathParam("id", id);
+            return _client.ExecuteAsync<global::Pushizo.Models.DecisionReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kullanıcı için karar al
+        ///
+        /// <c>POST /v1/apps/{appId}/decision-agents/{id}/decide</c>
+        ///
+        /// Karar kaydedilir, ödül olayı geldikçe ajan öğrenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.DecisionResult> DecideAsync(string id, global::Pushizo.Models.DecideDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/decision-agents/{id}/decide");
+            op.PathParam("id", id);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.DecisionResult>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// emailDeliverability kaynağı.
     /// </summary>
     public sealed class EmailDeliverabilityResource
