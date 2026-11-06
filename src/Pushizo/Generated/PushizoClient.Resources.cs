@@ -7,7 +7,7 @@ namespace Pushizo
     public sealed partial class PushizoClient
     {
         /// <summary>SDK'nın üretildiği OpenAPI sözleşmesinin sürümü.</summary>
-        public const string ApiVersion = "1.0.0";
+        public const string ApiVersion = "1.1.0";
 
         /// <summary>
         /// Bildirim gönderme, durum, iptal, teslimatlar ve geçmiş dışa aktarımı.
