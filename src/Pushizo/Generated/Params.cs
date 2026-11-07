@@ -1052,33 +1052,6 @@ namespace Pushizo.Params
     }
 
     /// <summary>
-    /// CatalogsResource.ListRecommendationsAsync için isteğe bağlı sorgu parametreleri.
-    /// </summary>
-    public sealed class CatalogsListRecommendationsParams
-    {
-        public long? Limit { get; set; }
-
-        public string? UserId { get; set; }
-
-        public string? ExternalId { get; set; }
-
-        public string? ItemId { get; set; }
-
-        public string? Category { get; set; }
-
-        internal CatalogsListRecommendationsParams Copy() => (CatalogsListRecommendationsParams)MemberwiseClone();
-
-        internal void ApplyTo(global::Pushizo.Core.Operation op)
-        {
-            op.Query("limit", Limit);
-            op.Query("user_id", UserId);
-            op.Query("external_id", ExternalId);
-            op.Query("item_id", ItemId);
-            op.Query("category", Category);
-        }
-    }
-
-    /// <summary>
     /// ChannelScoresResource.UsersAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class ChannelScoresUsersParams
@@ -1517,6 +1490,33 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// RecommendationsResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class RecommendationsListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? UserId { get; set; }
+
+        public string? ExternalId { get; set; }
+
+        public string? ItemId { get; set; }
+
+        public string? Category { get; set; }
+
+        internal RecommendationsListParams Copy() => (RecommendationsListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("user_id", UserId);
+            op.Query("external_id", ExternalId);
+            op.Query("item_id", ItemId);
+            op.Query("category", Category);
+        }
+    }
+
+    /// <summary>
     /// ReverseEtlResource.RunsAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class ReverseEtlRunsParams
@@ -1643,9 +1643,9 @@ namespace Pushizo.Params
     }
 
     /// <summary>
-    /// WalletResource.PassesAsync için isteğe bağlı sorgu parametreleri.
+    /// WalletResource.ListPassesAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
-    public sealed class WalletPassesParams
+    public sealed class WalletListPassesParams
     {
         public string? TemplateId { get; set; }
 
@@ -1653,7 +1653,7 @@ namespace Pushizo.Params
 
         public string? Cursor { get; set; }
 
-        internal WalletPassesParams Copy() => (WalletPassesParams)MemberwiseClone();
+        internal WalletListPassesParams Copy() => (WalletListPassesParams)MemberwiseClone();
 
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {

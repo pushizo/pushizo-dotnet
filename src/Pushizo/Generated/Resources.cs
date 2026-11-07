@@ -2787,64 +2787,6 @@ namespace Pushizo.Resources
             op.PathParam("itemId", itemId);
             return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
         }
-
-        /// <summary>
-        /// Ürün önerileri
-        ///
-        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations</c>
-        ///
-        /// Stokta olmayan ve kullanıcının satın aldığı ürünler çıkmaz. Sonuç yetmezse yedek kaynakla tamamlanır.
-        /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Recommendations> ListRecommendationsAsync(string catalogId, string strategy, global::Pushizo.Params.CatalogsListRecommendationsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations");
-            op.PathParam("catalogId", catalogId);
-            op.Query("strategy", strategy);
-            @params?.ApplyTo(op);
-            return _client.ExecuteAsync<global::Pushizo.Models.Recommendations>(op, options, cancellationToken);
-        }
-
-        /// <summary>
-        /// Öneri modeli
-        ///
-        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config</c>
-        /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> ConfigAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
-            op.PathParam("catalogId", catalogId);
-            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
-        }
-
-        /// <summary>
-        /// Öneri modelini ayarla
-        ///
-        /// <c>PUT /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config</c>
-        ///
-        /// Model açıksa öneriler kayıttan sonra yeniden hesaplanır.
-        /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> UpdateConfigAsync(string catalogId, global::Pushizo.Models.UpdateRecommendationConfigDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
-            op.PathParam("catalogId", catalogId);
-            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
-            op.Body = body;
-            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
-        }
-
-        /// <summary>
-        /// Önerileri yeniden hesapla
-        ///
-        /// <c>POST /v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute</c>
-        ///
-        /// İş kuyruğa alınır; ilerleme `status` alanından izlenir.
-        /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> ComputeAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute");
-            op.PathParam("catalogId", catalogId);
-            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
-        }
     }
 
     /// <summary>
@@ -4929,6 +4871,77 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// recommendations kaynağı.
+    /// </summary>
+    public sealed class RecommendationsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal RecommendationsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Ürün önerileri
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations</c>
+        ///
+        /// Stokta olmayan ve kullanıcının satın aldığı ürünler çıkmaz. Sonuç yetmezse yedek kaynakla tamamlanır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Recommendations> ListAsync(string catalogId, string strategy, global::Pushizo.Params.RecommendationsListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations");
+            op.PathParam("catalogId", catalogId);
+            op.Query("strategy", strategy);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.Recommendations>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öneri modeli
+        ///
+        /// <c>GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> GetConfigAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
+            op.PathParam("catalogId", catalogId);
+            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Öneri modelini ayarla
+        ///
+        /// <c>PUT /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config</c>
+        ///
+        /// Model açıksa öneriler kayıttan sonra yeniden hesaplanır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> UpdateConfigAsync(string catalogId, global::Pushizo.Models.UpdateRecommendationConfigDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
+            op.PathParam("catalogId", catalogId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Önerileri yeniden hesapla
+        ///
+        /// <c>POST /v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute</c>
+        ///
+        /// İş kuyruğa alınır; ilerleme `status` alanından izlenir.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.RecommendationConfig> ComputeAsync(string catalogId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute");
+            op.PathParam("catalogId", catalogId);
+            return _client.ExecuteAsync<global::Pushizo.Models.RecommendationConfig>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// reverseEtl kaynağı.
     /// </summary>
     public sealed class ReverseEtlResource
@@ -5431,7 +5444,7 @@ namespace Pushizo.Resources
         ///
         /// Kimlik bilgisi geri okunamaz, yalnızca durum döner.
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletConfig> ConfigAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletConfig> GetConfigAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/config");
             return _client.ExecuteAsync<global::Pushizo.Models.WalletConfig>(op, options, cancellationToken);
@@ -5455,7 +5468,7 @@ namespace Pushizo.Resources
         ///
         /// <c>GET /v1/apps/{appId}/wallet/templates</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplateList> TemplatesAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplateList> ListTemplatesAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/templates");
             return _client.ExecuteAsync<global::Pushizo.Models.WalletTemplateList>(op, options, cancellationToken);
@@ -5479,7 +5492,7 @@ namespace Pushizo.Resources
         ///
         /// <c>GET /v1/apps/{appId}/wallet/templates/{id}</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplate> TemplateAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletTemplate> GetTemplateAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/templates/{id}");
             op.PathParam("id", id);
@@ -5509,7 +5522,7 @@ namespace Pushizo.Resources
         ///
         /// Verilmiş kartı olan şablon silinemez, arşivlenir.
         /// </summary>
-        public global::System.Threading.Tasks.Task RemoveTemplateAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task DeleteTemplateAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/wallet/templates/{id}");
             op.PathParam("id", id);
@@ -5521,7 +5534,7 @@ namespace Pushizo.Resources
         ///
         /// <c>GET /v1/apps/{appId}/wallet/passes</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPassPage> PassesAsync(global::Pushizo.Params.WalletPassesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPassPage> ListPassesAsync(global::Pushizo.Params.WalletListPassesParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/passes");
             @params?.ApplyTo(op);
@@ -5535,7 +5548,7 @@ namespace Pushizo.Resources
         ///
         /// Kullanıcılı kart şablon başına tektir; tekrar istek aynı kartı döndürür.
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> IssueAsync(global::Pushizo.Models.IssueWalletPassDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> IssuePassAsync(global::Pushizo.Models.IssueWalletPassDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/wallet/passes");
             if (body is null) throw new global::System.ArgumentNullException(nameof(body));
@@ -5548,7 +5561,7 @@ namespace Pushizo.Resources
         ///
         /// <c>GET /v1/apps/{appId}/wallet/passes/{id}</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> PassAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WalletPass> GetPassAsync(string id, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/wallet/passes/{id}");
             op.PathParam("id", id);

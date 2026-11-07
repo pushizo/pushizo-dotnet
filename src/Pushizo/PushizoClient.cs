@@ -30,7 +30,7 @@ namespace Pushizo
     public sealed partial class PushizoClient : IDisposable
     {
         /// <summary>SDK sürümü (User-Agent başlığında gönderilir).</summary>
-        public const string Version = "0.1.0";
+        public const string Version = "0.2.0";
 
         /// <summary>Varsayılan API adresi.</summary>
         public const string DefaultBaseUrl = "https://api.pushizo.com";
