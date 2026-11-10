@@ -4083,6 +4083,12 @@ namespace Pushizo.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cards")]
+        public global::Pushizo.Models.CampaignStatsCards? Cards { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
         public global::System.Collections.Generic.List<global::Pushizo.Models.CampaignStatsChannelsItem>? Channels { get; set; }
 
@@ -4151,6 +4157,51 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_segments")]
         public long? SmsSegments { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignStatsCards şeması.
+    /// </summary>
+    public sealed class CampaignStatsCards
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
+        public long? Created { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("viewed")]
+        public long? Viewed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("clicked")]
+        public long? Clicked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dismissed")]
+        public long? Dismissed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("view_rate")]
+        public double? ViewRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("click_rate")]
+        public double? ClickRate { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
