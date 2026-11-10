@@ -2541,6 +2541,15 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("identityVerificationRequired")]
         public bool? IdentityVerificationRequired { get; set; }
 
+        /// <summary>
+        /// Değerler: "off", "full", "masked".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ipCapture")]
+        public string? IpCapture { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ipRetentionDays")]
+        public long? IpRetentionDays { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedOrigins")]
         public global::System.Collections.Generic.List<string>? AllowedOrigins { get; set; }
 
@@ -3279,6 +3288,12 @@ namespace Pushizo.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::Pushizo.Models.CampaignGoals? Goals { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
         public global::Pushizo.Models.CampaignAbTest? AbTest { get; set; }
 
@@ -3576,6 +3591,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
 
+        /// <summary>
+        /// Değerler: "low", "normal", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequency_priority")]
+        public string? FrequencyPriority { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
         public bool? GlobalControlExempt { get; set; }
 
@@ -3671,6 +3692,21 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CampaignGoals şeması.
+    /// </summary>
+    public sealed class CampaignGoals
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
+        public string? Primary { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("secondary")]
+        public global::System.Collections.Generic.List<string>? Secondary { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CampaignPage şeması.
     /// </summary>
     public sealed class CampaignPage
@@ -3749,6 +3785,12 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("category")]
         public string? Category { get; set; }
+
+        /// <summary>
+        /// Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::Pushizo.Models.CampaignsCreateBodyGoals? Goals { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
         public global::Pushizo.Models.CampaignsCreateBodyAbTest? AbTest { get; set; }
@@ -3903,6 +3945,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
 
+        /// <summary>
+        /// Değerler: "low", "normal", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequency_priority")]
+        public string? FrequencyPriority { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
         public bool? GlobalControlExempt { get; set; }
 
@@ -3911,6 +3959,21 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("one_per_user")]
         public bool? OnePerUser { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+    /// </summary>
+    public sealed class CampaignsCreateBodyGoals
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
+        public string? Primary { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("secondary")]
+        public global::System.Collections.Generic.List<string>? Secondary { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -3980,6 +4043,12 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rates")]
         public global::Pushizo.Models.CampaignStatsRates? Rates { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CampaignStatsGoalsItem>? Goals { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -4124,6 +4193,39 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CampaignStatsGoalsItem şeması.
+    /// </summary>
+    public sealed class CampaignStatsGoalsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
+        public bool? Primary { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CampaignStatsHourlyItem şeması.
     /// </summary>
     public sealed class CampaignStatsHourlyItem
@@ -4232,6 +4334,12 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("category")]
         public string? Category { get; set; }
+
+        /// <summary>
+        /// Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::Pushizo.Models.CampaignsUpdateBodyGoals? Goals { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
         public global::Pushizo.Models.CampaignsUpdateBodyAbTest? AbTest { get; set; }
@@ -4386,6 +4494,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
 
+        /// <summary>
+        /// Değerler: "low", "normal", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequency_priority")]
+        public string? FrequencyPriority { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
         public bool? GlobalControlExempt { get; set; }
 
@@ -4394,6 +4508,21 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("one_per_user")]
         public bool? OnePerUser { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+    /// </summary>
+    public sealed class CampaignsUpdateBodyGoals
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
+        public string? Primary { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("secondary")]
+        public global::System.Collections.Generic.List<string>? Secondary { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -4721,6 +4850,45 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("click_rate")]
         public double? ClickRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CampaignVariantStatsVariantsItemGoalsItem>? Goals { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignVariantStatsVariantsItemGoalsItem şeması.
+    /// </summary>
+    public sealed class CampaignVariantStatsVariantsItemGoalsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event")]
+        public string? Event { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
+        public bool? Primary { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("converted")]
+        public long? Converted { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -17238,6 +17406,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("category")]
         public string? Category { get; set; }
 
+        /// <summary>
+        /// Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goals")]
+        public global::Pushizo.Models.McpCreateCampaignDraftBodyGoals? Goals { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
         public global::Pushizo.Models.McpCreateCampaignDraftBodyAbTest? AbTest { get; set; }
 
@@ -17391,6 +17565,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
 
+        /// <summary>
+        /// Değerler: "low", "normal", "high".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequency_priority")]
+        public string? FrequencyPriority { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("global_control_exempt")]
         public bool? GlobalControlExempt { get; set; }
 
@@ -17399,6 +17579,21 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("one_per_user")]
         public bool? OnePerUser { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+    /// </summary>
+    public sealed class McpCreateCampaignDraftBodyGoals
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
+        public string? Primary { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("secondary")]
+        public global::System.Collections.Generic.List<string>? Secondary { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -23618,6 +23813,192 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// UninstallReport şeması.
+    /// </summary>
+    public sealed class UninstallReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totals")]
+        public global::Pushizo.Models.UninstallReportTotals? Totals { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("previous")]
+        public global::Pushizo.Models.UninstallReportPrevious? Previous { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rows")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UninstallReportRowsItem>? Rows { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("by_channel")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UninstallReportByChannelItem>? ByChannel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_messages")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UninstallReportLastMessagesItem>? LastMessages { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UninstallReportByChannelItem şeması.
+    /// </summary>
+    public sealed class UninstallReportByChannelItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uninstalls")]
+        public long? Uninstalls { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active")]
+        public long? Active { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UninstallReportLastMessagesItem şeması.
+    /// </summary>
+    public sealed class UninstallReportLastMessagesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("campaign_id")]
+        public string? CampaignId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uninstalls")]
+        public long? Uninstalls { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UninstallReportPrevious şeması.
+    /// </summary>
+    public sealed class UninstallReportPrevious
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uninstalls")]
+        public long? Uninstalls { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active")]
+        public long? Active { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rate")]
+        public double? Rate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UninstallReportRowsItem şeması.
+    /// </summary>
+    public sealed class UninstallReportRowsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("date")]
+        public string? Date { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uninstalls")]
+        public long? Uninstalls { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UninstallReportTotals şeması.
+    /// </summary>
+    public sealed class UninstallReportTotals
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uninstalls")]
+        public long? Uninstalls { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active")]
+        public long? Active { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rate")]
+        public double? Rate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateAdAudienceDto şeması.
     /// </summary>
     public sealed class UpdateAdAudienceDto
@@ -23783,6 +24164,15 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("identityVerificationRequired")]
         public bool? IdentityVerificationRequired { get; set; }
+
+        /// <summary>
+        /// Değerler: "off", "full", "masked".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ipCapture")]
+        public string? IpCapture { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("ipRetentionDays")]
+        public long? IpRetentionDays { get; set; }
 
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedOrigins")]
         public global::System.Collections.Generic.List<string>? AllowedOrigins { get; set; }
@@ -27093,6 +27483,18 @@ namespace Pushizo.Models
         /// <summary>
         /// Zorunlu.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_ip")]
+        public string? LastIp { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_ip_at")]
+        public string? LastIpAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         public string? CreatedAt { get; set; }
 
@@ -27182,6 +27584,18 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("merged_into")]
         public string? MergedInto { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_ip")]
+        public string? LastIp { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_ip_at")]
+        public string? LastIpAt { get; set; }
 
         /// <summary>
         /// Zorunlu.

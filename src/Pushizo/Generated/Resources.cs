@@ -1893,6 +1893,20 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Uygulama kaldırma raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/analytics/uninstalls</c>
+        ///
+        /// Mobil push sağlayıcısının "cihaz kayıtlı değil" yanıtından sayılır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.UninstallReport> UninstallReportAsync(global::Pushizo.Params.AnalyticsUninstallReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/analytics/uninstalls");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.UninstallReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Olay hacmi
         ///
         /// <c>GET /v1/apps/{appId}/analytics/events</c>

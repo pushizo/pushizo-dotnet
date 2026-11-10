@@ -89,6 +89,8 @@ namespace Pushizo.Params
 
         public string? Q { get; set; }
 
+        public string? Ip { get; set; }
+
         public string? Tag { get; set; }
 
         public string? LastActiveAfter { get; set; }
@@ -103,6 +105,7 @@ namespace Pushizo.Params
             op.Query("cursor", Cursor);
             op.Query("sort", Sort);
             op.Query("q", Q);
+            op.Query("ip", Ip);
             op.Query("tag", Tag);
             op.Query("last_active_after", LastActiveAfter);
             op.Query("last_active_before", LastActiveBefore);
@@ -567,6 +570,36 @@ namespace Pushizo.Params
         public string? Format { get; set; }
 
         internal AnalyticsSubscriptionsParams Copy() => (AnalyticsSubscriptionsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("from", From);
+            op.Query("to", To);
+            op.Query("compare", Compare);
+            op.Query("format", Format);
+        }
+    }
+
+    /// <summary>
+    /// AnalyticsResource.UninstallReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AnalyticsUninstallReportParams
+    {
+        public string? From { get; set; }
+
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? Compare { get; set; }
+
+        /// <summary>
+        /// Değerler: "json", "csv".
+        /// </summary>
+        public string? Format { get; set; }
+
+        internal AnalyticsUninstallReportParams Copy() => (AnalyticsUninstallReportParams)MemberwiseClone();
 
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {
