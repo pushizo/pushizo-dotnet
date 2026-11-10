@@ -8763,6 +8763,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("inbox_ttl")]
         public long? InboxTtl { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_card")]
+        public global::Pushizo.Models.CreateNotificationDtoContentCard? ContentCard { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap_exempt")]
         public bool? FrequencyCapExempt { get; set; }
 
@@ -8843,6 +8846,30 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateNotificationDtoContentCard şeması.
+    /// </summary>
+    public sealed class CreateNotificationDtoContentCard
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "classic", "captioned_image", "image_only".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("pinned")]
+        public bool? Pinned { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? ButtonText { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -9627,6 +9654,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("inbox_ttl")]
         public long? InboxTtl { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_card")]
+        public global::Pushizo.Models.CreateTemplateDtoContentContentCard? ContentCard { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("thread_id")]
         public string? ThreadId { get; set; }
 
@@ -9740,6 +9770,30 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateTemplateDtoContentContentCard şeması.
+    /// </summary>
+    public sealed class CreateTemplateDtoContentContentCard
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "classic", "captioned_image", "image_only".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("pinned")]
+        public bool? Pinned { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? ButtonText { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -20439,6 +20493,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("inbox_ttl")]
         public long? InboxTtl { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_card")]
+        public global::Pushizo.Models.RenderTemplateDtoContentContentCard? ContentCard { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("thread_id")]
         public string? ThreadId { get; set; }
 
@@ -20552,6 +20609,30 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// RenderTemplateDtoContentContentCard şeması.
+    /// </summary>
+    public sealed class RenderTemplateDtoContentContentCard
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "classic", "captioned_image", "image_only".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("pinned")]
+        public bool? Pinned { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? ButtonText { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -26013,6 +26094,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("inbox_ttl")]
         public long? InboxTtl { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_card")]
+        public global::Pushizo.Models.UpdateTemplateDtoContentContentCard? ContentCard { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("thread_id")]
         public string? ThreadId { get; set; }
 
@@ -26126,6 +26210,30 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateTemplateDtoContentContentCard şeması.
+    /// </summary>
+    public sealed class UpdateTemplateDtoContentContentCard
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "classic", "captioned_image", "image_only".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("pinned")]
+        public bool? Pinned { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("button_text")]
+        public global::System.Collections.Generic.Dictionary<string, string>? ButtonText { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
