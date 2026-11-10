@@ -2550,6 +2550,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("ipRetentionDays")]
         public long? IpRetentionDays { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptiveFrequency")]
+        public global::Pushizo.Models.AppSettingsAdaptiveFrequency? AdaptiveFrequency { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedOrigins")]
         public global::System.Collections.Generic.List<string>? AllowedOrigins { get; set; }
 
@@ -2564,6 +2567,33 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("sdkSetup")]
         public global::Pushizo.Models.AppSettingsSdkSetup? SdkSetup { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AppSettingsAdaptiveFrequency şeması.
+    /// </summary>
+    public sealed class AppSettingsAdaptiveFrequency
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min")]
+        public long? Min { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max")]
+        public long? Max { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -24174,6 +24204,9 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("ipRetentionDays")]
         public long? IpRetentionDays { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptiveFrequency")]
+        public global::Pushizo.Models.UpdateAppDtoSettingsAdaptiveFrequency? AdaptiveFrequency { get; set; }
+
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedOrigins")]
         public global::System.Collections.Generic.List<string>? AllowedOrigins { get; set; }
 
@@ -24188,6 +24221,33 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("sdkSetup")]
         public global::Pushizo.Models.UpdateAppDtoSettingsSdkSetup? SdkSetup { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateAppDtoSettingsAdaptiveFrequency şeması.
+    /// </summary>
+    public sealed class UpdateAppDtoSettingsAdaptiveFrequency
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min")]
+        public long? Min { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max")]
+        public long? Max { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -27493,6 +27553,18 @@ namespace Pushizo.Models
         public string? LastIpAt { get; set; }
 
         /// <summary>
+        /// Zorunlu. Değerler: "positive", "negative", "neutral".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_sentiment")]
+        public string? LastSentiment { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_sentiment_at")]
+        public string? LastSentimentAt { get; set; }
+
+        /// <summary>
         /// Zorunlu.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -27596,6 +27668,18 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("last_ip_at")]
         public string? LastIpAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "positive", "negative", "neutral".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_sentiment")]
+        public string? LastSentiment { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_sentiment_at")]
+        public string? LastSentimentAt { get; set; }
 
         /// <summary>
         /// Zorunlu.
@@ -27732,6 +27816,57 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("recommendations")]
         public global::System.Collections.Generic.List<global::Pushizo.Models.UserExportDerivedRecommendationsItem>? Recommendations { get; set; }
 
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("affinities")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UserExportDerivedAffinitiesItem>? Affinities { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frequency_cap")]
+        public global::Pushizo.Models.UserExportDerivedFrequencyCap? FrequencyCap { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UserExportDerivedAffinitiesItem şeması.
+    /// </summary>
+    public sealed class UserExportDerivedAffinitiesItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attribute")]
+        public string? Attribute { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("score")]
+        public double? Score { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rank")]
+        public double? Rank { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("computed_at")]
+        public string? ComputedAt { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -27815,6 +27950,33 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rewarded_at")]
         public string? RewardedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UserExportDerivedFrequencyCap şeması.
+    /// </summary>
+    public sealed class UserExportDerivedFrequencyCap
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weekly_cap")]
+        public double? WeeklyCap { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("engagement")]
+        public double? Engagement { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("computed_at")]
+        public string? ComputedAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
