@@ -10748,6 +10748,189 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreateWebPersonalizationDto şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("changes")]
+        public global::System.Collections.Generic.List<object?>? Changes { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateWebPersonalizationDtoVariantsItem>? Variants { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::Pushizo.Models.CreateWebPersonalizationDtoConditions? Conditions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("targeting")]
+        public global::Pushizo.Models.CreateWebPersonalizationDtoTargeting? Targeting { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal")]
+        public object? Goal { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_at")]
+        public string? StartAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
+        public string? EndAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebPersonalizationDtoConditions şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDtoConditions
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("url_rules")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateWebPersonalizationDtoConditionsUrlRulesItem>? UrlRules { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("utm_rules")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CreateWebPersonalizationDtoConditionsUtmRulesItem>? UtmRules { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("visits")]
+        public global::Pushizo.Models.CreateWebPersonalizationDtoConditionsVisits? Visits { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebPersonalizationDtoConditionsUrlRulesItem şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDtoConditionsUrlRulesItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "equals", "contains", "starts_with", "not_contains", "matches".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebPersonalizationDtoConditionsUtmRulesItem şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDtoConditionsUtmRulesItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("param")]
+        public string? Param { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "equals", "contains", "exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebPersonalizationDtoConditionsVisits şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDtoConditionsVisits
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "gte", "lte", "eq".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public long? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebPersonalizationDtoTargeting şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDtoTargeting
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("included_segments")]
+        public global::System.Collections.Generic.List<string>? IncludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("excluded_segments")]
+        public global::System.Collections.Generic.List<string>? ExcludedSegments { get; set; }
+
+        /// <summary>
+        /// Değerler: "all", "new", "returning".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitor")]
+        public string? Visitor { get; set; }
+
+        /// <summary>
+        /// Değerler: "desktop", "mobile", "tablet".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
+        public global::System.Collections.Generic.List<string>? Devices { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWebPersonalizationDtoVariantsItem şeması.
+    /// </summary>
+    public sealed class CreateWebPersonalizationDtoVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("changes")]
+        public global::System.Collections.Generic.List<object?>? Changes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// DataFeed şeması.
     /// </summary>
     public sealed class DataFeed
@@ -27251,6 +27434,186 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// UpdateWebPersonalizationDto şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("changes")]
+        public global::System.Collections.Generic.List<object?>? Changes { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UpdateWebPersonalizationDtoVariantsItem>? Variants { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::Pushizo.Models.UpdateWebPersonalizationDtoConditions? Conditions { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("targeting")]
+        public global::Pushizo.Models.UpdateWebPersonalizationDtoTargeting? Targeting { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal")]
+        public object? Goal { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_at")]
+        public string? StartAt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
+        public string? EndAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebPersonalizationDtoConditions şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDtoConditions
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("url_rules")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UpdateWebPersonalizationDtoConditionsUrlRulesItem>? UrlRules { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("utm_rules")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.UpdateWebPersonalizationDtoConditionsUtmRulesItem>? UtmRules { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("visits")]
+        public global::Pushizo.Models.UpdateWebPersonalizationDtoConditionsVisits? Visits { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebPersonalizationDtoConditionsUrlRulesItem şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDtoConditionsUrlRulesItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "equals", "contains", "starts_with", "not_contains", "matches".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebPersonalizationDtoConditionsUtmRulesItem şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDtoConditionsUtmRulesItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("param")]
+        public string? Param { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "equals", "contains", "exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebPersonalizationDtoConditionsVisits şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDtoConditionsVisits
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "gte", "lte", "eq".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public long? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebPersonalizationDtoTargeting şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDtoTargeting
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("included_segments")]
+        public global::System.Collections.Generic.List<string>? IncludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("excluded_segments")]
+        public global::System.Collections.Generic.List<string>? ExcludedSegments { get; set; }
+
+        /// <summary>
+        /// Değerler: "all", "new", "returning".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitor")]
+        public string? Visitor { get; set; }
+
+        /// <summary>
+        /// Değerler: "desktop", "mobile", "tablet".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
+        public global::System.Collections.Generic.List<string>? Devices { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWebPersonalizationDtoVariantsItem şeması.
+    /// </summary>
+    public sealed class UpdateWebPersonalizationDtoVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("changes")]
+        public global::System.Collections.Generic.List<object?>? Changes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpsertCatalogItemsDto şeması.
     /// </summary>
     public sealed class UpsertCatalogItemsDto
@@ -31034,6 +31397,510 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         public object? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalization şeması.
+    /// </summary>
+    public sealed class WebPersonalization
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public long? Priority { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("changes")]
+        public global::System.Collections.Generic.List<object?>? Changes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variants")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WebPersonalizationVariantsItem>? Variants { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ab_test")]
+        public global::Pushizo.Models.WebPersonalizationAbTest? AbTest { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditions")]
+        public global::Pushizo.Models.WebPersonalizationConditions? Conditions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("targeting")]
+        public global::Pushizo.Models.WebPersonalizationTargeting? Targeting { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("goal")]
+        public object? Goal { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_at")]
+        public string? StartAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
+        public string? EndAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
+        public global::Pushizo.Models.WebPersonalizationStats? Stats { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_stats")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WebPersonalizationVariantStatsItem>? VariantStats { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_significance")]
+        public global::Pushizo.Models.WebPersonalizationVariantSignificance? VariantSignificance { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationAbTest şeması.
+    /// </summary>
+    public sealed class WebPersonalizationAbTest
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("winner_variant_id")]
+        public string? WinnerVariantId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_at")]
+        public string? DecidedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("decided_by")]
+        public string? DecidedBy { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationConditions şeması.
+    /// </summary>
+    public sealed class WebPersonalizationConditions
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("url_rules")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WebPersonalizationConditionsUrlRulesItem>? UrlRules { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("utm_rules")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WebPersonalizationConditionsUtmRulesItem>? UtmRules { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("visits")]
+        public global::Pushizo.Models.WebPersonalizationConditionsVisits? Visits { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationConditionsUrlRulesItem şeması.
+    /// </summary>
+    public sealed class WebPersonalizationConditionsUrlRulesItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "equals", "contains", "starts_with", "not_contains", "matches".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationConditionsUtmRulesItem şeması.
+    /// </summary>
+    public sealed class WebPersonalizationConditionsUtmRulesItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("param")]
+        public string? Param { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "equals", "contains", "exists".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationConditionsVisits şeması.
+    /// </summary>
+    public sealed class WebPersonalizationConditionsVisits
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "gte", "lte", "eq".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("op")]
+        public string? Op { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        public long? Value { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationPage şeması.
+    /// </summary>
+    public sealed class WebPersonalizationPage
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WebPersonalization>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationReport şeması.
+    /// </summary>
+    public sealed class WebPersonalizationReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("personalization_id")]
+        public string? PersonalizationId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("days")]
+        public long? Days { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("daily")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WebPersonalizationReportDailyItem>? Daily { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totals")]
+        public global::Pushizo.Models.WebPersonalizationReportTotals? Totals { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationReportDailyItem şeması.
+    /// </summary>
+    public sealed class WebPersonalizationReportDailyItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("date")]
+        public string? Date { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitors")]
+        public long? Visitors { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversions")]
+        public long? Conversions { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationReportTotals şeması.
+    /// </summary>
+    public sealed class WebPersonalizationReportTotals
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitors")]
+        public long? Visitors { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversions")]
+        public long? Conversions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationStats şeması.
+    /// </summary>
+    public sealed class WebPersonalizationStats
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitors")]
+        public long? Visitors { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversions")]
+        public long? Conversions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationStatusDto şeması.
+    /// </summary>
+    public sealed class WebPersonalizationStatusDto
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationTargeting şeması.
+    /// </summary>
+    public sealed class WebPersonalizationTargeting
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("included_segments")]
+        public global::System.Collections.Generic.List<string>? IncludedSegments { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("excluded_segments")]
+        public global::System.Collections.Generic.List<string>? ExcludedSegments { get; set; }
+
+        /// <summary>
+        /// Değerler: "all", "new", "returning".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitor")]
+        public string? Visitor { get; set; }
+
+        /// <summary>
+        /// Değerler: "desktop", "mobile", "tablet".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
+        public global::System.Collections.Generic.List<string>? Devices { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationVariantSignificance şeması.
+    /// </summary>
+    public sealed class WebPersonalizationVariantSignificance
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("leader")]
+        public string? Leader { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p_value")]
+        public double? PValue { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("significant")]
+        public bool? Significant { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationVariantsItem şeması.
+    /// </summary>
+    public sealed class WebPersonalizationVariantsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weight_percent")]
+        public long? WeightPercent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("changes")]
+        public global::System.Collections.Generic.List<object?>? Changes { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WebPersonalizationVariantStatsItem şeması.
+    /// </summary>
+    public sealed class WebPersonalizationVariantStatsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visitors")]
+        public long? Visitors { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversions")]
+        public long? Conversions { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversion_rate")]
+        public double? ConversionRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("variant_id")]
+        public string? VariantId { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

@@ -5885,6 +5885,119 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// webPersonalizations kaynağı.
+    /// </summary>
+    public sealed class WebPersonalizationsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal WebPersonalizationsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Web kişiselleştirme deneyimleri
+        ///
+        /// <c>GET /v1/apps/{appId}/web-personalizations</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebPersonalizationPage> ListAsync(global::Pushizo.Params.WebPersonalizationsListParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/web-personalizations");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.WebPersonalizationPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// ListAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.WebPersonalization> ListAllAsync(global::Pushizo.Params.WebPersonalizationsListParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.WebPersonalizationsListParams();
+            while (true)
+            {
+                var page = await ListAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Kişiselleştirme deneyimi oluştur (taslak)
+        ///
+        /// <c>POST /v1/apps/{appId}/web-personalizations</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebPersonalization> CreateAsync(global::Pushizo.Models.CreateWebPersonalizationDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/web-personalizations");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WebPersonalization>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kişiselleştirme deneyimi detayı ve istatistikleri
+        ///
+        /// <c>GET /v1/apps/{appId}/web-personalizations/{personalizationId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebPersonalization> GetAsync(string personalizationId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/web-personalizations/{personalizationId}");
+            op.PathParam("personalizationId", personalizationId);
+            return _client.ExecuteAsync<global::Pushizo.Models.WebPersonalization>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kişiselleştirme deneyimini düzenle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/web-personalizations/{personalizationId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebPersonalization> UpdateAsync(string personalizationId, global::Pushizo.Models.UpdateWebPersonalizationDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/web-personalizations/{personalizationId}");
+            op.PathParam("personalizationId", personalizationId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WebPersonalization>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Günlük seri
+        ///
+        /// <c>GET /v1/apps/{appId}/web-personalizations/{personalizationId}/report</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebPersonalizationReport> ReportAsync(string personalizationId, global::Pushizo.Params.WebPersonalizationsReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/web-personalizations/{personalizationId}/report");
+            op.PathParam("personalizationId", personalizationId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.WebPersonalizationReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Yayınla / duraklat / arşivle
+        ///
+        /// <c>POST /v1/apps/{appId}/web-personalizations/{personalizationId}/status</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WebPersonalization> StatusAsync(string personalizationId, global::Pushizo.Models.WebPersonalizationStatusDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/web-personalizations/{personalizationId}/status");
+            op.PathParam("personalizationId", personalizationId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WebPersonalization>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// whatsapp kaynağı.
     /// </summary>
     public sealed class WhatsappResource

@@ -1754,6 +1754,45 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// WebPersonalizationsResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WebPersonalizationsListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        /// <summary>
+        /// Değerler: "draft", "active", "paused", "archived".
+        /// </summary>
+        public string? Status { get; set; }
+
+        internal WebPersonalizationsListParams Copy() => (WebPersonalizationsListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("status", Status);
+        }
+    }
+
+    /// <summary>
+    /// WebPersonalizationsResource.ReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WebPersonalizationsReportParams
+    {
+        public long? Days { get; set; }
+
+        internal WebPersonalizationsReportParams Copy() => (WebPersonalizationsReportParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
     /// WhatsappResource.TemplatesAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class WhatsappTemplatesParams
