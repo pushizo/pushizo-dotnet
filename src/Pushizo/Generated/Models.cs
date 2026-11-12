@@ -2770,13 +2770,13 @@ namespace Pushizo.Models
         public long? Version { get; set; }
 
         /// <summary>
-        /// Değerler: "ios", "android", "huawei", "web".
+        /// Değerler: "ios", "android", "huawei", "web", "amazon", "windows", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("platforms")]
         public global::System.Collections.Generic.List<string>? Platforms { get; set; }
 
         /// <summary>
-        /// Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+        /// Değerler: "native", "flutter", "react-native", "expo", "kmp", "unity", "capacitor", "cordova", "maui".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("framework")]
         public string? Framework { get; set; }
@@ -24739,13 +24739,13 @@ namespace Pushizo.Models
         public long? Version { get; set; }
 
         /// <summary>
-        /// Değerler: "ios", "android", "huawei", "web".
+        /// Değerler: "ios", "android", "huawei", "web", "amazon", "windows", "email", "sms".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("platforms")]
         public global::System.Collections.Generic.List<string>? Platforms { get; set; }
 
         /// <summary>
-        /// Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+        /// Değerler: "native", "flutter", "react-native", "expo", "kmp", "unity", "capacitor", "cordova", "maui".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("framework")]
         public string? Framework { get; set; }
