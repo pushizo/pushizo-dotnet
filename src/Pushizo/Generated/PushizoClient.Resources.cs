@@ -205,6 +205,11 @@ namespace Pushizo
         public global::Pushizo.Resources.McpResource Mcp { get; private set; } = null!;
 
         /// <summary>
+        /// MessengerLinks
+        /// </summary>
+        public global::Pushizo.Resources.MessengerLinksResource MessengerLinks { get; private set; } = null!;
+
+        /// <summary>
         /// Predictions
         /// </summary>
         public global::Pushizo.Resources.PredictionsResource Predictions { get; private set; } = null!;
@@ -315,6 +320,7 @@ namespace Pushizo
             LandingPages = new global::Pushizo.Resources.LandingPagesResource(this);
             LiveActivities = new global::Pushizo.Resources.LiveActivitiesResource(this);
             Mcp = new global::Pushizo.Resources.McpResource(this);
+            MessengerLinks = new global::Pushizo.Resources.MessengerLinksResource(this);
             Predictions = new global::Pushizo.Resources.PredictionsResource(this);
             Preferences = new global::Pushizo.Resources.PreferencesResource(this);
             PromoCodeLists = new global::Pushizo.Resources.PromoCodeListsResource(this);

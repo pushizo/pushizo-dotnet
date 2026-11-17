@@ -181,7 +181,7 @@ namespace Pushizo.Params
         public string? Q { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs", "telegram", "viber".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -218,7 +218,7 @@ namespace Pushizo.Params
         public string? Type { get; set; }
 
         /// <summary>
-        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs", "telegram", "viber".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -386,7 +386,7 @@ namespace Pushizo.Params
         public string? To { get; set; }
 
         /// <summary>
-        /// Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+        /// Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -434,7 +434,7 @@ namespace Pushizo.Params
         public string? Cursor { get; set; }
 
         /// <summary>
-        /// Değerler: "email", "sms", "whatsapp", "rcs".
+        /// Değerler: "email", "sms", "whatsapp", "rcs", "telegram", "viber".
         /// </summary>
         public string? Channel { get; set; }
 
@@ -1250,7 +1250,7 @@ namespace Pushizo.Params
         public string? Cursor { get; set; }
 
         /// <summary>
-        /// Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+        /// Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".
         /// </summary>
         public string? Channel { get; set; }
 
