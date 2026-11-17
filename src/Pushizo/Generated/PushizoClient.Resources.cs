@@ -265,6 +265,11 @@ namespace Pushizo
         public global::Pushizo.Resources.RfmResource Rfm { get; private set; } = null!;
 
         /// <summary>
+        /// SdkErrors
+        /// </summary>
+        public global::Pushizo.Resources.SdkErrorsResource SdkErrors { get; private set; } = null!;
+
+        /// <summary>
         /// SiteSearch
         /// </summary>
         public global::Pushizo.Resources.SiteSearchResource SiteSearch { get; private set; } = null!;
@@ -283,6 +288,11 @@ namespace Pushizo
         /// Surveys
         /// </summary>
         public global::Pushizo.Resources.SurveysResource Surveys { get; private set; } = null!;
+
+        /// <summary>
+        /// Trace
+        /// </summary>
+        public global::Pushizo.Resources.TraceResource Trace { get; private set; } = null!;
 
         /// <summary>
         /// Verify
@@ -372,10 +382,12 @@ namespace Pushizo
             Recommendations = new global::Pushizo.Resources.RecommendationsResource(this);
             ReverseEtl = new global::Pushizo.Resources.ReverseEtlResource(this);
             Rfm = new global::Pushizo.Resources.RfmResource(this);
+            SdkErrors = new global::Pushizo.Resources.SdkErrorsResource(this);
             SiteSearch = new global::Pushizo.Resources.SiteSearchResource(this);
             SmsKeywords = new global::Pushizo.Resources.SmsKeywordsResource(this);
             Sql = new global::Pushizo.Resources.SqlResource(this);
             Surveys = new global::Pushizo.Resources.SurveysResource(this);
+            Trace = new global::Pushizo.Resources.TraceResource(this);
             Verify = new global::Pushizo.Resources.VerifyResource(this);
             Wallet = new global::Pushizo.Resources.WalletResource(this);
             WarehouseExports = new global::Pushizo.Resources.WarehouseExportsResource(this);
