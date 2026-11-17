@@ -260,6 +260,11 @@ namespace Pushizo
         public global::Pushizo.Resources.WarehouseExportsResource WarehouseExports { get; private set; } = null!;
 
         /// <summary>
+        /// WarehouseSegments
+        /// </summary>
+        public global::Pushizo.Resources.WarehouseSegmentsResource WarehouseSegments { get; private set; } = null!;
+
+        /// <summary>
         /// WebCampaigns
         /// </summary>
         public global::Pushizo.Resources.WebCampaignsResource WebCampaigns { get; private set; } = null!;
@@ -326,6 +331,7 @@ namespace Pushizo
             Verify = new global::Pushizo.Resources.VerifyResource(this);
             Wallet = new global::Pushizo.Resources.WalletResource(this);
             WarehouseExports = new global::Pushizo.Resources.WarehouseExportsResource(this);
+            WarehouseSegments = new global::Pushizo.Resources.WarehouseSegmentsResource(this);
             WebCampaigns = new global::Pushizo.Resources.WebCampaignsResource(this);
             WebPersonalizations = new global::Pushizo.Resources.WebPersonalizationsResource(this);
             Whatsapp = new global::Pushizo.Resources.WhatsappResource(this);

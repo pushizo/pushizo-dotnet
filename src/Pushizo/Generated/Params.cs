@@ -1715,6 +1715,36 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// WarehouseSegmentsResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class WarehouseSegmentsRunsParams
+    {
+        public string? SegmentId { get; set; }
+
+        public string? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Değerler: "ok", "rejected", "timeout", "failed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal WarehouseSegmentsRunsParams Copy() => (WarehouseSegmentsRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("segment_id", SegmentId);
+            op.Query("connection_id", ConnectionId);
+            op.Query("status", Status);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// WebCampaignsResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class WebCampaignsListParams
