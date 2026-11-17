@@ -961,6 +961,19 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Yayın öncesi denetim raporu (marka, yasaklı ifade, bağlantı, kişiselleştirme, KVKK/İYS)
+        ///
+        /// <c>POST /v1/apps/{appId}/campaigns/{campaignId}/preflight</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.CampaignPreflightReport> PreflightAsync(string campaignId, global::Pushizo.Params.CampaignsPreflightParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/preflight");
+            op.PathParam("campaignId", campaignId);
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.CampaignPreflightReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// E-posta liste riski (tahmini geçersiz oranı, 7/30 gün bounce oranı)
         ///
         /// <c>GET /v1/apps/{appId}/campaigns/{campaignId}/email-risk</c>
@@ -1025,10 +1038,11 @@ namespace Pushizo.Resources
         ///
         /// <c>POST /v1/apps/{appId}/campaigns/{campaignId}/approve</c>
         /// </summary>
-        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Campaign> ApproveAsync(string campaignId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Campaign> ApproveAsync(string campaignId, global::Pushizo.Params.CampaignsApproveParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/approve");
             op.PathParam("campaignId", campaignId);
+            @params?.ApplyTo(op);
             return _client.ExecuteAsync<global::Pushizo.Models.Campaign>(op, options, cancellationToken);
         }
 
