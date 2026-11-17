@@ -1921,6 +1921,20 @@ namespace Pushizo.Resources
         }
 
         /// <summary>
+        /// Android teslimat sağlığı raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/analytics/android-delivery</c>
+        ///
+        /// Üretici ve ROM bazında gönderildi, teslim alındı, açıldı sayıları ile gönderimden cihaza ulaşmaya kadar geçen süre. Teslim alındı cihazdaki SDK alındısından, kısıt özeti SDK teşhisinden hesaplanır.
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.AndroidDeliveryReport> AndroidDeliveryReportAsync(global::Pushizo.Params.AnalyticsAndroidDeliveryReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/analytics/android-delivery");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.AndroidDeliveryReport>(op, options, cancellationToken);
+        }
+
+        /// <summary>
         /// Olay hacmi
         ///
         /// <c>GET /v1/apps/{appId}/analytics/events</c>

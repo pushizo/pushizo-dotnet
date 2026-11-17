@@ -1383,6 +1383,51 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("push_kind")]
         public string? PushKind { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("manufacturer")]
+        public string? Manufacturer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("brand")]
+        public string? Brand { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom")]
+        public string? Rom { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom_version")]
+        public string? RomVersion { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
+        public global::Pushizo.Models.AddSubscriptionDtoDeviceDelivery? Delivery { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AddSubscriptionDtoDeviceDelivery şeması.
+    /// </summary>
+    public sealed class AddSubscriptionDtoDeviceDelivery
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("battery_optimization_exempt")]
+        public bool? BatteryOptimizationExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_restricted")]
+        public bool? BackgroundRestricted { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel_blocked")]
+        public bool? ChannelBlocked { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("power_save_mode")]
+        public bool? PowerSaveMode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_saver")]
+        public bool? DataSaver { get; set; }
+
+        /// <summary>
+        /// Değerler: "exempted", "active", "working_set", "frequent", "rare", "restricted".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("standby_bucket")]
+        public string? StandbyBucket { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -2054,6 +2099,474 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("roas")]
         public double? Roas { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReport şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from")]
+        public string? From { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("to")]
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
+        public global::Pushizo.Models.AndroidDeliveryReportDevices? Devices { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totals")]
+        public global::Pushizo.Models.AndroidDeliveryReportTotals? Totals { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("previous")]
+        public global::Pushizo.Models.AndroidDeliveryReportPrevious? Previous { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deprioritized")]
+        public long? Deprioritized { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aggressive")]
+        public global::Pushizo.Models.AndroidDeliveryReportAggressive? Aggressive { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("others")]
+        public global::Pushizo.Models.AndroidDeliveryReportOthers? Others { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("vendors")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.AndroidDeliveryReportVendorsItem>? Vendors { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("roms")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.AndroidDeliveryReportRomsItem>? Roms { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "upgrade_sdk", "vendor_guidance", "background_restricted", "battery_exemption", "deprioritized", "notifications_blocked".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("recommendations")]
+        public global::System.Collections.Generic.List<string>? Recommendations { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportAggressive şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportAggressive
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_rate")]
+        public double? DeliveryRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportDevices şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportDevices
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public long? Total { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reporting")]
+        public long? Reporting { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reporting_rate")]
+        public double? ReportingRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("restricted")]
+        public long? Restricted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("restricted_rate")]
+        public double? RestrictedRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_restricted")]
+        public long? BackgroundRestricted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("battery_optimized")]
+        public long? BatteryOptimized { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("low_standby_bucket")]
+        public long? LowStandbyBucket { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("power_save")]
+        public long? PowerSave { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_saver")]
+        public long? DataSaver { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel_blocked")]
+        public long? ChannelBlocked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notifications_blocked")]
+        public long? NotificationsBlocked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aggressive_vendor")]
+        public long? AggressiveVendor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aggressive_vendor_rate")]
+        public double? AggressiveVendorRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportOthers şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportOthers
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_rate")]
+        public double? DeliveryRate { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportPrevious şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportPrevious
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opened")]
+        public long? Opened { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_rate")]
+        public double? DeliveryRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("open_rate")]
+        public double? OpenRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("median_delay_seconds")]
+        public long? MedianDelaySeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p90_delay_seconds")]
+        public long? P90DelaySeconds { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportRomsItem şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportRomsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom")]
+        public string? Rom { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
+        public long? Devices { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("restricted")]
+        public long? Restricted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_rate")]
+        public double? DeliveryRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("median_delay_seconds")]
+        public long? MedianDelaySeconds { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportTotals şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportTotals
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opened")]
+        public long? Opened { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_rate")]
+        public double? DeliveryRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("open_rate")]
+        public double? OpenRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("median_delay_seconds")]
+        public long? MedianDelaySeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p90_delay_seconds")]
+        public long? P90DelaySeconds { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// AndroidDeliveryReportVendorsItem şeması.
+    /// </summary>
+    public sealed class AndroidDeliveryReportVendorsItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("vendor")]
+        public string? Vendor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aggressive")]
+        public bool? Aggressive { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
+        public long? Devices { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reporting")]
+        public long? Reporting { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("restricted")]
+        public long? Restricted { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("battery_optimized")]
+        public long? BatteryOptimized { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sent")]
+        public long? Sent { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivered")]
+        public long? Delivered { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opened")]
+        public long? Opened { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery_rate")]
+        public double? DeliveryRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("open_rate")]
+        public double? OpenRate { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("median_delay_seconds")]
+        public long? MedianDelaySeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("p90_delay_seconds")]
+        public long? P90DelaySeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deprioritized")]
+        public long? Deprioritized { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -19647,6 +20160,51 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("push_kind")]
         public string? PushKind { get; set; }
 
+        [global::System.Text.Json.Serialization.JsonPropertyName("manufacturer")]
+        public string? Manufacturer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("brand")]
+        public string? Brand { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom")]
+        public string? Rom { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom_version")]
+        public string? RomVersion { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
+        public global::Pushizo.Models.PatchSubscriptionDtoDeviceDelivery? Delivery { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PatchSubscriptionDtoDeviceDelivery şeması.
+    /// </summary>
+    public sealed class PatchSubscriptionDtoDeviceDelivery
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("battery_optimization_exempt")]
+        public bool? BatteryOptimizationExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_restricted")]
+        public bool? BackgroundRestricted { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel_blocked")]
+        public bool? ChannelBlocked { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("power_save_mode")]
+        public bool? PowerSaveMode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_saver")]
+        public bool? DataSaver { get; set; }
+
+        /// <summary>
+        /// Değerler: "exempted", "active", "working_set", "frequent", "rare", "restricted".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("standby_bucket")]
+        public string? StandbyBucket { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -23549,6 +24107,51 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("push_kind")]
         public string? PushKind { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("manufacturer")]
+        public string? Manufacturer { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("brand")]
+        public string? Brand { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom")]
+        public string? Rom { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("rom_version")]
+        public string? RomVersion { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
+        public global::Pushizo.Models.SubscriptionDeviceDelivery? Delivery { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SubscriptionDeviceDelivery şeması.
+    /// </summary>
+    public sealed class SubscriptionDeviceDelivery
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("battery_optimization_exempt")]
+        public bool? BatteryOptimizationExempt { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_restricted")]
+        public bool? BackgroundRestricted { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel_blocked")]
+        public bool? ChannelBlocked { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("power_save_mode")]
+        public bool? PowerSaveMode { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_saver")]
+        public bool? DataSaver { get; set; }
+
+        /// <summary>
+        /// Değerler: "exempted", "active", "working_set", "frequent", "rare", "restricted".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("standby_bucket")]
+        public string? StandbyBucket { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

@@ -665,6 +665,36 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// AnalyticsResource.AndroidDeliveryReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AnalyticsAndroidDeliveryReportParams
+    {
+        public string? From { get; set; }
+
+        public string? To { get; set; }
+
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? Compare { get; set; }
+
+        /// <summary>
+        /// Değerler: "json", "csv".
+        /// </summary>
+        public string? Format { get; set; }
+
+        internal AnalyticsAndroidDeliveryReportParams Copy() => (AnalyticsAndroidDeliveryReportParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("from", From);
+            op.Query("to", To);
+            op.Query("compare", Compare);
+            op.Query("format", Format);
+        }
+    }
+
+    /// <summary>
     /// AnalyticsResource.EventsAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class AnalyticsEventsParams
