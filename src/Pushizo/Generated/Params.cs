@@ -1112,6 +1112,36 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// AiAgentsResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class AiAgentsRunsParams
+    {
+        public string? AgentId { get; set; }
+
+        public string? ConversationId { get; set; }
+
+        /// <summary>
+        /// Değerler: "pending", "replied", "handed_off", "skipped_cap", "failed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal AiAgentsRunsParams Copy() => (AiAgentsRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("agent_id", AgentId);
+            op.Query("conversation_id", ConversationId);
+            op.Query("status", Status);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
     /// CannedResponsesResource.CannedAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class CannedResponsesCannedParams
@@ -1189,6 +1219,54 @@ namespace Pushizo.Params
             op.Query("channel", Channel);
             op.Query("limit", Limit);
             op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// CompaniesResource.ListAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CompaniesListParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        public string? Q { get; set; }
+
+        public string? ExternalId { get; set; }
+
+        public string? Domain { get; set; }
+
+        internal CompaniesListParams Copy() => (CompaniesListParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("q", Q);
+            op.Query("external_id", ExternalId);
+            op.Query("domain", Domain);
+        }
+    }
+
+    /// <summary>
+    /// CompaniesResource.MembersAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CompaniesMembersParams
+    {
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        public string? Role { get; set; }
+
+        internal CompaniesMembersParams Copy() => (CompaniesMembersParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+            op.Query("role", Role);
         }
     }
 
@@ -1333,6 +1411,117 @@ namespace Pushizo.Params
             op.Query("limit", Limit);
             op.Query("cursor", Cursor);
             op.Query("after_seq", AfterSeq);
+        }
+    }
+
+    /// <summary>
+    /// CustomAgentsResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CustomAgentsRunsParams
+    {
+        public string? AgentId { get; set; }
+
+        /// <summary>
+        /// Değerler: "pending", "running", "succeeded", "failed", "skipped".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal CustomAgentsRunsParams Copy() => (CustomAgentsRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("agent_id", AgentId);
+            op.Query("status", Status);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// CustomAgentsResource.DraftsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CustomAgentsDraftsParams
+    {
+        public string? AgentId { get; set; }
+
+        public string? RunId { get; set; }
+
+        /// <summary>
+        /// Değerler: "pending", "applied", "dismissed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal CustomAgentsDraftsParams Copy() => (CustomAgentsDraftsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("agent_id", AgentId);
+            op.Query("run_id", RunId);
+            op.Query("status", Status);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// DataPipelinesResource.ListTransformsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class DataPipelinesListTransformsParams
+    {
+        /// <summary>
+        /// Değerler: "event", "person".
+        /// </summary>
+        public string? Target { get; set; }
+
+        internal DataPipelinesListTransformsParams Copy() => (DataPipelinesListTransformsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("target", Target);
+        }
+    }
+
+    /// <summary>
+    /// DataPipelinesResource.QuarantineAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class DataPipelinesQuarantineParams
+    {
+        /// <summary>
+        /// Değerler: "pending", "reprocessed", "discarded".
+        /// </summary>
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Değerler: "event", "person".
+        /// </summary>
+        public string? Target { get; set; }
+
+        public string? SourceId { get; set; }
+
+        public string? TransformId { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal DataPipelinesQuarantineParams Copy() => (DataPipelinesQuarantineParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("status", Status);
+            op.Query("target", Target);
+            op.Query("source_id", SourceId);
+            op.Query("transform_id", TransformId);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
         }
     }
 
@@ -1729,6 +1918,33 @@ namespace Pushizo.Params
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {
             op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
+    /// SqlResource.RunsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SqlRunsParams
+    {
+        public string? SegmentId { get; set; }
+
+        /// <summary>
+        /// Değerler: "ok", "rejected", "timeout", "failed".
+        /// </summary>
+        public string? Status { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal SqlRunsParams Copy() => (SqlRunsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("segment_id", SegmentId);
+            op.Query("status", Status);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
         }
     }
 

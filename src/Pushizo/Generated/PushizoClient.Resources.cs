@@ -110,6 +110,16 @@ namespace Pushizo
         public global::Pushizo.Resources.AdsResource Ads { get; private set; } = null!;
 
         /// <summary>
+        /// Affinity
+        /// </summary>
+        public global::Pushizo.Resources.AffinityResource Affinity { get; private set; } = null!;
+
+        /// <summary>
+        /// AiAgents
+        /// </summary>
+        public global::Pushizo.Resources.AiAgentsResource AiAgents { get; private set; } = null!;
+
+        /// <summary>
         /// CannedResponses
         /// </summary>
         public global::Pushizo.Resources.CannedResponsesResource CannedResponses { get; private set; } = null!;
@@ -130,6 +140,11 @@ namespace Pushizo
         public global::Pushizo.Resources.ChannelScoresResource ChannelScores { get; private set; } = null!;
 
         /// <summary>
+        /// Companies
+        /// </summary>
+        public global::Pushizo.Resources.CompaniesResource Companies { get; private set; } = null!;
+
+        /// <summary>
         /// ContentTables
         /// </summary>
         public global::Pushizo.Resources.ContentTablesResource ContentTables { get; private set; } = null!;
@@ -140,9 +155,19 @@ namespace Pushizo
         public global::Pushizo.Resources.ConversationsResource Conversations { get; private set; } = null!;
 
         /// <summary>
+        /// CustomAgents
+        /// </summary>
+        public global::Pushizo.Resources.CustomAgentsResource CustomAgents { get; private set; } = null!;
+
+        /// <summary>
         /// DataFeeds
         /// </summary>
         public global::Pushizo.Resources.DataFeedsResource DataFeeds { get; private set; } = null!;
+
+        /// <summary>
+        /// DataPipelines
+        /// </summary>
+        public global::Pushizo.Resources.DataPipelinesResource DataPipelines { get; private set; } = null!;
 
         /// <summary>
         /// DecisionAgents
@@ -250,6 +275,11 @@ namespace Pushizo
         public global::Pushizo.Resources.SmsKeywordsResource SmsKeywords { get; private set; } = null!;
 
         /// <summary>
+        /// Sql
+        /// </summary>
+        public global::Pushizo.Resources.SqlResource Sql { get; private set; } = null!;
+
+        /// <summary>
         /// Surveys
         /// </summary>
         public global::Pushizo.Resources.SurveysResource Surveys { get; private set; } = null!;
@@ -311,13 +341,18 @@ namespace Pushizo
             ApiKeys = new global::Pushizo.Resources.ApiKeysResource(this);
             Organization = new global::Pushizo.Resources.OrganizationResource(this);
             Ads = new global::Pushizo.Resources.AdsResource(this);
+            Affinity = new global::Pushizo.Resources.AffinityResource(this);
+            AiAgents = new global::Pushizo.Resources.AiAgentsResource(this);
             CannedResponses = new global::Pushizo.Resources.CannedResponsesResource(this);
             Catalogs = new global::Pushizo.Resources.CatalogsResource(this);
             Categories = new global::Pushizo.Resources.CategoriesResource(this);
             ChannelScores = new global::Pushizo.Resources.ChannelScoresResource(this);
+            Companies = new global::Pushizo.Resources.CompaniesResource(this);
             ContentTables = new global::Pushizo.Resources.ContentTablesResource(this);
             Conversations = new global::Pushizo.Resources.ConversationsResource(this);
+            CustomAgents = new global::Pushizo.Resources.CustomAgentsResource(this);
             DataFeeds = new global::Pushizo.Resources.DataFeedsResource(this);
+            DataPipelines = new global::Pushizo.Resources.DataPipelinesResource(this);
             DecisionAgents = new global::Pushizo.Resources.DecisionAgentsResource(this);
             EmailDeliverability = new global::Pushizo.Resources.EmailDeliverabilityResource(this);
             FeatureFlags = new global::Pushizo.Resources.FeatureFlagsResource(this);
@@ -339,6 +374,7 @@ namespace Pushizo
             Rfm = new global::Pushizo.Resources.RfmResource(this);
             SiteSearch = new global::Pushizo.Resources.SiteSearchResource(this);
             SmsKeywords = new global::Pushizo.Resources.SmsKeywordsResource(this);
+            Sql = new global::Pushizo.Resources.SqlResource(this);
             Surveys = new global::Pushizo.Resources.SurveysResource(this);
             Verify = new global::Pushizo.Resources.VerifyResource(this);
             Wallet = new global::Pushizo.Resources.WalletResource(this);
