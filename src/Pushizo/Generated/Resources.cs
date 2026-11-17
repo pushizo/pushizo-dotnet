@@ -4636,6 +4636,32 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// messengerLinks kaynağı.
+    /// </summary>
+    public sealed class MessengerLinksResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal MessengerLinksResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Telegram/Viber abonelik bağlama derin bağlantısı (tek kullanımlık belirteç; kullanıcı bota yazınca sohbet kimliği bu kullanıcıya abonelik olarak bağlanır)
+        ///
+        /// <c>POST /v1/apps/{appId}/messenger-links</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.MessengerLink> CreateAsync(global::Pushizo.Models.CreateMessengerLinkDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/messenger-links");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.MessengerLink>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// predictions kaynağı.
     /// </summary>
     public sealed class PredictionsResource
