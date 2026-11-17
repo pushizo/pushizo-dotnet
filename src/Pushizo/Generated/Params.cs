@@ -248,11 +248,17 @@ namespace Pushizo.Params
         /// </summary>
         public string? Force { get; set; }
 
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? PreflightAck { get; set; }
+
         internal CampaignsScheduleParams Copy() => (CampaignsScheduleParams)MemberwiseClone();
 
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {
             op.Query("force", Force);
+            op.Query("preflight_ack", PreflightAck);
         }
     }
 
@@ -266,11 +272,59 @@ namespace Pushizo.Params
         /// </summary>
         public string? Force { get; set; }
 
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? PreflightAck { get; set; }
+
         internal CampaignsSendParams Copy() => (CampaignsSendParams)MemberwiseClone();
 
         internal void ApplyTo(global::Pushizo.Core.Operation op)
         {
             op.Query("force", Force);
+            op.Query("preflight_ack", PreflightAck);
+        }
+    }
+
+    /// <summary>
+    /// CampaignsResource.PreflightAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CampaignsPreflightParams
+    {
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? CheckLinks { get; set; }
+
+        internal CampaignsPreflightParams Copy() => (CampaignsPreflightParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("check_links", CheckLinks);
+        }
+    }
+
+    /// <summary>
+    /// CampaignsResource.ApproveAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class CampaignsApproveParams
+    {
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? Force { get; set; }
+
+        /// <summary>
+        /// Değerler: "true", "false".
+        /// </summary>
+        public string? PreflightAck { get; set; }
+
+        internal CampaignsApproveParams Copy() => (CampaignsApproveParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("force", Force);
+            op.Query("preflight_ack", PreflightAck);
         }
     }
 

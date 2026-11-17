@@ -3459,6 +3459,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("estimated_recipients")]
         public long? EstimatedRecipients { get; set; }
 
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("preflight")]
+        public global::Pushizo.Models.CampaignPreflight? Preflight { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -3758,6 +3764,177 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignPreflight şeması.
+    /// </summary>
+    public sealed class CampaignPreflight
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checked_at")]
+        public string? CheckedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public global::Pushizo.Models.CampaignPreflightSummary? Summary { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("codes")]
+        public global::System.Collections.Generic.List<string>? Codes { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("acknowledged_by")]
+        public string? AcknowledgedBy { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("acknowledged_at")]
+        public string? AcknowledgedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignPreflightReport şeması.
+    /// </summary>
+    public sealed class CampaignPreflightReport
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("campaign_id")]
+        public string? CampaignId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checked_at")]
+        public string? CheckedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("links_checked")]
+        public bool? LinksChecked { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public global::Pushizo.Models.CampaignPreflightReportSummary? Summary { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("findings")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.CampaignPreflightReportFindingsItem>? Findings { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignPreflightReportFindingsItem şeması.
+    /// </summary>
+    public sealed class CampaignPreflightReportFindingsItem
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "brand_name_casing", "off_brand_color", "off_brand_font", "banned_phrase", "phishing_term", "link_invalid", "link_insecure_http", "link_unsafe_host", "link_shortener", "link_missing_utm", "link_broken", "link_unreachable", "liquid_syntax_error", "liquid_missing_default", "liquid_unknown_variable", "liquid_undefined_property", "commercial_no_category", "iys_sms_filter_informational", "sms_missing_opt_out", "email_missing_postal_address", "send_time_outside_hours".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "brand", "content", "links", "personalization", "compliance".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "critical", "warning", "info".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("severity")]
+        public string? Severity { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("field")]
+        public string? Field { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("params")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Params { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignPreflightReportSummary şeması.
+    /// </summary>
+    public sealed class CampaignPreflightReportSummary
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("critical")]
+        public long? Critical { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warning")]
+        public long? Warning { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("info")]
+        public long? Info { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
+        public bool? Blocked { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CampaignPreflightSummary şeması.
+    /// </summary>
+    public sealed class CampaignPreflightSummary
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("critical")]
+        public long? Critical { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warning")]
+        public long? Warning { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("info")]
+        public long? Info { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
+        public bool? Blocked { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
