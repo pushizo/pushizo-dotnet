@@ -22137,6 +22137,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
         public string? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sql")]
+        public global::Pushizo.Models.SegmentSql? Sql { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -22415,6 +22421,45 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("none")]
         public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? None { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SegmentSql şeması.
+    /// </summary>
+    public sealed class SegmentSql
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        public string? Query { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_interval_minutes")]
+        public long? RefreshIntervalMinutes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refreshed_at")]
+        public string? RefreshedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("member_count")]
+        public long? MemberCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_error")]
+        public string? LastError { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
