@@ -10460,6 +10460,111 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// CreateWarehouseConnectionDto şeması.
+    /// </summary>
+    public sealed class CreateWarehouseConnectionDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "bigquery", "snowflake", "databricks".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Credentials { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWarehouseSegmentDto şeması.
+    /// </summary>
+    public sealed class CreateWarehouseSegmentDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("connection_id")]
+        public string? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        public string? Query { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_column")]
+        public string? IdColumn { get; set; }
+
+        /// <summary>
+        /// Değerler: "external_id", "user_id".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_type")]
+        public string? IdType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_interval_minutes")]
+        public long? RefreshIntervalMinutes { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
+        public global::Pushizo.Models.CreateWarehouseSegmentDtoLimits? Limits { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// CreateWarehouseSegmentDtoLimits şeması.
+    /// </summary>
+    public sealed class CreateWarehouseSegmentDtoLimits
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_seconds")]
+        public long? TimeoutSeconds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_rows")]
+        public long? MaxRows { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed")]
+        public long? MaxBytesBilled { get; set; }
+
+        /// <summary>
+        /// Değerler: "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large", "6X-Large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_warehouse_size")]
+        public string? MaxWarehouseSize { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// CreateWarmupPlanDto şeması.
     /// </summary>
     public sealed class CreateWarmupPlanDto
@@ -20174,6 +20279,72 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// PreviewWarehouseQueryDto şeması.
+    /// </summary>
+    public sealed class PreviewWarehouseQueryDto
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("connection_id")]
+        public string? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        public string? Query { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_column")]
+        public string? IdColumn { get; set; }
+
+        /// <summary>
+        /// Değerler: "external_id", "user_id".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_type")]
+        public string? IdType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
+        public global::Pushizo.Models.PreviewWarehouseQueryDtoLimits? Limits { get; set; }
+
+        /// <summary>
+        /// Değerler: "dry_run", "sample".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// PreviewWarehouseQueryDtoLimits şeması.
+    /// </summary>
+    public sealed class PreviewWarehouseQueryDtoLimits
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_seconds")]
+        public long? TimeoutSeconds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_rows")]
+        public long? MaxRows { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed")]
+        public long? MaxBytesBilled { get; set; }
+
+        /// <summary>
+        /// Değerler: "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large", "6X-Large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_warehouse_size")]
+        public string? MaxWarehouseSize { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// PromoCodeList şeması.
     /// </summary>
     public sealed class PromoCodeList
@@ -22422,6 +22593,12 @@ namespace Pushizo.Models
         [global::System.Text.Json.Serialization.JsonPropertyName("sql")]
         public global::Pushizo.Models.SegmentSql? Sql { get; set; }
 
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warehouse")]
+        public global::Pushizo.Models.SegmentWarehouse? Warehouse { get; set; }
+
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
     }
@@ -22781,6 +22958,120 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("none")]
         public global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, object?>>? None { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SegmentWarehouse şeması.
+    /// </summary>
+    public sealed class SegmentWarehouse
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("connection_id")]
+        public string? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        public string? Query { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_column")]
+        public string? IdColumn { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "external_id", "user_id".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_type")]
+        public string? IdType { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
+        public global::Pushizo.Models.SegmentWarehouseLimits? Limits { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_interval_minutes")]
+        public long? RefreshIntervalMinutes { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "queued", "failed", "ok", "never".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_state")]
+        public string? RefreshState { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_requested_at")]
+        public string? RefreshRequestedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refreshed_at")]
+        public string? RefreshedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("member_count")]
+        public long? MemberCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_error")]
+        public string? LastError { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bytes_processed")]
+        public double? BytesProcessed { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// SegmentWarehouseLimits şeması.
+    /// </summary>
+    public sealed class SegmentWarehouseLimits
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_seconds")]
+        public long? TimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_rows")]
+        public long? MaxRows { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed")]
+        public double? MaxBytesBilled { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large", "6X-Large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_warehouse_size")]
+        public string? MaxWarehouseSize { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -27266,6 +27557,24 @@ namespace Pushizo.Models
     }
 
     /// <summary>
+    /// UpdateWarehouseConnectionDto şeması.
+    /// </summary>
+    public sealed class UpdateWarehouseConnectionDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Credentials { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
     /// UpdateWarehouseExportDto şeması.
     /// </summary>
     public sealed class UpdateWarehouseExportDto
@@ -27293,6 +27602,66 @@ namespace Pushizo.Models
 
         [global::System.Text.Json.Serialization.JsonPropertyName("credentials")]
         public global::System.Collections.Generic.Dictionary<string, object?>? Credentials { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWarehouseSegmentDto şeması.
+    /// </summary>
+    public sealed class UpdateWarehouseSegmentDto
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("connection_id")]
+        public string? ConnectionId { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        public string? Query { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_column")]
+        public string? IdColumn { get; set; }
+
+        /// <summary>
+        /// Değerler: "external_id", "user_id".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_type")]
+        public string? IdType { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_interval_minutes")]
+        public long? RefreshIntervalMinutes { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
+        public global::Pushizo.Models.UpdateWarehouseSegmentDtoLimits? Limits { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// UpdateWarehouseSegmentDtoLimits şeması.
+    /// </summary>
+    public sealed class UpdateWarehouseSegmentDtoLimits
+    {
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_seconds")]
+        public long? TimeoutSeconds { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_rows")]
+        public long? MaxRows { get; set; }
+
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed")]
+        public long? MaxBytesBilled { get; set; }
+
+        /// <summary>
+        /// Değerler: "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large", "6X-Large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_warehouse_size")]
+        public string? MaxWarehouseSize { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
@@ -30197,6 +30566,468 @@ namespace Pushizo.Models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentConnection şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentConnection
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "bigquery", "snowflake", "databricks".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("config")]
+        public global::System.Collections.Generic.Dictionary<string, object?>? Config { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credentials_hint")]
+        public string? CredentialsHint { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("segment_count")]
+        public long? SegmentCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_tested_at")]
+        public string? LastTestedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_test_error")]
+        public string? LastTestError { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public string? UpdatedAt { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentConnectionList şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentConnectionList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WarehouseSegmentConnection>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentConnectionTest şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentConnectionTest
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ok")]
+        public bool? Ok { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::Pushizo.Models.WarehouseSegmentConnectionTestError? Error { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentConnectionTestError şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentConnectionTestError
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentList şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.Segment>? Data { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentOptions şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentOptions
+    {
+        /// <summary>
+        /// Zorunlu. Değerler: "bigquery", "snowflake", "databricks".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("types")]
+        public global::System.Collections.Generic.List<string>? Types { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "external_id", "user_id".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id_types")]
+        public global::System.Collections.Generic.List<string>? IdTypes { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large", "6X-Large".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("snowflake_warehouse_sizes")]
+        public global::System.Collections.Generic.List<string>? SnowflakeWarehouseSizes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("refresh_intervals")]
+        public global::System.Collections.Generic.List<long>? RefreshIntervals { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
+        public global::Pushizo.Models.WarehouseSegmentOptionsLimits? Limits { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentOptionsLimits şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentOptionsLimits
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query_max")]
+        public long? QueryMax { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_default_seconds")]
+        public long? TimeoutDefaultSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_min_seconds")]
+        public long? TimeoutMinSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout_max_seconds")]
+        public long? TimeoutMaxSeconds { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_rows_default")]
+        public long? MaxRowsDefault { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_rows_max")]
+        public long? MaxRowsMax { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed_default")]
+        public long? MaxBytesBilledDefault { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed_min")]
+        public long? MaxBytesBilledMin { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed_max")]
+        public long? MaxBytesBilledMax { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("preview_sample")]
+        public long? PreviewSample { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("connections_per_app")]
+        public long? ConnectionsPerApp { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentPreview şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentPreview
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("run_id")]
+        public string? RunId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "dry_run", "sample".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("estimated_bytes")]
+        public double? EstimatedBytes { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_bytes_billed")]
+        public double? MaxBytesBilled { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("within_limit")]
+        public bool? WithinLimit { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sample")]
+        public global::System.Collections.Generic.List<string>? Sample { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sample_truncated")]
+        public bool? SampleTruncated { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sample_matched")]
+        public long? SampleMatched { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
+        public long? DurationMs { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentRunList şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentRunList
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public global::System.Collections.Generic.List<global::Pushizo.Models.WarehouseSegmentRunListDataItem>? Data { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_cursor")]
+        public string? NextCursor { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString() => global::Pushizo.Core.Json.Stringify(this);
+    }
+
+    /// <summary>
+    /// WarehouseSegmentRunListDataItem şeması.
+    /// </summary>
+    public sealed class WarehouseSegmentRunListDataItem
+    {
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("segment_id")]
+        public string? SegmentId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("connection_id")]
+        public string? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "bigquery", "snowflake", "databricks".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warehouse_type")]
+        public string? WarehouseType { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "panel", "api", "schedule".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actor_id")]
+        public string? ActorId { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        public string? Query { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("query_hash")]
+        public string? QueryHash { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "ok", "rejected", "timeout", "failed".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Zorunlu. Değerler: "empty", "too_long", "syntax", "multiple_statements", "not_select", "forbidden_relation", "forbidden_function", "forbidden_construct", "forbidden_type".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason")]
+        public string? Reason { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("row_count")]
+        public long? RowCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("matched_count")]
+        public long? MatchedCount { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bytes_processed")]
+        public double? BytesProcessed { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncated")]
+        public bool? Truncated { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
+        public long? DurationMs { get; set; }
+
+        /// <summary>
+        /// Zorunlu.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        public string? CreatedAt { get; set; }
 
         /// <inheritdoc />
         public override string ToString() => global::Pushizo.Core.Json.Stringify(this);

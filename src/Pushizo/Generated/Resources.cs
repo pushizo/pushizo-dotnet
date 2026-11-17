@@ -5812,6 +5812,201 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// warehouseSegments kaynağı.
+    /// </summary>
+    public sealed class WarehouseSegmentsResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal WarehouseSegmentsResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Ambar segmenti seçenekleri ve sınırlar
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-segments/options</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentOptions> OptionsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/warehouse-segments/options");
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentOptions>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar bağlantıları
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-segments/connections</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentConnectionList> ListConnectionsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/warehouse-segments/connections");
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentConnectionList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar bağlantısı oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-segments/connections</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentConnection> CreateConnectionAsync(global::Pushizo.Models.CreateWarehouseConnectionDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/warehouse-segments/connections");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentConnection>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar bağlantısı detayı
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-segments/connections/{connectionId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentConnection> GetConnectionAsync(string connectionId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/warehouse-segments/connections/{connectionId}");
+            op.PathParam("connectionId", connectionId);
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentConnection>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar bağlantısını güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/warehouse-segments/connections/{connectionId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentConnection> UpdateConnectionAsync(string connectionId, global::Pushizo.Models.UpdateWarehouseConnectionDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/warehouse-segments/connections/{connectionId}");
+            op.PathParam("connectionId", connectionId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentConnection>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar bağlantısını sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/warehouse-segments/connections/{connectionId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> RemoveConnectionAsync(string connectionId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/warehouse-segments/connections/{connectionId}");
+            op.PathParam("connectionId", connectionId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar bağlantısını dene
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-segments/connections/{connectionId}/test</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentConnectionTest> TestConnectionAsync(string connectionId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/warehouse-segments/connections/{connectionId}/test");
+            op.PathParam("connectionId", connectionId);
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentConnectionTest>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar sorgusunu önizle (dry-run veya örnek)
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-segments/preview</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentPreview> PreviewAsync(global::Pushizo.Models.PreviewWarehouseQueryDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/warehouse-segments/preview");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentPreview>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar segmentleri
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-segments/segments</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentList> ListSegmentsAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/warehouse-segments/segments");
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar segmenti oluştur
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-segments/segments</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Segment> CreateSegmentAsync(global::Pushizo.Models.CreateWarehouseSegmentDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/warehouse-segments/segments");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Segment>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar segmentini güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/warehouse-segments/segments/{segmentId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Segment> UpdateSegmentAsync(string segmentId, global::Pushizo.Models.UpdateWarehouseSegmentDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/warehouse-segments/segments/{segmentId}");
+            op.PathParam("segmentId", segmentId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.Segment>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar segmentini yenileme kuyruğuna al
+        ///
+        /// <c>POST /v1/apps/{appId}/warehouse-segments/segments/{segmentId}/refresh</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Segment> RefreshAsync(string segmentId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/warehouse-segments/segments/{segmentId}/refresh");
+            op.PathParam("segmentId", segmentId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Segment>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Ambar sorgu kaydı
+        ///
+        /// <c>GET /v1/apps/{appId}/warehouse-segments/runs</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.WarehouseSegmentRunList> RunsAsync(global::Pushizo.Params.WarehouseSegmentsRunsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/warehouse-segments/runs");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.WarehouseSegmentRunList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// RunsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.WarehouseSegmentRunListDataItem> RunsAllAsync(global::Pushizo.Params.WarehouseSegmentsRunsParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.WarehouseSegmentsRunsParams();
+            while (true)
+            {
+                var page = await RunsAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+    }
+
+    /// <summary>
     /// webCampaigns kaynağı.
     /// </summary>
     public sealed class WebCampaignsResource
