@@ -1694,6 +1694,45 @@ namespace Pushizo.Params
     }
 
     /// <summary>
+    /// SiteSearchResource.DocumentsAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SiteSearchDocumentsParams
+    {
+        public string? SourceId { get; set; }
+
+        public string? Q { get; set; }
+
+        public long? Limit { get; set; }
+
+        public string? Cursor { get; set; }
+
+        internal SiteSearchDocumentsParams Copy() => (SiteSearchDocumentsParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("source_id", SourceId);
+            op.Query("q", Q);
+            op.Query("limit", Limit);
+            op.Query("cursor", Cursor);
+        }
+    }
+
+    /// <summary>
+    /// SiteSearchResource.ReportAsync için isteğe bağlı sorgu parametreleri.
+    /// </summary>
+    public sealed class SiteSearchReportParams
+    {
+        public long? Days { get; set; }
+
+        internal SiteSearchReportParams Copy() => (SiteSearchReportParams)MemberwiseClone();
+
+        internal void ApplyTo(global::Pushizo.Core.Operation op)
+        {
+            op.Query("days", Days);
+        }
+    }
+
+    /// <summary>
     /// SurveysResource.ListAsync için isteğe bağlı sorgu parametreleri.
     /// </summary>
     public sealed class SurveysListParams

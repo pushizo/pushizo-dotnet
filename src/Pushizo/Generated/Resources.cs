@@ -5244,6 +5244,177 @@ namespace Pushizo.Resources
     }
 
     /// <summary>
+    /// siteSearch kaynağı.
+    /// </summary>
+    public sealed class SiteSearchResource
+    {
+        private readonly global::Pushizo.PushizoClient _client;
+
+        internal SiteSearchResource(global::Pushizo.PushizoClient client)
+        {
+            _client = client;
+        }
+
+        /// <summary>
+        /// Site araması ayarları, dizin durumu ve AI kullanımı
+        ///
+        /// <c>GET /v1/apps/{appId}/site-search</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchOverview> OverviewAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/site-search");
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchOverview>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Site araması ayarlarını güncelle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/site-search/settings</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchOverview> UpdateSettingsAsync(global::Pushizo.Models.UpdateSiteSearchSettingsDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/site-search/settings");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchOverview>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Arama kaynakları
+        ///
+        /// <c>GET /v1/apps/{appId}/site-search/sources</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchSourceList> SourcesAsync(global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/site-search/sources");
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchSourceList>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Arama kaynağı ekle
+        ///
+        /// <c>POST /v1/apps/{appId}/site-search/sources</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchSource> CreateSourceAsync(global::Pushizo.Models.CreateSiteSearchSourceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/site-search/sources");
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchSource>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Arama kaynağını düzenle
+        ///
+        /// <c>PATCH /v1/apps/{appId}/site-search/sources/{sourceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchSource> UpdateSourceAsync(string sourceId, global::Pushizo.Models.UpdateSiteSearchSourceDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PATCH", "/v1/apps/{appId}/site-search/sources/{sourceId}");
+            op.PathParam("sourceId", sourceId);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchSource>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Arama kaynağını ve sayfalarını sil
+        ///
+        /// <c>DELETE /v1/apps/{appId}/site-search/sources/{sourceId}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> RemoveSourceAsync(string sourceId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/site-search/sources/{sourceId}");
+            op.PathParam("sourceId", sourceId);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Kaynağı şimdi yeniden tara
+        ///
+        /// <c>POST /v1/apps/{appId}/site-search/sources/{sourceId}/crawl</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchCrawlRequest> CrawlAsync(string sourceId, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("POST", "/v1/apps/{appId}/site-search/sources/{sourceId}/crawl");
+            op.PathParam("sourceId", sourceId);
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchCrawlRequest>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dizindeki belgeler
+        ///
+        /// <c>GET /v1/apps/{appId}/site-search/documents</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchDocumentPage> DocumentsAsync(global::Pushizo.Params.SiteSearchDocumentsParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/site-search/documents");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchDocumentPage>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// DocumentsAsync sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek döndürür (sayfalar tembel yüklenir).
+        /// </summary>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Pushizo.Models.SiteSearchDocument> DocumentsAllAsync(global::Pushizo.Params.SiteSearchDocumentsParams? @params = null, global::Pushizo.RequestOptions? options = null, [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var p = @params?.Copy() ?? new global::Pushizo.Params.SiteSearchDocumentsParams();
+            while (true)
+            {
+                var page = await DocumentsAsync(p, options, cancellationToken).ConfigureAwait(false);
+                if (page.Data is not null)
+                {
+                    foreach (var item in page.Data)
+                    {
+                        yield return item;
+                    }
+                }
+                if (page.HasMore != true || string.IsNullOrEmpty(page.NextCursor)) yield break;
+                p = p.Copy();
+                p.Cursor = page.NextCursor;
+            }
+        }
+
+        /// <summary>
+        /// Belgeyi dizine yükle veya değiştir (anahtar app içinde tekildir)
+        ///
+        /// <c>PUT /v1/apps/{appId}/site-search/documents/{documentKey}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchDocumentResult> PutDocumentAsync(string documentKey, global::Pushizo.Models.PutSiteSearchDocumentDto body, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("PUT", "/v1/apps/{appId}/site-search/documents/{documentKey}");
+            op.PathParam("documentKey", documentKey);
+            if (body is null) throw new global::System.ArgumentNullException(nameof(body));
+            op.Body = body;
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchDocumentResult>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Belgeyi dizinden sil (belge kimliği veya anahtarı)
+        ///
+        /// <c>DELETE /v1/apps/{appId}/site-search/documents/{documentKey}</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.Ok> RemoveDocumentAsync(string documentKey, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("DELETE", "/v1/apps/{appId}/site-search/documents/{documentKey}");
+            op.PathParam("documentKey", documentKey);
+            return _client.ExecuteAsync<global::Pushizo.Models.Ok>(op, options, cancellationToken);
+        }
+
+        /// <summary>
+        /// Arama raporu
+        ///
+        /// <c>GET /v1/apps/{appId}/site-search/report</c>
+        /// </summary>
+        public global::System.Threading.Tasks.Task<global::Pushizo.Models.SiteSearchReport> ReportAsync(global::Pushizo.Params.SiteSearchReportParams? @params = null, global::Pushizo.RequestOptions? options = null, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var op = new global::Pushizo.Core.Operation("GET", "/v1/apps/{appId}/site-search/report");
+            @params?.ApplyTo(op);
+            return _client.ExecuteAsync<global::Pushizo.Models.SiteSearchReport>(op, options, cancellationToken);
+        }
+    }
+
+    /// <summary>
     /// smsKeywords kaynağı.
     /// </summary>
     public sealed class SmsKeywordsResource
