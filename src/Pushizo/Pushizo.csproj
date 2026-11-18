@@ -8,7 +8,7 @@
     <RootNamespace>Pushizo</RootNamespace>
     <AssemblyName>Pushizo</AssemblyName>
     <PackageId>Pushizo</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Pushizo</Authors>
     <Description>Pushizo sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması.</Description>
     <PackageTags>pushizo;push;notifications;email;sms;webhooks</PackageTags>
